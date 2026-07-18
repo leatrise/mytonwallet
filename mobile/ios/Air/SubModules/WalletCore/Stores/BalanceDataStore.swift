@@ -258,7 +258,10 @@ public actor _BalanceDataStore: WalletCoreData.EventsObserver {
             }
         }
 
-        let prefs = assetsAndActivityDataStore.data(accountId: accountId) ?? MAssetsAndActivityData.empty
+        var prefs = assetsAndActivityDataStore.data(accountId: accountId) ?? MAssetsAndActivityData.empty
+        if account.network == .mainnet, prefs.autoPinYohiIfNeeded() {
+            assetsAndActivityDataStore.autoPinYohiIfNeeded(accountId: accountId)
+        }
 
         for slug in prefs.importedSlugs {
             if !walletTokens.contains(where: { $0.tokenSlug == slug }),

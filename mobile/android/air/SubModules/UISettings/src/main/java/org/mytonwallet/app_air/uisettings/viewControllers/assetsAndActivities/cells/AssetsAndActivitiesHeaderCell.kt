@@ -67,69 +67,69 @@ class AssetsAndActivitiesHeaderCell(
         v
     }
 
-    private val hideTinyTransfersLabel: WLabel by lazy {
+    private val showTinyTransfersLabel: WLabel by lazy {
         val lbl = WLabel(context)
         lbl.setStyle(adaptiveFontSize())
         lbl.text =
-            LocaleController.getString("Hide Tiny Transfers")
+            LocaleController.getString("Show Tiny Transfers")
         lbl
     }
 
-    private val hideTinyTransfersSwitch: WSwitch by lazy {
+    private val showTinyTransfersSwitch: WSwitch by lazy {
         val switchView = WSwitch(context)
-        switchView.isChecked = WGlobalStorage.getAreTinyTransfersHidden()
+        switchView.isChecked = !WGlobalStorage.getAreTinyTransfersHidden()
         switchView.setOnCheckedChangeListener { _, isChecked ->
-            WGlobalStorage.setAreTinyTransfersHidden(isChecked)
+            WGlobalStorage.setAreTinyTransfersHidden(!isChecked)
             WalletCore.notifyEvent(WalletEvent.HideTinyTransfersChanged)
         }
         switchView
     }
 
-    private val hideTinyTransfersRow: WView by lazy {
+    private val showTinyTransfersRow: WView by lazy {
         val v = WView(context)
-        v.addView(hideTinyTransfersLabel)
-        v.addView(hideTinyTransfersSwitch)
+        v.addView(showTinyTransfersLabel)
+        v.addView(showTinyTransfersSwitch)
         v.setConstraints {
-            toStart(hideTinyTransfersLabel, 20f)
-            toCenterY(hideTinyTransfersLabel)
-            toEnd(hideTinyTransfersSwitch, 20f)
-            toCenterY(hideTinyTransfersSwitch)
+            toStart(showTinyTransfersLabel, 20f)
+            toCenterY(showTinyTransfersLabel)
+            toEnd(showTinyTransfersSwitch, 20f)
+            toCenterY(showTinyTransfersSwitch)
         }
         v.setOnClickListener {
-            hideTinyTransfersSwitch.isChecked = !hideTinyTransfersSwitch.isChecked
+            showTinyTransfersSwitch.isChecked = !showTinyTransfersSwitch.isChecked
         }
         v
     }
 
-    private val hideTokensWithNoCostLabel: WLabel by lazy {
+    private val showLowValueTokensLabel: WLabel by lazy {
         val lbl = WLabel(context)
         lbl.setStyle(adaptiveFontSize())
         lbl.text =
-            LocaleController.getString("Hide Tokens With No Cost")
+            LocaleController.getString("Show Low-Value Tokens")
         lbl
     }
 
-    private val hideTokensWithNoCostSwitch: WSwitch by lazy {
+    private val showLowValueTokensSwitch: WSwitch by lazy {
         val switchView = WSwitch(context)
-        switchView.isChecked = WGlobalStorage.getAreNoCostTokensHidden()
+        switchView.isChecked = !WGlobalStorage.getAreNoCostTokensHidden()
         switchView.setOnCheckedChangeListener { _, isChecked ->
-            onHideNoCostTokensChanged(isChecked)
+            onHideNoCostTokensChanged(!isChecked)
         }
         switchView
     }
 
-    private val hideTokensWithNoCostRow: WView by lazy {
+    private val showLowValueTokensRow: WView by lazy {
         val v = WView(context)
-        v.addView(hideTokensWithNoCostLabel)
-        v.addView(hideTokensWithNoCostSwitch)
+        v.addView(showLowValueTokensLabel)
+        v.addView(showLowValueTokensSwitch)
         v.setConstraints {
-            toStart(hideTokensWithNoCostLabel, 20f)
-            toCenterY(hideTokensWithNoCostLabel)
-            toEnd(hideTokensWithNoCostSwitch, 20f)
-            toCenterY(hideTokensWithNoCostSwitch)
+            toStart(showLowValueTokensLabel, 20f)
+            toCenterY(showLowValueTokensLabel)
+            toEnd(showLowValueTokensSwitch, 20f)
+            toCenterY(showLowValueTokensSwitch)
         }
         v.setOnClickListener {
-            hideTokensWithNoCostSwitch.isChecked = !hideTokensWithNoCostSwitch.isChecked
+            showLowValueTokensSwitch.isChecked = !showLowValueTokensSwitch.isChecked
         }
         v
     }
@@ -184,21 +184,21 @@ class AssetsAndActivitiesHeaderCell(
         super.setupViews()
 
         addView(baseCurrencyView, LayoutParams(MATCH_PARENT, 50.dp))
-        addView(hideTinyTransfersRow, LayoutParams(MATCH_PARENT, 50.dp))
-        addView(hideTokensWithNoCostRow, LayoutParams(MATCH_PARENT, 50.dp))
+        addView(showTinyTransfersRow, LayoutParams(MATCH_PARENT, 50.dp))
+        addView(showLowValueTokensRow, LayoutParams(MATCH_PARENT, 50.dp))
         addView(tokensOnHomeScreenLabel, LayoutParams(MATCH_PARENT, 48.dp))
         addView(addTokenView, LayoutParams(MATCH_PARENT, 50.dp))
 
         setConstraints {
             toTop(baseCurrencyView)
             toCenterX(baseCurrencyView)
-            topToBottom(hideTinyTransfersRow, baseCurrencyView)
-            toCenterX(hideTinyTransfersRow)
-            topToBottom(hideTokensWithNoCostRow, hideTinyTransfersRow, ViewConstants.GAP.toFloat())
-            toCenterX(hideTokensWithNoCostRow)
+            topToBottom(showTinyTransfersRow, baseCurrencyView)
+            toCenterX(showTinyTransfersRow)
+            topToBottom(showLowValueTokensRow, showTinyTransfersRow, ViewConstants.GAP.toFloat())
+            toCenterX(showLowValueTokensRow)
             topToBottom(
                 tokensOnHomeScreenLabel,
-                hideTokensWithNoCostRow,
+                showLowValueTokensRow,
                 ViewConstants.GAP.toFloat()
             )
             toCenterX(tokensOnHomeScreenLabel)
@@ -220,18 +220,18 @@ class AssetsAndActivitiesHeaderCell(
         baseCurrencyLabel.setTextColor(WColor.PrimaryText.color)
         currentBaseCurrencyLabel.setTextColor(WColor.SecondaryText.color)
 
-        hideTinyTransfersRow.addRippleEffect(WColor.SecondaryBackground.color)
-        hideTinyTransfersLabel.setTextColor(WColor.PrimaryText.color)
+        showTinyTransfersRow.addRippleEffect(WColor.SecondaryBackground.color)
+        showTinyTransfersLabel.setTextColor(WColor.PrimaryText.color)
 
-        hideTokensWithNoCostRow.addRippleEffect(WColor.SecondaryBackground.color)
-        hideTokensWithNoCostLabel.setTextColor(WColor.PrimaryText.color)
+        showLowValueTokensRow.addRippleEffect(WColor.SecondaryBackground.color)
+        showLowValueTokensLabel.setTextColor(WColor.PrimaryText.color)
 
-        hideTinyTransfersRow.setBackgroundColor(
+        showTinyTransfersRow.setBackgroundColor(
             WColor.Background.color,
             0f,
             ViewConstants.BLOCK_RADIUS.dp
         )
-        hideTokensWithNoCostRow.setBackgroundColor(
+        showLowValueTokensRow.setBackgroundColor(
             WColor.Background.color,
             25f.dp
         )

@@ -187,6 +187,7 @@ private func moveAssetsAndActivityData(global: GlobalStorage, db: any DatabaseWr
             $0["\(prefix).alwaysHiddenSlugs"] = row?.alwaysHiddenSlugs ?? []
             $0["\(prefix).importedSlugs"] = row?.importedSlugs ?? []
             $0["\(prefix).pinnedSlugs"] = row?.pinnedSlugs
+            $0["\(prefix).wasYohiAutoPinned"] = row?.wasYohiAutoPinned ?? false
         }
     }
 }

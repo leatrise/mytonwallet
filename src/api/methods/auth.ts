@@ -52,7 +52,8 @@ import {
   getMnemonic,
   validateBip39Mnemonic,
 } from '../common/mnemonic';
-import { sendUpdateTokens } from '../common/tokens';
+import { getTokensCache, sendUpdateTokens } from '../common/tokens';
+import { hasQualifyingWalletBalance, hasReachedWalletDiscoveryGap } from '../common/walletDiscovery';
 import { tokenRepository } from '../db';
 import { getEnvironment } from '../environment';
 import { handleServerError } from '../errors';
@@ -89,7 +90,13 @@ export async function importMnemonic(
   networks: ApiNetwork[],
   mnemonic: string[],
   password: string,
+  _version?: ApiTonWalletVersion,
+  options: {
+    shouldAutoDiscoverSubwallets?: boolean;
+    shouldShowLowValueTokens?: boolean;
+  } = {},
 ) {
+  const { shouldAutoDiscoverSubwallets, shouldShowLowValueTokens = false } = options;
   const isBip39Mnemonic = !IS_TON_MNEMONIC_ONLY && validateBip39Mnemonic(mnemonic);
   const isTonMnemonic = await ton.validateMnemonic(mnemonic);
 
@@ -230,6 +237,19 @@ export async function importMnemonic(
 
       if (!primaryAccountId) {
         throw new Error('No primary account found');
+      }
+
+      if (shouldAutoDiscoverSubwallets && isBip39Mnemonic && !shouldForceTonMnemonic) {
+        const discoveredAccounts = await discoverAndAddSubwallets(
+          primaryAccountId,
+          mnemonic,
+          shouldShowLowValueTokens,
+        );
+
+        for (const discoveredAccount of discoveredAccounts) {
+          if (sortedAccounts.some(({ id }) => id === discoveredAccount.id)) continue;
+          sortedAccounts.push(discoveredAccount);
+        }
       }
 
       void activateAccount(primaryAccountId);
@@ -559,6 +579,12 @@ export async function importNewWalletVersion(
 }
 
 const SETTINGS_SUBWALLET_PAGE_SIZE = 4;
+const IMPORT_SUBWALLET_GAP_LIMIT = 20;
+
+type WalletVariantsPage = {
+  groups: ApiGroupedWalletVariant[];
+  qualifyingIndices: number[];
+};
 
 function isGroupedVariantSameAsCurrentAccount(
   account: ApiBip39Account,
@@ -611,17 +637,30 @@ export async function getWalletVariants(
     return { error: ApiCommonError.Unexpected };
   }
 
+  const result = await scanWalletVariantsPage(accountId, account, page, mnemonic, true);
+
+  return result.groups;
+}
+
+async function scanWalletVariantsPage(
+  accountId: string,
+  account: ApiBip39Account,
+  page: number,
+  mnemonic: string[],
+  shouldShowLowValueTokens: boolean,
+): Promise<WalletVariantsPage> {
   const { network } = parseAccountId(accountId);
 
   const offset = page * SETTINGS_SUBWALLET_PAGE_SIZE;
   const pageGroups: ApiGroupedWalletVariant[] = [];
+  const qualifyingIndices: number[] = [];
 
   const knownChains = getSupportedChains();
 
   await Promise.all(Array.from({ length: SETTINGS_SUBWALLET_PAGE_SIZE }, async (_, i) => {
     const index = offset + i;
     const byChain: ApiGroupedWalletVariant['byChain'] = {};
-    let anyPositive = false;
+    let hasQualifyingBalance = false;
 
     await Promise.all(knownChains.map(async (chain) => {
       const parentWallet = account.byChain[chain];
@@ -663,8 +702,12 @@ export async function getWalletVariants(
         const crosschainAssets = await chains[chain]
           .crosschain!.fetchCrosschainAccountAssets(network, walletRest.address, () => {});
 
-        if (Object.values(crosschainAssets).some((balance) => balance > 0n)) {
-          anyPositive = true;
+        if (hasQualifyingWalletBalance(
+          crosschainAssets,
+          getTokensCache().bySlug,
+          shouldShowLowValueTokens,
+        )) {
+          hasQualifyingBalance = true;
         }
 
         const crosschainAssetsByChain = new Map<ApiChain, ApiBalanceBySlug>();
@@ -694,7 +737,13 @@ export async function getWalletVariants(
       } else {
         const balancesBySlug = await chains[chain].getWalletAssets(network, walletRest.address, () => {});
 
-        if (Object.values(balancesBySlug).some((balance) => balance > 0n)) anyPositive = true;
+        if (hasQualifyingWalletBalance(
+          balancesBySlug,
+          getTokensCache().bySlug,
+          shouldShowLowValueTokens,
+        )) {
+          hasQualifyingBalance = true;
+        }
 
         byChain[chain] = {
           wallet: walletRest as Omit<ApiWalletByChain[typeof chain], 'index'>,
@@ -704,9 +753,13 @@ export async function getWalletVariants(
       }
     }));
 
-    if (!anyPositive || isGroupedVariantSameAsCurrentAccount(account, byChain)) {
+    if (!hasQualifyingBalance) {
       return;
     }
+
+    qualifyingIndices.push(index);
+
+    if (isGroupedVariantSameAsCurrentAccount(account, byChain)) return;
 
     pageGroups.push({
       index,
@@ -724,7 +777,70 @@ export async function getWalletVariants(
     await maybeMigrateSolanaDerivation(accountId, account, pageGroups);
   }
 
-  return pageGroups;
+  return {
+    groups: pageGroups,
+    qualifyingIndices: qualifyingIndices.sort((a, b) => a - b),
+  };
+}
+
+async function discoverAndAddSubwallets(
+  accountId: string,
+  mnemonic: string[],
+  shouldShowLowValueTokens: boolean,
+) {
+  const discoveredAccounts: (ApiAccountWithMnemonic & { id: string })[] = [];
+
+  try {
+    const account = await fetchStoredAccount<ApiBip39Account>(accountId);
+    let page = 0;
+    let lastQualifyingIndex = -1;
+
+    while (true) {
+      const result = await scanWalletVariantsPage(
+        accountId,
+        account,
+        page,
+        mnemonic,
+        shouldShowLowValueTokens,
+      );
+
+      if (result.qualifyingIndices.length) {
+        lastQualifyingIndex = result.qualifyingIndices.at(-1)!;
+      }
+
+      for (const group of result.groups) {
+        const partialByChain = Object.fromEntries(
+          (Object.keys(group.byChain) as ApiChain[]).map((chain) => [chain, group.byChain[chain]!.wallet]),
+        );
+        const addResult = await addSubWallet(accountId, partialByChain, { suppressActivation: true });
+
+        if (isSubWalletAddError(addResult)) {
+          logDebugError('Failed to auto-add discovered subwallet', addResult.error);
+          continue;
+        }
+
+        if (discoveredAccounts.some(({ id }) => id === addResult.accountId)) continue;
+
+        const storedAccount = await fetchStoredAccount<ApiAccountWithMnemonic>(addResult.accountId);
+        discoveredAccounts.push({ ...storedAccount, id: addResult.accountId });
+      }
+
+      const scannedThroughIndex = (page + 1) * SETTINGS_SUBWALLET_PAGE_SIZE - 1;
+      if (hasReachedWalletDiscoveryGap(
+        scannedThroughIndex,
+        lastQualifyingIndex,
+        IMPORT_SUBWALLET_GAP_LIMIT,
+      )) {
+        break;
+      }
+
+      page += 1;
+    }
+  } catch (err) {
+    logDebugError('Failed to auto-discover subwallets', err);
+  }
+
+  return discoveredAccounts;
 }
 
 export async function createSubWallet(accountId: string, password: string) {

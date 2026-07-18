@@ -338,6 +338,11 @@ object WGlobalStorage {
                 IGlobalStorageProvider.PERSIST_INSTANT
             )
         }
+        globalStorageProvider.set(
+            "$ASSETS_AND_ACTIVITY.$accountId.wasYohiAutoPinned",
+            value.optBoolean("wasYohiAutoPinned"),
+            IGlobalStorageProvider.PERSIST_INSTANT
+        )
     }
 
     fun setIsBiometricActivated(isBiometricActivated: Boolean) {

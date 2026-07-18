@@ -7,6 +7,7 @@ import org.mytonwallet.app_air.walletcore.DEFAULT_SHOWN_TOKENS
 import org.mytonwallet.app_air.walletcore.MYCOIN_SLUG
 import org.mytonwallet.app_air.walletcore.TONCOIN_SLUG
 import org.mytonwallet.app_air.walletcore.USDE_SLUG
+import org.mytonwallet.app_air.walletcore.YOHI_SLUG
 import org.mytonwallet.app_air.walletcore.stores.AccountStore
 import org.mytonwallet.app_air.walletcore.stores.BalanceStore
 import org.mytonwallet.app_air.walletcore.stores.StakingStore
@@ -20,6 +21,7 @@ data class MAssetsAndActivityData(
     var deletedTokens: ArrayList<String> = ArrayList(),
     var addedTokens: ArrayList<String> = ArrayList(),
     var pinnedTokens: ArrayList<String> = ArrayList(),
+    var wasYohiAutoPinned: Boolean = false,
 ) {
 
     constructor(accountId: String) : this() {
@@ -32,6 +34,7 @@ data class MAssetsAndActivityData(
         )
         addedTokens = jsonArrayToArrayList(jsonObject.optJSONArray("importedSlugs"))
         pinnedTokens = jsonArrayToArrayList(jsonObject.optJSONArray("pinnedSlugs"))
+        wasYohiAutoPinned = jsonObject.optBoolean("wasYohiAutoPinned")
     }
 
     private fun jsonArrayToArrayList(jsonArray: JSONArray?): ArrayList<String> {
@@ -52,8 +55,24 @@ data class MAssetsAndActivityData(
             jsonObject.put("deletedSlugs", JSONArray(deletedTokens))
             jsonObject.put("importedSlugs", JSONArray(addedTokens))
             jsonObject.put("pinnedSlugs", JSONArray(pinnedTokens))
+            jsonObject.put("wasYohiAutoPinned", wasYohiAutoPinned)
             return jsonObject
         }
+
+    fun autoPinYohiIfNeeded(): Boolean {
+        if (wasYohiAutoPinned) return false
+
+        wasYohiAutoPinned = true
+        hiddenTokens.removeAll { it == YOHI_SLUG }
+        deletedTokens.removeAll { it == YOHI_SLUG }
+        visibleTokens.removeAll { it == YOHI_SLUG }
+        visibleTokens.add(YOHI_SLUG)
+        addedTokens.removeAll { it == YOHI_SLUG }
+        addedTokens.add(YOHI_SLUG)
+        pinnedTokens.removeAll { it == YOHI_SLUG }
+        pinnedTokens.add(0, YOHI_SLUG)
+        return true
+    }
 
     fun isPinned(slug: String): Boolean {
         return pinnedTokens.contains(slug)

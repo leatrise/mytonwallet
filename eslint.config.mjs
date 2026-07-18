@@ -17,7 +17,6 @@ export default tseslint.config(
     'src/lib/LovelyChart/',
     'src/lib/axios-retry/',
     'src/lib/is-retry-allowed/',
-    'src/push/lib/zk-email-helpers/',
     '.github/',
     '.claude/',
     'babel.config.js',
@@ -30,6 +29,5 @@ export default tseslint.config(
     'dist',
     'dist-electron',
     'dist-air',
-    'dist-push',
   ]),
 );

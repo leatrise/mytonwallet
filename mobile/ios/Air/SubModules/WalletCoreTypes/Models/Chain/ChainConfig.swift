@@ -451,6 +451,7 @@ private let CHAIN_CONFIG: [ApiChain: ChainConfig] = [
             .tonUsdtTestnet,
             .mycoinMainnet,
             .mycoinTestnet,
+            .YOHI,
             .TON_USDE,
             .TON_TSUSDE,
         ],

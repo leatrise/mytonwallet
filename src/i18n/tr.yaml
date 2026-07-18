@@ -138,6 +138,10 @@ Investor View: Yatırımcı Görünümü
 Toggle Investor View: Yatırımcı Görünümüne Geçiş Yap
 Hide Tiny Transfers: Küçük Transferleri Gizle
 Toggle Hide Tiny Transfers: Küçük Transferleri Gizlemeyi Aç/Kapat
+Show Tiny Transfers: Küçük Transferleri Göster
+Show Low-Value Tokens: Düşük Değerli Tokenleri Göster
+$show_tiny_transfers_help: "$%value% değerinden düşük transferleri göster. Küçük tutarlar genellikle spam gönderenler ve dolandırıcılar tarafından gönderilir."
+$show_low_value_tokens_help: "$%value% değerinden düşük tokenleri göster. Düşük değerli tokenler genellikle spam gönderenler ve dolandırıcılar tarafından gönderilir."
 Network: Ağ
 Developer Options: Geliştirici Seçenekleri
 All Wallet Versions: Tüm cüzdan sürümleri

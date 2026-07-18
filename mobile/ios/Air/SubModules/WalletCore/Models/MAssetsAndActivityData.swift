@@ -20,6 +20,8 @@ public struct MAssetsAndActivityData: Equatable, Sendable {
     /// AddedTokens show tokens will be shown even if user don't have them!
     public private(set) var importedSlugs: Set<String>
 
+    public private(set) var wasYohiAutoPinned: Bool
+
     /// Pinned tokens are shown at the top of  screen. Most recently pinned token is in the end of this Set.
     private var pinnedSlugs: OrderedSet<String> { _pinnedSlugs ?? [] }
     private var _pinnedSlugs: OrderedSet<String>?
@@ -29,11 +31,13 @@ public struct MAssetsAndActivityData: Equatable, Sendable {
             // alwaysShownSlugs = Set(dictionary["alwaysShownSlugs"] as? [String] ?? [])
             alwaysHiddenSlugs = Set(dictionary["alwaysHiddenSlugs"] as? [String] ?? [])
             importedSlugs = Set(dictionary["importedSlugs"] as? [String] ?? [])
+            wasYohiAutoPinned = dictionary["wasYohiAutoPinned"] as? Bool ?? false
             _pinnedSlugs = (dictionary["pinnedSlugs"] as? [String]).map { OrderedSet($0) }
         } else {
             // alwaysShownSlugs = []
             alwaysHiddenSlugs = []
             importedSlugs = []
+            wasYohiAutoPinned = false
             _pinnedSlugs = nil
         }
     }
@@ -43,6 +47,7 @@ public struct MAssetsAndActivityData: Equatable, Sendable {
             // "alwaysShownSlugs": Array(alwaysShownSlugs),
             "alwaysHiddenSlugs": Array(alwaysHiddenSlugs),
             "importedSlugs": Array(importedSlugs),
+            "wasYohiAutoPinned": wasYohiAutoPinned,
         ]
 
         if let _pinnedSlugs {
@@ -115,5 +120,17 @@ public struct MAssetsAndActivityData: Equatable, Sendable {
 
     public mutating func removeImportedToken(slug: String) {
         importedSlugs.remove(slug)
+    }
+
+    public mutating func autoPinYohiIfNeeded() -> Bool {
+        guard !wasYohiAutoPinned else { return false }
+
+        wasYohiAutoPinned = true
+        alwaysHiddenSlugs.remove(YOHI_SLUG)
+        importedSlugs.insert(YOHI_SLUG)
+        if _pinnedSlugs == nil { _pinnedSlugs = [] }
+        _pinnedSlugs?.remove(YOHI_SLUG)
+        _pinnedSlugs?.append(YOHI_SLUG)
+        return true
     }
 }

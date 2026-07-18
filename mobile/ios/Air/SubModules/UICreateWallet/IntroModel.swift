@@ -202,7 +202,13 @@ enum WalletSetupResult {
             let account = try await AccountStore.importPrivateKey(network: network, privateKey: privateKeyWords[0], passcode: passcode)
             importedAccountIds.append(account.id)
         } else {
-            let accounts = try await AccountStore.importMnemonic(network: network, words: words, passcode: passcode, version: nil)
+            let accounts = try await AccountStore.importMnemonic(
+                network: network,
+                words: words,
+                passcode: passcode,
+                version: nil,
+                shouldAutoDiscoverSubwallets: true
+            )
             importedAccountIds += accounts.map { $0.id }
         }
         KeychainHelper.save(biometricPasscode: passcode)

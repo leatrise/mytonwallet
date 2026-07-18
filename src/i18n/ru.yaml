@@ -142,6 +142,10 @@ Investor View: Режим инвестора
 Toggle Investor View: Переключить в режим инвестора
 Hide Tiny Transfers: Скрывать мелкие переводы
 Toggle Hide Tiny Transfers: Переключить отображение мелких переводов
+Show Tiny Transfers: Показывать мелкие переводы
+Show Low-Value Tokens: Показывать токены с низкой стоимостью
+$show_tiny_transfers_help: "Показывать переводы стоимостью менее $%value%. Небольшие суммы часто рассылают спамеры и мошенники."
+$show_low_value_tokens_help: "Показывать токены стоимостью менее $%value%. Токены с низкой стоимостью часто рассылают спамеры и мошенники."
 Network: Сеть
 Developer Options: Инструменты разработчика
 All Wallet Versions: Все версии кошелька

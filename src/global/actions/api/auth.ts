@@ -342,6 +342,7 @@ addActionHandler('createAccount', async (global, actions, {
   setGlobal(updateAuth(global, { isLoading: true }));
 
   const mnemonic = global.auth.mnemonic!;
+  const { areTokensWithNoCostHidden } = getGlobal().settings;
   const mainNetwork = selectCurrentNetwork(getGlobal());
   const networks: ApiNetwork[] = [mainNetwork];
 
@@ -352,7 +353,10 @@ addActionHandler('createAccount', async (global, actions, {
   const accounts = isMnemonicPrivateKey(mnemonic)
     // todo: Create a separate screen for private key importing, where users will choose the chain
     ? await callApi('importPrivateKey', 'ton', networks, mnemonic[0], password)
-    : await callApi('importMnemonic', networks, mnemonic, password);
+    : await callApi('importMnemonic', networks, mnemonic, password, undefined, {
+      shouldAutoDiscoverSubwallets: isImporting,
+      shouldShowLowValueTokens: !areTokensWithNoCostHidden,
+    });
 
   global = getGlobal();
 

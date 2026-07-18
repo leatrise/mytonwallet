@@ -5,9 +5,10 @@ import {
   ETH,
   ETH_USDT_MAINNET,
   TONCOIN,
+  YOHI_MAINNET,
 } from '../../config';
 import { INITIAL_STATE } from '../initialState';
-import { selectTokenInfoUserTokens } from './tokens';
+import { selectAccountTokens, selectTokenInfoUserTokens } from './tokens';
 
 const ACCOUNT_ID = 'mainnet-0';
 
@@ -34,6 +35,7 @@ function buildGlobal(): GlobalState {
           bySlug: {
             [TONCOIN.slug]: 1_000_000_000n,
             [ETH.slug]: 2_000_000_000_000_000_000n,
+            [YOHI_MAINNET.slug]: 0n,
           },
         },
       },
@@ -44,6 +46,7 @@ function buildGlobal(): GlobalState {
         [ETH.slug]: { ...ETH, priceUsd: 3000, percentChange24h: 100 },
         [BASE.slug]: { ...BASE, priceUsd: 3000, percentChange24h: 100 },
         [ETH_USDT_MAINNET.slug]: { ...ETH_USDT_MAINNET, priceUsd: 1, percentChange24h: 0 },
+        [YOHI_MAINNET.slug]: { ...YOHI_MAINNET, priceUsd: 0, percentChange24h: 0 },
       },
     },
     swapTokenInfo: {
@@ -80,5 +83,41 @@ describe('selectTokenInfoUserTokens', () => {
       ...global,
       isBackupWalletModalOpen: true,
     })).toBe(selectTokenInfoUserTokens(global));
+  });
+});
+
+describe('selectAccountTokens', () => {
+  it('shows YOHI by default for an active account', () => {
+    const global = buildGlobal();
+    global.settings.byAccountId[ACCOUNT_ID] = {
+      pinnedSlugs: [YOHI_MAINNET.slug],
+      alwaysShownSlugs: [YOHI_MAINNET.slug],
+      importedSlugs: [YOHI_MAINNET.slug],
+      wasYohiAutoPinned: true,
+    };
+    global.byAccountId[ACCOUNT_ID].activities = {
+      idsMain: ['confirmed-activity'],
+    } as GlobalState['byAccountId'][string]['activities'];
+
+    const tokens = selectAccountTokens(global, ACCOUNT_ID)!;
+    const yohi = tokens.find(({ slug }) => slug === YOHI_MAINNET.slug);
+
+    expect(yohi).toBeDefined();
+    expect(yohi?.isDisabled).toBeFalsy();
+    expect(tokens[0].slug).toBe(YOHI_MAINNET.slug);
+  });
+
+  it('allows the user to hide YOHI after the default pin', () => {
+    const global = buildGlobal();
+    global.settings.byAccountId[ACCOUNT_ID] = {
+      alwaysHiddenSlugs: [YOHI_MAINNET.slug],
+      wasYohiAutoPinned: true,
+    };
+
+    const yohi = selectAccountTokens(global, ACCOUNT_ID)!
+      .find(({ slug }) => slug === YOHI_MAINNET.slug);
+
+    expect(yohi).toBeDefined();
+    expect(yohi?.isDisabled).toBe(true);
   });
 });

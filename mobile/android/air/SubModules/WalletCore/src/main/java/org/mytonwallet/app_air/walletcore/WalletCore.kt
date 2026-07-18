@@ -63,6 +63,7 @@ fun buildMfaStartParam(id: String): String {
 
 const val TONCOIN_SLUG = "toncoin"
 const val MYCOIN_SLUG = "ton-eqcfvnlrbn"
+const val YOHI_SLUG = "ton-eqashzl336"
 const val USDE_SLUG = "ton-eqaib6kmdf"
 const val STAKE_SLUG = "ton-eqcqc6ehrj"
 const val STAKED_MYCOIN_SLUG = "ton-eqcbzvsfwq"
@@ -315,10 +316,13 @@ object WalletCore {
         NftStore.loadCachedNfts(accountId)
         ExploreHistoryStore.loadBrowserHistory(accountId)
         AccountStore.walletVersionsData = null
+        val assetsAndActivityData = MAssetsAndActivityData(accountId)
+        val didAutoPinYohi = activeAccount.network == MBlockchainNetwork.MAINNET &&
+            assetsAndActivityData.autoPinYohiIfNeeded()
         AccountStore.updateAssetsAndActivityData(
-            MAssetsAndActivityData(accountId),
+            assetsAndActivityData,
             notify = false,
-            saveToStorage = false
+            saveToStorage = didAutoPinYohi
         )
         WalletCore.requestDAppList(accountId)
         //WalletContextManager.delegate?.protectedModeChanged()

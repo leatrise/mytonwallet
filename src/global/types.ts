@@ -638,6 +638,7 @@ export interface AccountState {
 
 export interface AccountSettings {
   pinnedSlugs?: string[];
+  wasYohiAutoPinned?: boolean;
   alwaysShownSlugs?: string[];
   alwaysHiddenSlugs?: string[];
   deletedSlugs?: string[];

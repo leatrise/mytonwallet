@@ -322,6 +322,11 @@ func makeMigrator() -> DatabaseMigrator {
             t.add(column: "appTabOrder", .jsonText).defaults(to: "[]").notNull()
         }
     }
+    migrator.registerMigration("v19") { db in
+        try db.alter(table: "account_assets_and_activity_data") { t in
+            t.add(column: "wasYohiAutoPinned", .boolean).notNull().defaults(to: false)
+        }
+    }
 
     return migrator
 }

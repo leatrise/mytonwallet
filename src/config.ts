@@ -457,6 +457,16 @@ export const MYCOIN_TESTNET = {
   image: undefined,
 } as const;
 
+export const YOHI_MAINNET = {
+  name: 'Yohi crypto',
+  symbol: 'Yohi',
+  slug: 'ton-eqashzl336',
+  decimals: 9,
+  chain: 'ton',
+  tokenAddress: 'EQAs-hZL3-36FyP7C0y36sgXLBzhVwBwXaOVOrwtmSPs9S1K',
+  image: 'https://static.yohi.io/images/2024-12-18/d5a641d224404c69a6b97516e974fb11.png',
+} as const;
+
 export const STAKED_TON_SLUG = 'ton-eqcqc6ehrj';
 export const STAKED_MYCOIN_SLUG = 'ton-eqcbzvsfwq';
 export const MYCOIN_STAKING_POOL = 'EQC3roTiRRsoLzfYVK7yVVoIZjTEqAjQU3ju7aQ7HWTVL5o5';

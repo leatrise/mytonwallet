@@ -387,6 +387,16 @@ extension ApiToken {
         decimals: 9,
         chain: .ton
     )
+
+    public static let YOHI = ApiToken(
+        slug: YOHI_SLUG,
+        name: "Yohi crypto",
+        symbol: "Yohi",
+        decimals: 9,
+        chain: .ton,
+        tokenAddress: YOHI_ADDRESS,
+        image: YOHI_IMAGE
+    )
     
     public static let TON_USDT = ApiToken(
         slug: TON_USDT_SLUG,
@@ -581,6 +591,7 @@ extension ApiToken {
         TRX_SLUG: .TRX,
         SOLANA_SLUG: .SOLANA,
         MYCOIN_SLUG: .MYCOIN,
+        YOHI_SLUG: .YOHI,
         TON_USDE_SLUG: .TON_USDE,
         STAKED_TON_SLUG: .STAKED_TON,
         STAKED_MYCOIN_SLUG: .STAKED_MYCOIN,

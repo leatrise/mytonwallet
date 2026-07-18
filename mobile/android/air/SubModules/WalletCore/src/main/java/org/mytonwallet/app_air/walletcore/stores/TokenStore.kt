@@ -17,6 +17,7 @@ import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
 import org.mytonwallet.app_air.walletcore.TESTNET_SLUGS
 import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.WalletEvent
+import org.mytonwallet.app_air.walletcore.YOHI_SLUG
 import org.mytonwallet.app_air.walletcore.api.fetchPriceHistory
 import org.mytonwallet.app_air.walletcore.models.MBridgeError
 import org.mytonwallet.app_air.walletcore.models.MToken
@@ -155,6 +156,8 @@ object TokenStore : IStore {
             for ((slug, token) in DefaultTokens.tokens) {
                 tokens.putIfAbsent(slug, token)
             }
+        } else {
+            DefaultTokens.tokens[YOHI_SLUG]?.let { tokens.putIfAbsent(YOHI_SLUG, it) }
         }
         if (_tokensFlow.value == null && tokens.isNotEmpty()) {
             setFlowValue(Tokens(tokens.mapValues { it.value.toApiTokenWithPrice() }))

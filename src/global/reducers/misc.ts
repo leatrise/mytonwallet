@@ -9,7 +9,7 @@ import type {
 import type { Account, AccountChain, AccountState, AccountType, GlobalState } from '../types';
 import { AuthState } from '../types';
 
-import { POPULAR_WALLET_VERSIONS, TONCOIN } from '../../config';
+import { POPULAR_WALLET_VERSIONS, TONCOIN, YOHI_MAINNET } from '../../config';
 import { generateAccountTitle } from '../../util/account';
 import { getDefaultEnabledSlugs } from '../../util/chain';
 import isPartialDeepEqual from '../../util/isPartialDeepEqual';
@@ -208,8 +208,32 @@ export function updateBalances(
     }
   }
 
-  const importedSlugs = selectAccountSettings(global, accountId)?.importedSlugs ?? [];
+  let accountSettings = selectAccountSettings(global, accountId) ?? {};
   const network = selectCurrentNetwork(global);
+
+  if (network === 'mainnet' && !accountSettings.wasYohiAutoPinned) {
+    accountSettings = {
+      ...accountSettings,
+      wasYohiAutoPinned: true,
+      pinnedSlugs: [
+        YOHI_MAINNET.slug,
+        ...(accountSettings.pinnedSlugs ?? []).filter((slug) => slug !== YOHI_MAINNET.slug),
+      ],
+      alwaysShownSlugs: [
+        ...(accountSettings.alwaysShownSlugs ?? []).filter((slug) => slug !== YOHI_MAINNET.slug),
+        YOHI_MAINNET.slug,
+      ],
+      alwaysHiddenSlugs: accountSettings.alwaysHiddenSlugs?.filter((slug) => slug !== YOHI_MAINNET.slug),
+      deletedSlugs: accountSettings.deletedSlugs?.filter((slug) => slug !== YOHI_MAINNET.slug),
+      importedSlugs: [
+        ...(accountSettings.importedSlugs ?? []).filter((slug) => slug !== YOHI_MAINNET.slug),
+        YOHI_MAINNET.slug,
+      ],
+    };
+    global = updateAccountSettings(global, accountId, accountSettings);
+  }
+
+  const importedSlugs = accountSettings.importedSlugs ?? [];
 
   // Initialize all default tokens with 0n if not yet set, across all chains.
   // This ensures tokens from chains whose first balance fetch hasn't completed yet are still visible.

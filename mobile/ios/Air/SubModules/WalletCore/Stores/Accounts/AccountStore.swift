@@ -309,8 +309,17 @@ public final class _AccountStore: @unchecked Sendable, WalletCoreData.EventsObse
 
     // MARK: - Account management
 
-    public func importMnemonic(network: ApiNetwork, words: [String], passcode: String, version: ApiTonWalletVersion?) async throws -> [MAccount] {
-        let results = try await Api.importMnemonic(networks: [network], mnemonic: words, password: passcode, version: version)
+    public func importMnemonic(network: ApiNetwork, words: [String], passcode: String, version: ApiTonWalletVersion?, shouldAutoDiscoverSubwallets: Bool = false) async throws -> [MAccount] {
+        let results = try await Api.importMnemonic(
+            networks: [network],
+            mnemonic: words,
+            password: passcode,
+            version: version,
+            options: [
+                "shouldAutoDiscoverSubwallets": shouldAutoDiscoverSubwallets,
+                "shouldShowLowValueTokens": !AppStorageHelper.hideNoCostTokens,
+            ]
+        )
         var accountsById = self.accountsById
         let accounts = try results.map { result in
             let account = MAccount(

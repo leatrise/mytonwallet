@@ -32,6 +32,7 @@ import {
   TRC20_USDT_MAINNET,
   TRC20_USDT_TESTNET,
   TRX,
+  YOHI_MAINNET,
 } from '../config';
 import { EVM_DERIVATION_PATHS } from '../api/chains/evm/constants';
 import { SOLANA_DERIVATION_PATHS } from '../api/chains/solana/constants';
@@ -242,6 +243,7 @@ const CHAIN_CONFIG: Record<ApiChain, ChainConfig> = {
       TON_USDT_TESTNET,
       MYCOIN_MAINNET,
       MYCOIN_TESTNET,
+      YOHI_MAINNET,
       TON_USDE,
       TON_TSUSDE,
     ],

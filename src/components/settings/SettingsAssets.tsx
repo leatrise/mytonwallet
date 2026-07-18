@@ -103,7 +103,7 @@ function SettingsAssets({
       .map(([currency, { name }]) => ({ value: currency as keyof typeof CURRENCIES, name }))
   ), []);
 
-  const handleTinyTransfersHiddenToggle = useLastCallback(() => {
+  const handleShowTinyTransfersToggle = useLastCallback(() => {
     toggleTinyTransfersHidden({ isEnabled: !areTinyTransfersHidden });
   });
 
@@ -115,7 +115,7 @@ function SettingsAssets({
     setSettingsState({ state: SettingsState.HiddenNfts });
   });
 
-  const handleTokensWithNoPriceToggle = useLastCallback(() => {
+  const handleShowLowValueTokensToggle = useLastCallback(() => {
     toggleTokensWithNoCost({ isEnabled: !areTokensWithNoCostHidden });
   });
 
@@ -181,14 +181,14 @@ function SettingsAssets({
               checked={isInvestorViewEnabled}
             />
           </div>
-          <div className={buildClassName(styles.item, styles.item_small)} onClick={handleTinyTransfersHiddenToggle}>
+          <div className={buildClassName(styles.item, styles.item_small)} onClick={handleShowTinyTransfersToggle}>
             <div>
-              <span className={styles.itemTitle}>{lang('Hide Tiny Transfers')}</span>
+              <span className={styles.itemTitle}>{lang('Show Tiny Transfers')}</span>
               {' '}
               <IconWithTooltip
                 message={
                   lang(
-                    '$tiny_transfers_help',
+                    '$show_tiny_transfers_help',
                     { value: TINY_TRANSFER_MAX_COST },
                   ) as string
                 }
@@ -199,8 +199,8 @@ function SettingsAssets({
 
             <Switcher
               className={styles.menuSwitcher}
-              label={lang('Hide Tiny Transfers')}
-              checked={areTinyTransfersHidden}
+              label={lang('Show Tiny Transfers')}
+              checked={!areTinyTransfersHidden}
             />
           </div>
         </div>
@@ -219,14 +219,14 @@ function SettingsAssets({
         }
         <p className={styles.blockTitle}>{lang('Token Settings')}</p>
         <div className={styles.settingsBlock}>
-          <div className={buildClassName(styles.item, styles.item_small)} onClick={handleTokensWithNoPriceToggle}>
+          <div className={buildClassName(styles.item, styles.item_small)} onClick={handleShowLowValueTokensToggle}>
             <div>
-              <span className={styles.itemTitle}>{lang('Hide Tokens With No Cost')}</span>
+              <span className={styles.itemTitle}>{lang('Show Low-Value Tokens')}</span>
               {' '}
               <IconWithTooltip
                 message={
                   lang(
-                    '$hide_tokens_no_cost_help',
+                    '$show_low_value_tokens_help',
                     { value: TINY_TRANSFER_MAX_COST },
                   ) as string
                 }
@@ -237,8 +237,8 @@ function SettingsAssets({
 
             <Switcher
               className={styles.menuSwitcher}
-              label={lang('Hide Tokens With No Cost')}
-              checked={areTokensWithNoCostHidden}
+              label={lang('Show Low-Value Tokens')}
+              checked={!areTokensWithNoCostHidden}
             />
           </div>
         </div>

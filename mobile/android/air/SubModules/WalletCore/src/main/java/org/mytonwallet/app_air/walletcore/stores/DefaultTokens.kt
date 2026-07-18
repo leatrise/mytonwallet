@@ -26,6 +26,7 @@ import org.mytonwallet.app_air.walletcore.TRON_SLUG
 import org.mytonwallet.app_air.walletcore.TRON_USDT_SLUG
 import org.mytonwallet.app_air.walletcore.TRON_USDT_TESTNET_SLUG
 import org.mytonwallet.app_air.walletcore.USDE_SLUG
+import org.mytonwallet.app_air.walletcore.YOHI_SLUG
 import org.mytonwallet.app_air.walletcore.models.MToken
 
 internal object DefaultTokens {
@@ -72,6 +73,11 @@ internal object DefaultTokens {
         token(TRON_SLUG, "TRON", "TRX", 6, "tron", cmcSlug = "tron"),
         token(SOLANA_SLUG, "Solana", "SOL", 9, "solana", cmcSlug = "solana"),
         token(MYCOIN_SLUG, "My Wallet Coin", "MY", 9, "ton"),
+        token(
+            YOHI_SLUG, "Yohi crypto", "Yohi", 9, "ton",
+            tokenAddress = "EQAs-hZL3-36FyP7C0y36sgXLBzhVwBwXaOVOrwtmSPs9S1K",
+            image = "https://static.yohi.io/images/2024-12-18/d5a641d224404c69a6b97516e974fb11.png",
+        ),
         token(
             USDE_SLUG, "Ethena USDe", "USDe", 6, "ton",
             tokenAddress = "EQAIb6KmdfdDR7CN1GBqVJuP25iCnLKCvBlJ07Evuu2dzP5f",

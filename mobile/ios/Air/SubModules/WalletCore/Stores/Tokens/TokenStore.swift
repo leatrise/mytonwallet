@@ -258,6 +258,7 @@ public final class _TokenStore: Sendable {
         TRX_SLUG: .TRX,
         SOLANA_SLUG: .SOLANA,
         MYCOIN_SLUG: .MYCOIN,
+        YOHI_SLUG: .YOHI,
         TON_USDE_SLUG: .TON_USDE,
         STAKED_TON_SLUG: .STAKED_TON,
         STAKED_MYCOIN_SLUG: .STAKED_MYCOIN,

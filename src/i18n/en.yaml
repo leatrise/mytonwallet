@@ -137,6 +137,10 @@ Investor View: Investor View
 Toggle Investor View: Toggle Investor View
 Hide Tiny Transfers: Hide Tiny Transfers
 Toggle Hide Tiny Transfers: Toggle Hide Tiny Transfers
+Show Tiny Transfers: Show Tiny Transfers
+Show Low-Value Tokens: Show Low-Value Tokens
+$show_tiny_transfers_help: "Show transfers worth less than $%value%. Keep in mind: small amounts are often sent by spammers and scammers."
+$show_low_value_tokens_help: "Show tokens worth less than $%value%. Keep in mind: low-value tokens are often sent by spammers and scammers."
 Network: Network
 Developer Options: Developer Options
 All Wallet Versions: All Wallet Versions

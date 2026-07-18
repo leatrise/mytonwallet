@@ -34,10 +34,14 @@ fun WalletCore.importWallet(
         put(network.value)
     }.toString()
     val quotedPasscode = JSONObject.quote(passcode)
+    val discoveryOptions = JSONObject().apply {
+        put("shouldAutoDiscoverSubwallets", !isNew)
+        put("shouldShowLowValueTokens", !WGlobalStorage.getAreNoCostTokensHidden())
+    }
 
     bridge?.callApi(
         "importMnemonic",
-        "[$quotedNetwork, ${words.toJSONString}, $quotedPasscode]"
+        "[$quotedNetwork, ${words.toJSONString}, $quotedPasscode, null, $discoveryOptions]"
     ) { result, error ->
         if (error != null || result == null) {
             callback(null, error)

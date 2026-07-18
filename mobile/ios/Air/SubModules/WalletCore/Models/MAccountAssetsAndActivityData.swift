@@ -7,6 +7,7 @@ public struct MAccountAssetsAndActivityData: Equatable, Hashable, Codable, Senda
     public var alwaysHiddenSlugs: [String]
     public var importedSlugs: [String]
     public var pinnedSlugs: [String]?
+    public var wasYohiAutoPinned: Bool
     public var didAutoPinStaking: Bool
     public var ownedMtwCardAddresses: [String]
 
@@ -15,6 +16,7 @@ public struct MAccountAssetsAndActivityData: Equatable, Hashable, Codable, Senda
         alwaysHiddenSlugs: [String],
         importedSlugs: [String],
         pinnedSlugs: [String]?,
+        wasYohiAutoPinned: Bool = false,
         didAutoPinStaking: Bool,
         ownedMtwCardAddresses: [String] = []
     ) {
@@ -22,6 +24,7 @@ public struct MAccountAssetsAndActivityData: Equatable, Hashable, Codable, Senda
         self.alwaysHiddenSlugs = alwaysHiddenSlugs
         self.importedSlugs = importedSlugs
         self.pinnedSlugs = pinnedSlugs
+        self.wasYohiAutoPinned = wasYohiAutoPinned
         self.didAutoPinStaking = didAutoPinStaking
         self.ownedMtwCardAddresses = ownedMtwCardAddresses
     }
@@ -38,6 +41,7 @@ public struct MAccountAssetsAndActivityData: Equatable, Hashable, Codable, Senda
             alwaysHiddenSlugs: dict["alwaysHiddenSlugs"] as? [String] ?? [],
             importedSlugs: dict["importedSlugs"] as? [String] ?? [],
             pinnedSlugs: dict["pinnedSlugs"] as? [String],
+            wasYohiAutoPinned: dict["wasYohiAutoPinned"] as? Bool ?? false,
             didAutoPinStaking: didAutoPinStaking,
             ownedMtwCardAddresses: ownedMtwCardAddresses
         )
@@ -51,6 +55,7 @@ extension MAccountAssetsAndActivityData {
         var dict: [String: Any] = [
             "alwaysHiddenSlugs": alwaysHiddenSlugs,
             "importedSlugs": importedSlugs,
+            "wasYohiAutoPinned": wasYohiAutoPinned,
         ]
         if let pinnedSlugs {
             dict["pinnedSlugs"] = pinnedSlugs
@@ -62,6 +67,7 @@ extension MAccountAssetsAndActivityData {
         !alwaysHiddenSlugs.isEmpty
             || !importedSlugs.isEmpty
             || (pinnedSlugs?.isEmpty == false)
+            || wasYohiAutoPinned
             || !ownedMtwCardAddresses.isEmpty
     }
 }

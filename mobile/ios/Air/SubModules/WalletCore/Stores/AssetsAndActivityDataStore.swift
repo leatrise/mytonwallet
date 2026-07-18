@@ -119,6 +119,10 @@ public actor _AssetsAndActivityDataStore: WalletCoreData.EventsObserver {
         Task { await self._autoPinStakingIfNeeded(accountId: accountId, slugs: slugs) }
     }
 
+    public nonisolated func autoPinYohiIfNeeded(accountId: String) {
+        Task { await self._autoPinYohiIfNeeded(accountId: accountId) }
+    }
+
     public func addOwnedMtwCardAddressIfNeeded(accountId: String, address: String) -> Bool {
         let current = ownedMtwCardAddresses(accountId: accountId)
         guard !current.contains(address) else {
@@ -195,6 +199,18 @@ public actor _AssetsAndActivityDataStore: WalletCoreData.EventsObserver {
             accountId: accountId,
             data: next,
             didAutoPinStaking: true,
+            ownedMtwCardAddresses: context.ownedMtwCardAddresses
+        )
+    }
+
+    private func _autoPinYohiIfNeeded(accountId: String) {
+        let context = byAccountId.for(accountId: accountId)
+        var next = context.data ?? .empty
+        guard next.autoPinYohiIfNeeded() else { return }
+        persist(
+            accountId: accountId,
+            data: next,
+            didAutoPinStaking: context.didAutoPinStaking,
             ownedMtwCardAddresses: context.ownedMtwCardAddresses
         )
     }

@@ -140,6 +140,10 @@ Investor View: Widok inwestora
 Toggle Investor View: Przełączanie widoku inwestora
 Hide Tiny Transfers: Ukryj małe transfery
 Toggle Hide Tiny Transfers: Przełącz Ukryj drobne transfery
+Show Tiny Transfers: Pokaż małe transfery
+Show Low-Value Tokens: Pokaż tokeny o niskiej wartości
+$show_tiny_transfers_help: "Pokazuj transfery o wartości mniejszej niż $%value%. Małe kwoty są często wysyłane przez spamerów i oszustów."
+$show_low_value_tokens_help: "Pokazuj tokeny o wartości mniejszej niż $%value%. Tokeny o niskiej wartości są często wysyłane przez spamerów i oszustów."
 Network: Sieć
 Developer Options: Opcje dla deweloperów
 All Wallet Versions: Wszystkie wersje portfela

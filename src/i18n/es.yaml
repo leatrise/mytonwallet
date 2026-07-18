@@ -138,6 +138,10 @@ Investor View: Modo Inversor
 Toggle Investor View: Alternar Modo Inversor
 Hide Tiny Transfers: Ocultar transacciones pequeñas
 Toggle Hide Tiny Transfers: Alternar ocultar transacciones pequeñas
+Show Tiny Transfers: Mostrar transferencias pequeñas
+Show Low-Value Tokens: Mostrar tokens de bajo valor
+$show_tiny_transfers_help: "Muestra transferencias con un valor inferior a $%value%. Los spammers y estafadores suelen enviar cantidades pequeñas."
+$show_low_value_tokens_help: "Muestra tokens con un valor inferior a $%value%. Los spammers y estafadores suelen enviar tokens de bajo valor."
 Network: Red
 Developer Options: Opciones de desarrollador
 All Wallet Versions: Todas las versiones de wallet

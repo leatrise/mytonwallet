@@ -152,19 +152,19 @@ public class AssetsAndActivityVC: WViewController {
         }
 
         let hideTinyTransfersReg = UICollectionView.CellRegistration<SimpleGroupCell, Item> { cell, _, _ in
-            cell.title = lang("Hide Tiny Transfers")
+            cell.title = lang("Show Tiny Transfers")
             cell.isSelectable = false
-            cell.configureSwitchAccessory(isOn: AppStorageHelper.hideTinyTransfers) { isOn in
-                AppStorageHelper.hideTinyTransfers = isOn
+            cell.configureSwitchAccessory(isOn: !AppStorageHelper.hideTinyTransfers) { isOn in
+                AppStorageHelper.hideTinyTransfers = !isOn
                 WalletCoreData.notify(event: .hideTinyTransfersChanged)
             }
         }
 
         let hideNoCostReg = UICollectionView.CellRegistration<SimpleGroupCell, Item> { cell, _, _ in
-            cell.title = lang("Hide Tokens With No Cost")
+            cell.title = lang("Show Low-Value Tokens")
             cell.isSelectable = false
-            cell.configureSwitchAccessory(isOn: AppStorageHelper.hideNoCostTokens) { isOn in
-                AppStorageHelper.hideNoCostTokens = isOn
+            cell.configureSwitchAccessory(isOn: !AppStorageHelper.hideNoCostTokens) { isOn in
+                AppStorageHelper.hideNoCostTokens = !isOn
             }
         }
 

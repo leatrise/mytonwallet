@@ -136,6 +136,10 @@ Investor View: 投資者觀點
 Toggle Investor View: 切換投資者觀點
 Hide Tiny Transfers: 隱藏小額轉帳
 Toggle Hide Tiny Transfers: 切換隱藏小額轉帳
+Show Tiny Transfers: 顯示小額轉帳
+Show Low-Value Tokens: 顯示低價值代幣
+$show_tiny_transfers_help: "顯示價值低於 $%value% 的轉帳。請注意，小額轉帳通常由垃圾訊息發送者和詐騙者發起。"
+$show_low_value_tokens_help: "顯示價值低於 $%value% 的代幣。請注意，低價值代幣通常由垃圾訊息發送者和詐騙者發送。"
 Network: 網路
 Developer Options: 開發者選項
 All Wallet Versions: 所有錢包版本

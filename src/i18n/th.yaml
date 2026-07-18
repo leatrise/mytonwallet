@@ -138,6 +138,10 @@ Investor View: มุมมองนักลงทุน
 Toggle Investor View: เปิด/ปิด มุมมองนักลงทุนงทุน
 Hide Tiny Transfers: ซ่อนรายการโอนขนาดเล็ก
 Toggle Hide Tiny Transfers: เปิด/ปิด ซ่อนรายการโอนขนาดเล็ก
+Show Tiny Transfers: แสดงรายการโอนขนาดเล็ก
+Show Low-Value Tokens: แสดงโทเคนมูลค่าต่ำ
+$show_tiny_transfers_help: "แสดงรายการโอนที่มีมูลค่าต่ำกว่า $%value% โปรดทราบว่าผู้ส่งสแปมและมิจฉาชีพมักส่งเงินจำนวนเล็กน้อย"
+$show_low_value_tokens_help: "แสดงโทเคนที่มีมูลค่าต่ำกว่า $%value% โปรดทราบว่าผู้ส่งสแปมและมิจฉาชีพมักส่งโทเคนมูลค่าต่ำ"
 Network: เครือข่าย
 Developer Options: ตัวเลือกสำหรับผู้พัฒนา
 All Wallet Versions: เวอร์ชันกระเป๋าเงินทั้งหมด
