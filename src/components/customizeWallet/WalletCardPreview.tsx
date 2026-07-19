@@ -3,7 +3,7 @@ import React, {
 } from '../../lib/teact/teact';
 
 import type { ApiBaseCurrency, ApiCurrencyRates, ApiNft } from '../../api/types';
-import type { Account, UserToken } from '../../global/types';
+import type { Account, CardBackground, UserToken } from '../../global/types';
 
 import buildClassName from '../../util/buildClassName';
 import { calculateFullBalance } from '../../util/calculateFullBalance';
@@ -27,6 +27,7 @@ interface OwnProps {
   baseCurrency?: ApiBaseCurrency;
   currencyRates?: ApiCurrencyRates;
   previewCardNft?: ApiNft;
+  cardBackground?: CardBackground;
   variant: 'left' | 'right' | 'middle';
 }
 
@@ -36,6 +37,7 @@ function WalletCardPreview({
   baseCurrency = 'USD',
   currencyRates,
   previewCardNft,
+  cardBackground,
   variant,
 }: OwnProps) {
   const amountRef = useRef<HTMLDivElement>();
@@ -94,7 +96,13 @@ function WalletCardPreview({
   }
 
   return (
-    <div className={buildClassName(styles.container, customCardClassName, styles[variant])}>
+    <div className={buildClassName(
+      styles.container,
+      customCardClassName,
+      cardBackground !== 'default' && cardBackground,
+      styles[variant],
+    )}
+    >
       <CustomCardManager nft={previewCardNft} onCardChange={handleCardChange} className={styles.customCardManager} />
 
       <div className={buildClassName(styles.containerInner, customCardClassName)}>

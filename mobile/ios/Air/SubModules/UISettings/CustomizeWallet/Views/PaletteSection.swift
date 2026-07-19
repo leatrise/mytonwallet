@@ -32,8 +32,8 @@ final class PaletteSettingsViewModel {
     }
     
     var currentColorId: Int?
-    var availableColorIds: Set<Int?> = [nil]
-    var isLoading: Bool = true
+    var availableColorIds: Set<Int?> = Set(PaletteColor.all.map(\.id))
+    var isLoading: Bool = false
     
     @PerceptionIgnored
     @Dependency(\.accountStore) var accountStore
@@ -59,13 +59,8 @@ final class PaletteSettingsViewModel {
         withAnimation {
             if id == currentColorId {
                 return
-            } else if id == nil {
-                accountSettings.setAccentColorNft(nil)
             } else {
-                let id = id!
-                if let nft = nftsByColorIndex[id]?.first {
-                    accountSettings.setAccentColorNft(nft)
-                }
+                accountSettings.setAccentColorIndex(id)
             }
             self.currentColorId = id
         }
@@ -74,19 +69,7 @@ final class PaletteSettingsViewModel {
     func startLoadTask() {
         let currentColorIndex = accountSettings.accentColorIndex
         self.currentColorId = currentColorIndex
-        availableColorIds = [nil, currentColorIndex]
-        
-        loadTask?.cancel()
-        loadTask = Task {
-            let nfts = NftStore.getAccountMtwCards(accountId: accountId)
-            let nftsByColorIndex = await getAccentColorsFromNfts(nftAddresses: Array(nfts.keys), nftsByAddress: nfts)
-            try Task.checkCancellation()
-            self.nftsByColorIndex = nftsByColorIndex
-            withAnimation {
-                isLoading = false
-                availableColorIds = Set<Int?>(nftsByColorIndex.keys.map { $0 } + [nil])
-            }
-        }
+        availableColorIds = Set(PaletteColor.all.map(\.id))
     }
 }
 
@@ -102,8 +85,6 @@ struct PaletteSection: View {
                 cell
             } header: {
                 Text(lang("Palette"))
-            } footer: {
-                Text(lang("Get a unique My Wallet Card to unlock new palettes."))
             }
         }
     }

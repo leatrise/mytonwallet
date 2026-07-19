@@ -9,7 +9,6 @@ import androidx.constraintlayout.helper.widget.Flow
 import org.mytonwallet.app_air.uicomponents.commonViews.cells.HeaderCell
 import org.mytonwallet.app_air.uicomponents.extensions.dp
 import org.mytonwallet.app_air.uicomponents.extensions.setPaddingDp
-import org.mytonwallet.app_air.uicomponents.helpers.palette.ImagePaletteHelpers
 import org.mytonwallet.app_air.uicomponents.widgets.WLabel
 import org.mytonwallet.app_air.uicomponents.widgets.WThemedView
 import org.mytonwallet.app_air.uicomponents.widgets.WView
@@ -147,34 +146,8 @@ class AppearancePaletteView(
     val nftsByColorIndex = mutableMapOf<Int, MutableList<ApiNft>>()
     fun updatePaletteView(accountId: String, mtwNfts: List<ApiNft>?) {
         this.accountId = accountId
-        if (mtwNfts == null) {
-            paletteItemViews.forEach { item ->
-                item.configure(AppearancePaletteItemView.State.LOADING)
-            }
-            return
-        }
-        var pendingExtractions = mtwNfts.size
-
         nftsByColorIndex.clear()
-
-        if (mtwNfts.isEmpty()) {
-            reloadViews()
-            return
-        }
-
-        mtwNfts.forEach { nft ->
-            ImagePaletteHelpers.extractPaletteFromNft(nft) { colorIndex ->
-                colorIndex?.let {
-                    nftsByColorIndex.getOrPut(it) { mutableListOf() }.add(nft)
-                }
-                pendingExtractions--
-
-                if (pendingExtractions == 0) {
-                    reloadViews()
-                    reorderPaletteItems()
-                }
-            }
-        }
+        reloadViews()
     }
 
     private fun reorderPaletteItems() {
@@ -192,21 +165,10 @@ class AppearancePaletteView(
     fun reloadViews() {
         val accountId = accountId ?: return
         val selectedIndex = WGlobalStorage.getNftAccentColorIndex(accountId)
-        if (nftsByColorIndex.isEmpty()) {
-            paletteItemViews.forEach { item ->
-                val itemIndex = item.nftAccentId
-                val isSelected = itemIndex == selectedIndex
-                val isLocked = itemIndex != null
-                item.configure(if (isLocked) AppearancePaletteItemView.State.LOCKED else if (isSelected) AppearancePaletteItemView.State.SELECTED else AppearancePaletteItemView.State.AVAILABLE)
-            }
-            return
-        }
         paletteItemViews.forEach { item ->
             val itemIndex = item.nftAccentId
             val isSelected = itemIndex == selectedIndex
-            val isLocked =
-                if (itemIndex == null) false else nftsByColorIndex[itemIndex].isNullOrEmpty()
-            item.configure(if (isLocked) AppearancePaletteItemView.State.LOCKED else if (isSelected) AppearancePaletteItemView.State.SELECTED else AppearancePaletteItemView.State.AVAILABLE)
+            item.configure(if (isSelected) AppearancePaletteItemView.State.SELECTED else AppearancePaletteItemView.State.AVAILABLE)
         }
     }
 }

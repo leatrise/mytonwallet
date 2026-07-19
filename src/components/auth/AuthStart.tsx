@@ -52,8 +52,8 @@ const PARTICLE_PARAMS: Partial<ParticleConfig> = {
   distanceLimit: 0.75,
 };
 
-const PARTICLE_COLORS_LIGHT = [44 / 255, 146 / 255, 240 / 255] as [number, number, number]; // #2C92F0
-const PARTICLE_COLORS_DARK = [70 / 255, 156 / 255, 236 / 255] as [number, number, number]; // #469CEC
+const PARTICLE_COLORS_LIGHT = [246 / 255, 164 / 255, 37 / 255] as [number, number, number]; // #F6A425
+const PARTICLE_COLORS_DARK = [246 / 255, 164 / 255, 37 / 255] as [number, number, number]; // #F6A425
 
 function AuthStart({
   isActive,

@@ -6,7 +6,6 @@ import type { NftMenuHandler } from './hooks/useNftMenu';
 import { MediaType } from '../../global/types';
 
 import {
-  selectCurrentAccountSettings,
   selectCurrentAccountState,
   selectIsCurrentAccountViewMode,
   selectTonDnsLinkedAddress,
@@ -18,11 +17,9 @@ import { getDnsExpirationDate } from '../../util/dns';
 import useFlag from '../../hooks/useFlag';
 import useLang from '../../hooks/useLang';
 import useLastCallback from '../../hooks/useLastCallback';
-import { usePrevDuringAnimationSimple } from '../../hooks/usePrevDuringAnimationSimple';
 import useNftMenu from './hooks/useNftMenu';
 
 import DropdownMenu from '../ui/DropdownMenu';
-import { ANIMATION_DURATION } from '../ui/Menu';
 
 import styles from './MediaViewer.module.scss';
 
@@ -37,8 +34,6 @@ type StateProps = {
   linkedAddress?: string;
   blacklistedNftAddresses?: string[];
   whitelistedNftAddresses?: string[];
-  cardBackgroundNft?: ApiNft;
-  accentColorNft?: ApiNft;
   isViewMode: boolean;
   isTestnet?: boolean;
 };
@@ -58,8 +53,6 @@ function Actions({
   linkedAddress,
   blacklistedNftAddresses,
   whitelistedNftAddresses,
-  cardBackgroundNft,
-  accentColorNft,
   isViewMode,
   isTestnet,
   onClose,
@@ -74,13 +67,6 @@ function Actions({
   const isNftWhitelisted = useMemo(() => {
     return whitelistedNftAddresses?.includes(nft!.address);
   }, [nft, whitelistedNftAddresses]);
-  const isNftInstalled = usePrevDuringAnimationSimple(
-    nft && nft.address === cardBackgroundNft?.address, ANIMATION_DURATION,
-  );
-  const isNftAccentColorInstalled = usePrevDuringAnimationSimple(
-    nft && nft.address === accentColorNft?.address, ANIMATION_DURATION,
-  );
-
   const { menuItems, handleMenuItemSelect } = useNftMenu({
     nft,
     isViewMode,
@@ -88,8 +74,6 @@ function Actions({
     linkedAddress,
     isNftBlacklisted,
     isNftWhitelisted,
-    isNftInstalled,
-    isNftAccentColorInstalled,
     isTestnet,
   });
 
@@ -146,7 +130,6 @@ export default memo(withGlobal<OwnProps>((global, { mediaId }): StateProps => {
   if (!nft) return { isViewMode };
 
   const { blacklistedNftAddresses, whitelistedNftAddresses } = selectCurrentAccountState(global) || {};
-  const { cardBackgroundNft, accentColorNft } = selectCurrentAccountSettings(global) || {};
   const tonDnsExpiration = getDnsExpirationDate(nft, dnsExpiration);
   const linkedAddress = selectTonDnsLinkedAddress(global, nft);
 
@@ -155,8 +138,6 @@ export default memo(withGlobal<OwnProps>((global, { mediaId }): StateProps => {
     tonDnsExpiration,
     blacklistedNftAddresses,
     whitelistedNftAddresses,
-    cardBackgroundNft,
-    accentColorNft,
     isViewMode,
     isTestnet: global.settings.isTestnet,
     linkedAddress,

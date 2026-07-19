@@ -26,40 +26,10 @@ struct CustomizeWalletView: View {
                     viewModel.selectedAccountId = accountId
                 }
             })
-            SelectCardSection(viewModel: viewModel)
             PaletteSection(viewModel: viewModel.palletteSettingsViewModel)
-            if !viewModel.isRestricted {
-                GetMoreCardsSection(viewModel: viewModel)
-            }
         }
         .backportSafeAreaPadding(.bottom, 32)
         .scrollIndicators(.hidden)
     }
 }
 
-struct GetMoreCardsSection: View {
-
-    let viewModel: CustomizeWalletViewModel
-    
-    var body: some View {
-        WithPerceptionTracking {
-            InsetSection {
-                InsetButtonCell(action: onUnlockNew) {
-                    HStack(spacing: 19) {
-                        Image(systemName: "plus.circle")
-                            .imageScale(.large)
-                        Text(lang("Get More Cards"))
-                    }
-                    .foregroundStyle(viewModel.tintColor)
-                    .backportGeometryGroup()
-                }
-            } footer: {
-                Text(lang("Browse My Wallet Cards available for purchase."))
-            }
-        }
-    }
-    
-    func onUnlockNew() {
-        AppActions.showUpgradeCard()
-    }
-}

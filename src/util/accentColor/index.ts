@@ -25,7 +25,7 @@ export function useAccentColor(
   appTheme: AppTheme,
   accentColorIndex: number | undefined,
 ) {
-  const accentColor = accentColorIndex ? ACCENT_COLORS[appTheme][accentColorIndex] : undefined;
+  const accentColor = accentColorIndex !== undefined ? ACCENT_COLORS[appTheme][accentColorIndex] : undefined;
 
   useLayoutEffect(() => {
     const element = elementRefOrBody === 'body' ? document.body : elementRefOrBody.current;

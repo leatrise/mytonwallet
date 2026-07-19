@@ -3,7 +3,6 @@ import React, {
 } from '../../lib/teact/teact';
 import { getActions, withGlobal } from '../../global';
 
-import type { ApiNft } from '../../api/types';
 import type { AnimationLevel, Theme } from '../../global/types';
 
 import {
@@ -12,7 +11,6 @@ import {
   IS_CAPACITOR,
   IS_CORE_WALLET,
 } from '../../config';
-import { selectCurrentAccountSettings } from '../../global/selectors';
 import buildClassName from '../../util/buildClassName';
 import { switchToAir } from '../../util/capacitor';
 import { pause } from '../../util/schedulers';
@@ -25,7 +23,6 @@ import useLang from '../../hooks/useLang';
 import useLastCallback from '../../hooks/useLastCallback';
 import useScrolledState from '../../hooks/useScrolledState';
 
-import CustomCardPreview from '../main/modals/accountSelector/CustomCardPreview';
 import Switcher from '../ui/Switcher';
 import SettingsHeader from './SettingsHeader';
 
@@ -46,8 +43,6 @@ interface OwnProps {
 }
 
 interface StateProps {
-  cardBackgroundNft?: ApiNft;
-  isNftBuyingDisabled: boolean;
   isSeasonalThemingDisabled?: boolean;
 }
 
@@ -71,9 +66,7 @@ function SettingsAppearance({
   isActive,
   theme,
   animationLevel,
-  cardBackgroundNft,
   isTrayIconEnabled,
-  isNftBuyingDisabled,
   isSeasonalThemingDisabled,
   onTrayIconEnabledToggle,
   onBackClick,
@@ -172,9 +165,7 @@ function SettingsAppearance({
   function renderPalleteIcon() {
     return (
       <div className={styles.palleteIcon}>
-        <div className={styles.miniCard}>
-          <CustomCardPreview nft={cardBackgroundNft} className={styles.miniCardPreview} />
-        </div>
+        <div className={styles.miniCard} />
       </div>
     );
   }
@@ -196,9 +187,9 @@ function SettingsAppearance({
           </div>
         </div>
 
-        {!IS_CORE_WALLET && !isNftBuyingDisabled && (
+        {!IS_CORE_WALLET && (
           <>
-            <p className={styles.blockTitle}>{lang('Palette and Card')}</p>
+            <p className={styles.blockTitle}>{lang('Background')}</p>
             <div className={buildClassName(styles.block, styles.settingsBlockWithDescription)}>
               <a
                 role="button"
@@ -209,7 +200,7 @@ function SettingsAppearance({
                 {renderPalleteIcon()}
 
                 <span className={buildClassName(styles.itemTitle, styles.itemTitle_accent)}>
-                  {lang('Customize Wallet')}
+                  {lang('Background')}
                 </span>
 
                 <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
@@ -259,11 +250,7 @@ function SettingsAppearance({
 }
 
 export default memo(withGlobal<OwnProps>((global): StateProps => {
-  const accountSettings = selectCurrentAccountSettings(global);
-
   return {
-    cardBackgroundNft: accountSettings?.cardBackgroundNft,
-    isNftBuyingDisabled: global.restrictions.isNftBuyingDisabled,
     isSeasonalThemingDisabled: global.settings.isSeasonalThemingDisabled,
   };
 })(SettingsAppearance));

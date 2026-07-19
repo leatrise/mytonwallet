@@ -34,7 +34,7 @@ class AppearancePaletteAndCardView(
 
     private val titleLabel = HeaderCell(context).apply {
         configure(
-            LocaleController.getString("Palette and Card"),
+            LocaleController.getString("Palette"),
             titleColor = WColor.Tint,
             HeaderCell.TopRounding.NORMAL
         )
@@ -68,7 +68,7 @@ class AppearancePaletteAndCardView(
         WLabel(context).apply {
             setStyle(adaptiveFontSize())
             setTextColor(WColor.PrimaryText)
-            text = LocaleController.getString("Customize Wallet")
+            text = LocaleController.getString("Palette")
         }
     }
 

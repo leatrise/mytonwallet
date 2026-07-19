@@ -13,8 +13,8 @@ private fun create(colormap: Map<WColor, Int>): IntArray {
     }
 }
 
-const val DEFAULT_TINT_LIGHT = 0xFF0098EB.toInt()
-const val DEFAULT_TINT_DARK = 0xFF3C90D5.toInt()
+const val DEFAULT_TINT_LIGHT = 0xFFF6A425.toInt()
+const val DEFAULT_TINT_DARK = 0xFFF6A425.toInt()
 
 internal val THEME_LIGHT_PRESET
     get() = create(
@@ -27,8 +27,8 @@ internal val THEME_LIGHT_PRESET
             WColor.SubtitleText to 0xFF8A8A8A.toInt(),
             WColor.Decimals to 0xFF99999E.toInt(),
             WColor.Tint to DEFAULT_TINT_LIGHT,
-            WColor.TextOnTint to 0xFFFFFFFF.toInt(),
-            WColor.SecondaryTextOnTint to 0xBFFFFFFF.toInt(),
+            WColor.TextOnTint to 0xFF2C333E.toInt(),
+            WColor.SecondaryTextOnTint to 0xBF2C333E.toInt(),
             WColor.Separator to 0xFFEFF0F0.toInt(),
             WColor.SecondaryBackground to 0xFFF4F4F5.toInt(),
             WColor.TrinaryBackground to 0xFFF4F4F5.toInt(),
@@ -50,7 +50,7 @@ internal val THEME_LIGHT_PRESET
             WColor.Orange to 0xFFF7931A.toInt(),
             WColor.StockBadge to 0xFFDE8C00.toInt(),
             WColor.EarnGradientLeft to 0xFF41C433.toInt(),
-            WColor.EarnGradientRight to 0xFF0098EB.toInt(),
+            WColor.EarnGradientRight to 0xFFF6A425.toInt(),
             WColor.TintRipple to 0x201F8EFE,
             WColor.BackgroundRipple to 0x10000000,
             WColor.IncomingComment to 0xFF68D06E.toInt(),
@@ -74,8 +74,8 @@ internal val THEME_DARK_PRESET
             WColor.SubtitleText to 0xFF8E8E93.toInt(),
             WColor.Decimals to 0xFF8E8E93.toInt(),
             WColor.Tint to DEFAULT_TINT_DARK,
-            WColor.TextOnTint to 0xFFFFFFFF.toInt(),
-            WColor.SecondaryTextOnTint to 0xBFFFFFFF.toInt(),
+            WColor.TextOnTint to 0xFF2C333E.toInt(),
+            WColor.SecondaryTextOnTint to 0xBF2C333E.toInt(),
             WColor.Separator to 0xFF313133.toInt(),
             WColor.SecondaryBackground to 0xFF0E0E0E.toInt(),
             WColor.TrinaryBackground to 0xFF282828.toInt(),
@@ -97,7 +97,7 @@ internal val THEME_DARK_PRESET
             WColor.Orange to 0xFFF7931A.toInt(),
             WColor.StockBadge to 0xFFDE8C00.toInt(),
             WColor.EarnGradientLeft to 0xFF41C433.toInt(),
-            WColor.EarnGradientRight to 0xFF0098EB.toInt(),
+            WColor.EarnGradientRight to 0xFFF6A425.toInt(),
             WColor.TintRipple to 0x20007AFF,
             WColor.BackgroundRipple to 0x10FFFFFF,
             WColor.IncomingComment to 0xFF55A35A.toInt(),

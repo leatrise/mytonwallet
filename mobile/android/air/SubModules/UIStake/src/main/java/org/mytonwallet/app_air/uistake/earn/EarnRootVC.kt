@@ -81,7 +81,7 @@ class EarnRootVC(context: Context, private val tokenSlug: String = TONCOIN_SLUG)
                 WSegmentedControllerItem(
                     tonVC,
                     null,
-                    "#0098EB".toColorInt()
+                    "#F6A425".toColorInt()
                 )
             ).apply {
                 if (mycoinVC != null) add(

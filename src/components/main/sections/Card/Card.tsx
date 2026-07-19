@@ -10,6 +10,7 @@ import type {
 import type { ApiBackendConfig } from '../../../../api/types/backend';
 import type { ApiPromotion } from '../../../../api/types/backend';
 import type {
+  CardBackground,
   IAnchorPosition,
   PortfolioPnlChange,
   TokenChartMode,
@@ -18,7 +19,7 @@ import type {
 import type { LangFn } from '../../../../hooks/useLang';
 import type { DropdownItem } from '../../../ui/Dropdown';
 
-import { IS_CORE_WALLET, IS_GRAM_WALLET } from '../../../../config';
+import { IS_GRAM_WALLET } from '../../../../config';
 import {
   selectAccountStakingStates, selectCurrentAccount,
   selectCurrentAccountId,
@@ -50,7 +51,6 @@ import useSyncEffect from '../../../../hooks/useSyncEffect';
 import useUpdateIndicator from '../../../../hooks/useUpdateIndicator';
 import useWindowSize from '../../../../hooks/useWindowSize';
 
-import MintCardButton from '../../../mintCard/MintCardButton';
 import AnimatedCounter from '../../../ui/AnimatedCounter';
 import Image from '../../../ui/Image';
 import LoadingDots from '../../../ui/LoadingDots';
@@ -84,8 +84,8 @@ interface StateProps {
   currencyRates: ApiCurrencyRates;
   stakingStates?: ApiStakingState[];
   cardNft?: ApiNft;
+  cardBackground?: CardBackground;
   isSensitiveDataHidden?: true;
-  isNftBuyingDisabled: boolean;
   isViewMode: boolean;
   animationLevel: number;
   isSeasonalThemingDisabled?: boolean;
@@ -147,8 +147,8 @@ function Card({
   currencyRates,
   stakingStates,
   isSensitiveDataHidden,
-  isNftBuyingDisabled,
   cardNft,
+  cardBackground,
   isViewMode,
   animationLevel,
   isSeasonalThemingDisabled,
@@ -411,6 +411,7 @@ function Card({
             styles.container,
             currentTokenSlug && styles.backstage,
             customCardClassName,
+            cardBackground !== 'default' && cardBackground,
             IS_GRAM_WALLET && 'gram',
           )
         }
@@ -469,9 +470,6 @@ function Card({
           >
             <CardAddress withTextGradient={withTextGradient} />
           </Transition>
-          {!IS_CORE_WALLET && !isNftBuyingDisabled && !isViewMode && (
-            <MintCardButton />
-          )}
         </div>
       </div>
 
@@ -494,7 +492,7 @@ export default memo(
       const currentAccountId = selectCurrentAccountId(global)!;
       const accountState = selectCurrentAccountState(global);
       const stakingStates = selectAccountStakingStates(global, currentAccountId);
-      const { cardBackgroundNft: cardNft } = selectCurrentAccountSettings(global) || {};
+      const { cardBackgroundNft: cardNft, cardBackground } = selectCurrentAccountSettings(global) || {};
 
       const { baseCurrency } = global.settings;
       // Portfolio history exists only for `mainnet` account
@@ -525,8 +523,8 @@ export default memo(
         currencyRates: global.currencyRates,
         stakingStates,
         cardNft,
+        cardBackground,
         isSensitiveDataHidden: global.settings.isSensitiveDataHidden,
-        isNftBuyingDisabled: global.restrictions.isNftBuyingDisabled,
         animationLevel: global.settings.animationLevel,
         isSeasonalThemingDisabled: global.settings.isSeasonalThemingDisabled,
         seasonalTheme: selectSeasonalTheme(global),

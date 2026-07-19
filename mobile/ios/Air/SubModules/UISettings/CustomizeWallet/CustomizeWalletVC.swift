@@ -31,7 +31,7 @@ public final class CustomizeWalletVC: SettingsBaseVC {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = lang("Customize Wallet")
+        navigationItem.title = lang("Palette")
         addCloseNavigationItemIfNeeded()
         
         hostingController = addHostingController(makeView(), constraints: .fill)

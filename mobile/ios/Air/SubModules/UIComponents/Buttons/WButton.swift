@@ -116,6 +116,8 @@ public class WButton: WBaseButton {
     private var primaryButtonTint: UIColor {
         if accentColor == .label {
             return .air.background
+        } else if accentColor == .airBundle("TC1_PrimaryColor") {
+            return UIColor(hex: "#2C333E")
         } else {
             return UIColor.white
         }

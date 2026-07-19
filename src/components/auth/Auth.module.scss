@@ -227,13 +227,13 @@ $footerPaddingBottomMin: 1rem;
   color: var(--color-accent);
 
   background: linear-gradient(to top, var(--color-background-first), var(--color-background-first)),
-  linear-gradient(to top, #2C92F099, #2C92F01A 50%, #2C92F000 70%) no-repeat 50% 50%;
+  linear-gradient(to top, #F6A42599, #F6A4251A 50%, #F6A42500 70%) no-repeat 50% 50%;
   background-clip: content-box, border-box;
   background-origin: border-box;
 
   :global(.theme-dark) & {
     background: linear-gradient(to top, var(--color-background-first), var(--color-background-first)),
-    linear-gradient(to top, #469CEC, #469CEC3D 50%, #469CEC00 90%) no-repeat 50% 50%;
+    linear-gradient(to top, #F6A425, #F6A4253D 50%, #F6A42500 90%) no-repeat 50% 50%;
     background-clip: content-box, border-box;
     background-origin: border-box;
   }
@@ -241,7 +241,7 @@ $footerPaddingBottomMin: 1rem;
   @media (prefers-color-scheme: dark) {
     :global(.theme-system) & {
       background: linear-gradient(to top, var(--color-background-first), var(--color-background-first)),
-      linear-gradient(to top, #469CEC, #469CEC3D 50%, #469CEC00 90%) no-repeat 50% 50%;
+      linear-gradient(to top, #F6A425, #F6A4253D 50%, #F6A42500 90%) no-repeat 50% 50%;
       background-clip: content-box, border-box;
       background-origin: border-box;
     }

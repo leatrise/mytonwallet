@@ -34,6 +34,15 @@ addActionHandler('setCardBackgroundNft', (global, actions, { nft, accountId }) =
   setGlobal(global);
 });
 
+addActionHandler('setCardBackground', (global, actions, { background, accountId }) => {
+  global = updateAccountSettings(
+    global,
+    accountId ?? selectCurrentAccountId(global)!,
+    { cardBackground: background, cardBackgroundNft: undefined },
+  );
+  setGlobal(global);
+});
+
 addActionHandler('clearCardBackgroundNft', (global) => {
   global = updateCurrentAccountSettings(global, { cardBackgroundNft: undefined });
   setGlobal(global);
@@ -47,6 +56,15 @@ addActionHandler('installAccentColorFromNft', async (global, actions, { nft, acc
     global,
     accountId ?? selectCurrentAccountId(global)!,
     { accentColorNft: nft, accentColorIndex },
+  );
+  setGlobal(global);
+});
+
+addActionHandler('setAccentColor', (global, actions, { accentColorIndex, accountId }) => {
+  global = updateAccountSettings(
+    global,
+    accountId ?? selectCurrentAccountId(global)!,
+    { accentColorNft: undefined, accentColorIndex },
   );
   setGlobal(global);
 });

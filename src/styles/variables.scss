@@ -3,9 +3,9 @@
 :root {
   // Color names comes from figma file
   --color-white: #FFF;
-  --color-default-accent: #2C92F0;
-  --color-default-accent-hover: #2C92F0CC;
-  --color-accent: #2C92F0;
+  --color-default-accent: #F6A425;
+  --color-default-accent-hover: #D98A0A;
+  --color-accent: #F6A425;
   --color-black: #2C333E;
   --color-black-rgb: 44, 51, 62;
   --color-gray-1: #616770;
@@ -20,7 +20,7 @@
   --color-purple-2: #6875E9;
   --color-orange: #DC7C00;
   --color-yellow: #E49329;
-  --color-accent-10o: #2C92F01A;
+  --color-accent-10o: #F6A4251A;
 
   --color-background-first: #FFFFFF;
   --color-background-first-disabled: #FAFAFA;
@@ -46,10 +46,10 @@
   --color-input-button-background-purple-rest: #E8EAFE;
   --color-input-button-background-purple-hover: #DFE1FE;
 
-  --color-accent-button-text: #FFFFFF;
-  --color-accent-button-text-hover: #FFFFFF;
-  --color-accent-button-background: #2C92F0;
-  --color-accent-button-background-hover: #16A5ED;
+  --color-accent-button-text: #2C333E;
+  --color-accent-button-text-hover: #2C333E;
+  --color-accent-button-background: #F6A425;
+  --color-accent-button-background-hover: #D98A0A;
 
   --color-red-button-text: #FFFFFF;
   --color-red-button-text-hover: #FFFFFF;
@@ -117,7 +117,7 @@
   --color-activity-aquamarine-text: #97FCE4;
   --color-activity-aquamarine-background: #E5F9F6;
 
-  --color-default-accent-bg: #2C92F014;
+  --color-default-accent-bg: #F6A42514;
   --color-chain-ethereum: #7D84BB;
   --color-chain-ethereum-bg: #7D84BB14;
   --color-chain-solana: #9767FA;
@@ -204,7 +204,7 @@
   --color-vesting-text: #007FBE;
   --color-vesting-background: #B4DBF0;
 
-  --color-gradient-main-blue2-green: linear-gradient(81.88deg, #2C92F0 19.42%, #1EC160 71.55%);
+  --color-gradient-main-blue2-green: linear-gradient(81.88deg, #F6A425 19.42%, #1EC160 71.55%);
   --color-gradient-main-gray2-green: linear-gradient(90deg, #8B8F96 25%, #10B853 75%);
   --color-gradient-main-purple-green: linear-gradient(90deg, #5E6BDE 0%, #10B853 100%);
   --color-gradient-activity-gray-green-bg: linear-gradient(135deg, #EAFBF1 13.89%, #EDF1F6 86.11%);
@@ -295,9 +295,9 @@
 
   &.theme-dark,
   .component-theme-dark {
-    --color-default-accent: #469CEC;
-    --color-default-accent-hover: #469CECCC;
-    --color-accent: #469CEC;
+    --color-default-accent: #F6A425;
+    --color-default-accent-hover: #FFB94D;
+    --color-accent: #F6A425;
     --color-black: #F6F7F8;
     --color-black-rgb: 246, 247, 248;
     --color-gray-1: #BFC0C2;
@@ -309,7 +309,7 @@
     --color-purple-1: #95A0FE;
     --color-purple-2: #7986F7;
     --color-orange: #E49329;
-    --color-accent-10o: #469CEC1A;
+    --color-accent-10o: #F6A4251A;
 
     --color-background-first: #1C1C1E;
     --color-background-first-disabled: #141415;
@@ -333,8 +333,10 @@
     --color-input-button-background-purple-rest: #252B40;
     --color-input-button-background-purple-hover: #292F46;
 
-    --color-accent-button-background: #469CEC;
-    --color-accent-button-background-hover: #51A7F7;
+    --color-accent-button-text: #2C333E;
+    --color-accent-button-text-hover: #2C333E;
+    --color-accent-button-background: #F6A425;
+    --color-accent-button-background-hover: #FFB94D;
 
     --color-red-button-background: #D74A4A;
     --color-red-button-background-hover: #F35B5B;
@@ -382,7 +384,7 @@
     --color-activity-aquamarine-text: #4FC2A8;
     --color-activity-aquamarine-background: #163623;
 
-    --color-default-accent-bg: #469CEC14;
+    --color-default-accent-bg: #F6A42514;
 
     --color-transaction-amount-text: #58AFFF;
     --color-transaction-amount-bg: #0D1E2D;
@@ -429,7 +431,7 @@
 
     --color-beidge-background: #1A2938;
 
-    --color-gradient-main-blue2-green: linear-gradient(81.88deg, #469CEC 19.42%, #2CD36F 71.55%);
+    --color-gradient-main-blue2-green: linear-gradient(81.88deg, #F6A425 19.42%, #2CD36F 71.55%);
     --color-gradient-main-gray2-green: linear-gradient(90deg, #89898B 25%, #2CD36F 75%);
     --color-gradient-activity-gray-green-bg: linear-gradient(135deg, #1F3838 13.89%, #2E3947 86.11%);
 

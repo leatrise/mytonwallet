@@ -127,7 +127,7 @@ object ThemeManager : ITheme {
 
     fun setDefaultAccentColor() {
         colors[WColor.Tint.ordinal] = if (isDark) DEFAULT_TINT_DARK else DEFAULT_TINT_LIGHT
-        colors[WColor.TextOnTint.ordinal] = Color.WHITE
+        colors[WColor.TextOnTint.ordinal] = "#2C333E".toColorInt()
         colors[WColor.TintRipple.ordinal] = getColor(WColor.Tint) and 0x18FFFFFF
     }
 

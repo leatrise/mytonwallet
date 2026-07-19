@@ -37,7 +37,7 @@ const BUTTON_COLORS = {
   },
   dark: {
     default: { text: '#D8DADC', background: '#1E1E1F' },
-    primary: { text: '#FFFFFF', background: '#469CEC' },
+    primary: { text: '#2C333E', background: '#F6A425' },
     destructive: { text: '#FFFFFF', background: '#D74A4A' },
   },
 };

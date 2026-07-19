@@ -78,7 +78,13 @@ public class PasscodeScreenView: UIView {
         accentColor != .label ? accentColor : .air.groupedItem
     }
     private var unlockScreenTintColor: UIColor {
-        accentColor != .label ? .white : .air.backgroundReverse
+        if accentColor == .label {
+            .air.backgroundReverse
+        } else if accentColor == .airBundle("TC1_PrimaryColor") {
+            UIColor(hex: "#2C333E")
+        } else {
+            .white
+        }
     }
 
     /// If not nil, indicates that authentication using the available biometry type is permitted.

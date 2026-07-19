@@ -646,6 +646,7 @@ export interface AccountSettings {
   // These NFTs should be saved in the settings for immediate use after launching the application,
   // without synchronizing the wallet history or complex state caching
   cardBackgroundNft?: ApiNft;
+  cardBackground?: CardBackground;
   accentColorNft?: ApiNft;
   accentColorIndex?: number;
   isAllowSuspiciousActions?: boolean;
@@ -653,6 +654,8 @@ export interface AccountSettings {
   areCollectiblesHidden?: boolean;
   overviewCellSize?: OverviewCellSize;
 }
+
+export type CardBackground = 'default' | 'orange' | 'green' | 'sea' | 'purple' | 'pink' | 'red';
 
 export type OverviewCellSize = 'small' | 'medium' | 'big';
 
@@ -1471,9 +1474,11 @@ export interface ActionPayloads {
 
   // Account Settings
   setCardBackgroundNft: { nft: ApiNft; accountId?: string };
+  setCardBackground: { background: CardBackground; accountId?: string };
   clearCardBackgroundNft: undefined;
   checkCardNftOwnership: { accountId: string } | undefined;
   installAccentColorFromNft: { nft: ApiNft; accountId?: string };
+  setAccentColor: { accentColorIndex?: number; accountId?: string };
   clearAccentColorFromNft: undefined;
 
   // TON Connect common

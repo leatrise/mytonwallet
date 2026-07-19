@@ -186,3 +186,69 @@
   height: var(--preview-card-height);
   margin-top: 1.5rem;
 }
+
+.backgroundGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.backgroundOption {
+  cursor: var(--custom-cursor, pointer);
+
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 1.55;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-tiny);
+
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-card-text);
+  text-align: left;
+
+  background-position: center;
+  background-clip: padding-box;
+  background-size: cover;
+
+  @include mixins.card-image("../../assets/cards/", "card", v.$defaultCardGradient);
+
+  &:global(.orange) {
+    @include mixins.card-image("../../assets/cards/", "card_orange", v.$orangeCardGradient);
+  }
+
+  &:global(.green) {
+    @include mixins.card-image("../../assets/cards/", "card_green", v.$greenCardGradient);
+  }
+
+  &:global(.sea) {
+    @include mixins.card-image("../../assets/cards/", "card_sea", v.$seaCardGradient);
+  }
+
+  &:global(.purple) {
+    @include mixins.card-image("../../assets/cards/", "card_purple", v.$purpleCardGradient);
+  }
+
+  &:global(.pink) {
+    @include mixins.card-image("../../assets/cards/", "card_pink", v.$pinkCardGradient);
+  }
+
+  &:global(.red) {
+    @include mixins.card-image("../../assets/cards/", "card_red", v.$redCardGradient);
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.backgroundOptionActive {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-background-first);
+}

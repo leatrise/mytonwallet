@@ -23,9 +23,9 @@ struct PaletteAndCardSection: View {
         InsetSection {
             cell
         } header: {
-            Text(lang("Palette and Card"))
+            Text(lang("Palette"))
         } footer: {
-            Text(lang("Customize the wallet's home screen and color accents the way you like."))
+            Text(lang("Change Palette"))
         }
     }
     
@@ -33,7 +33,7 @@ struct PaletteAndCardSection: View {
         InsetButtonCell(action: onTap) {
             HStack(spacing: 16) {
                 PaletteAndCardIcon(accountContext: accountContext)
-                Text(lang("Customize Wallet"))
+                Text(lang("Palette"))
                     .foregroundStyle(Color.air.primaryLabel)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Image.airBundle("RightArrowIcon")

@@ -117,6 +117,11 @@ public final class AccountSettings: Sendable {
         installAccentColorFromNft(accountId: accountId, nft: nft)
     }
 
+    public func setAccentColorIndex(_ index: Int?) {
+        accentColorNft = nil
+        setAccentColorIndex(index: index)
+    }
+
     private func installAccentColorFromNft(accountId: String, nft: ApiNft?) {
         Task.detached {
             let color: Int? = if let nft {

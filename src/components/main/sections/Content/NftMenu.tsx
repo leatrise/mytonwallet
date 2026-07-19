@@ -7,7 +7,6 @@ import type { IAnchorPosition } from '../../../../global/types';
 import type { Layout } from '../../../../hooks/useMenuPosition';
 
 import {
-  selectCurrentAccountSettings,
   selectCurrentAccountState,
   selectIsCurrentAccountViewMode,
   selectTonDnsLinkedAddress,
@@ -18,11 +17,9 @@ import { vibrate } from '../../../../util/haptics';
 
 import useLang from '../../../../hooks/useLang';
 import useLastCallback from '../../../../hooks/useLastCallback';
-import { usePrevDuringAnimationSimple } from '../../../../hooks/usePrevDuringAnimationSimple';
 import useNftMenu from '../../../mediaViewer/hooks/useNftMenu';
 
 import DropdownMenu from '../../../ui/DropdownMenu';
-import { ANIMATION_DURATION } from '../../../ui/Menu';
 
 import styles from './NftMenu.module.scss';
 
@@ -44,8 +41,6 @@ interface StateProps {
   isTestnet?: boolean;
   blacklistedNftAddresses?: string[];
   whitelistedNftAddresses?: string[];
-  cardBackgroundNft?: ApiNft;
-  accentColorNft?: ApiNft;
   linkedAddress?: string;
 }
 
@@ -63,8 +58,6 @@ function NftMenu({
   menuAnchor,
   blacklistedNftAddresses,
   whitelistedNftAddresses,
-  cardBackgroundNft,
-  accentColorNft,
   className,
   onOpen,
   onClose,
@@ -76,13 +69,6 @@ function NftMenu({
   const isNftWhitelisted = useMemo(() => {
     return whitelistedNftAddresses?.includes(nft.address);
   }, [nft, whitelistedNftAddresses]);
-  const isNftInstalled = usePrevDuringAnimationSimple(
-    nft && nft.address === cardBackgroundNft?.address, ANIMATION_DURATION,
-  );
-  const isNftAccentColorInstalled = usePrevDuringAnimationSimple(
-    nft && nft.address === accentColorNft?.address, ANIMATION_DURATION,
-  );
-
   const { menuItems, handleMenuItemSelect } = useNftMenu({
     nft,
     isViewMode,
@@ -91,8 +77,6 @@ function NftMenu({
     linkedAddress,
     isNftBlacklisted,
     isNftWhitelisted,
-    isNftInstalled,
-    isNftAccentColorInstalled,
     isTestnet,
   });
   let buttonRef = useRef<HTMLButtonElement>();
@@ -162,14 +146,11 @@ function NftMenu({
 
 export default memo(withGlobal<OwnProps>((global, { nft }): StateProps => {
   const { blacklistedNftAddresses, whitelistedNftAddresses } = selectCurrentAccountState(global) || {};
-  const { cardBackgroundNft, accentColorNft } = selectCurrentAccountSettings(global) || {};
   const linkedAddress = selectTonDnsLinkedAddress(global, nft);
 
   return {
     blacklistedNftAddresses,
     whitelistedNftAddresses,
-    cardBackgroundNft,
-    accentColorNft,
     isViewMode: selectIsCurrentAccountViewMode(global),
     isTestnet: global.settings.isTestnet,
     linkedAddress,

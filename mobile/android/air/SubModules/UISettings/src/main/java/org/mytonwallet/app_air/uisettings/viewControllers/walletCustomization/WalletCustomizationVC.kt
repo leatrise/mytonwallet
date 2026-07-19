@@ -6,6 +6,7 @@ import android.content.Context
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.MotionEvent
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
@@ -60,7 +61,7 @@ class WalletCustomizationVC(context: Context, defaultSelectedAccountId: String) 
     override val TAG = "WalletCustomization"
 
     override val shouldDisplayBottomBar = true
-    override var title: String? = LocaleController.getString("Customize Wallet")
+    override var title: String? = LocaleController.getString("Palette")
 
     override val isSwipeBackAllowed = false
     override val isEdgeSwipeBackAllowed = true
@@ -177,6 +178,7 @@ class WalletCustomizationVC(context: Context, defaultSelectedAccountId: String) 
         WalletCustomizationAvailableCardsView(
             context
         ).apply {
+            visibility = GONE
             onCardChanged = { accountId, nft ->
                 cardsView.reload(accountId)
                 if (AccountStore.activeAccountId == accountId || isPresentedOverWalletTabs)
@@ -187,6 +189,7 @@ class WalletCustomizationVC(context: Context, defaultSelectedAccountId: String) 
 
     private val hintLabel by lazy {
         WLabel(context).apply {
+            visibility = GONE
             text =
                 LocaleController.getString("This card will be installed for this wallet and will be displayed on the home screen and in the wallets list.")
             setTextColor(WColor.SecondaryText)
@@ -269,52 +272,18 @@ class WalletCustomizationVC(context: Context, defaultSelectedAccountId: String) 
                 })
             addView(
                 availableCardsView,
-                LinearLayout.LayoutParams(MATCH_PARENT, availableCardsHeight).apply {
-                    topMargin = (-3).dp
-                    leftMargin = ViewConstants.HORIZONTAL_PADDINGS.dp
-                    rightMargin = ViewConstants.HORIZONTAL_PADDINGS.dp
-                })
+                LinearLayout.LayoutParams(MATCH_PARENT, availableCardsHeight)
+            )
             addView(
-                hintLabel, LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
-                    topMargin = 4.dp
-                    leftMargin = ViewConstants.HORIZONTAL_PADDINGS.dp + 16.dp
-                    rightMargin = ViewConstants.HORIZONTAL_PADDINGS.dp + 16.dp
-                })
+                hintLabel,
+                LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+            )
             addView(
                 appPaletteView,
                 LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
                     topMargin = ViewConstants.GAP.dp
                     leftMargin = ViewConstants.HORIZONTAL_PADDINGS.dp
                     rightMargin = ViewConstants.HORIZONTAL_PADDINGS.dp
-                })
-            addView(
-                WLabel(context).apply {
-                    text =
-                        LocaleController.getString("Get a unique My Wallet Card to unlock new palettes.")
-                    setTextColor(WColor.SecondaryText)
-                    setStyle(14f)
-                    setLineHeight(TypedValue.COMPLEX_UNIT_SP, 24f)
-                }, LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
-                    topMargin = 4.dp
-                    leftMargin = ViewConstants.HORIZONTAL_PADDINGS.dp + 16.dp
-                    rightMargin = ViewConstants.HORIZONTAL_PADDINGS.dp + 16.dp
-                })
-            addView(getMoreCardsButton, LinearLayout.LayoutParams(MATCH_PARENT, 50.dp).apply {
-                topMargin = ViewConstants.GAP.dp
-                leftMargin = ViewConstants.HORIZONTAL_PADDINGS.dp
-                rightMargin = ViewConstants.HORIZONTAL_PADDINGS.dp
-            })
-            addView(
-                WLabel(context).apply {
-                    text =
-                        LocaleController.getString("Browse My Wallet Cards available for purchase.")
-                    setTextColor(WColor.SecondaryText)
-                    setStyle(14f)
-                    setLineHeight(TypedValue.COMPLEX_UNIT_SP, 24f)
-                }, LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
-                    topMargin = 4.dp
-                    leftMargin = ViewConstants.HORIZONTAL_PADDINGS.dp + 16.dp
-                    rightMargin = ViewConstants.HORIZONTAL_PADDINGS.dp + 16.dp
                 })
         }
     }
