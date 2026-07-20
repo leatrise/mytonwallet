@@ -48,7 +48,10 @@ private struct CardBackground: View {
     
     var body: some View {
         WithPerceptionTracking {
-            MtwCardBackground(nft: accountContext.nft)
+            MtwCardBackground(
+                nft: accountContext.nft,
+                cardBackground: accountContext.cardBackground
+            )
         }
     }
 }

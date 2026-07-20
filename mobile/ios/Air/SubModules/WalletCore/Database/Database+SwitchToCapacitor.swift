@@ -209,6 +209,7 @@ private func moveAccountSettings(global: GlobalStorage, db: any DatabaseWriter) 
             } else {
                 $0["\(prefix).cardBackgroundNft"] = nil
             }
+            $0["\(prefix).cardBackground"] = row?.cardBackground?.rawValue
             if let accentColorNft = row?.accentColorNft {
                 $0["\(prefix).accentColorNft"] = try? JSONSerialization.encode(accentColorNft)
             } else {

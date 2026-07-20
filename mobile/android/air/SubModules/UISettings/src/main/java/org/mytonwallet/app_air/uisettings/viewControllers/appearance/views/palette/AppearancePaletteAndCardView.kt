@@ -68,7 +68,7 @@ class AppearancePaletteAndCardView(
         WLabel(context).apply {
             setStyle(adaptiveFontSize())
             setTextColor(WColor.PrimaryText)
-            text = LocaleController.getString("Palette")
+            text = LocaleController.getString("Customize Wallet")
         }
     }
 

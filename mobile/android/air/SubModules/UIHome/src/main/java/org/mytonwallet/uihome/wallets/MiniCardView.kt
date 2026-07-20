@@ -11,6 +11,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
 import androidx.core.view.setPadding
+import org.mytonwallet.app_air.uicomponents.commonViews.CardBackground
 import org.mytonwallet.app_air.uicomponents.extensions.dp
 import org.mytonwallet.app_air.uicomponents.helpers.WFont
 import org.mytonwallet.app_air.uicomponents.helpers.typeface
@@ -41,6 +42,7 @@ class MiniCardView(context: Context, private val containerWidth: Int) : WView(co
     WThemedView {
 
     private var cardNft: ApiNft? = null
+    private var cardBackground: CardBackground = CardBackground.DEFAULT
 
     private val imageView = WImageView(context, 12.dp).apply {
         scaleType = ImageView.ScaleType.CENTER_CROP
@@ -164,15 +166,17 @@ class MiniCardView(context: Context, private val containerWidth: Int) : WView(co
     }
 
     fun updateCardImage() {
+        val accountId = account?.accountId
         cardNft =
-            account?.accountId?.let { activeAccountId ->
+            accountId?.let { activeAccountId ->
                 WGlobalStorage.getCardBackgroundNft(activeAccountId)
                     ?.let { ApiNft.fromJson(it) }
             }
+        cardBackground = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
         updateTheme()
 
         if (cardNft == null) {
-            imageView.loadRes(org.mytonwallet.app_air.uicomponents.R.drawable.img_card)
+            imageView.loadRes(cardBackground.imageRes)
             return
         }
         imageView.hierarchy.setPlaceholderImage(

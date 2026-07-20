@@ -13,11 +13,18 @@ import WalletContext
 public struct MtwCardBackground: View {
     
     var nft: ApiNft?
+    var cardBackground: CardBackground
     var hideBorder: Bool
     var borderWidthMultiplier: CGFloat
     
-    public init(nft: ApiNft?, hideBorder: Bool = false, borderWidthMultiplier: CGFloat = 1) {
+    public init(
+        nft: ApiNft?,
+        cardBackground: CardBackground = .default,
+        hideBorder: Bool = false,
+        borderWidthMultiplier: CGFloat = 1
+    ) {
         self.nft = nft
+        self.cardBackground = cardBackground
         self.hideBorder = hideBorder
         self.borderWidthMultiplier = borderWidthMultiplier
     }
@@ -36,7 +43,7 @@ public struct MtwCardBackground: View {
                             .aspectRatio(contentMode: .fill)
                             .transition(.opacity.animation(.smooth(duration: 0.15)))
                     } else {
-                        Image(uiImage: .homeCard)
+                        Image.airBundle(cardBackground.imageName)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .transition(.opacity.animation(.smooth(duration: 0.15)))

@@ -24,6 +24,7 @@ import org.mytonwallet.app_air.icons.R
 import org.mytonwallet.app_air.uicomponents.AnimationConstants
 import org.mytonwallet.app_air.uicomponents.base.ITabsVC
 import org.mytonwallet.app_air.uicomponents.base.WWindow
+import org.mytonwallet.app_air.uicomponents.commonViews.CardBackground
 import org.mytonwallet.app_air.uicomponents.commonViews.WalletTypeView
 import org.mytonwallet.app_air.uicomponents.drawable.WRippleDrawable
 import org.mytonwallet.app_air.uicomponents.extensions.dp
@@ -746,15 +747,17 @@ class WalletCardView(
     }
 
     fun updateCardImage() {
+        val accountId = account?.accountId
         cardNft =
-            account?.accountId?.let { accountId ->
-                WGlobalStorage.getCardBackgroundNft(accountId)
+            accountId?.let {
+                WGlobalStorage.getCardBackgroundNft(it)
                     ?.let { ApiNft.fromJson(it) }
             }
         updateTheme()
 
         if (cardNft == null) {
-            img.set(Content(Content.Image.Res(org.mytonwallet.app_air.uicomponents.R.drawable.img_card)))
+            val background = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
+            img.set(Content(Content.Image.Res(background.imageRes)))
             clippedContainer.setConstraints {
                 allEdges(img)
             }

@@ -1,5 +1,7 @@
 @use "../../styles/mixins";
 
+@use "../../styles/scssVariables" as v;
+
 .content {
   padding: 0 0 1rem;
   background: transparent;
@@ -215,10 +217,10 @@
   background-clip: padding-box;
   background-size: cover;
 
-  @include mixins.card-image("../../assets/cards/", "card", v.$defaultCardGradient);
+  @include mixins.card-image("../../assets/cards/", "card_default", v.$orangeCardGradient);
 
   &:global(.orange) {
-    @include mixins.card-image("../../assets/cards/", "card_orange", v.$orangeCardGradient);
+    @include mixins.card-image("../../assets/cards/", "card_blue", v.$defaultCardGradient);
   }
 
   &:global(.green) {

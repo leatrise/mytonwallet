@@ -153,7 +153,11 @@ private struct CardView: View {
                         .padding(.bottom, 8)
                 }
                 .background {
-                    MtwCardBackground(nft: nft, borderWidthMultiplier: 0.5)
+                    MtwCardBackground(
+                        nft: nft,
+                        cardBackground: viewModel.selectedAccountInfo.currentBackground,
+                        borderWidthMultiplier: 0.5
+                    )
                 }
                 .clipShape(.containerRelative)
                 .containerShape(.rect(cornerRadius: 12))

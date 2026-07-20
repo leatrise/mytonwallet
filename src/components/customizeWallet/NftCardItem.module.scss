@@ -37,7 +37,7 @@ $nftCardItemWidth: 6.875rem;
   height: 100%;
   border-radius: var(--border-radius-normal);
 
-  background-image: url("../../assets/cards/card.jpg"), linear-gradient(125deg, #{v.$defaultCardGradient});
+  background-image: url("../../assets/cards/card_blue.jpg"), linear-gradient(125deg, #{v.$defaultCardGradient});
   background-clip: border-box, padding-box, padding-box;
   background-origin: border-box;
   background-size: cover, cover;
@@ -51,7 +51,7 @@ $nftCardItemWidth: 6.875rem;
   }
 
   &:global(.orange) {
-    background-image: url("../../assets/cards/card_orange.jpg"), linear-gradient(125deg, #C49D5B 0, #B67C47 100%);
+    background-image: url("../../assets/cards/card_default.jpg"), linear-gradient(125deg, #C49D5B 0, #B67C47 100%);
   }
 
   &:global(.green) {

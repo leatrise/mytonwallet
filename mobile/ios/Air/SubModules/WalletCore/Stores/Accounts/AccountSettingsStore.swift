@@ -94,6 +94,7 @@ extension DependencyValues {
 public final class AccountSettings: Sendable {
     public let accountId: String
     public private(set) var backgroundNft: ApiNft?
+    public private(set) var cardBackground: CardBackground = .default
     public private(set) var accentColorNft: ApiNft?
     public private(set) var accentColorIndex: Int?
     public private(set) var isAllowSuspiciousActions = false
@@ -108,6 +109,14 @@ public final class AccountSettings: Sendable {
         backgroundNft = nft
         persist()
         WalletCoreData.notify(event: .cardBackgroundChanged(accountId, nft))
+    }
+
+    public func setCardBackground(_ background: CardBackground) {
+        log.info("cardBackground.presetSet accountId=\(accountId, .public) oldBackground=\(cardBackground.rawValue, .public) newBackground=\(background.rawValue, .public)")
+        cardBackground = background
+        backgroundNft = nil
+        persist()
+        WalletCoreData.notify(event: .cardBackgroundChanged(accountId, nil))
     }
 
     public func setAccentColorNft(_ nft: ApiNft?) {
@@ -157,6 +166,7 @@ public final class AccountSettings: Sendable {
 
     fileprivate func replace(row: MAccountSettings?) {
         backgroundNft = row?.cardBackgroundNft
+        cardBackground = row?.cardBackground ?? .default
         accentColorNft = row?.accentColorNft
         accentColorIndex = row?.accentColorIndex
         isAllowSuspiciousActions = row?.isAllowSuspiciousActions ?? false
@@ -167,6 +177,7 @@ public final class AccountSettings: Sendable {
         MAccountSettings(
             accountId: accountId,
             cardBackgroundNft: backgroundNft,
+            cardBackground: cardBackground == .default ? nil : cardBackground,
             accentColorNft: accentColorNft,
             accentColorIndex: accentColorIndex,
             isAllowSuspiciousActions: isAllowSuspiciousActions ? true : nil,

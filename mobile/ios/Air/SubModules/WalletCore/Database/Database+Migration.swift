@@ -204,6 +204,7 @@ func makeMigrator() -> DatabaseMigrator {
             t.primaryKey("accountId", .text)
                 .references("accounts", column: "id", onDelete: .cascade)
             t.column("cardBackgroundNft", .jsonText)
+            t.column("cardBackground", .text)
             t.column("accentColorNft", .jsonText)
             t.column("accentColorIndex", .integer)
             t.column("isAllowSuspiciousActions", .boolean)
@@ -325,6 +326,11 @@ func makeMigrator() -> DatabaseMigrator {
     migrator.registerMigration("v19") { db in
         try db.alter(table: "account_assets_and_activity_data") { t in
             t.add(column: "wasYohiAutoPinned", .boolean).notNull().defaults(to: false)
+        }
+    }
+    migrator.registerMigration("v20") { db in
+        try db.alter(table: "account_settings") { t in
+            t.add(column: "cardBackground", .text)
         }
     }
 

@@ -19,6 +19,7 @@ private let log = Log("CustomizeWallet")
 
 struct AccountInfo {
     var currentCard: ApiNft?
+    var currentBackground: CardBackground = .default
     var availableCards: [ApiNft?] = []
 }
 
@@ -79,6 +80,12 @@ struct AccountInfo {
             accountSettings.for(accountId: selectedAccountId).setBackgroundNft(card)
         }
     }
+
+    func selectCardBackground(_ background: CardBackground) {
+        withAnimation {
+            accountSettings.for(accountId: selectedAccountId).setCardBackground(background)
+        }
+    }
     
     var balance: BaseCurrencyAmount? {
         balanceDataStore.balanceTotals(accountId: selectedAccountId)?.totalBalance
@@ -128,6 +135,7 @@ final class AccountMtwCards: WalletCoreData.EventsObserver, Sendable {
     var info: AccountInfo {
         AccountInfo(
             currentCard: accountSettings.for(accountId: accountId).backgroundNft,
+            currentBackground: accountSettings.for(accountId: accountId).cardBackground,
             availableCards: [nil] + Array(cards.values)
         )
     }

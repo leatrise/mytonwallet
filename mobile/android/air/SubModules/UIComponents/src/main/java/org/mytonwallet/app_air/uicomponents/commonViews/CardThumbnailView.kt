@@ -64,8 +64,9 @@ class CardThumbnailView(context: Context) : WFrameLayout(context) {
     }
 
     fun configure(account: MAccount?, showDefaultCard: Boolean = false) {
+        val accountId = account?.accountId
         cardNft =
-            account?.accountId?.let { activeAccountId ->
+            accountId?.let { activeAccountId ->
                 WGlobalStorage.getCardBackgroundNft(activeAccountId)
                     ?.let { ApiNft.fromJson(it) }
             }
@@ -79,9 +80,10 @@ class CardThumbnailView(context: Context) : WFrameLayout(context) {
         } ?: run {
             imageView.clear()
             if (showDefaultCard) {
+                val background = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
                 imageView.set(
                     Content(
-                        Content.Image.Res(org.mytonwallet.app_air.uicomponents.R.drawable.img_card),
+                        Content.Image.Res(background.imageRes),
                         scaleType = ScalingUtils.ScaleType.FIT_XY
                     ),
                 )

@@ -50,7 +50,7 @@ $previewCardHeight: 11rem;
   background-origin: border-box;
   background-size: cover, cover;
 
-  @include mixins.card-image("../../assets/cards/", "card", v.$defaultCardGradient);
+  @include mixins.card-image("../../assets/cards/", "card_default", v.$orangeCardGradient);
 
   &.left, &.right {
     &::before {
@@ -125,7 +125,7 @@ $previewCardHeight: 11rem;
   }
 
   &:global(.orange) {
-    @include mixins.card-image("../../assets/cards/", "card_orange", v.$orangeCardGradient);
+    @include mixins.card-image("../../assets/cards/", "card_blue", v.$defaultCardGradient);
   }
 
   &:global(.green) {

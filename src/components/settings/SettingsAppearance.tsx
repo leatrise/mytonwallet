@@ -189,7 +189,7 @@ function SettingsAppearance({
 
         {!IS_CORE_WALLET && (
           <>
-            <p className={styles.blockTitle}>{lang('Background')}</p>
+            <p className={styles.blockTitle}>{lang('Palette')}</p>
             <div className={buildClassName(styles.block, styles.settingsBlockWithDescription)}>
               <a
                 role="button"
@@ -200,7 +200,7 @@ function SettingsAppearance({
                 {renderPalleteIcon()}
 
                 <span className={buildClassName(styles.itemTitle, styles.itemTitle_accent)}>
-                  {lang('Background')}
+                  {lang('Customize Wallet')}
                 </span>
 
                 <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />

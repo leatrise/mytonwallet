@@ -26,6 +26,10 @@ struct CustomizeWalletView: View {
                     viewModel.selectedAccountId = accountId
                 }
             })
+            CardBackgroundSection(
+                selectedBackground: viewModel.selectedAccountInfo.currentBackground,
+                onSelect: viewModel.selectCardBackground
+            )
             PaletteSection(viewModel: viewModel.palletteSettingsViewModel)
         }
         .backportSafeAreaPadding(.bottom, 32)

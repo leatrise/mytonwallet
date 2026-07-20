@@ -26,7 +26,11 @@ private struct _StaticBackground: View {
     
     var body: some View {
         WithPerceptionTracking {
-            MtwCardBackground(nft: accountContext.nft, hideBorder: false)
+            MtwCardBackground(
+                nft: accountContext.nft,
+                cardBackground: accountContext.cardBackground,
+                hideBorder: false
+            )
                 .aspectRatio(1/CARD_RATIO, contentMode: .fit)
                 .clipShape(.rect(cornerRadius: 26))
                 .containerShape(.rect(cornerRadius: 26))

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.ImageView
 import org.mytonwallet.app_air.uicomponents.R
+import org.mytonwallet.app_air.uicomponents.commonViews.CardBackground
 import org.mytonwallet.app_air.uicomponents.commonViews.RadialGradientView
 import org.mytonwallet.app_air.uicomponents.extensions.dp
 import org.mytonwallet.app_air.uicomponents.extensions.setPaddingDp
@@ -28,6 +29,7 @@ import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
 import org.mytonwallet.app_air.walletbasecontext.theme.color
 import org.mytonwallet.app_air.walletbasecontext.utils.getDrawableCompat
+import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
 import org.mytonwallet.app_air.walletcontext.utils.colorWithAlpha
 import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.moshi.ApiMtwCardTextType
@@ -178,7 +180,8 @@ class WalletCustomizationAvailableCardCell(context: Context, val cellWidth: Int)
         updateTheme()
 
         if (cardNft == null) {
-            imageView.loadRes(R.drawable.img_card)
+            val background = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
+            imageView.loadRes(background.imageRes)
             setConstraints {
                 allEdges(imageView)
             }

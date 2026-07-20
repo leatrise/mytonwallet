@@ -13,19 +13,20 @@ import WalletContext
 import WalletCore
 import Flow
 import Perception
-import Dependencies
 
 struct PaletteAndCardSection: View {
     
     @State var accountContext = AccountContext(source: .current)
     
     var body: some View {
-        InsetSection {
-            cell
-        } header: {
-            Text(lang("Palette"))
-        } footer: {
-            Text(lang("Change Palette"))
+        WithPerceptionTracking {
+            InsetSection {
+                cell
+            } header: {
+                Text(lang("Palette"))
+            } footer: {
+                Text(lang("Customize the wallet's home screen and color accents the way you like."))
+            }
         }
     }
     
@@ -33,7 +34,7 @@ struct PaletteAndCardSection: View {
         InsetButtonCell(action: onTap) {
             HStack(spacing: 16) {
                 PaletteAndCardIcon(accountContext: accountContext)
-                Text(lang("Palette"))
+                Text(lang("Customize Wallet"))
                     .foregroundStyle(Color.air.primaryLabel)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Image.airBundle("RightArrowIcon")
@@ -85,7 +86,11 @@ struct _CardMiniature: View {
     
     var body: some View {
         WithPerceptionTracking {
-            MtwCardBackground(nft: accountContext.nft, hideBorder: true)
+            MtwCardBackground(
+                nft: accountContext.nft,
+                cardBackground: accountContext.cardBackground,
+                hideBorder: true
+            )
                 .clipShape(.rect(cornerRadius: 3))
                 .frame(width: 22, height: 14)
                 .overlay {

@@ -18,6 +18,7 @@ import org.mytonwallet.app_air.uicomponents.extensions.setPaddingDpLocalized
 import org.mytonwallet.app_air.uicomponents.helpers.WFont
 import org.mytonwallet.app_air.uicomponents.helpers.typeface
 import org.mytonwallet.app_air.uicomponents.widgets.AutoScaleContainerView
+import org.mytonwallet.app_air.uicomponents.commonViews.CardBackground
 import org.mytonwallet.app_air.uicomponents.widgets.WCell
 import org.mytonwallet.app_air.uicomponents.widgets.WImageView
 import org.mytonwallet.app_air.uicomponents.widgets.WLabel
@@ -149,6 +150,7 @@ class WalletCustomizationCardCell(context: Context, cellWidth: Int) :
 
     private var account: MAccount? = null
     private var cardNft: ApiNft? = null
+    private var cardBackground: CardBackground = CardBackground.DEFAULT
 
     fun configure(account: MAccount) {
         this.account = account
@@ -159,15 +161,17 @@ class WalletCustomizationCardCell(context: Context, cellWidth: Int) :
     }
 
     fun updateCardImage() {
+        val accountId = account?.accountId
         cardNft =
-            account?.accountId?.let { activeAccountId ->
+            accountId?.let { activeAccountId ->
                 WGlobalStorage.getCardBackgroundNft(activeAccountId)
                     ?.let { ApiNft.fromJson(it) }
             }
+        cardBackground = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
         updateTheme()
 
         if (cardNft == null) {
-            imageView.loadRes(org.mytonwallet.app_air.uicomponents.R.drawable.img_card)
+            imageView.loadRes(cardBackground.imageRes)
             setConstraints {
                 allEdges(imageView)
             }

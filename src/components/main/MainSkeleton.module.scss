@@ -162,7 +162,7 @@ $card-overlay-secondary: rgba(255, 255, 255, 0.15);
   background-origin: border-box;
   background-size: cover, cover;
 
-  @include mixins.card-image("../../assets/cards/", "card", v.$defaultCardGradient);
+  @include mixins.card-image("../../assets/cards/", "card_default", v.$orangeCardGradient);
 }
 
 .cardInner {

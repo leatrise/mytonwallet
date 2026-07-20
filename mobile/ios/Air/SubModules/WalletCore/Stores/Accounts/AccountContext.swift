@@ -110,6 +110,9 @@ public final class AccountContext: Sendable {
     public var nft: ApiNft? {
         accountSettings.for(accountId: accountId).backgroundNft
     }
+    public var cardBackground: CardBackground {
+        accountSettings.for(accountId: accountId).cardBackground
+    }
     public var accentColor: UIColor {
         let index = accountSettings.for(accountId: accountId).accentColorIndex
         let color = getAccentColorByIndex(index)

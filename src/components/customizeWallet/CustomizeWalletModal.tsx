@@ -11,6 +11,7 @@ import {
   selectCurrentAccountTokens,
 } from '../../global/selectors';
 import buildClassName from '../../util/buildClassName';
+import { CARD_BACKGROUNDS } from './cardBackgrounds';
 
 import useLang from '../../hooks/useLang';
 import useScrolledState from '../../hooks/useScrolledState';
@@ -22,16 +23,6 @@ import WalletCardPreview from './WalletCardPreview';
 
 import modalStyles from '../ui/Modal.module.scss';
 import styles from './CustomizeWalletModal.module.scss';
-
-const CARD_BACKGROUNDS: Array<{ id: CardBackground; label: string }> = [
-  { id: 'default', label: 'Yohi' },
-  { id: 'orange', label: 'Amber' },
-  { id: 'green', label: 'Green' },
-  { id: 'sea', label: 'Ocean' },
-  { id: 'purple', label: 'Purple' },
-  { id: 'pink', label: 'Pink' },
-  { id: 'red', label: 'Red' },
-];
 
 interface OwnProps {
   isOpen?: boolean;

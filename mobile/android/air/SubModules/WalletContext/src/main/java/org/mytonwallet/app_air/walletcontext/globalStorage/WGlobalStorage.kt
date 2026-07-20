@@ -656,6 +656,23 @@ object WGlobalStorage {
         return globalStorageProvider.getString("settings.byAccountId.$accountId.cardBackgroundNft.address")
     }
 
+    fun getCardBackground(accountId: String): String {
+        return globalStorageProvider.getString("settings.byAccountId.$accountId.cardBackground") ?: "default"
+    }
+
+    fun setCardBackground(accountId: String, background: String) {
+        globalStorageProvider.set(
+            "settings.byAccountId.$accountId.cardBackground",
+            background,
+            IGlobalStorageProvider.PERSIST_INSTANT
+        )
+        globalStorageProvider.set(
+            "settings.byAccountId.$accountId.cardBackgroundNft",
+            null,
+            IGlobalStorageProvider.PERSIST_INSTANT
+        )
+    }
+
     fun setCardBackgroundNft(accountId: String, nft: JSONObject?) {
         return globalStorageProvider.set(
             "settings.byAccountId.$accountId.cardBackgroundNft",

@@ -8,7 +8,7 @@ import useFlag from '../../../../hooks/useFlag';
 
 import styles from './CustomCardPreview.module.scss';
 
-import cardDefaultImg from '../../../../assets/cards/card.jpg';
+import cardBlueImg from '../../../../assets/cards/card_blue.jpg';
 import cardSkeletonBlack from '../../../../assets/cards/card_skeleton_black.svg';
 import cardSkeletonDark from '../../../../assets/cards/card_skeleton_dark.svg';
 import cardSkeletonGold from '../../../../assets/cards/card_skeleton_gold.svg';
@@ -21,7 +21,7 @@ interface OwnProps {
 }
 
 function CustomCardPreview({ nft, className }: OwnProps) {
-  const imageUrl = nft ? getCardNftImageUrl(nft) : cardDefaultImg;
+  const imageUrl = nft ? getCardNftImageUrl(nft) : cardBlueImg;
   const skeletonUrl = getSkeletonUrl(nft);
 
   const [isImageLoaded, markImageLoaded] = useFlag(false);
