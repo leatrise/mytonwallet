@@ -38,7 +38,6 @@ import org.mytonwallet.app_air.walletbasecontext.logger.Logger
 import org.mytonwallet.app_air.walletbasecontext.theme.ViewConstants
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
 import org.mytonwallet.app_air.walletbasecontext.theme.color
-import org.mytonwallet.app_air.walletbasecontext.utils.ApplicationContextHolder
 import org.mytonwallet.app_air.walletbasecontext.utils.getDrawableCompat
 import org.mytonwallet.app_air.walletcontext.WalletContextManager
 import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
@@ -53,10 +52,10 @@ class AppearanceVC(context: Context) : WViewController(context), WalletCore.Even
 
     override val shouldDisplayBottomBar = true
 
-    private val isGramApp = ApplicationContextHolder.isGramApp
+    private val isLegacyEntryDisabled = true
 
     private val switchToLegacyCell: SettingsItemCell? =
-        if (isGramApp) null else SettingsItemCell(context).apply {
+        if (isLegacyEntryDisabled) null else SettingsItemCell(context).apply {
             configure(
                 SettingsItem(
                     identifier = SettingsItem.Identifier.SWITCH_TO_LEGACY,

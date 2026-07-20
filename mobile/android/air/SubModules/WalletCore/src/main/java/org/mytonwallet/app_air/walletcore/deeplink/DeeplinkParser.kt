@@ -412,10 +412,7 @@ class DeeplinkParser {
                     Deeplink.Url(accountAddress = null, config)
                 }
 
-                "classic" -> {
-                    if (ApplicationContextHolder.isGramApp) null
-                    else Deeplink.SwitchToLegacy(null)
-                }
+                "classic" -> null
 
                 "token" -> {
                     val pathParts = uri.pathSegments

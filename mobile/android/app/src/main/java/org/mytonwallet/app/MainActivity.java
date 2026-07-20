@@ -26,8 +26,8 @@ import org.mytonwallet.plugins.air_app_launcher.airLauncher.LaunchConfig;
 
 /*
   Application entry point.
-    - Decides to open the classic LegacyActivity (mytonwallet flavor only) or
-      trigger AirLauncher.
+    - Starts Air by default. The classic LegacyActivity remains available only
+      as an explicit internal fallback while the legacy implementation is being retired.
     - Only passes deeplink data into active activity and finishes itself if any activities are already open.
     - Plays splash-screen for MTW Air (This flow may be enhanced later)
  */
@@ -48,11 +48,11 @@ public class MainActivity extends BaseActivity {
 
     LaunchConfig.recordAppOpened(this);
     Activity activity = this;
-    boolean shouldStartOnAir = !legacyLauncher.isAvailable()
-      || LaunchConfig.shouldStartOnAir(activity);
+    boolean shouldStartClassic = legacyLauncher.isAvailable()
+      && getIntent().getBooleanExtra("switchToLegacy", false);
 
     AirLauncher airLauncher = AirLauncher.getInstance();
-    if (!shouldStartOnAir) {
+    if (shouldStartClassic) {
       if (airLauncher != null) {
         airLauncher.switchingToClassic();
         AirLauncher.setInstance(null);
