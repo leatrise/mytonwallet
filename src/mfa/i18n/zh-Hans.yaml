@@ -1,31 +1,31 @@
-$title: MFA 扩展
-$confirmation-title: 请确认操作
+$title: Telegram 双重验证
+$confirmation-title: 确认此操作
 $confirmed: 已确认！
-$install-confirmation-title: 确认安装扩展
+$install-confirmation-title: 设置 Telegram 双重验证
 Go Back: 返回
 Confirm: 确认
-Is it all ok?: 确认全部正确?
+Is it all ok?: 确认信息无误？
 Connect Wallet: 连接钱包
 Confirm Connection: 确认连接
 Confirm Unlinking: 确认解绑
 My Telegram Account: 我的 Telegram 账户
 Without username: 无用户名
 My Wallet: 我的钱包
-We’ll ask you to confirm actions with Telegram after entering your passcode in %app_name%.: 在 %app_name% 中输入密码后，我们会要求你在 Telegram 中确认操作。
+We’ll ask you to confirm actions with Telegram after entering your passcode in %app_name%.: 在 %app_name% 中输入密码后，还需前往 Telegram 确认支持的操作。
 2FA applies only to actions involving TON assets.: 2FA 仅适用于涉及 TON 资产的操作。
 Action Confirmed: 操作已确认
-Almost Ready!: 即将完成！
-Your wallet is now connected to your Telegram account.: 你的钱包现在已连接到 Telegram 账户。
-Return to the app to pay fee and complete the final confirmation.: 返回应用支付费用并完成最终确认。
+Almost Ready!: 还差一步
+Your wallet is now connected to your Telegram account.: 钱包已连接到你的 Telegram 账户。
+Return to the app to pay fee and complete the final confirmation.: 返回应用支付连接手续费并完成设置。
 Back to %app_name%: 返回 %app_name%
 Preview: 预览
-$preview_not_guaranteed: 预览结果**不受保证**，且**可能被服务伪造**。
+$preview_not_guaranteed: 预览内容由第三方提供，**可能不完整或被伪造**。继续前请核对实际签名数据。
 $fee_value: 手续费 %fee%
 $fee_value_with_colon: "手续费: %fee%"
 Fee: 手续费
-Details: 明细
+Details: 详情
 Transaction ID: 交易ID
-Transaction ID Copied: 交易ID已被复制
+Transaction ID Copied: 交易 ID 已复制
 Encrypted Message: 加密消息
 Failed: 失败
 $transaction_on: 上 %address%
@@ -38,20 +38,20 @@ Staking: 质押中
 $stake_action: 质押
 Unstaked: 已解除质押
 Unstaking: 解除质押
-$unstake_action: 解押
+$unstake_action: 解除质押
 Requested Unstake: 已申请解除质押
 Requesting Unstake: 请求解除质押
-$request_unstake_action: 请求解押
+$request_unstake_action: 申请解除质押
 Called Contract: 已调用合约
 Calling Contract: 调用合约
 $call_contract_action: 调用合约
-Excess: 多余款项
+Excess: 退回金额
 Deployed Contract: 已部署合约
 Deploying Contract: 部署合约
 $deploy_contract_action: 部署合约
 Bounced: 被退回
-Bouncing: 反弹中
-$bounce_action: 反弹
+Bouncing: 正在退回
+$bounce_action: 退回
 Minted: 已铸造
 Minting: 铸造
 $mint_action: 铸造

@@ -1,10 +1,10 @@
-$title: MFA Extension
-$confirmation-title: Please confirm action
+$title: Telegram 2FA
+$confirmation-title: Confirm This Action
 $confirmed: Confirmed!
-$install-confirmation-title: Confirm installation of the extension
+$install-confirmation-title: Set Up Telegram 2FA
 Go Back: Go Back
 Confirm: Confirm
-Is it all ok?: Is it all ok?
+Is it all ok?: Is Everything Correct?
 Connect Wallet: Connect Wallet
 Confirm Connection: Confirm Connection
 Confirm Unlinking: Confirm Unlinking
@@ -12,16 +12,16 @@ My Telegram Account: My Telegram Account
 Without username: Without username
 My Wallet: My Wallet
 We’ll ask you to confirm actions with Telegram after entering your passcode in %app_name%.:
-  We’ll ask you to confirm actions with Telegram after entering your passcode in
-  %app_name%.
+  After entering your passcode in %app_name%, confirm supported actions in
+  Telegram.
 2FA applies only to actions involving TON assets.: 2FA applies only to actions involving TON assets.
 Action Confirmed: Action Confirmed
-Almost Ready!: Almost Ready!
-Your wallet is now connected to your Telegram account.: Your wallet is now connected to your Telegram account.
-Return to the app to pay fee and complete the final confirmation.: Return to the app to pay fee and complete the final confirmation.
+Almost Ready!: One More Step
+Your wallet is now connected to your Telegram account.: Your wallet is connected to your Telegram account.
+Return to the app to pay fee and complete the final confirmation.: Return to the app, pay the connection fee, and complete setup.
 Back to %app_name%: Back to %app_name%
 Preview: Preview
-$preview_not_guaranteed: Preview result **is not guaranteed** and **can be forged** by the service.
+$preview_not_guaranteed: Preview content is provided by a third party and **may be incomplete or forged**. Verify the actual signing data before continuing.
 $fee_value: Fee %fee%
 $fee_value_with_colon: "Fee: %fee%"
 Fee: Fee
