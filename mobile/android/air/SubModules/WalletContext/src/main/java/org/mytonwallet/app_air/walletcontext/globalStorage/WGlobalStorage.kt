@@ -1543,7 +1543,7 @@ object WGlobalStorage {
 
     fun getSuggestedName(network: MBlockchainNetwork, type: String): String {
         val baseNameKey = when (type) {
-            "mnemonic" -> if (ApplicationContextHolder.isGramApp) "Wallet" else "My Wallet"
+            "mnemonic" -> if (ApplicationContextHolder.isGramApp) "Wallet" else "Yohi Wallet"
             "hardware" -> "Ledger"
             else -> "Wallet"
         }

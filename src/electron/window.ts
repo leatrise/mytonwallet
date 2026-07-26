@@ -45,7 +45,7 @@ export function createWindow() {
     height: windowState.height,
 
     titleBarStyle: 'hidden',
-    title: 'My Wallet',
+    title: 'Yohi Wallet',
     frame: false,
 
     webPreferences: {

@@ -24,7 +24,7 @@ function InitialPage() {
       />
       <h2 className={styles.title}>Portfolio Tracker</h2>
       <p className={styles.subtitle}>
-        Connect My Wallet to view your assets
+        Connect Yohi Wallet to view your assets
         <br />
         and track your balance over time.
       </p>

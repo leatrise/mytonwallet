@@ -18,6 +18,7 @@ import org.mytonwallet.app_air.uicomponents.widgets.WCell
 import org.mytonwallet.app_air.uicomponents.widgets.WThemedView
 import org.mytonwallet.app_air.uicomponents.widgets.WView
 import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
+import org.mytonwallet.app_air.walletbasecontext.R as BaseR
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.theme.ViewConstants
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
@@ -45,8 +46,10 @@ class ConnectedHeaderCell(context: Context) :
         ellipsize = TextUtils.TruncateAt.END
         maxLines = 1
         useCustomEmoji = true
-        text =
-            LocaleController.getString("Logged in with My Wallet")
+        text = LocaleController.getStringWithKeyValues(
+            "Logged in with %app_name%",
+            listOf("%app_name%" to context.getString(BaseR.string.app_locale_name_key))
+        )
     }
 
     private val subtitleLabel = AppCompatTextView(context).apply {

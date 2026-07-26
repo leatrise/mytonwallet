@@ -125,7 +125,12 @@ object LocaleController {
     }
 
     fun getString(key: String): String {
-        return dictionary[key] ?: key
+        return (dictionary[key] ?: key)
+            .replace("My Wallets", "__MY_WALLETS__")
+            .replace("My Wallet Coin", "__MY_WALLET_COIN__")
+            .replace("My Wallet", "Yohi Wallet")
+            .replace("__MY_WALLETS__", "My Wallets")
+            .replace("__MY_WALLET_COIN__", "My Wallet Coin")
     }
 
     fun getStringOrNull(key: String?): String? {

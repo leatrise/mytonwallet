@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="app_name" translatable="false">My Wallet</string>
+  <string name="app_name" translatable="false">Yohi Wallet</string>
   <string name="package_name" translatable="false">org.mytonwallet.app</string>
   <string name="ton_url_scheme" translatable="false">ton</string>
   <string name="tc_url_scheme" translatable="false">tc</string>
   <string name="app_tc_url_scheme" translatable="false">mytonwallet-tc</string>
   <string name="app_url_scheme" translatable="false">mtw</string>
   <string name="wc_url_scheme" translatable="false">wc</string>
-  <string name="app_website_url" translatable="false">https://mywallet.io</string>
+  <string name="app_website_url" translatable="false">https://yohi.io</string>
   <string name="app_blog_url" translatable="false">https://mywallet.io/en/blog</string>
   <string name="app_terms_of_use_url" translatable="false">https://mywallet.io/terms-of-use</string>
   <string name="app_privacy_policy_url" translatable="false">https://mywallet.io/privacy-policy</string>

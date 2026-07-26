@@ -129,11 +129,11 @@ function SettingsAppearance({
         <div className={buildClassName(styles.block, styles.settingsBlockWithDescription)}>
           <div className={styles.item} onClick={handleAirVersionSwitch}>
             <img className={styles.menuIcon} src={airImg} alt="" aria-hidden />
-            <span className={styles.itemTitle}>My Wallet Air</span>
+            <span className={styles.itemTitle}>Yohi Wallet Air</span>
 
             <Switcher
               className={styles.menuSwitcher}
-              label="My Wallet Air"
+              label="Yohi Wallet Air"
               checked={isAirVersionEnabled}
             />
           </div>

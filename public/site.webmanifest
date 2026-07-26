@@ -1,6 +1,6 @@
 {
-    "name": "My Wallet",
-    "short_name": "My Wallet",
+    "name": "Yohi Wallet",
+    "short_name": "Yohi Wallet",
     "start_url": "./",
     "gcm_sender_id": "122867383838",
     "icons": [

@@ -24,13 +24,13 @@ protocols:
     schemes: ["ton"]
   - name: "TonConnect"
     schemes: ["tc"]
-  - name: "TonConnect My Wallet"
+  - name: "TonConnect Yohi Wallet"
     schemes: ["mytonwallet-tc"]
-  - name: "My Wallet"
+  - name: "Yohi Wallet"
     schemes: ["mtw"]
   - name: "WalletConnect"
     schemes: ["wc"]
-  - name: "WalletConnect My Wallet"
+  - name: "WalletConnect Yohi Wallet"
     schemes: ["mywallet-wc"]
 publish:
   provider: "github"
@@ -54,12 +54,12 @@ mac:
   entitlements: "public/electron-entitlements.mac.plist"
   icon: "public/icon-electron-macos.icns"
   extendInfo:
-    # Show "My Wallet" in Finder/Dock while keeping CFBundleName (=productName)
+    # Show "Yohi Wallet" in Finder/Dock while keeping CFBundleName (=productName)
     # "MyTonWallet" so userData path and the safeStorage keychain entry stay put.
-    CFBundleDisplayName: "My Wallet"
+    CFBundleDisplayName: "Yohi Wallet"
 
 dmg:
-  title: "My Wallet installer"
+  title: "Yohi Wallet installer"
   background: "public/background-electron-dmg.tiff"
   contents:
     - x: 148

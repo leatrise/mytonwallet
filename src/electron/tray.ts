@@ -69,7 +69,7 @@ const tray: TrayHelper = {
     }
 
     const icon = nativeImage.createFromPath(defaultIconPath);
-    const title = 'My Wallet';
+    const title = 'Yohi Wallet';
 
     this.instance = new Tray(icon);
 

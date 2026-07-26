@@ -72,7 +72,7 @@ function SettingsAbout({
           {APP_NAME} {APP_VERSION} {APP_ENV_MARKER}
           {!IS_CORE_WALLET && (
             <a href={MY_WALLET_PROMO_URL} target="_blank" className={styles.titleLink} rel="noreferrer">
-              mywallet.io
+              yohi.io
             </a>
           )}
         </h2>

@@ -92,7 +92,7 @@ function InstallConfirmation({ installRequest, isActive, walletApp, reqId, onCon
         </div>
 
         <div className={styles.account}>
-          <span className={styles.accountDescription}>{lang('My Wallet')}</span>
+          <span className={styles.accountDescription}>Yohi Wallet</span>
           <div className={styles.accountCard}>
             <WalletAvatar title="M" className={styles.accountAvatar} />
 

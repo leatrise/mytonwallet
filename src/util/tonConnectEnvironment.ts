@@ -34,7 +34,7 @@ export function tonConnectGetDeviceInfo(account?: ApiAccountWithChain<'ton'>): D
   // Redefine for backward compatibility
   return {
     platform: getPlatform(),
-    appName: APP_NAME === 'My Wallet' ? 'MyTonWallet' : APP_NAME,
+    appName: APP_NAME,
     appVersion: packageJson.version,
     maxProtocolVersion: TONCONNECT_PROTOCOL_VERSION,
     features,

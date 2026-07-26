@@ -55,7 +55,7 @@ function WalletCardPreview({
     return calculateFullBalance(tokens, undefined, currencyRates[baseCurrency]);
   }, [tokens, currencyRates, baseCurrency]);
 
-  const accountTitle = account?.title || 'My Wallet';
+  const accountTitle = account?.title || 'Yohi Wallet';
 
   const handleCardChange = useLastCallback((hasGradient: boolean, className?: string) => {
     setCustomCardClassName(className);

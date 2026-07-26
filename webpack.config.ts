@@ -363,7 +363,7 @@ export default function createConfig(
         title: APP_NAME,
         homepage: IS_CORE_WALLET
           ? 'https://wallet.ton.org'
-          : IS_GRAM_WALLET ? 'https://gramwallet.io' : 'https://mywallet.io',
+          : IS_GRAM_WALLET ? 'https://gramwallet.io' : 'https://yohi.io',
         assets_prefix: IS_GRAM_WALLET ? 'gramWallet/' : IS_TON_BRAND ? 'coreWallet/' : '',
       }),
       new PreloadWebpackPlugin({

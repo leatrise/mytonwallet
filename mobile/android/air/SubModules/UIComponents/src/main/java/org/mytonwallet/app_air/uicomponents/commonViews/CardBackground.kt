@@ -10,7 +10,7 @@ enum class CardBackground(
     val primaryTextColor: Int = Color.WHITE,
     val secondaryTextColor: Int = Color.argb(191, 255, 255, 255),
 ) {
-    DEFAULT("default", "Yohi", R.drawable.img_card_default),
+    DEFAULT("default", "Yohi Wallet", R.drawable.img_card_default),
     ORANGE("orange", "Blue", R.drawable.img_card_blue),
     GREEN("green", "Green", R.drawable.img_card_green),
     SEA("sea", "Ocean", R.drawable.img_card_sea),

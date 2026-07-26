@@ -21,11 +21,11 @@ export const IS_GRAM_WALLET = process.env.IS_GRAM_WALLET === '1';
 // Brand-axis code must check IS_GRAM_WALLET first, then IS_TON_BRAND; behavior/storage code keeps using IS_CORE_WALLET.
 export const IS_TON_BRAND = IS_CORE_WALLET && !IS_GRAM_WALLET;
 export const APP_NAME = process.env.APP_NAME
-  || (IS_GRAM_WALLET ? 'Gram Wallet' : IS_TON_BRAND ? 'TON Wallet' : 'My Wallet');
+  || (IS_GRAM_WALLET ? 'Gram Wallet' : IS_TON_BRAND ? 'TON Wallet' : 'Yohi Wallet');
 export const APP_VERSION = process.env.APP_VERSION!;
 export const APP_COMMIT_HASH = process.env.APP_COMMIT_HASH!;
 export const APP_ENV_MARKER = APP_ENV === 'staging' ? 'Beta' : APP_ENV === 'development' ? 'Dev' : undefined;
-export const EXTENSION_NAME = IS_TON_BRAND ? 'TON Wallet' : 'My Wallet: Crypto Wallet';
+export const EXTENSION_NAME = IS_TON_BRAND ? 'TON Wallet' : 'Yohi Wallet: Crypto Wallet';
 export const EXTENSION_DESCRIPTION = IS_TON_BRAND
   ? 'Set up your own TON Wallet on The Open Network'
   : 'Self-custodial wallet for TON, TRON, Solana, Ethereum and more. Swap, stake, buy crypto, manage NFTs and explore dapps.';
@@ -58,10 +58,10 @@ export const BETA_URL = IS_CORE_WALLET ? 'https://beta.wallet.ton.org' : 'https:
 export const APP_INSTALL_URL = IS_GRAM_WALLET ? 'https://get.gramwallet.io/' : 'https://get.mywallet.io/';
 export const APP_REPO_URL = 'https://github.com/mytonwallet-org/mytonwallet';
 export const SELF_UNIVERSAL_HOST_URL = 'https://my.tt';
-export const APP_WEBSITE_URL = IS_GRAM_WALLET ? 'https://gramwallet.io' : 'https://mywallet.io';
+export const APP_WEBSITE_URL = IS_GRAM_WALLET ? 'https://gramwallet.io' : 'https://yohi.io';
 export const APP_ICON_URL = IS_GRAM_WALLET
   ? 'https://gramwallet.io/icon-512x512.png'
-  : 'https://mywallet.io/icon-512x512.png';
+  : 'https://yohi.io/favicon.ico';
 
 // GitHub workflow uses an empty string as the default value if it's not in repository variables, so we cannot define a default value here
 export const BASE_URL = process.env.BASE_URL || PRODUCTION_URL;
@@ -199,7 +199,7 @@ export const NFT_MARKETPLACE_TITLES: Record<ApiNftMarketplace, string> = {
 export const MW_STATIC_BASE_URL = 'https://static.mytonwallet.org';
 export const MW_CARDS_BASE_URL = `${MW_STATIC_BASE_URL}/cards/v2/cards/`;
 export const MW_CARDS_MINT_BASE_URL = `${MW_STATIC_BASE_URL}/mint-cards/`;
-export const MY_WALLET_PROMO_URL = 'https://mywallet.io/';
+export const MY_WALLET_PROMO_URL = 'https://yohi.io/';
 export const MY_WALLET_BLOG: Partial<Record<LangCode, string>> = {
   en: 'https://mywallet.io/en/blog/',
   ru: 'https://mywallet.io/ru/blog/',

@@ -67,7 +67,7 @@ async function withFlavor(
 // Behavior/storage + brand constants.
 const CONFIG_EXPECTATIONS: Record<Flavor, Record<string, string | boolean>> = {
   default: {
-    APP_NAME: 'My Wallet',
+    APP_NAME: 'Yohi Wallet',
     IS_TON_BRAND: false,
     GLOBAL_STATE_CACHE_KEY: 'mytonwallet-global-state',
     ACTIVE_TAB_STORAGE_KEY: 'mtw-active-tab',
@@ -75,7 +75,7 @@ const CONFIG_EXPECTATIONS: Record<Flavor, Record<string, string | boolean>> = {
     PRODUCTION_URL: 'https://web.mywallet.io',
     BETA_URL: 'https://beta.mywallet.io',
     APP_INSTALL_URL: 'https://get.mywallet.io/',
-    APP_WEBSITE_URL: 'https://mywallet.io',
+    APP_WEBSITE_URL: 'https://yohi.io',
     IS_TON_MNEMONIC_ONLY: false,
     IS_STAKING_DISABLED: false,
     SHOULD_SHOW_ALL_ASSETS_AND_ACTIVITY: false,
@@ -90,7 +90,7 @@ const CONFIG_EXPECTATIONS: Record<Flavor, Record<string, string | boolean>> = {
     PRODUCTION_URL: 'https://wallet.ton.org',
     BETA_URL: 'https://beta.wallet.ton.org',
     APP_INSTALL_URL: 'https://get.mywallet.io/',
-    APP_WEBSITE_URL: 'https://mywallet.io',
+    APP_WEBSITE_URL: 'https://yohi.io',
     IS_TON_MNEMONIC_ONLY: true,
     IS_STAKING_DISABLED: true,
     SHOULD_SHOW_ALL_ASSETS_AND_ACTIVITY: true,
