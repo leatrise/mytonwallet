@@ -9,7 +9,6 @@ import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.Gravity
-import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -18,16 +17,12 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.graphics.toColorInt
 import org.mytonwallet.app_air.uicomponents.extensions.dp
 import org.mytonwallet.app_air.uicomponents.extensions.sp
-import org.mytonwallet.app_air.uicomponents.helpers.HapticType
-import org.mytonwallet.app_air.uicomponents.helpers.Haptics
 import org.mytonwallet.app_air.uicomponents.helpers.WFont
 import org.mytonwallet.app_air.uicomponents.widgets.WCell
 import org.mytonwallet.app_air.uicomponents.widgets.WFrameLayout
 import org.mytonwallet.app_air.uicomponents.widgets.WLabel
 import org.mytonwallet.app_air.uicomponents.widgets.WThemedView
 import org.mytonwallet.app_air.uicomponents.widgets.WView
-import org.mytonwallet.app_air.uicomponents.widgets.menu.WMenuPopup
-import org.mytonwallet.app_air.uicomponents.widgets.menu.WMenuPopup.Positioning
 import org.mytonwallet.app_air.walletbasecontext.R
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.theme.ThemeManager
@@ -35,12 +30,7 @@ import org.mytonwallet.app_air.walletbasecontext.theme.ViewConstants
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
 import org.mytonwallet.app_air.walletbasecontext.theme.color
 import org.mytonwallet.app_air.walletbasecontext.utils.requireDrawableCompat
-import org.mytonwallet.app_air.walletcontext.models.MBlockchainNetwork
 import org.mytonwallet.app_air.walletcore.models.MAccount
-import org.mytonwallet.app_air.walletcore.stores.ConfigStore
-import org.mytonwallet.app_air.walletcore.stores.StakingStore
-import org.mytonwallet.app_air.walletcore.stores.TokenStore
-import org.mytonwallet.app_air.walletcore.tokenSlugToStakingSlug
 import kotlin.math.roundToInt
 
 @SuppressLint("ViewConstructor")
@@ -108,16 +98,6 @@ class HeaderActionsView(
                     onClick?.invoke(identifier)
                 }
             }
-            if (identifier == Identifier.SEND) {
-                itemView.setOnLongClickListener {
-                    if (alpha > 0) {
-                        Haptics.play(this, HapticType.LIGHT_TAP)
-                        presentSendSellMenu(itemView)
-                        return@setOnLongClickListener true
-                    }
-                    return@setOnLongClickListener false
-                }
-            }
         }
         setConstraints {
             itemViews.forEachIndexed { index, itemView ->
@@ -147,47 +127,6 @@ class HeaderActionsView(
         }
     }
 
-    private fun isSellAllowed(): Boolean {
-        return account?.supportsBuyWithCard == true && ConfigStore.isLimited != true
-    }
-
-    private fun presentSendSellMenu(anchorView: View) {
-        val items = mutableListOf<WMenuPopup.Item>()
-        items.add(
-            WMenuPopup.Item(
-                R.drawable.ic_header_popup_menu_send_outline,
-                LocaleController.getString("Send"),
-            ) {
-                onClick?.invoke(Identifier.SEND)
-            }
-        )
-        items.add(
-            WMenuPopup.Item(
-                R.drawable.ic_header_popup_menu_multisend_outline,
-                LocaleController.getString("Multisend"),
-            ) {
-                onClick?.invoke(Identifier.MULTISEND)
-            }
-        )
-        if (isSellAllowed()) {
-            items.add(
-                WMenuPopup.Item(
-                    R.drawable.ic_header_popup_menu_sell_outline,
-                    LocaleController.getString("Sell"),
-                ) {
-                    onClick?.invoke(Identifier.SELL)
-                }
-            )
-        }
-        WMenuPopup.present(
-            anchorView,
-            items,
-            positioning = Positioning.BELOW,
-            backdropStyle = WMenuPopup.BackdropStyle.Transparent,
-            usePillShadow = true
-        )
-    }
-
     data class Item(
         val identifier: Identifier,
         val icon: Drawable,
@@ -205,6 +144,7 @@ class HeaderActionsView(
         LOCK_APP,
         TOGGLE_SENSITIVE_DATA_PROTECTION,
         SCAN_QR,
+        SETTINGS,
         SCROLL_TO_TOP,
         DETAILS,
         REPEAT,
@@ -343,33 +283,8 @@ class HeaderActionsView(
 
     override fun updateActions(account: MAccount?, tokenSlug: String?) {
         this.account = account
-        val isMainNet = account?.isMainnet == true
-        val isLpToken = TokenStore.getToken(tokenSlug)?.isLpToken == true
         setReceiveVisibility(account?.supportsReceiveScreen == true)
         setSendVisibility(account?.accountType != MAccount.AccountType.VIEW)
-        setEarnVisibility(isMainNet)
-        setSwapVisibility(account?.supportsSwap == true && !isLpToken)
-        updateEarnTitle(account, tokenSlug)
-    }
-
-    private fun updateEarnTitle(account: MAccount?, tokenSlug: String?) {
-        val label = actionViews[Identifier.EARN]?.label ?: return
-        val hasActiveStaking = account?.let { currentAccount ->
-            val stakingTokenSlug = tokenSlug?.let { tokenSlugToStakingSlug(it) ?: it }
-            StakingStore.getStakingState(currentAccount.accountId)?.let { stakingData ->
-                if (stakingTokenSlug != null) {
-                    stakingData.hasActiveStaking(stakingTokenSlug)
-                } else {
-                    stakingData.hasActiveStaking()
-                }
-            } ?: false
-        } ?: false
-        val title = LocaleController.getString(if (hasActiveStaking) "Earning" else "Earn")
-        if (label.text == title) {
-            return
-        }
-        label.text = title
-        updateTextSizes()
     }
 
     private fun setReceiveVisibility(visible: Boolean) {
@@ -378,14 +293,6 @@ class HeaderActionsView(
 
     private fun setSendVisibility(visible: Boolean) {
         actionViews[Identifier.SEND]?.visibility = if (visible) VISIBLE else GONE
-    }
-
-    private fun setSwapVisibility(visible: Boolean) {
-        actionViews[Identifier.SWAP]?.visibility = if (visible) VISIBLE else GONE
-    }
-
-    private fun setEarnVisibility(visible: Boolean) {
-        actionViews[Identifier.EARN]?.visibility = if (visible) VISIBLE else GONE
     }
 
     private class HeaderActionItem(
@@ -449,22 +356,6 @@ class HeaderActionsView(
                         LocaleController.getString("Send")
                     )
                 )
-                add(
-                    Item(
-                        Identifier.SWAP,
-                        context.requireDrawableCompat(R.drawable.ic_header_swap_outline),
-                        LocaleController.getString("Swap")
-                    )
-                )
-                if (showEarn) {
-                    add(
-                        Item(
-                            Identifier.EARN,
-                            context.requireDrawableCompat(R.drawable.ic_header_earn_outline),
-                            LocaleController.getString("Earn")
-                        )
-                    )
-                }
             }
         }
     }

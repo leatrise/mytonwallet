@@ -27,10 +27,8 @@ import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
 import org.mytonwallet.app_air.uipasscode.viewControllers.passcodeConfirm.PasscodeConfirmVC
 import org.mytonwallet.app_air.uipasscode.viewControllers.passcodeConfirm.PasscodeViewState
 import org.mytonwallet.app_air.uisettings.viewControllers.RecoveryPhraseVC
-import org.mytonwallet.app_air.uisettings.viewControllers.mfa.MfaVC
 import org.mytonwallet.app_air.uisettings.viewControllers.settings.cells.SettingsItemCell
 import org.mytonwallet.app_air.uisettings.viewControllers.settings.models.SettingsItem
-import org.mytonwallet.app_air.uicomponents.helpers.spans.ChainBadgeSpan
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.theme.ViewConstants
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
@@ -41,31 +39,11 @@ import org.mytonwallet.app_air.walletcontext.helpers.AutoLockHelper
 import org.mytonwallet.app_air.walletcontext.helpers.BiometricHelpers
 import org.mytonwallet.app_air.walletcontext.models.MAutoLockOption
 import org.mytonwallet.app_air.walletcontext.secureStorage.WSecureStorage
-import org.mytonwallet.app_air.walletbasecontext.utils.ApplicationContextHolder
 import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.models.MAccount
 import org.mytonwallet.app_air.walletcore.moshi.api.ApiMethod
 import org.mytonwallet.app_air.walletcore.stores.AccountStore
 import java.lang.ref.WeakReference
-
-private fun buildMfaRowTitle(): CharSequence {
-    val title = LocaleController.getString("2FA with Telegram")
-    return android.text.SpannableStringBuilder(title).apply {
-        append("  ")
-        val start = length
-        append("TON")
-        setSpan(
-            ChainBadgeSpan(
-                text = "TON",
-                textColorInt = WColor.SecondaryText.color,
-                backgroundColorInt = WColor.SecondaryBackground.color,
-            ),
-            start,
-            length,
-            android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE,
-        )
-    }
-}
 
 class SecurityVC(context: Context, private var currentPasscode: String) : WViewController(context) {
     override val TAG = "Security"
@@ -74,20 +52,6 @@ class SecurityVC(context: Context, private var currentPasscode: String) : WViewC
         DisplayedAccount(AccountStore.activeAccountId, AccountStore.isPushedTemporary)
 
     override val shouldDisplayBottomBar = true
-
-    private val shouldShowMfa: Boolean
-        get() {
-            val account = AccountStore.activeAccount ?: return false
-            if (!account.isChainSupported(org.mytonwallet.app_air.walletcore.TON_CHAIN) ||
-                account.isViewOnly ||
-                account.accountType != MAccount.AccountType.MNEMONIC ||
-                !AccountStore.isCurrentVersionW5
-            ) {
-                return false
-            }
-            return WGlobalStorage.getAccountConfigIsMfaEnabled(account.accountId) ||
-                account.byChain[org.mytonwallet.app_air.walletcore.TON_CHAIN]?.mfa != null
-        }
 
     private val backupRow = SettingsItemCell(context).apply {
         configure(
@@ -173,38 +137,6 @@ class SecurityVC(context: Context, private var currentPasscode: String) : WViewC
     }
 
     private val spacer2 = WBaseView(context)
-
-    private val mfaRow: SettingsItemCell by lazy {
-        SettingsItemCell(context).apply {
-            configure(
-                SettingsItem(
-                    identifier = SettingsItem.Identifier.MFA,
-                    icon = org.mytonwallet.app_air.uisettings.R.drawable.ic_mfa,
-                    title = buildMfaRowTitle(),
-                    value = null,
-                    hasTintColor = false,
-                ),
-                subtitle = null,
-                isFirst = true,
-                isLast = true,
-                isEnabled = true,
-                onTap = {
-                    navigationController?.push(MfaVC(context))
-                }
-            )
-        }
-    }
-
-    private val mfaFooterLabel: WLabel by lazy {
-        WLabel(context).apply {
-            setStyle(13f)
-            text = LocaleController.getString("Approve sign-in in Telegram as a second step.")
-            gravity = android.view.Gravity.START
-            setTextColor(WColor.SecondaryText)
-        }
-    }
-
-    private val mfaSpacer: WBaseView by lazy { WBaseView(context) }
 
     private val allowAppLockRow: SwitchCell by lazy {
         SwitchCell(
@@ -360,11 +292,6 @@ class SecurityVC(context: Context, private var currentPasscode: String) : WViewC
         v.addView(changePasscodeRow)
         v.addView(changePasscodeFooterLabel, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
         v.addView(spacer2, ViewGroup.LayoutParams(MATCH_PARENT, ViewConstants.GAP.dp))
-        if (shouldShowMfa) {
-            v.addView(mfaRow, ConstraintLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
-            v.addView(mfaFooterLabel, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
-            v.addView(mfaSpacer, ViewGroup.LayoutParams(MATCH_PARENT, ViewConstants.GAP.dp))
-        }
         v.addView(appLockContainerView, ConstraintLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
         v.addView(appLockFooterLabel, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
         v.addView(spacer3, ViewGroup.LayoutParams(MATCH_PARENT, ViewConstants.GAP.dp))
@@ -385,15 +312,7 @@ class SecurityVC(context: Context, private var currentPasscode: String) : WViewC
             topToBottom(changePasscodeFooterLabel, changePasscodeRow, 8f)
             toCenterX(changePasscodeFooterLabel, 16f)
             topToBottom(spacer2, changePasscodeFooterLabel, 4f)
-            if (shouldShowMfa) {
-                topToBottom(mfaRow, spacer2)
-                topToBottom(mfaFooterLabel, mfaRow, 8f)
-                toCenterX(mfaFooterLabel, 16f)
-                topToBottom(mfaSpacer, mfaFooterLabel, 4f)
-                topToBottom(appLockContainerView, mfaSpacer)
-            } else {
-                topToBottom(appLockContainerView, spacer2)
-            }
+            topToBottom(appLockContainerView, spacer2)
             toCenterX(appLockContainerView)
             topToBottom(appLockFooterLabel, appLockContainerView, 8f)
             toCenterX(appLockFooterLabel, 16f)

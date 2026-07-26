@@ -858,18 +858,7 @@ addActionHandler('switchToAgent', (global: GlobalState, actions) => {
 });
 
 addActionHandler('switchToExplore', (global: GlobalState, actions) => {
-  const { isExploreOpen } = global;
-
-  if (isExploreOpen) {
-    actions.closeSiteCategory(undefined, { forceOnHeavyAnimation: true });
-  }
-
-  setGlobal({ ...global, portfolioReturnTo: undefined });
-
-  actions.closeAgent(undefined, { forceOnHeavyAnimation: true });
-  actions.closeSettings(undefined, { forceOnHeavyAnimation: true });
-  actions.closePortfolio(undefined, { forceOnHeavyAnimation: true });
-  actions.openExplore(undefined, { forceOnHeavyAnimation: true });
+  actions.switchToWallet();
 });
 
 addActionHandler('switchToSettings', (global: GlobalState, actions) => {

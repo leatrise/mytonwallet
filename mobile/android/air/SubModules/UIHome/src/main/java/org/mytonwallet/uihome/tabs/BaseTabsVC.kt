@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.view.ViewGroup
 import androidx.core.net.toUri
-import org.mytonwallet.app_air.uiagent.viewControllers.agent.AgentVC
 import org.mytonwallet.app_air.uiassets.viewControllers.assets.AssetsVC
 import org.mytonwallet.app_air.uiassets.viewControllers.assets.AssetsVC.CollectionMode
 import org.mytonwallet.app_air.uiassets.viewControllers.token.TokenVC
@@ -71,7 +70,6 @@ abstract class BaseTabsVC(context: Context) :
         nav.setRoot(
             when (id) {
                 IBottomNavigationView.ID_HOME -> HomeVC(context, MScreenMode.Default)
-                IBottomNavigationView.ID_AGENT -> AgentVC(context)
                 IBottomNavigationView.ID_EXPLORE -> ExploreVC(context).also {
                     cachedExploreVC = it
                     onExploreCreated(it)

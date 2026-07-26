@@ -3,17 +3,14 @@ import { getActions } from '../../../../global';
 
 import type { StakingStateStatus } from '../../../../util/staking';
 
-import { IS_CORE_WALLET } from '../../../../config';
 import buildClassName from '../../../../util/buildClassName';
 import { vibrate } from '../../../../util/haptics';
-import { handleSendMenuItemClick, SEND_CONTEXT_MENU_ITEMS } from './helpers/sendMenu';
 import { STAKING_TAB_TEXT_VARIANTS } from './helpers/stakingLabels';
 
 import useLang from '../../../../hooks/useLang';
 import useLastCallback from '../../../../hooks/useLastCallback';
 
 import Button from '../../../ui/Button';
-import WithContextMenu from '../../../ui/WithContextMenu';
 
 import styles from './PortraitActions.module.scss';
 
@@ -30,13 +27,9 @@ interface OwnProps {
 }
 
 function PortraitActions({
-  isTestnet,
   stakingStatus,
   isStakingDisabled,
   isSwapDisabled,
-  isOnRampDisabled,
-  isOffRampDisabled,
-  containerRef,
   onEarnClick,
 }: OwnProps) {
   const {
@@ -45,16 +38,8 @@ function PortraitActions({
 
   const lang = useLang();
 
-  const isOnRampAllowed = !isTestnet && !isOnRampDisabled;
-  const addBuyButtonName = IS_CORE_WALLET
-    ? lang('Receive')
-    : (!isSwapDisabled || isOnRampAllowed
-      ? lang('Fund')
-      : lang('Add')
-    );
-  const sendButtonName = IS_CORE_WALLET || isOffRampDisabled || lang.code !== 'en'
-    ? lang('Send')
-    : <span className={styles.name}>{lang('Send')}<span className={styles.divider}>/</span>{lang('Sell')}</span>;
+  const addBuyButtonName = lang('Add');
+  const sendButtonName = lang('Send');
 
   const handleStartSwap = useLastCallback(() => {
     void vibrate();
@@ -91,26 +76,14 @@ function PortraitActions({
           <i className={buildClassName(styles.buttonIcon, 'icon-action-add')} aria-hidden />
           {addBuyButtonName}
         </Button>
-        <WithContextMenu
-          rootRef={containerRef}
-          items={SEND_CONTEXT_MENU_ITEMS}
-          withBackdrop
-          menuClassName={styles.menu}
-          onItemClick={handleSendMenuItemClick}
+        <Button
+          isSimple
+          className={styles.button}
+          onClick={handleStartTransfer}
         >
-          {(buttonProps, isMenuOpen) => (
-            <Button
-              {...buttonProps}
-              isSimple
-              className={buildClassName(styles.button, isMenuOpen && styles.buttonActive)}
-              onClick={handleStartTransfer}
-              ref={buttonProps.ref as ElementRef<HTMLButtonElement>}
-            >
-              <i className={buildClassName(styles.buttonIcon, 'icon-action-send')} aria-hidden />
-              {sendButtonName}
-            </Button>
-          )}
-        </WithContextMenu>
+          <i className={buildClassName(styles.buttonIcon, 'icon-action-send')} aria-hidden />
+          {sendButtonName}
+        </Button>
         {!isSwapDisabled && (
           <Button
             isSimple

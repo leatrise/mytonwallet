@@ -17,6 +17,8 @@ import {
   IS_EXPLORER,
   IS_EXTENSION,
   LANG_LIST,
+  NO_NOTIFICATIONS,
+  NO_PORTFOLIO,
   PROXY_HOSTS,
   SHOULD_SHOW_ALL_ASSETS_AND_ACTIVITY,
   SUPPORT_USERNAME,
@@ -437,14 +439,19 @@ function Settings({
       <div className={styles.slide}>
         {IS_CAPACITOR && (
           <SettingsAccountHeader
-            isViewMode={isViewMode}
             isActive={isActive}
             currentWalletRef={currentWalletRef}
             onRemoveClick={openLogOutModal}
+            onBackClick={handleCloseSettings}
           />
         )}
-        {isPortrait && !IS_CAPACITOR && (
-          <SettingsHeader title={lang('Settings')} className={styles.mobileHeader} isScrolled={isScrolled} />
+        {!IS_CAPACITOR && (
+          <SettingsHeader
+            title={lang('Settings')}
+            className={styles.mobileHeader}
+            isScrolled={isScrolled}
+            onBackClick={handleCloseSettings}
+          />
         )}
 
         <div
@@ -452,7 +459,6 @@ function Settings({
             styles.content,
             styles.content_main,
             'custom-scroll',
-            !IS_CAPACITOR && !isPortrait && styles.content_noHeader,
           )}
           onScroll={isPortrait && !IS_CAPACITOR ? handleContentScroll : undefined}
         >
@@ -506,7 +512,7 @@ function Settings({
             </div>
           )}
 
-          {isPortfolioAvailable && (
+          {!NO_PORTFOLIO && isPortfolioAvailable && (
             <div className={styles.block}>
               <div className={buildClassName(styles.item, styles.itemMenu)} onClick={handleOpenPortfolio}>
                 <img className={styles.menuIcon} src={portfolioImg} alt={lang('Portfolio')} />
@@ -929,7 +935,7 @@ export default memo(withGlobal<OwnProps>((global): StateProps => {
     versions,
     isCopyStorageEnabled,
     supportAccountsCount,
-    arePushNotificationsAvailable: global.pushNotifications.isAvailable,
+    arePushNotificationsAvailable: !NO_NOTIFICATIONS && global.pushNotifications.isAvailable,
     isViewMode: selectIsCurrentAccountViewMode(global),
     accountType: account?.type,
     isMultichain: Object.keys(account?.byChain ?? {}).length > 1,

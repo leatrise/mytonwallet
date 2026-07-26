@@ -75,18 +75,6 @@ class TabletTabsVC(context: Context) : BaseTabsVC(context), WThemedView,
                 IBottomNavigationView.ID_HOME,
                 R.drawable.ic_home_thin, R.drawable.ic_home_filled, "Wallet"
             ),
-            TabletSidePanelView.TabDef(
-                IBottomNavigationView.ID_AGENT,
-                R.drawable.ic_agent_thin, R.drawable.ic_agent_filled, "Agent"
-            ),
-            TabletSidePanelView.TabDef(
-                IBottomNavigationView.ID_EXPLORE,
-                R.drawable.ic_explore_thin, R.drawable.ic_explore_filled, "Explore"
-            ),
-            TabletSidePanelView.TabDef(
-                IBottomNavigationView.ID_SETTINGS,
-                R.drawable.ic_settings_thin, R.drawable.ic_settings_filled, "Settings"
-            ),
         )
     }
 
@@ -677,8 +665,7 @@ class TabletTabsVC(context: Context) : BaseTabsVC(context), WThemedView,
     override fun resumeBlurring() {}
 
     override fun setSearchText(text: String) {
-        selectTab(IBottomNavigationView.ID_EXPLORE)
-        searchBar.setSearchText(text)
+        selectTab(IBottomNavigationView.ID_HOME)
     }
 
     override fun switchToFirstTab(): Boolean {
@@ -696,13 +683,12 @@ class TabletTabsVC(context: Context) : BaseTabsVC(context), WThemedView,
             (activeNavigationController?.viewControllers?.size ?: 0) == 1
 
     override fun switchToExplore(targetUri: Uri?) {
-        selectTab(IBottomNavigationView.ID_EXPLORE)
+        selectTab(IBottomNavigationView.ID_HOME)
         window?.dismissToRoot()
-        targetUri?.let { cachedExploreVC?.findSiteAndOpenTargetUri(it) }
     }
 
     override fun switchToAgent() {
-        selectTab(IBottomNavigationView.ID_AGENT)
+        selectTab(IBottomNavigationView.ID_HOME)
         window?.dismissToRoot()
     }
 

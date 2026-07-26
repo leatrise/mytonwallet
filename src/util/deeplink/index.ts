@@ -84,6 +84,16 @@ const EXPLORER_ALLOWED_COMMANDS = new Set([
   DeeplinkCommand.Portfolio,
 ]);
 
+const DISABLED_YOHI_COMMANDS = new Set([
+  DeeplinkCommand.Swap,
+  DeeplinkCommand.BuyWithCrypto,
+  DeeplinkCommand.BuyWithCard,
+  DeeplinkCommand.Offramp,
+  DeeplinkCommand.Stake,
+  DeeplinkCommand.Portfolio,
+  DeeplinkCommand.Agent,
+]);
+
 const SETTINGS_SECTION_MAP: Record<string, SettingsState> = {
   appearance: SettingsState.Appearance,
   assets: SettingsState.Assets,
@@ -687,6 +697,7 @@ export async function processSelfDeeplink(deeplink: string, isFromInAppBrowser =
 
     const { pathname, searchParams } = new URL(deeplink);
     const command = pathname.split('/').find(Boolean);
+    if (command && DISABLED_YOHI_COMMANDS.has(command as DeeplinkCommand)) return true;
     const actions = getActions();
     const global = getGlobal();
     const { isTestnet } = global.settings;

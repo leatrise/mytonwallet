@@ -668,16 +668,10 @@ class SplashVC(context: Context) : WViewController(context),
             }
 
             is Deeplink.WalletConnect -> {
-                WalletCore.call(
-                    ApiMethod.DApp.WalletConnectHandleDeepLink(deeplink.requestUri.toString())
-                ) { _, _ -> }
                 return true
             }
 
             is Deeplink.WalletConnectPay -> {
-                WalletCore.call(
-                    ApiMethod.DApp.WalletConnectHandleDeepLink(deeplink.requestUri.toString())
-                ) { _, _ -> }
                 return true
             }
 
@@ -751,6 +745,18 @@ class SplashVC(context: Context) : WViewController(context),
         val account = AccountStore.activeAccount
         if (account == null) {
             // Ignore deeplinks when the wallet is not ready yet
+            nextDeeplink = null
+            return
+        }
+
+        if (deeplink is Deeplink.Swap ||
+            deeplink is Deeplink.BuyWithCard ||
+            deeplink is Deeplink.Offramp ||
+            deeplink is Deeplink.Stake ||
+            deeplink is Deeplink.StakeTx ||
+            deeplink is Deeplink.Portfolio ||
+            deeplink is Deeplink.Agent
+        ) {
             nextDeeplink = null
             return
         }

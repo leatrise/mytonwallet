@@ -89,10 +89,22 @@ $iconGapSize: 1rem;
   }
 }
 
+.balanceRow {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .balance {
   font-size: 1rem;
   font-weight: 800;
   color: var(--color-black);
+}
+
+.balanceRow :global(.icon-eye),
+.balanceRow :global(.icon-eye-closed) {
+  font-size: 1rem;
 }
 
 .balanceFractionPart,

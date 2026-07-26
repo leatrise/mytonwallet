@@ -22,7 +22,6 @@ import com.facebook.drawee.generic.RoundingParams
 import com.facebook.fresco.ui.common.OnFadeListener
 import org.mytonwallet.app_air.icons.R
 import org.mytonwallet.app_air.uicomponents.AnimationConstants
-import org.mytonwallet.app_air.uicomponents.base.ITabsVC
 import org.mytonwallet.app_air.uicomponents.base.WWindow
 import org.mytonwallet.app_air.uicomponents.commonViews.CardBackground
 import org.mytonwallet.app_air.uicomponents.commonViews.WalletTypeView
@@ -64,7 +63,6 @@ import org.mytonwallet.app_air.uicomponents.widgets.menu.WMenuPopup.Item.Config.
 import org.mytonwallet.app_air.uicomponents.widgets.sensitiveDataContainer.SensitiveDataMaskView
 import org.mytonwallet.app_air.uicomponents.widgets.sensitiveDataContainer.WSensitiveDataContainer
 import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
-import org.mytonwallet.app_air.uiportfolio.viewControllers.portfolio.PortfolioVC
 import org.mytonwallet.app_air.uiwidgets.configurations.WidgetsConfigurations
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.models.MBaseCurrency
@@ -253,32 +251,10 @@ class WalletCardView(
         }
     }
 
-    private val balanceChangeChevron = context.getDrawableCompat(
-        R.drawable.ic_arrow_right_16_24
-    )?.apply {
-        mutate()
-        setBounds(0, 0, intrinsicWidth, intrinsicHeight)
-    }
-
     private val balanceChangeLabel: WSensitiveDataContainer<WLabel> by lazy {
         val lbl = WLabel(context)
         lbl.setPadding(8.dp, 3.dp, 8.dp, 3.dp)
         lbl.setStyle(adaptiveFontSize(), WFont.Medium)
-        lbl.compoundDrawablePadding = 0
-        lbl.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, balanceChangeChevron, null)
-        lbl.foreground = WRippleDrawable.create(14f.dp).apply {
-            rippleColor = Color.WHITE.colorWithAlpha(25)
-        }
-        lbl.setOnClickListener {
-            if (mode == HomeHeaderView.Mode.Collapsed) return@setOnClickListener
-            val tabNav =
-                (window.topNavigationController?.viewControllers?.firstOrNull() as? ITabsVC)?.mainNavigationController
-            if (tabNav != null) {
-                tabNav.push(PortfolioVC(context))
-            } else {
-                window.navigationControllers.last().push(PortfolioVC(context))
-            }
-        }
         WSensitiveDataContainer(
             lbl,
             WSensitiveDataContainer.MaskConfig(
@@ -924,7 +900,6 @@ class WalletCardView(
     private fun applyBalanceChangeColors() {
         cardNft?.metadata?.overlayLabelBackground?.let { it ->
             balanceChangeLabel.contentView.setTextColor(it.colorWithAlpha(204))
-            balanceChangeChevron?.setTint(it.colorWithAlpha(204))
             balanceChangeLabel.contentView.setBackgroundColor(
                 if (balanceChangeBlurView == null) it.colorWithAlpha(25) else Color.TRANSPARENT,
                 13f.dp
@@ -932,7 +907,6 @@ class WalletCardView(
         } ?: run {
             val secondaryColor = _secondaryColor ?: Color.WHITE.colorWithAlpha(191)
             balanceChangeLabel.contentView.setTextColor(secondaryColor.colorWithAlpha(191))
-            balanceChangeChevron?.setTint(secondaryColor.colorWithAlpha(191))
             balanceChangeLabel.contentView.setBackgroundColor(
                 if (balanceChangeBlurView == null) secondaryColor.colorWithAlpha(41) else Color.TRANSPARENT,
                 13f.dp
@@ -941,7 +915,6 @@ class WalletCardView(
         if (isBalanceChangePositive && cardNft == null) {
             val positiveColor = WColor.PositiveBalance.color
             balanceChangeLabel.contentView.setTextColor(positiveColor)
-            balanceChangeChevron?.setTint(positiveColor)
         }
     }
 

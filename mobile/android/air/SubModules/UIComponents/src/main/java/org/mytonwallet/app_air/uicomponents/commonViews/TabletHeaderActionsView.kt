@@ -11,7 +11,6 @@ import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.Gravity
-import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
@@ -22,16 +21,12 @@ import androidx.core.graphics.toColorInt
 import androidx.core.view.doOnPreDraw
 import org.mytonwallet.app_air.uicomponents.extensions.dp
 import org.mytonwallet.app_air.uicomponents.extensions.sp
-import org.mytonwallet.app_air.uicomponents.helpers.HapticType
-import org.mytonwallet.app_air.uicomponents.helpers.Haptics
 import org.mytonwallet.app_air.uicomponents.helpers.WFont
 import org.mytonwallet.app_air.uicomponents.widgets.ScrollStateHorizontalScrollView
 import org.mytonwallet.app_air.uicomponents.widgets.WCell
 import org.mytonwallet.app_air.uicomponents.widgets.WLabel
 import org.mytonwallet.app_air.uicomponents.widgets.WThemedView
 import org.mytonwallet.app_air.uicomponents.widgets.WView
-import org.mytonwallet.app_air.uicomponents.widgets.menu.WMenuPopup
-import org.mytonwallet.app_air.uicomponents.widgets.menu.WMenuPopup.Positioning
 import org.mytonwallet.app_air.walletbasecontext.R
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.theme.ThemeManager
@@ -40,9 +35,6 @@ import org.mytonwallet.app_air.walletbasecontext.theme.color
 import org.mytonwallet.app_air.walletbasecontext.utils.requireDrawableCompat
 import org.mytonwallet.app_air.walletcontext.utils.AnimUtils.Companion.lerp
 import org.mytonwallet.app_air.walletcore.models.MAccount
-import org.mytonwallet.app_air.walletcore.stores.StakingStore
-import org.mytonwallet.app_air.walletcore.stores.TokenStore
-import org.mytonwallet.app_air.walletcore.tokenSlugToStakingSlug
 import androidx.core.view.isVisible
 import kotlin.math.roundToInt
 
@@ -136,16 +128,6 @@ class TabletHeaderActionsView(
                     onClick?.invoke(identifier)
                 }
             }
-            if (identifier == HeaderActionsView.Identifier.SEND) {
-                itemView.setOnLongClickListener {
-                    if (alpha > 0) {
-                        Haptics.play(this, HapticType.LIGHT_TAP)
-                        presentSendSellMenu(itemView)
-                        return@setOnLongClickListener true
-                    }
-                    return@setOnLongClickListener false
-                }
-            }
         }
         insetsUpdated()
         updateTheme()
@@ -192,47 +174,6 @@ class TabletHeaderActionsView(
             itemView.applySizeFraction(fraction)
         }
         updateTextSizes()
-    }
-
-    private fun isSellAllowed(): Boolean {
-        return account?.supportsBuyWithCard == true// && ConfigStore.isLimited != true
-    }
-
-    private fun presentSendSellMenu(anchorView: View) {
-        val items = mutableListOf<WMenuPopup.Item>()
-        items.add(
-            WMenuPopup.Item(
-                R.drawable.ic_header_popup_menu_send_outline,
-                LocaleController.getString("Send"),
-            ) {
-                onClick?.invoke(HeaderActionsView.Identifier.SEND)
-            }
-        )
-        items.add(
-            WMenuPopup.Item(
-                R.drawable.ic_header_popup_menu_multisend_outline,
-                LocaleController.getString("Multisend"),
-            ) {
-                onClick?.invoke(HeaderActionsView.Identifier.MULTISEND)
-            }
-        )
-        if (isSellAllowed()) {
-            items.add(
-                WMenuPopup.Item(
-                    R.drawable.ic_header_popup_menu_sell_outline,
-                    LocaleController.getString("Sell"),
-                ) {
-                    onClick?.invoke(HeaderActionsView.Identifier.SELL)
-                }
-            )
-        }
-        WMenuPopup.present(
-            anchorView,
-            items,
-            positioning = Positioning.BELOW,
-            backdropStyle = WMenuPopup.BackdropStyle.Transparent,
-            usePillShadow = true
-        )
     }
 
     data class Item(
@@ -377,43 +318,8 @@ class TabletHeaderActionsView(
             scrollView.resetScroll()
         }
         this.account = account
-        val isMainNet = account?.isMainnet == true
-        val isLpToken = TokenStore.getToken(tokenSlug)?.isLpToken == true
-        setBuyVisibility(isSellAllowed())
-        setSellVisibility(isSellAllowed())
         setReceiveVisibility(account?.supportsReceiveScreen == true)
         setSendVisibility(account?.accountType != MAccount.AccountType.VIEW)
-        setEarnVisibility(isMainNet)
-        setSwapVisibility(account?.supportsSwap == true && !isLpToken)
-        updateEarnTitle(account, tokenSlug)
-    }
-
-    private fun updateEarnTitle(account: MAccount?, tokenSlug: String?) {
-        val label = actionViews[HeaderActionsView.Identifier.EARN]?.label ?: return
-        val hasActiveStaking = account?.let { currentAccount ->
-            val stakingTokenSlug = tokenSlug?.let { tokenSlugToStakingSlug(it) ?: it }
-            StakingStore.getStakingState(currentAccount.accountId)?.let { stakingData ->
-                if (stakingTokenSlug != null) {
-                    stakingData.hasActiveStaking(stakingTokenSlug)
-                } else {
-                    stakingData.hasActiveStaking()
-                }
-            } ?: false
-        } ?: false
-        val title = LocaleController.getString(if (hasActiveStaking) "Earning" else "Earn")
-        if (label.text == title) {
-            return
-        }
-        label.text = title
-        updateTextSizes()
-    }
-
-    private fun setBuyVisibility(visible: Boolean) {
-        actionViews[HeaderActionsView.Identifier.BUY]?.visibility = if (visible) VISIBLE else GONE
-    }
-
-    private fun setSellVisibility(visible: Boolean) {
-        actionViews[HeaderActionsView.Identifier.SELL]?.visibility = if (visible) VISIBLE else GONE
     }
 
     private fun setReceiveVisibility(visible: Boolean) {
@@ -423,14 +329,6 @@ class TabletHeaderActionsView(
 
     private fun setSendVisibility(visible: Boolean) {
         actionViews[HeaderActionsView.Identifier.SEND]?.visibility = if (visible) VISIBLE else GONE
-    }
-
-    private fun setSwapVisibility(visible: Boolean) {
-        actionViews[HeaderActionsView.Identifier.SWAP]?.visibility = if (visible) VISIBLE else GONE
-    }
-
-    private fun setEarnVisibility(visible: Boolean) {
-        actionViews[HeaderActionsView.Identifier.EARN]?.visibility = if (visible) VISIBLE else GONE
     }
 
     private class TabletHeaderActionItem(
@@ -497,39 +395,9 @@ class TabletHeaderActionsView(
             return mutableListOf<Item>().apply {
                 add(
                     Item(
-                        HeaderActionsView.Identifier.BUY,
-                        context.requireDrawableCompat(R.drawable.ic_header_buy_outline),
-                        LocaleController.getString("Buy")
-                    )
-                )
-                add(
-                    Item(
                         HeaderActionsView.Identifier.RECEIVE,
                         context.requireDrawableCompat(R.drawable.ic_header_deposit_outline),
                         LocaleController.getString("Deposit")
-                    )
-                )
-                add(
-                    Item(
-                        HeaderActionsView.Identifier.SWAP,
-                        context.requireDrawableCompat(R.drawable.ic_header_swap_outline),
-                        LocaleController.getString("Trade")
-                    )
-                )
-                if (showEarn) {
-                    add(
-                        Item(
-                            HeaderActionsView.Identifier.EARN,
-                            context.requireDrawableCompat(R.drawable.ic_header_earn_outline),
-                            LocaleController.getString("Earn")
-                        )
-                    )
-                }
-                add(
-                    Item(
-                        HeaderActionsView.Identifier.SELL,
-                        context.requireDrawableCompat(R.drawable.ic_header_sell_outline),
-                        LocaleController.getString("Sell")
                     )
                 )
                 add(

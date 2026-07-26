@@ -30,9 +30,9 @@ import AccountSelector from './AccountSelector';
 import AppLockButton from './actionButtons/AppLockButton';
 import BackButton from './actionButtons/BackButton';
 import QrScannerButton from './actionButtons/QrScannerButton';
+import SettingsButton from './actionButtons/SettingsButton';
 import ToggleFullscreenButton from './actionButtons/ToggleFullscreenButton';
 import ToggleLayoutButton from './actionButtons/ToggleLayoutButton';
-import ToggleSensitiveDataButton from './actionButtons/ToggleSensitiveDataButton';
 
 import styles from './Header.module.scss';
 
@@ -54,7 +54,6 @@ interface OwnProps {
 interface StateProps {
   isViewMode?: boolean;
   isAppLockEnabled?: boolean;
-  isSensitiveDataHidden: boolean;
   isFullscreen: boolean;
   isTemporaryAccount: boolean;
 }
@@ -70,7 +69,6 @@ function Header({
   areTabsStuck,
   isScrolled,
   isAppLockEnabled,
-  isSensitiveDataHidden,
   isFullscreen,
   isTemporaryAccount,
   isChartCardOpen,
@@ -173,8 +171,8 @@ function Header({
   }
 
   const buttonsAmount = Math.max(
-    1 + (showBackButton ? 1 : 0) + (isAppLockEnabled ? 1 : 0),
-    (isQrScannerSupported ? 1 : 0) + (canToggleAppLayout ? 1 : 0) + (IS_TELEGRAM_APP ? 1 : 0),
+    (showBackButton ? 1 : 0) + (isAppLockEnabled ? 1 : 0),
+    1 + (isQrScannerSupported ? 1 : 0) + (canToggleAppLayout ? 1 : 0) + (IS_TELEGRAM_APP ? 1 : 0),
   );
 
   const actionsStartClassName = isPortrait
@@ -197,16 +195,19 @@ function Header({
       <div className={styles.headerInner} style={`--icons-amount: ${buttonsAmount}`}>
         <div className={actionsStartClassName}>
           {showBackButton && <BackButton isIconOnly />}
-          {!IS_EXPLORER && <ToggleSensitiveDataButton isSensitiveDataHidden={isSensitiveDataHidden} />}
           {isAppLockEnabled && <AppLockButton />}
         </div>
 
-        <AccountSelector withBalance={withBalance} withAccountSelector={!IS_CORE_WALLET && !IS_EXPLORER} />
+        <AccountSelector
+          withBalance={withBalance}
+          withAccountSelector={!IS_CORE_WALLET && !IS_EXPLORER}
+        />
 
         <div className={actionsEndClassName}>
           <QrScannerButton isViewMode={isViewMode} />
           {IS_TELEGRAM_APP && <ToggleFullscreenButton isFullscreen={isFullscreen} />}
           {canToggleAppLayout && <ToggleLayoutButton />}
+          {!IS_EXPLORER && <SettingsButton />}
         </div>
       </div>
     </div>
@@ -220,7 +221,6 @@ export default memo(withGlobal<OwnProps>(
       currentTemporaryViewAccountId,
       settings: {
         isAppLockEnabled,
-        isSensitiveDataHidden,
       },
     } = global;
 
@@ -231,7 +231,6 @@ export default memo(withGlobal<OwnProps>(
       isViewMode,
       isAppLockEnabled: isAppLockEnabled && isPasswordPresent,
       isFullscreen: Boolean(isFullscreen),
-      isSensitiveDataHidden: Boolean(isSensitiveDataHidden),
       isTemporaryAccount: Boolean(currentTemporaryViewAccountId),
     };
   },

@@ -33,19 +33,6 @@ class SettingsVM {
             children = emptyList()
         ),
         SettingsSection(
-            section = SettingsSection.Section.PORTFOLIO,
-            title = "",
-            children = listOf(
-                SettingsItem(
-                    identifier = SettingsItem.Identifier.PORTFOLIO,
-                    icon = R.drawable.ic_portfolio,
-                    title = LocaleController.getString("Portfolio"),
-                    subtitle = LocaleController.getString("Performance, insights and P&L"),
-                    hasTintColor = false
-                )
-            )
-        ),
-        SettingsSection(
             section = SettingsSection.Section.SETTINGS,
             title = LocaleController.getString("Settings"),
             children = emptyList()
@@ -218,13 +205,6 @@ class SettingsVM {
                     hasTintColor = false,
                 )
             else null,
-            SettingsItem(
-                identifier = SettingsItem.Identifier.NOTIFICATION_SETTINGS,
-                icon = R.drawable.ic_notifications,
-                title = LocaleController.getString("Notifications & Sounds"),
-                subtitle = LocaleController.getString("Wallets, Sounds"),
-                hasTintColor = false
-            ),
             SettingsItem(
                 identifier = SettingsItem.Identifier.LANGUAGE,
                 icon = R.drawable.ic_language,

@@ -19,6 +19,7 @@ import useLang from '../../../../hooks/useLang';
 
 import SensitiveData from '../../../ui/SensitiveData';
 import Transition from '../../../ui/Transition';
+import ToggleSensitiveDataButton from './actionButtons/ToggleSensitiveDataButton';
 
 import styles from './AccountSelector.module.scss';
 
@@ -73,30 +74,33 @@ function AccountSelector({
       slideClassName={styles.slide}
     >
       {withBalance && (
-        <div className={buildClassName(styles.balance, 'rounded-font')}>
-          <SensitiveData
-            isActive={isSensitiveDataHidden}
-            shouldHoldSize
-            align="center"
-            cols={10}
-            rows={2}
-            cellSize={8.5}
-          >
-            <span
-              className={styles.currencySwitcher}
+        <div className={buildClassName(styles.balanceRow, 'rounded-font')}>
+          <div className={styles.balance}>
+            <SensitiveData
+              isActive={isSensitiveDataHidden}
+              shouldHoldSize
+              align="center"
+              cols={10}
+              rows={2}
+              cellSize={8.5}
             >
-              {shortBaseSymbol.length === 1 && (
-                <span className={buildClassName(styles.balanceCurrency, styles.balanceCurrencyPrefix)}>
-                  {shortBaseSymbol}
-                </span>
-              )}
-              {primaryWholePart}
-              {primaryFractionPart && <span className={styles.balanceFractionPart}>.{primaryFractionPart}</span>}
-              {shortBaseSymbol.length > 1 && (
-                <span className={styles.balanceCurrency}>&nbsp;{shortBaseSymbol}</span>
-              )}
-            </span>
-          </SensitiveData>
+              <span
+                className={styles.currencySwitcher}
+              >
+                {shortBaseSymbol.length === 1 && (
+                  <span className={buildClassName(styles.balanceCurrency, styles.balanceCurrencyPrefix)}>
+                    {shortBaseSymbol}
+                  </span>
+                )}
+                {primaryWholePart}
+                {primaryFractionPart && <span className={styles.balanceFractionPart}>.{primaryFractionPart}</span>}
+                {shortBaseSymbol.length > 1 && (
+                  <span className={styles.balanceCurrency}>&nbsp;{shortBaseSymbol}</span>
+                )}
+              </span>
+            </SensitiveData>
+          </div>
+          <ToggleSensitiveDataButton isSensitiveDataHidden={Boolean(isSensitiveDataHidden)} />
         </div>
       )}
       {Boolean(currentAccount) && (

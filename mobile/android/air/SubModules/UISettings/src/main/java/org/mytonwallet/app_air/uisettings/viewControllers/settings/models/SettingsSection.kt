@@ -7,7 +7,6 @@ data class SettingsSection(
 ) {
     enum class Section {
         ACCOUNTS,
-        PORTFOLIO,
         SETTINGS,
         HELP,
         ABOUT

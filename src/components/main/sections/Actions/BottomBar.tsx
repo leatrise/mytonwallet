@@ -5,7 +5,7 @@ import { getActions, withGlobal } from '../../../../global';
 
 import type { Theme } from '../../../../global/types';
 
-import { IS_CORE_WALLET } from '../../../../config';
+import { IS_CORE_WALLET, NO_AGENT } from '../../../../config';
 import { selectCurrentAccountSettings } from '../../../../global/selectors';
 import { ACCENT_COLORS } from '../../../../util/accentColor/constants';
 import buildClassName from '../../../../util/buildClassName';
@@ -48,10 +48,10 @@ const ANIMATED_STICKER_SPEED = 2;
 
 const TAB_WALLET = 0;
 const TAB_AGENT = 1;
-const TAB_EXPLORE = 2;
-const TAB_SETTINGS_FULL = 3;
+const TAB_EXPLORE = NO_AGENT ? 1 : 2;
+const TAB_SETTINGS_FULL = NO_AGENT ? 2 : 3;
 
-const TAB_COUNT = IS_CORE_WALLET ? 2 : 4;
+const TAB_COUNT = IS_CORE_WALLET ? 2 : NO_AGENT ? 3 : 4;
 const SETTINGS_INDEX = IS_CORE_WALLET ? 1 : TAB_SETTINGS_FULL;
 
 function BottomBar({
@@ -80,7 +80,12 @@ function BottomBar({
     ]
     : [
       { index: TAB_WALLET, label: 'Wallet', iconKey: 'iconWallet', onClick: switchToWallet },
-      { index: TAB_AGENT, label: 'Agent', iconKey: 'iconAgent', onClick: switchToAgent },
+      ...(!NO_AGENT ? [{
+        index: TAB_AGENT,
+        label: 'Agent',
+        iconKey: 'iconAgent' as const,
+        onClick: switchToAgent,
+      }] : []),
       { index: TAB_EXPLORE, label: 'Explore', iconKey: 'iconExplore', onClick: switchToExplore },
       { index: SETTINGS_INDEX, label: 'Settings', iconKey: 'iconSettings', onClick: switchToSettings },
     ];
@@ -197,7 +202,7 @@ function getActiveIndex({
     return areSettingsOpen ? SETTINGS_INDEX : TAB_WALLET;
   }
 
-  if (isAgentOpen) return TAB_AGENT;
+  if (!NO_AGENT && isAgentOpen) return TAB_AGENT;
   if (isExploreOpen) return TAB_EXPLORE;
   if (areSettingsOpen) return TAB_SETTINGS_FULL;
 

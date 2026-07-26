@@ -19,7 +19,7 @@ import type {
 import type { LangFn } from '../../../../hooks/useLang';
 import type { DropdownItem } from '../../../ui/Dropdown';
 
-import { IS_GRAM_WALLET } from '../../../../config';
+import { IS_GRAM_WALLET, NO_PORTFOLIO } from '../../../../config';
 import {
   selectAccountStakingStates, selectCurrentAccount,
   selectCurrentAccountId,
@@ -240,7 +240,7 @@ function Card({
   // Refresh the card's range change while the Portfolio screen is closed (it keeps it updated on its own
   // while open), and whenever the total balance changes, so the value tracks the live net worth
   useEffect(() => {
-    if (portfolioActiveRange && !isPortfolioOpen) {
+    if (!NO_PORTFOLIO && portfolioActiveRange && !isPortfolioOpen) {
       loadPortfolioPnlChange();
     }
   }, [currentAccountId, baseCurrency, portfolioActiveRange, isPortfolioOpen, values?.primaryValue]);
@@ -360,9 +360,9 @@ function Card({
                 !hasCustomCard && changePrefix === 'up' && styles.positive,
                 'rounded-font',
               )}
-              role="button"
-              tabIndex={0}
-              onClick={() => switchToPortfolio()}
+              role={NO_PORTFOLIO ? undefined : 'button'}
+              tabIndex={NO_PORTFOLIO ? undefined : 0}
+              onClick={NO_PORTFOLIO ? undefined : () => switchToPortfolio()}
             >
               <span className={buildClassName(styles.changeValue, isPnlChangeUpdating && 'glare-text')}>
                 {hasChangePercent && (
@@ -496,7 +496,7 @@ export default memo(
 
       const { baseCurrency } = global.settings;
       // Portfolio history exists only for `mainnet` account
-      const isPortfolioSupported = selectPortfolioMainnetWalletKeys(global).length > 0;
+      const isPortfolioSupported = !NO_PORTFOLIO && selectPortfolioMainnetWalletKeys(global).length > 0;
       const portfolioActiveRange = isPortfolioSupported ? global.portfolio?.activeRange : DEFAULT_PORTFOLIO_TIME_RANGE;
       const rangePnlChange = portfolioActiveRange
         ? selectPortfolioHistoryBundle(global, currentAccountId, baseCurrency, portfolioActiveRange)?.pnlChange

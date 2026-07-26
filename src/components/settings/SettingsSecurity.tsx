@@ -16,6 +16,7 @@ import {
   DEFAULT_AUTOLOCK_OPTION,
   IS_CAPACITOR,
   IS_GRAM_WALLET,
+  NO_MFA,
   PIN_LENGTH,
 } from '../../config';
 import {
@@ -470,7 +471,7 @@ function SettingsSecurity({
             </>
           )}
 
-          {(SHOULD_FORCE_SHOW_MFA_IN_DEV || (IS_GRAM_WALLET && isMfaEnabled) || hasCurrentAccountMfa) && (
+          {!NO_MFA && (SHOULD_FORCE_SHOW_MFA_IN_DEV || (IS_GRAM_WALLET && isMfaEnabled) || hasCurrentAccountMfa) && (
             <>
               <div className={buildClassName(styles.block, styles.settingsBlockWithDescription)}>
                 <div className={buildClassName(styles.item)} onClick={handleOpenMfa}>

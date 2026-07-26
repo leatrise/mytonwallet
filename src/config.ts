@@ -290,7 +290,7 @@ export const LANG_LIST: LangItem[] = [{
   rtl: false,
 }];
 
-export const IS_STAKING_DISABLED = IS_CORE_WALLET;
+export const IS_STAKING_DISABLED = IS_CORE_WALLET || process.env.NO_STAKING === '1';
 
 // Blacklist-style feature flags (default unset = feature ON). Each is substituted at build time by
 // `EnvironmentPlugin`, so it both drives Webpack dead-code elimination (drops code + npm deps) and is
@@ -306,6 +306,7 @@ export const NO_PORTFOLIO = process.env.NO_PORTFOLIO === '1';
 export const NO_MFA = process.env.NO_MFA === '1';
 export const NO_LEDGER = process.env.NO_LEDGER === '1';
 export const NO_NOTIFICATIONS = process.env.NO_NOTIFICATIONS === '1';
+export const NO_AGENT = process.env.NO_AGENT === '1';
 export const VALIDATION_PERIOD_MS = 65_536_000; // 18.2 h.
 export const ONE_TON = 1_000_000_000n;
 export const DEFAULT_FEE = 15_000_000n; // 0.015 TON

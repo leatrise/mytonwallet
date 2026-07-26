@@ -27,6 +27,7 @@ import {
   INIT_SWAP_ASSETS,
   IS_CORE_WALLET,
   IS_EXPLORER,
+  NO_SWAP,
   SHOULD_SHOW_ALL_ASSETS_AND_ACTIVITY,
   SWAP_API_VERSION,
   THEME_DEFAULT,
@@ -128,9 +129,9 @@ export const INITIAL_STATE: GlobalState = {
 
   restrictions: {
     isLimitedRegion: false,
-    isSwapDisabled: IS_IOS_APP || IS_CORE_WALLET,
-    isOnRampDisabled: IS_IOS_APP || IS_CORE_WALLET,
-    isOffRampDisabled: IS_IOS_APP || IS_CORE_WALLET,
+    isSwapDisabled: NO_SWAP || IS_IOS_APP || IS_CORE_WALLET,
+    isOnRampDisabled: true,
+    isOffRampDisabled: true,
     isNftBuyingDisabled: IS_IOS_APP,
   },
 

@@ -33,7 +33,6 @@ import org.mytonwallet.app_air.uicomponents.widgets.menu.WMenuPopup
 import org.mytonwallet.app_air.uiinappbrowser.InAppBrowserVC
 import org.mytonwallet.app_air.uipasscode.viewControllers.passcodeConfirm.PasscodeConfirmVC
 import org.mytonwallet.app_air.uipasscode.viewControllers.passcodeConfirm.PasscodeViewState.Default
-import org.mytonwallet.app_air.uiportfolio.viewControllers.portfolio.PortfolioVC
 import org.mytonwallet.app_air.uireceive.ReceiveVC
 import org.mytonwallet.app_air.uisettings.viewControllers.appInfo.AppInfoVC
 import org.mytonwallet.app_air.uisettings.viewControllers.appearance.AppearanceVC
@@ -173,6 +172,19 @@ class SettingsVC(context: Context) : WViewController(context),
         btn
     }
 
+    private val backButton: WImageButton by lazy {
+        WImageButton(context).apply {
+            setImageDrawable(
+                context.getDrawableCompat(
+                    org.mytonwallet.app_air.uicomponents.R.drawable.ic_nav_back
+                )
+            )
+            setOnClickListener {
+                navigationController?.tabBarController?.switchToFirstTab()
+            }
+        }
+    }
+
     private val moreButton: WImageButton by lazy {
         val btn = WImageButton(context)
         btn.background = moreButtonRipple
@@ -227,6 +239,7 @@ class SettingsVC(context: Context) : WViewController(context),
                     SettingsHeaderView.HEIGHT_NORMAL.dp
             )
         )
+        view.addView(backButton, LayoutParams(40.dp, 40.dp))
         view.addView(qrButton, LayoutParams(40.dp, 40.dp))
         view.addView(moreButton, LayoutParams(40.dp, 40.dp))
 
@@ -235,6 +248,11 @@ class SettingsVC(context: Context) : WViewController(context),
             toTop(headerView)
             toStartPx(headerView, additionalTabletPadding + systemBarStartInset)
             toEnd(headerView)
+            toTopPx(
+                backButton,
+                (navigationController?.getSystemBars()?.top ?: 0) + ViewConstants.GAP.dp
+            )
+            toStart(backButton, 8f)
             toTopPx(
                 moreButton,
                 (navigationController?.getSystemBars()?.top ?: 0) + ViewConstants.GAP.dp
@@ -309,6 +327,7 @@ class SettingsVC(context: Context) : WViewController(context),
             setTint(WColor.SecondaryText.color)
         }
         qrButton.setImageDrawable(qrDrawable)
+        backButton.updateColors(WColor.SecondaryText, WColor.BackgroundRipple)
     }
 
     override fun updateProtectedView() {
@@ -466,12 +485,6 @@ class SettingsVC(context: Context) : WViewController(context),
             SettingsItem.Identifier.NOTIFICATION_SETTINGS -> {
                 navigationController?.tabBarController?.mainNavigationController?.push(
                     NotificationSettingsVC(context)
-                )
-            }
-
-            SettingsItem.Identifier.PORTFOLIO -> {
-                navigationController?.tabBarController?.mainNavigationController?.push(
-                    PortfolioVC(context)
                 )
             }
 

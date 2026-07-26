@@ -31,10 +31,10 @@ type StateProps = {
 };
 
 type OwnProps = {
-  isViewMode: boolean;
   isActive: boolean;
   currentWalletRef?: ElementRef<HTMLDivElement>;
   onRemoveClick: NoneToVoidFunction;
+  onBackClick: NoneToVoidFunction;
 };
 
 const MENU_ITEMS: DropdownItem<MenuHandler>[] = [
@@ -54,12 +54,12 @@ const MENU_ITEMS: DropdownItem<MenuHandler>[] = [
 function SettingsAccountHeader({
   currentAccountId,
   currentAccountTitle,
-  isViewMode,
   isActive,
   currentWalletRef,
   onRemoveClick,
+  onBackClick,
 }: OwnProps & StateProps) {
-  const { openReceiveModal, openWalletRenameModal } = getActions();
+  const { openWalletRenameModal } = getActions();
   const lang = useLang();
   const { isPortrait } = useDeviceScreen();
   const { height: windowHeight, width: windowWidth } = useWindowSize();
@@ -146,10 +146,11 @@ function SettingsAccountHeader({
       >
         <Button
           isSimple
-          className={buildClassName(styles.headerButton, isViewMode && styles.hidden)}
-          onClick={!isViewMode ? openReceiveModal : undefined}
+          className={styles.headerButton}
+          ariaLabel={lang('Back')}
+          onClick={onBackClick}
         >
-          <i className="icon-qr-code" aria-hidden />
+          <i className={buildClassName(styles.iconChevron, 'icon-chevron-left')} aria-hidden />
         </Button>
 
         <Transition

@@ -7,6 +7,7 @@ import {
   IS_CAPACITOR,
   IS_CORE_WALLET,
   MW_CARDS_COLLECTION,
+  NO_SWAP,
   STAKING_SLUG_PREFIX,
   SWAP_API_VERSION,
   TELEGRAM_GIFTS_SUPER_COLLECTION,
@@ -392,12 +393,12 @@ addActionHandler('apiUpdate', (global, actions, update) => {
         });
       }
 
-      const shouldRestrictSwapsAndOnOffRamp = (IS_IOS_APP && isLimitedRegion) || IS_CORE_WALLET;
+      const shouldRestrictSwapsAndOnOffRamp = NO_SWAP || (IS_IOS_APP && isLimitedRegion) || IS_CORE_WALLET;
       global = updateRestrictions(global, {
         isLimitedRegion,
         isSwapDisabled: shouldRestrictSwapsAndOnOffRamp,
-        isOnRampDisabled: shouldRestrictSwapsAndOnOffRamp,
-        isOffRampDisabled: shouldRestrictSwapsAndOnOffRamp,
+        isOnRampDisabled: true,
+        isOffRampDisabled: true,
         isNftBuyingDisabled: shouldRestrictSwapsAndOnOffRamp,
         isCopyStorageEnabled,
         supportAccountsCount,

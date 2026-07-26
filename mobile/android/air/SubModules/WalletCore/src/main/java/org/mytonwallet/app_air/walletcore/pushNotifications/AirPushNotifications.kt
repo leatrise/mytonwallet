@@ -20,8 +20,13 @@ import org.mytonwallet.app_air.walletcore.moshi.api.ApiMethod
 
 object AirPushNotifications {
     const val MAX_PUSH_NOTIFICATIONS_ACCOUNT_COUNT = 3
+    const val IS_ENABLED = false
 
     fun register(subscribePreviousAccountsIfEmpty: Boolean) {
+        if (!IS_ENABLED) {
+            FirebaseMessaging.getInstance().isAutoInitEnabled = false
+            return
+        }
         FirebaseMessaging.getInstance().isAutoInitEnabled = true
         FirebaseMessaging
             .getInstance()
@@ -155,10 +160,12 @@ object AirPushNotifications {
     }
 
     fun refreshSubscriptions() {
+        if (!IS_ENABLED) return
         resubscribeAll(subscribePreviousAccountsIfEmpty = false)
     }
 
     fun subscribe(accountId: String, ignoreIfLimitReached: Boolean) {
+        if (!IS_ENABLED) return
         WGlobalStorage.getAccount(accountId)?.let { accountObj ->
             subscribe(
                 MAccount(accountId, accountObj),
@@ -168,6 +175,7 @@ object AirPushNotifications {
     }
 
     fun subscribe(account: MAccount, ignoreIfLimitReached: Boolean) {
+        if (!IS_ENABLED) return
         notificationScope.launch {
             withQueue {
                 val token = WGlobalStorage.getPushNotificationsToken() ?: return@withQueue
@@ -196,6 +204,7 @@ object AirPushNotifications {
     }
 
     fun accountNameChanged(account: MAccount) {
+        if (!IS_ENABLED) return
         notificationScope.launch {
             withQueue {
                 val token = WGlobalStorage.getPushNotificationsToken() ?: return@withQueue
@@ -209,6 +218,10 @@ object AirPushNotifications {
     }
 
     fun unsubscribe(account: MAccount, onCompletion: ((success: Boolean) -> Unit)? = null) {
+        if (!IS_ENABLED) {
+            onCompletion?.invoke(true)
+            return
+        }
         notificationScope.launch {
             withQueue {
                 val token = WGlobalStorage.getPushNotificationsToken() ?: return@withQueue
@@ -224,6 +237,7 @@ object AirPushNotifications {
     }
 
     fun unsubscribeAll() {
+        if (!IS_ENABLED) return
         notificationScope.launch {
             withQueue {
                 val accountIds = WGlobalStorage.accountIds()
@@ -242,6 +256,7 @@ object AirPushNotifications {
         tonAddress: String,
         accountName: String
     ) {
+        if (!IS_ENABLED) return
         try {
             WalletCore.call(
                 ApiMethod.Notifications.SubscribeNotifications(
@@ -265,6 +280,7 @@ object AirPushNotifications {
     }
 
     suspend fun unsubscribeAsync(token: String, accountId: String, tonAddress: String): Boolean {
+        if (!IS_ENABLED) return true
         try {
             WalletCore.call(
                 ApiMethod.Notifications.UnsubscribeNotifications(
