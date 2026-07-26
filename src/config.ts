@@ -182,7 +182,7 @@ export const SHORT_FRACTION_DIGITS = 2;
 
 export const MAX_PUSH_NOTIFICATIONS_ACCOUNT_COUNT = 3;
 
-export const SUPPORT_USERNAME = 'mysupport';
+export const SUPPORT_USERNAME = 'YohiSupport';
 export const MW_NEWS_CHANNEL_NAME: Partial<Record<LangCode, string>> = {
   en: 'MyTonWalletEn',
   ru: 'MyTonWalletRu',

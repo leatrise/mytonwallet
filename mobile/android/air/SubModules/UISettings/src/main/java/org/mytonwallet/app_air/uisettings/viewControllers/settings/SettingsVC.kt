@@ -73,7 +73,6 @@ import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.WalletEvent
 import org.mytonwallet.app_air.walletcore.WalletEvent.AccountChangedInApp
 import org.mytonwallet.app_air.walletcore.api.activateAccount
-import org.mytonwallet.app_air.walletcore.helpers.ExplorerHelpers
 import org.mytonwallet.app_air.walletcore.models.InAppBrowserConfig
 import org.mytonwallet.app_air.walletcore.models.MAccount
 import org.mytonwallet.app_air.walletcore.models.blockchain.MBlockchain
@@ -537,13 +536,6 @@ class SettingsVC(context: Context) : WViewController(context),
                 val username = context.getString(usernameRes)
                     .ifEmpty { context.getString(BaseR.string.app_tips_telegram_username_en) }
                 if (username.isNotEmpty()) openExternalUrl("https://t.me/$username")
-            }
-
-            SettingsItem.Identifier.MTW_CARDS_NFT -> {
-                openUrl(
-                    item.title.toString(),
-                    ExplorerHelpers.getMtwCardsUrl(MBlockchainNetwork.MAINNET)
-                )
             }
 
             SettingsItem.Identifier.INSTALL_ON_DESKTOP -> {

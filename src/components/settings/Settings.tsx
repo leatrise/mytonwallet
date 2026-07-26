@@ -17,7 +17,6 @@ import {
   IS_EXPLORER,
   IS_EXTENSION,
   LANG_LIST,
-  MW_CARDS_WEBSITE,
   PROXY_HOSTS,
   SHOULD_SHOW_ALL_ASSETS_AND_ACTIVITY,
   SUPPORT_USERNAME,
@@ -102,7 +101,6 @@ import installAppImg from '../../assets/settings/settings_install-app.svg';
 import installDesktopImg from '../../assets/settings/settings_install-desktop.svg';
 import installMobileImg from '../../assets/settings/settings_install-mobile.svg';
 import languageImg from '../../assets/settings/settings_language.svg';
-import mwCardsImg from '../../assets/settings/settings_mw-cards.svg';
 import upgradeImg from '../../assets/settings/settings_mywallet.png';
 import notifications from '../../assets/settings/settings_notifications.svg';
 import portfolioImg from '../../assets/settings/settings_portfolio.svg';
@@ -129,7 +127,6 @@ type StateProps = {
   isCopyStorageEnabled?: boolean;
   supportAccountsCount?: number;
   arePushNotificationsAvailable?: boolean;
-  isNftBuyingDisabled?: boolean;
   isViewMode: boolean;
   accountType?: AccountType;
   isMultichain: boolean;
@@ -162,7 +159,6 @@ function Settings({
   isCopyStorageEnabled,
   supportAccountsCount = SUPPORT_ACCOUNTS_COUNT_DEFAULT,
   arePushNotificationsAvailable,
-  isNftBuyingDisabled,
   isViewMode,
   accountType,
   isMultichain,
@@ -684,19 +680,6 @@ function Settings({
             <>
               <p className={buildClassName(styles.blockTitle, styles.blockTitleSmall)}>{lang('About')}</p>
               <div className={styles.block}>
-                {!isNftBuyingDisabled && (
-                  <a
-                    href={MW_CARDS_WEBSITE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={buildClassName(styles.item, styles.itemMenu)}
-                  >
-                    <img className={styles.menuIcon} src={mwCardsImg} alt={lang('My Wallet Cards NFT')} />
-                    <span className={styles.itemTitle}>{lang('My Wallet Cards NFT')}</span>
-
-                    <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
-                  </a>
-                )}
                 {IS_EXTENSION && (
                   <div className={buildClassName(styles.item, styles.itemMenu)} onClick={handleClickInstallApp}>
                     <img className={styles.menuIcon} src={installAppImg} alt={lang('Install App')} />
@@ -927,7 +910,7 @@ function Settings({
 
 export default memo(withGlobal<OwnProps>((global): StateProps => {
   const isPasswordPresent = selectIsPasswordPresent(global);
-  const { isCopyStorageEnabled, supportAccountsCount = 1, isNftBuyingDisabled } = global.restrictions;
+  const { isCopyStorageEnabled, supportAccountsCount = 1 } = global.restrictions;
 
   const { currentVersion, byId: versionsById } = global.walletVersions ?? {};
   const currentAccountId = selectCurrentAccountId(global);
@@ -946,7 +929,6 @@ export default memo(withGlobal<OwnProps>((global): StateProps => {
     versions,
     isCopyStorageEnabled,
     supportAccountsCount,
-    isNftBuyingDisabled,
     arePushNotificationsAvailable: global.pushNotifications.isAvailable,
     isViewMode: selectIsCurrentAccountViewMode(global),
     accountType: account?.type,

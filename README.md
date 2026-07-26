@@ -52,7 +52,7 @@ Connect Ledger hardware wallets, hide balances, personalize interface, send mult
 
 - 📲 **Get the app**: [get.mywallet.io](https://get.mywallet.io/)
 - 📚 **Help Center**: [help.mywallet.io](https://help.mywallet.io)
-- 🛟 **24/7 Support**: [t.me/mysupport](https://t.me/mysupport)
+- 🛟 **24/7 Support**: [telegram.me/YohiSupport](https://telegram.me/YohiSupport)
 - 💬 **Telegram**: [t.me/mytonwalleten](https://t.me/mytonwalleten)
 - 🐦 **X (Twitter)**: [x.com/mytonwallet_io](https://x.com/mytonwallet_io)
 - 📰 **Blog & updates**: [mywallet.io](https://mywallet.io)

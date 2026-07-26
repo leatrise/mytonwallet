@@ -60,12 +60,6 @@ class SettingsVM {
             title = LocaleController.getString("About"),
             children = listOf(
                 SettingsItem(
-                    identifier = SettingsItem.Identifier.MTW_CARDS_NFT,
-                    icon = R.drawable.ic_mtw_nft,
-                    title = LocaleController.getString("My Wallet Cards NFT"),
-                    hasTintColor = false
-                ),
-                SettingsItem(
                     identifier = SettingsItem.Identifier.INSTALL_ON_DESKTOP,
                     icon = R.drawable.ic_desktop,
                     title = LocaleController.getString("Install on Desktop"),
@@ -246,7 +240,7 @@ class SettingsVM {
         identifier = SettingsItem.Identifier.ASK_A_QUESTION,
         icon = R.drawable.ic_ask_question,
         title = LocaleController.getString("Get Support"),
-        value = "@mysupport",
+        value = "@YohiSupport",
         hasTintColor = false
     )
     private val helpSectionStaticItems: List<SettingsItem>
