@@ -101,6 +101,8 @@ rescue StandardError
 end
 
 def firebase_beta_build_number
+  return 0 unless File.file?($firebase_service_credentials_file) && !File.zero?($firebase_service_credentials_file)
+
   latest_release = firebase_app_distribution_get_latest_release(
     app: $firebase_app_id,
     service_credentials_file: $firebase_service_credentials_file,
@@ -200,14 +202,18 @@ platform :android do
     version = JSON.parse(File.read("../../../package.json"))["version"]
     release_notes = "#{build_meta_line(version)}\n\n#{release_notes}"
 
-    firebase_app_distribution(
-      app: $firebase_app_id,
-      android_artifact_type: "APK",
-      android_artifact_path: lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH],
-      service_credentials_file: $firebase_service_credentials_file,
-      release_notes: release_notes,
-      groups: $firebase_groups
-    )
+    if File.file?($firebase_service_credentials_file) && !File.zero?($firebase_service_credentials_file)
+      firebase_app_distribution(
+        app: $firebase_app_id,
+        android_artifact_type: "APK",
+        android_artifact_path: lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH],
+        service_credentials_file: $firebase_service_credentials_file,
+        release_notes: release_notes,
+        groups: $firebase_groups
+      )
+    else
+      UI.important('Skipping firebase_app_distribution because firebase-service-account.json is missing or empty')
+    end
   end
 
   desc "Release a new version to the Google Play"
