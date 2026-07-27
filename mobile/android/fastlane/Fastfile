@@ -1,5 +1,7 @@
 default_platform(:android)
 
+require 'open3'
+
 def env_value(name, fallback = nil)
   value = ENV[name]
   value.nil? || value.empty? ? fallback : value
@@ -109,12 +111,39 @@ rescue StandardError
   0
 end
 
+def signing_key_alias(store_password)
+  configured_alias = env_value('ANDROID_KEY_ALIAS')
+  return configured_alias unless configured_alias.nil?
+
+  output, error, status = Open3.capture3(
+    { 'MYTONWALLET_KEYSTORE_PASSWORD' => store_password },
+    'keytool', '-list', '-v', '-keystore', $keystore_path,
+    '-storepass:env', 'MYTONWALLET_KEYSTORE_PASSWORD',
+    '-J-Duser.language=en'
+  )
+  raise "Unable to inspect Android keystore: #{error.strip}" unless status.success?
+
+  aliases = []
+  current_alias = nil
+  output.each_line do |line|
+    current_alias = line.delete_prefix('Alias name:').strip if line.start_with?('Alias name:')
+    aliases << current_alias if line.start_with?('Entry type: PrivateKeyEntry') && !current_alias.nil?
+  end
+
+  return aliases.first if aliases.one?
+
+  raise "Set ANDROID_KEY_ALIAS: expected one private key in the Android keystore, found #{aliases.length}"
+end
+
 def signing_properties
+  store_password = env_value('ANDROID_KEYSTORE_PASSWORD')
+  raise 'ANDROID_KEYSTORE_PASSWORD is required' if store_password.nil?
+
   {
     "android.injected.signing.store.file" => $keystore_path,
-    "android.injected.signing.store.password" => ENV["ANDROID_KEYSTORE_PASSWORD"],
-    "android.injected.signing.key.alias" => "key0",
-    "android.injected.signing.key.password" => ENV["ANDROID_KEYSTORE_PASSWORD"]
+    "android.injected.signing.store.password" => store_password,
+    "android.injected.signing.key.alias" => signing_key_alias(store_password),
+    "android.injected.signing.key.password" => env_value('ANDROID_KEY_PASSWORD', store_password)
   }
 end
 
