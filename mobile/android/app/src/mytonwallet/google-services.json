@@ -75,7 +75,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:155616896352:android:ee6a74c4ae7b7e2d7eaa05",
         "android_client_info": {
-          "package_name": "org.mytonwallet.app"
+          "package_name": "com.yohi.wallet"
         }
       },
       "oauth_client": [],
@@ -97,7 +97,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:155616896352:android:0d881eb55d27f40f7eaa05",
         "android_client_info": {
-          "package_name": "org.mytonwallet.app.air"
+          "package_name": "com.yohi.wallet.air"
         }
       },
       "oauth_client": [],
@@ -119,7 +119,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:155616896352:android:2d448728d65b6d277eaa05",
         "android_client_info": {
-          "package_name": "org.mytonwallet.app.beta"
+          "package_name": "com.yohi.wallet.beta"
         }
       },
       "oauth_client": [],
@@ -141,7 +141,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:155616896352:android:1bedb95f51fdbaac7eaa05",
         "android_client_info": {
-          "package_name": "org.mytonwallet.app.debug"
+          "package_name": "com.yohi.wallet.debug"
         }
       },
       "oauth_client": [],

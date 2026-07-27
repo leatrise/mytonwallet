@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="app_name" translatable="false">Yohi Wallet</string>
-  <string name="package_name" translatable="false">org.mytonwallet.app</string>
+  <string name="package_name" translatable="false">com.yohi.wallet</string>
   <string name="ton_url_scheme" translatable="false">ton</string>
   <string name="tc_url_scheme" translatable="false">tc</string>
   <string name="app_tc_url_scheme" translatable="false">mytonwallet-tc</string>

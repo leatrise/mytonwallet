@@ -1,4 +1,4 @@
-package org.mytonwallet.app;
+package com.yohi.wallet;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

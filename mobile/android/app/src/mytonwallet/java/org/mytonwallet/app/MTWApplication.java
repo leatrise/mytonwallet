@@ -1,4 +1,4 @@
-package org.mytonwallet.app;
+package com.yohi.wallet;
 
 import com.capacitorjs.plugins.statusbar.StatusBarPluginDelegate;
 

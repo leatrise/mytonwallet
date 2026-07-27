@@ -8,7 +8,7 @@ android {
       useLegacyPackaging = true
     }
   }
-  namespace = "org.mytonwallet.app"
+  namespace = "com.yohi.wallet"
   compileSdk = rootProject.ext.compileSdkVersion
   // Source compatibility moved here from the (no-longer-applied) generated
   // capacitor.build.gradle.
@@ -66,7 +66,7 @@ android {
   productFlavors {
     mytonwallet {
       dimension "brand"
-      applicationId "org.mytonwallet.app"
+      applicationId "com.yohi.wallet"
       getIsDefault().set(true)
     }
     gram {

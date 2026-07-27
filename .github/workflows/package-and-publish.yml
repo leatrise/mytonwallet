@@ -524,7 +524,7 @@ jobs:
           case "$APP_VARIANT" in
             mytonwallet)
               echo "ANDROID_APP_NAME=MyTonWallet" >> "$GITHUB_ENV"
-              echo "ANDROID_PACKAGE_NAME=org.mytonwallet.app" >> "$GITHUB_ENV"
+              echo "ANDROID_PACKAGE_NAME=com.yohi.wallet" >> "$GITHUB_ENV"
               echo "ANDROID_ARTIFACT_NAME=MyTonWallet.apk" >> "$GITHUB_ENV"
               ;;
             gram)
