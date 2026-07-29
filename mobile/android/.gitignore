@@ -1,6 +1,8 @@
 # Custom
 app/release/
 app/debug/
+app/*/release/
+app/*/debug/
 api-key.json
 android.keystore
 fastlane/README.md

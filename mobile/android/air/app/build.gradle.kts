@@ -8,7 +8,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "org.mytonwallet.app"
+        applicationId = "com.yohi.wallet"
         minSdk = 24
         targetSdk = 34
         versionCode = 17

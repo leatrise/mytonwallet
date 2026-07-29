@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import java.io.ByteArrayOutputStream
 
 class USBManager(val applicationContext: Context) {
+    private val actionUsbPermission = "${applicationContext.packageName}.USB_PERMISSION"
     var hidDevice: HIDDevice? = null
     private var usbManager: UsbManager? = null
     private var usbReceiver: BroadcastReceiver? = null
@@ -101,7 +102,7 @@ class USBManager(val applicationContext: Context) {
             val permIntent = PendingIntent.getBroadcast(
                 applicationContext,
                 0,
-                Intent(ACTION_USB_PERMISSION),
+                Intent(actionUsbPermission),
                 PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
             )
             registerBroadcastReceiver()
@@ -112,10 +113,10 @@ class USBManager(val applicationContext: Context) {
     }
 
     private fun registerBroadcastReceiver() {
-        val intFilter = IntentFilter(ACTION_USB_PERMISSION)
+        val intFilter = IntentFilter(actionUsbPermission)
         val receiver: BroadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent) {
-                if (ACTION_USB_PERMISSION == intent.action) {
+                if (actionUsbPermission == intent.action) {
                     synchronized(this) {
                         unregisterReceiver(this)
                         if (selectedDevice == null || !usbManager!!.hasPermission(selectedDevice)) {
@@ -177,9 +178,6 @@ class USBManager(val applicationContext: Context) {
     }
 
     companion object {
-        private const val ACTION_USB_PERMISSION =
-            "org.mytonwallet.app.USB_PERMISSION"
-
         fun hexToBin(src: String): ByteArray? {
             val result = ByteArrayOutputStream()
             var i = 0

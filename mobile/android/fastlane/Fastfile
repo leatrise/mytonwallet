@@ -31,7 +31,7 @@ end
 $variant = env_value('APP_VARIANT', 'mytonwallet').downcase
 $variant_config = {
   'mytonwallet' => {
-    package_name: 'org.mytonwallet.app',
+    package_name: 'com.yohi.wallet',
     firebase_app_id: '1:155616896352:android:2d448728d65b6d277eaa05',
     beta_gradle_task: 'assembleMytonwalletBetaRelease',
     release_gradle_task: 'bundleMytonwalletProdRelease',

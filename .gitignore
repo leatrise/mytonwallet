@@ -41,10 +41,9 @@ AGENTS.md
 .xcodebuildmcp/
 .build
 /worktrees/
+google-services.json
 
-
-mobile/android/.gradle-user-home/wrapper/dists/gradle-8.14.3-all/10utluxaxniiv4wxiphsi49nj/gradle-8.14.3-all.zip
-mobile/android/.gradle-user-home/wrapper/dists/gradle-8.14.3-all/10utluxaxniiv4wxiphsi49nj/gradle-8.14.3-all.zip.lck
+mobile/android/.gradle-user-home/
 token-*.txt
 network-log.txt
 mywallon.har

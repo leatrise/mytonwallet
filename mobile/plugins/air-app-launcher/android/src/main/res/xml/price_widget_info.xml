@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-  android:configure="org.mytonwallet.app.WidgetActivity"
+  android:configure="com.yohi.wallet.WidgetActivity"
   android:description="@string/price_widget_description"
   android:initialKeyguardLayout="@layout/price_widget"
   android:initialLayout="@layout/price_widget"
