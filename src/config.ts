@@ -264,6 +264,16 @@ export const LANG_LIST: LangItem[] = [{
   nativeName: '繁體',
   rtl: false,
 }, {
+  langCode: 'ja',
+  name: 'Japanese',
+  nativeName: '日本語',
+  rtl: false,
+}, {
+  langCode: 'ko',
+  name: 'Korean',
+  nativeName: '한국어',
+  rtl: false,
+}, {
   langCode: 'tr',
   name: 'Turkish',
   nativeName: 'Türkçe',

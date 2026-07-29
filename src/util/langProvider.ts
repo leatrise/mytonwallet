@@ -48,11 +48,15 @@ const PLURAL_OPTIONS = ['value', 'zeroValue', 'oneValue', 'twoValue', 'fewValue'
 // uk - zeroValue, oneValue, fewValue, manyValue
 // zh-Hans - zeroValue, otherValue
 // zh-Hant - zeroValue, otherValue
+// ja - zeroValue, otherValue
+// ko - zeroValue, otherValue
 const PLURAL_RULES = {
   /* eslint-disable @stylistic/max-len */
   de: (n: number) => (n === 0 ? 1 : (n !== 1 ? 6 : 2)),
   en: (n: number) => (n === 0 ? 1 : (n !== 1 ? 6 : 2)),
   es: (n: number) => (n === 0 ? 1 : (n !== 1 ? 6 : 2)),
+  ja: (n: number) => (n === 0 ? 1 : 6),
+  ko: (n: number) => (n === 0 ? 1 : 6),
   pl: (n: number) => (n === 0 ? 1 : (n === 1 ? 2 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 4 : 5)),
   ru: (n: number) => (n === 0 ? 1 : (n % 10 === 1 && n % 100 !== 11 ? 2 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 4 : 5)),
   th: (n: number) => (n === 0 ? 1 : 6),

@@ -148,7 +148,7 @@ export type DialogType = {
   };
 };
 
-export type LangCode = 'en' | 'es' | 'ru' | 'zh-Hant' | 'zh-Hans' | 'tr' | 'de' | 'th' | 'uk' | 'pl';
+export type LangCode = 'en' | 'es' | 'ru' | 'zh-Hant' | 'zh-Hans' | 'ja' | 'ko' | 'tr' | 'de' | 'th' | 'uk' | 'pl';
 export type LanguageSource = 'system' | 'user';
 
 export interface LangItem {

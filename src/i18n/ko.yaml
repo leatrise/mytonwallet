@@ -1,0 +1,1646 @@
+$auth_intro: |-
+  **암호화폐를 안전하게 관리**하고
+  자신있게 블록체인 거래를 하세요.
+Create New Wallet: 새 지갑 만들기
+Import From %1$d Secret Words: "%1$d 비밀 단어에서 가져오기"
+More about %app_name%: "%app_name%에 대해 자세히 알아보기"
+Creating Wallet...: 지갑 생성 중...
+On the count of three...: 거의 준비됐어요...
+$back_up_auth: 백업
+$back_up_security: 백업
+Confirm with: 확인
+Add an extra layer of security for your wallet in TON network.: TON 지갑에 또 다른 보호 계층을 추가하세요.
+Sign transfers and important actions with your passcode, then confirm them in Telegram.: 비밀번호로 전송 및 중요한 작업을 승인한 후 텔레그램에서 확인하세요.
+This helps protect your funds even if your recovery phrase or keys are compromised.: 이는 복구 문구나 키가 손상된 경우 또 다른 보호 장치를 추가합니다.
+"Connection Fee:": "연결 비용:"
+Connect Telegram: 텔레그램 연결
+Add in Gram Wallet: Gram Wallet에 추가
+Telegram will be used to confirm transfers and important actions.: 텔레그램을 사용하여 전송 및 중요한 작업을 확인하게 됩니다.
+My Telegram Account: 내 텔레그램 계정
+Without username: 사용자 이름 없음
+Unlink Account: 계정 연결 해제
+An extra security layer requires confirming actions in Telegram after signing.: 작업을 승인한 후 Telegram에서도 이를 확인하게 됩니다.
+Confirm Connection: 연결 확인
+Confirm Disconnection: 연결 해제 확인
+$2fa_security: 텔레그램을 통한 2FA
+2FA with Telegram: 텔레그램을 통한 2FA
+Confirm operations in Telegram as a second step.: 텔레그램에서 두 번째 확인을 완료하세요.
+Passwords must be equal.: 비밀번호가 일치하지 않습니다.
+To protect your wallet as much as possible, use a password with: 보안을 강화하려면 다음과 같은 비밀번호를 사용하세요.
+$auth_password_rule_8chars: 최소 8자
+$auth_password_rule_one_small_char: 소문자 1개
+$auth_password_rule_one_capital_char: 대문자 1개
+$auth_password_rule_one_digit: 한 자리
+$auth_password_rule_one_special_char: 그리고 특수문자 하나
+Create a password to protect it.: 이를 보호하려면 비밀번호를 만드세요.
+Enter your password: 비밀번호를 입력하세요
+Enter your password...: 비밀번호를 입력하세요...
+...and repeat it: ...그리고 반복해
+Cancel: 취소
+Insecure Password: 안전하지 않은 비밀번호
+Your have entered an insecure password, which can be easily guessed by scammers.: 이 비밀번호는 추측하기 쉽고 지갑을 위험에 빠뜨릴 수 있습니다.
+Continue or change password to something more secure?: 이 비밀번호를 유지하시겠습니까, 아니면 더 강력한 비밀번호를 선택하시겠습니까?
+Change: 변경
+"%1$d Secret Words": "%1$d 비밀 단어"
+Secret Words: 비밀 단어
+$auth_import_mnemonic_description: |
+  액세스를 복구하려면 지갑을 만들 때 저장한 **%counts%개의 비밀 단어**를 입력하세요.
+Let’s make sure your secrets words are recorded correctly.: 비밀번호를 올바른 순서로 저장했는지 확인하세요.
+$check_words_description: 다음으로 비밀 단어를 올바르게 기록했는지 확인하세요.
+$mnemonic_list_description: 이 단어들을 **올바른 순서**로 적어서 **안전한 장소**에 보관하세요.
+$private_key_description: 이 개인 키를 백업하고 **안전한 장소**에 보관하세요.
+$mnemonic_warning: |-
+  누구에게도 보내거나 보여주지 마세요.
+  다른 곳에 입력하지 마세요.
+View Secret Words: 비밀 단어 보기
+View %chain% Private Key: "%chain% 개인 키 보기"
+Can be imported to non-multichain wallets for %chain%.: "%chain%을 지원하는 단일 체인 지갑으로 가져올 수 있습니다."
+Can be imported to any multichain wallet supporting %chain%.: "%chain%을 지원하는 모든 멀티체인 지갑으로 가져올 수 있습니다."
+Let's Check: 백업 확인
+Let's Check!: 백업 확인
+Safety Rules: 안전 규칙
+$safety_rules_private_key_one: 다음 화면에는 **%chain% 개인 키**가 표시됩니다. 백업하고 **안전한 장소**에 보관하세요.
+$safety_rules_private_key_two: 비밀번호를 잊어버리거나 이 기기에 액세스할 수 없는 경우 개인 키를 사용하여 **지갑을 복원**할 수 있습니다.
+$safety_rules_private_key_three: 이 개인 키를 가진 사람은 누구나 귀하의 지갑을 통제할 수 있습니다. **개발자나 지원 직원을 포함하여 누구에게도 보내거나 보여주지 마세요**.
+$safety_rules_one: 다음 화면에는 **비밀 단어**가 표시됩니다. 올바른 순서로 적어서 **안전한 장소**에 보관하세요.
+$safety_rules_two: 비밀번호를 잊어버리거나 이 기기에 액세스할 수 없는 경우 이 단어를 사용하여 **지갑을 복원**할 수 있습니다.
+$safety_rules_three: 이 단어를 가진 사람은 누구나 당신의 지갑을 통제할 수 있습니다. **개발자나 지원 직원을 포함하여 누구에게도 보내거나 보여주지 마세요**.
+Continue: 계속
+Close: 닫기
+Back: 뒤로
+Search...: 검색...
+Main menu: 메인 메뉴
+TON Proxy: TON 프록시
+Toggle TON Proxy: TON 프록시 전환
+Back Up Secret Words: 비밀 단어 백업
+Settings: 설정
+About %app_name%: "%app_name% 소개"
+Exit: 종료
+Remove Wallet: 지갑 삭제
+Remove Wallets: 지갑 제거
+Something went wrong.: 작업을 완료할 수 없습니다. 나중에 다시 시도하세요.
+Something went wrong: 작업을 완료할 수 없습니다.
+Logo: 로고
+$about_description1: 온체인 자산을 관리하고, 앱에 연결하고, 일상적인 거래를 한 곳에서 처리하세요.
+$about_description2: "**자기수탁형 지갑**입니다. 귀하의 개인 키는 귀하의 장치에 남아 있으며 누구도 귀하를 대신하여 귀하의 자산에 액세스하거나 복구할 수 없습니다."
+What is TON Proxy?: TON 프록시란 무엇입니까?
+$about_extension_description1: TON 프록시는 TON 사이트 및 **분산형 인터넷**에 대한 익명 액세스를 제공합니다.
+More info and demo.: 추가 정보 및 데모.
+$about_proxy_magic_description: "**TON 사이트**에 액세스하려면 %extension_link%을 설치하세요."
+$about_extension_link_text: "**%app_name% 확장자**"
+Is it open source?: 오픈소스인가요?
+$about_wallet_github: 그렇습니다. %github_link%에서 소스 코드를 살펴보세요.
+$about_github_link_text: "**GitHub 저장소**"
+Is there a community?: 커뮤니티가 있나요?
+$about_wallet_community: "%community_link%에서 우리 커뮤니티에 가입하세요."
+$about_community_link_text: "**텔레그램 채널**"
+Currency History: 통화 내역
+Net Worth: 순자산
+Price: 가격
+Enter Password: 비밀번호 입력
+Send: 보내기
+Add Wallet: 지갑 추가
+Done: 완료
+Delete: 삭제
+Delete Saved Address: 저장된 주소 삭제
+Are you sure you want to remove this address from your saved ones?: 저장된 목록에서 이 주소를 삭제하시겠습니까?
+Address removed from saved: 주소가 삭제되었습니다.
+Warning!: 경고!
+$logout_without_backup_warning: 이 지갑을 백업하지 않았습니다. 지금 제거하면 토큰과 NFT에 액세스할 수 없게 됩니다.
+$logout_accounts_without_backup_warning: "%links%을(를) 백업하지 않았습니다. 계속 진행하면 토큰과 NFT에 대한 액세스 권한을 잃게 됩니다."
+$logout_current_wallet_warning: 그러면 앱에서 현재 지갑이 제거됩니다.
+$logout_selected_wallet_warning: 그러면 선택한 지갑이 앱에서 제거됩니다.
+$logout_selected_wallets_warning: 그러면 선택한 지갑이 앱에서 제거됩니다.
+$logout_all_wallets_warning: 이렇게 하면 앱에서 모든 지갑이 제거됩니다.
+$secret_words_backup_reminder: "**비밀 단어**를 백업해 두세요."
+$all_secret_words_backup_reminder: 모든 지갑의 **비밀번호**를 백업해두세요.
+Create Deposit Link: 입금 링크 생성
+$receive_invoice_description: |-
+  금액과 결제 세부정보를 미리 입력하세요
+  발신자는 확인만 하면 됩니다.
+Amount: 금액
+Comment: 댓글
+Comment or Memo: 댓글이나 메모
+Share this URL to receive %token%: "%token%을(를) 받으려면 이 URL을 공유하세요."
+Invoice Link Copied: 결제 링크가 복사되었습니다.
+Theme: 테마
+Language: 언어
+Enable Animations: 애니메이션 활성화
+Enable Seasonal Theming: 계절별 테마 활성화
+Enable Landscape Mode: 가로 모드 활성화
+Disable Seasonal Theming: 계절별 테마 비활성화
+You can always enable seasonal theming again in the appearance settings.: 언제든지 모양 설정에서 계절별 테마를 다시 활성화할 수 있습니다.
+Base Currency: 기본 통화
+Investor View: 투자자 관점
+Toggle Investor View: 투자자 보기 전환
+Hide Tiny Transfers: 작은 전송 숨기기
+Toggle Hide Tiny Transfers: Toggle 작은 전송 숨기기
+Show Tiny Transfers: 작은 환승 표시
+Show Low-Value Tokens: 낮은 가치의 토큰 표시
+$show_tiny_transfers_help: "$%value% 미만의 이체를 표시합니다. 명심하세요: 스패머와 사기꾼이 소량을 보내는 경우가 많습니다."
+$show_low_value_tokens_help: "$%value% 미만의 가치가 있는 토큰을 표시합니다. 명심하세요: 가치가 낮은 토큰은 스패머와 사기꾼이 보내는 경우가 많습니다."
+Network: 네트워크
+Developer Options: 개발자 옵션
+All Wallet Versions: 모든 지갑 버전
+Confirmation: 확인
+Signing Data: 데이터 서명
+Contract Initialization Data: 계약 초기화 데이터
+$dont_have_required_token: 전송하는 데 필요한 토큰이 없지만 교환할 수 있습니다.
+$unknown_token_address: 알 수 없는 토큰 주소입니다.
+$dont_have_required_nft: 전송하는 데 필요한 NFT가 없습니다.
+$state_init_invalid: 계약 초기화 데이터가 잘못되었습니다.
+$signature_warning: 맞춤 데이터에 서명하면 민감한 작업이 승인될 수 있습니다. 요청을 이해하고 해당 소스를 신뢰하는 경우에만 계속하세요.
+Sign: 로그인
+Done!: 완료!
+Signing was confirmed!: 서명이 확인되었습니다!
+Activity Details: 활동 세부정보
+No activities found: 아직 활동이 없습니다
+Comment Copied: 댓글이 복사되었습니다.
+Copy Text: 텍스트 복사
+Copy Description: 설명 복사
+Description Copied: 설명 복사됨
+Message Copied: 메시지가 복사되었습니다.
+Sender: 보낸 사람
+Recipient: 수신자
+"%chain% Address Copied": "%chain% 주소가 복사되었습니다."
+Repeat: 반복
+Switch Account: 계정 전환
+Copy wallet address: 지갑 주소 복사
+View address on %explorer_name%: "%explorer_name%의 주소 보기"
+You have just created a new wallet: 새로운 지갑이 생성되었습니다
+Assets: 자산
+Activity: 활동
+NFT: NFT
+No NFTs yet: 아직 NFT가 없습니다
+$nft_explore_offer: |-
+  마켓플레이스에서 NFT 컬렉션
+  을 찾아보세요.
+Received: 접수됨
+Sent: 보냄
+$transaction_from: "%address%에서"
+$transaction_to: "%address%에게"
+$transaction_on: "%address%에"
+Wallet is not backed up: 월렛이 백업되지 않았습니다.
+Testnet Version: 테스트넷 버전
+Error reading clipboard: 클립보드를 읽을 수 없습니다.
+$fee_value: 수수료 %fee%
+$fee_value_with_colon: "수수료: %fee%"
+Pay fee with %stars_symbol%: "%stars_symbol%로 수수료 지불"
+Loading...: 로드 중...
+No price data: 가격 데이터 없음
+Price Copied: 가격 복사됨
+Recipient Address: 수취인 주소
+Wallet address or domain: 지갑 주소 또는 도메인
+Incorrect address: 잘못된 주소
+Incorrect address.: 주소가 잘못되었습니다.
+Paste: 붙여넣기
+Insufficient balance: 잔액 부족
+Insufficient Balance: 잔액 부족
+$seed_phrase_scam_warning: |-
+  이 지갑에는 토큰 인출 수수료를 감당할 자금이 충분하지 않습니다.
+
+  이는 수수료를 충당하기 위해 자신의 자금을 입금하라고 요구하는 일반적인 **사기 패턴**과 일치합니다.
+
+  **이 지갑에 자금을 입금하지 마세요**, 그렇지 않으면 자금을 잃을 수 있습니다. %help_center_link%.
+  에서 자세히 알아보세요.
+$help_center_prepositional: 도움말 센터
+Optional: 선택사항
+$send_token_symbol: "%1$s 보내기"
+Is it all ok?: 모든 것이 정확합니까?
+Receiving Address: 수신주소
+Fee: 수수료
+Edit: 편집
+Confirm: 확인
+Data Signed!: 데이터 서명됨!
+Details: 세부정보
+View details: 세부정보 보기
+Change password visibility: 비밀번호 표시 또는 숨기기
+Amount value: 금액
+Save Address: 주소 저장
+Name: 이름
+Save: 저장
+Copy: 복사
+Remove from Saved: 저장된 항목에서 제거
+View on Explorer: 탐색기에서 보기
+No suggestions, you're on your own!: 아직 제안사항 없음
+Play Sounds: 소리 재생
+Focus on asset value rather than current balance: 현재 잔액보다 자산가치에 집중
+$logout_confirm: "**모든** 지갑 제거"
+$tiny_transfers_help: "$%value% 미만의 이체를 숨깁니다. 명심하세요: 스패머와 사기꾼이 소량을 보내는 경우가 많습니다."
+Today: 오늘
+Total: 합계
+Zoom Out: 모든 시간
+Yesterday: 어제
+Now: 지금
+$receive_description: 자산을 받으려면 QR 코드를 스캔하거나 주소를 공유하세요.
+Wrong password, please try again.: 비밀번호가 잘못되었습니다. 다시 시도해 주세요.
+Appearance: 외관
+Light: 빛
+Dark: 어둠
+System: 시스템
+$stake_asset: 스테이크 %symbol%
+Add Stake: 스테이크 추가
+Earn from your tokens while holding them: 토큰을 스테이킹하고 시간이 지남에 따라 보상을 받으세요
+Current APY: 현재 APY
+Est. Yearly Earnings: 예상 연간 수입
+Staking Details: 스테이킹 세부사항
+Why this is safe: 작동 방식
+$safe_staking_description1: 스테이킹은 관리권을 중앙 집중식 공급자에게 양도하지 않고 TON Liquid Stake 스마트 계약을 통해 실행됩니다.
+$safe_staking_description2: 귀하의 지분은 %chain% 네트워크를 검증하는 데 도움이 되며 그 대가로 보상을 받습니다.
+$safe_staking_description3: 언제든지 스테이크를 해제할 수 있습니다. 자금은 일반적으로 **2일** 이내에 귀하의 계좌로 반환됩니다.
+$safe_staking_description_jetton1: 토큰 스테이킹은 %jvault_link%에서 개발하고 **보안 감사**에서 검토한 **오픈 소스 스마트 계약**을 통해 실행됩니다.
+$safe_staking_description_jetton2: 언제든지 스테이크를 해제할 수 있으며 자금은 **즉시** 귀하의 계정으로 반환됩니다.
+$min_value: 최소 %value%
+Est. balance in a year: 1년 후 예상 잔고
+Confirm Staking: 스테이킹 확인
+Coins have been staked!: 토큰이 스테이킹되었습니다!
+View: 보기
+Stake More: 더 많이 스테이크하세요
+Staking: 스테이킹
+Currently Staked: 현재 스테이킹되어 있음
+Total Staked: 총 스테이킹된 금액
+Total Stakers: 총 스테이커 수
+Unstake: 언스테이킹
+Earning History: 적립 내역
+$total: "총계: %value%"
+$unstake_asset: "%symbol% 언스테이크"
+Amount to unstake: 언스테이킹할 금액
+Confirm Unstaking: 언스테이킹 확인
+Request for unstaking is sent!: 언스테이킹 요청이 제출되었습니다!
+$unstaking_when_receive: 귀하의 스테이킹되지 않은 자금은 %time% 이내에 도착해야 합니다.
+$unstaking_when_receive_with_amount: 귀하의 %amount%은(는) %time% 이내에 도착해야 합니다.
+$unstaking_when_receive_with_amount_ethena: 귀하의 %amount%은(는) %time% 후에 인출할 수 있습니다.
+$unstake_insufficient_balance: 스테이킹을 해제하려면 기본 잔액에 최소 %balance%을 유지하세요.
+at %annual_yield%: "%annual_yield%에"
+Est. %annual_yield%: 예상 %annual_yield%
+Staked: 스테이킹됨
+$stake_action: 스테이크
+Unstaked: 언스테이크
+Not staked: 스테이크되지 않음
+Unstaking: 언스테이킹
+$unstake_action: 언스테이킹
+The network fee has slightly changed, try sending again.: 네트워크 요금이 변경되었습니다. 업데이트된 수수료를 검토하고 다시 보내세요.
+Transfer was unsuccessful. Try again later.: 전송에 실패했습니다. 나중에 다시 시도하세요.
+Invalid amount: 잘못된 금액
+Invalid address: 잘못된 주소
+Domain is not connected to a wallet: 이 도메인은 지갑에 연결되어 있지 않습니다
+Unexpected error: 예상치 못한 오류
+Unexpected Error: 예상치 못한 오류
+Earn: 적립
+Earning: 적립
+Unexpected: 예상치 못한 오류
+You can save this address for quick access while sending.: 향후 이체 시 더 빠르게 액세스할 수 있도록 이 주소를 저장하세요.
+Stake Again: 다시 스테이크하기
+Earned: 획득
+$staking_history_earned: 획득
+Select wallet to use on this app: 이 앱에서 사용할 지갑을 선택하세요
+Connect: 연결하다
+Already Connected: 이미 연결됨
+Return to the dapp to proceed, or reconnect.: 계속하려면 dApp으로 돌아가거나 다시 연결하세요.
+Dapp Disconnected: 디앱 연결 끊김
+Please reconnect your wallet from the dapp.: dApp으로 돌아가서 지갑을 다시 연결하세요.
+Dapp Not Responding: dApp이 응답하지 않음
+You may need to reconnect your wallet from the dapp if this keeps happening.: 이 문제가 계속되면 dApp으로 돌아가서 지갑을 다시 연결하세요.
+Payload: 페이로드
+$many_transactions:
+  zeroValue: 환승 불가
+  oneValue: "%1$d 이체"
+  otherValue: "%1$d 이체"
+Total Amount: 총액
+$unstaking_short: 언스테이킹
+Handle ton:// links: ton:// 링크 처리
+Back up wallet to have full access to it: 전체 액세스를 잠금 해제하려면 백업하세요
+Consider More Secure Version: 보다 안전한 버전 사용
+Install our native app or browser extension.: 기본 앱 또는 브라우저 확장을 설치합니다.
+Scam: 사기
+Scam comment is hidden.: 의심스러운 댓글이 숨겨져 있습니다.
+Display: 디스플레이
+Disconnect All Apps: 모든 앱 연결 해제
+Disconnect: 연결 끊기
+Disconnect App: 앱 연결 해제
+Disconnect Apps: 앱 연결 해제
+Are you sure you want to disconnect?: "%dappname%의 연결을 해제하시겠습니까?"
+Are you sure you want to disconnect all websites?: 모든 웹사이트의 연결을 해제하시겠습니까?
+Logged in with %app_name%: "%app_name%로 로그인됨"
+No active connections: 활성 연결 없음
+Other: 기타
+Portfolio: 포트폴리오
+Performance, insights and P&L: 실적, 추세, 손익
+Overview: 개요
+Total Balance: 총 잔액
+Net Change: 순변화
+No data: 데이터 없음
+Total Value: 총 가치
+Tracked asset value over time.: 시간이 지남에 따라 추적된 자산 가치가 어떻게 변하는지 확인하세요.
+Total P&L: 총 손익
+Daily P&L: 일일 손익
+Portfolio Share: 포트폴리오 공유
+Current allocation across tracked assets.: 추적된 자산의 현재 할당을 확인하세요.
+Deep history analysis will be available in upcoming updates.: 향후 업데이트에서 더 많은 기록 분석이 제공될 예정입니다.
+By Chain: 체인별
+No chain balances: 체인 잔액 없음
+Native: 네이티브
+Stablecoins: 스테이블코인
+Altcoins: 기타 토큰
+Asset Mix: 자산 혼합
+No asset balances: 자산 잔액 없음
+No staked assets: 스테이킹된 자산이 없습니다.
+Entire Period: 전체 기간
+Asset %1$@: 자산 %1$@
+Assets & Activity: 자산 및 활동
+Token Settings: 토큰 설정
+Add Token: 토큰 추가
+Delete Token: 토큰 삭제
+Are you sure you want to delete?: "%token%을(를) 삭제하시겠습니까?"
+Hide Tokens With No Cost: 가격 데이터 없이 토큰 숨기기
+Sort By Cost: 값으로 정렬
+Update %app_name%: "%app_name% 업데이트"
+Connect Ledger: Ledger 연결
+Connecting to your Ledger...: Ledger에 연결 중...
+Failed to connect: 연결하지 못했습니다.
+Ledger Connected!: Ledger 연결!
+Select Ledger Wallets: Ledger 지갑 선택
+"%1$d Selected": "%1$d 선택됨"
+Add: 추가
+Try Again: 다시 시도
+Driver: 드라이버
+Unlock it and open the %chain% App: 잠금을 해제하고 %chain% 앱을 엽니다.
+Maybe you need to check the password or change the driver.: 비밀번호를 확인하거나 다른 드라이버를 사용해 보세요.
+Confirm via Ledger: Ledger에서 확인
+$ledger_confirm_progress: "%2$d 중 %1$d 확인"
+Declined: 거절됨
+Switch to the newly opened tab to connect Ledger.: Ledger를 연결하려면 새로 열린 탭으로 전환하세요.
+Once connected, switch back to this window to proceed.: 연결되면 이 창으로 다시 전환하여 계속하세요.
+The time on your device is incorrect, sync it and try again.: 기기 시간이 잘못되었습니다. 동기화하고 다시 시도해 보세요.
+Name or Address...: 이름이나 주소...
+Such error, many tabs: 탭이 너무 많이 열려 있습니다.
+$many_tabs_error_description: |-
+  %app_name%은(는) 한 번에 하나의 탭에서만 실행할 수 있습니다.
+  다른 탭을 닫은 다음 이 페이지를 다시 로드하세요.
+Reload App: 앱 새로고침
+Token Not Found: 토큰을 찾을 수 없음
+Try another keyword or address.: 다른 키워드나 주소를 사용해 보세요.
+Decrypt: 암호 해독
+Encrypted Message: 암호화된 메시지
+Message is encrypted: 메시지가 암호화되었습니다
+Agree: 동의하다
+$swap_action: 스왑
+$swap_activity_title: 스왑
+Swap: 스왑
+You sell: 당신은 지불
+You buy: 당신은 받습니다
+Swap Details: 스왑 세부정보
+Blockchain Fee: 네트워크 수수료
+Aggregator Fee: 애그리게이터 서비스 수수료
+Included: 포함됨
+Price Impact: 가격 영향
+Minimum Received: 귀하가 받는 최소 금액
+Slippage: 미끄러짐
+$swap_from_to: 스왑 %from% %icon% %to%
+The exchange rate is below market value!: 환율은 시장 가치보다 %value% 낮습니다!
+Invalid Pair: 잘못된 쌍
+We do not recommend to perform an exchange, try to specify a lower amount.: 이 금액은 상당한 손실을 초래할 수 있습니다. 더 적은 금액으로 교환해 보세요.
+$swap_minimum_received_tooltip1: 현재 시장 상황, 하락, 가격 영향을 고려한 후 귀하가 받아야 할 최소한의 금액입니다.
+$swap_minimum_received_tooltip2: 스왑이 진행되는 동안 시장이 급격히 움직일 경우 최종 금액은 여전히 변경될 수 있습니다.
+$swap_price_impact_tooltip1: 이 스왑이 시장 가격에 미치는 예상 효과입니다.
+$swap_price_impact_tooltip2: 거래 규모가 클수록 일반적으로 가격에 더 큰 영향을 미칩니다.
+$swap_slippage_tooltip1: 스왑이 실행되기 전에 허용되는 최대 가격 변경입니다.
+$swap_slippage_tooltip2: 가격이 이 한도를 초과하면 스왑이 취소됩니다.
+Coins have been swapped!: 교환 완료!
+Slippage not specified: 미끄러짐이 지정되지 않음
+Slippage too high: 슬리피지가 너무 높음
+Not Enough %symbol%: 충분하지 않습니다 %symbol%
+Use Responsibly: 위험 이해
+$auth_responsibly_description1: "%app_name%은 **자체 보관형 지갑**입니다. 오직 당신만이 열쇠를 갖고 자산을 통제할 수 있습니다."
+$auth_responsibly_description2: 귀하의 개인 키는 이 장치에 저장되어 있습니다. 악성 코드, 도난 또는 무단 액세스로 인해 **자금 손실**이 발생할 수 있습니다.
+$auth_responsibly_description3: "%app_name% 팀은 귀하의 자산에 액세스하거나, 동결하거나, 복구할 수 없습니다."
+$auth_responsibly_description4: 비밀 단어를 안전하게 백업하세요. 잔고가 더 큰 경우 여러 지갑이나 하드웨어 장치에 위험을 분산시키는 것을 고려하세요.
+Start Wallet: 시작하기
+$auth_backup_warning_notice: "**지금 키를 백업하세요.** 비밀번호를 잊어버렸거나 이 장치에 액세스할 수 없는 경우 지갑을 복원할 수 있는 유일한 방법입니다."
+$ledger_verify_address: 항상 Ledger 장치를 사용하여 붙여넣은 주소를 확인하세요.
+$ledger_not_ready: Ledger가 연결되지 않았거나 %chain% 앱이 열려 있지 않습니다.
+Verify now: 지금 확인
+Invalid address format. Only URL Safe Base64 format is allowed.: 잘못된 주소 형식입니다. URL Safe Base64 형식만 허용됩니다.
+Swap Placed: 스왑 제출됨
+Swapping: 스와핑
+Swapped: 교환됨
+Swap Again: 다시 교환
+Terms of Use: 이용약관
+Privacy Policy: 개인 정보 보호 정책
+Insufficient liquidity: 유동성 부족
+This address is new and never received transfers before.: 이 주소는 새 주소이며 이전을 받은 적이 없습니다. 계속하기 전에 주의 깊게 확인하세요.
+Create Backup: 백업 생성
+Sending: 보내는 중
+$send_action: 보내기
+Failed: 실패
+Refunded: 환불됨
+On Hold: 처리가 일시 중지되었습니다.
+Expired: 만료됨
+In Progress: 진행 중
+Waiting for Payment: 결제 대기 중
+Processing Payment: 결제 처리 중
+It may take a few seconds: 몇 초 정도 걸릴 수 있습니다.
+Blockchain: 블록체인
+Your address on another blockchain: 다른 네트워크의 주소 수신
+Please provide an address of your wallet in %blockchain% blockchain to receive bought tokens.: 교환된 토큰을 받으려면 %blockchain% 지갑 주소를 입력하세요.
+The time for sending coins is over.: 결제창이 만료되었습니다.
+You have not sent the coins to the specified address.: 지정된 주소로 결제가 이루어지지 않았습니다.
+$swap_cex_to_wallet_description: "%time% 내 %blockchain%의 이 주소로 %value%을(를) 보내세요."
+Exchange failed and coins were refunded to your wallet.: 교환이 실패하여 토큰이 지갑으로 반환되었습니다.
+Swap Expired: 스왑 만료됨
+Address for %blockchain% transfer: "%blockchain% 이체 주소"
+Cross-chain exchange provided by %provider%: "%provider%에서 제공하는 크로스체인 교환 서비스"
+$swap_cex_terms_of_use: 이용 약관
+$swap_cex_privacy_policy: 개인 정보 보호 정책
+$swap_cex_aml_kyc_policy: AML/KYC
+$swap_cex_legal_message: 계속하면 %terms% 및 %policy%에 동의하게 됩니다.
+$swap_cex_legal_message_with_aml: 계속 진행하면 %terms% 및 %policy%에 동의하고 이전 시 %aml%에 따른 확인이 시작될 수 있음을 이해하게 됩니다.
+Password must contain %length% digits.: 비밀번호는 %length% 숫자를 포함해야 합니다.
+Deposit Link: 입금링크
+$swap_cex_from_wallet_description: "교환된 토큰은 귀하의 %blockchain% 주소로 전송됩니다:"
+Please note that it may take up to a few hours for tokens to appear in your wallet.: 토큰이 지갑에 표시되는 데 몇 시간이 걸릴 수 있습니다.
+Minimum amount: 최소 %value%
+Maximum amount: 최대 %value%
+Display Tray Icon: 트레이 아이콘 표시
+Auto-Updates: 자동 업데이트
+Biometric Authentication: 생체인증
+If you turn off biometric protection, you will need to create a password.: 생체 인식 보호를 끄면 비밀번호를 생성해야 합니다.
+Enter your current password: 현재 비밀번호를 입력하세요
+Turn On Biometrics: 생체 인식 켜기
+Enabling biometric confirmation will reset the password.: 생체 인식을 활성화하면 비밀번호가 재설정됩니다.
+Biometric Registration: 생체인식 등록
+Step 1 of 2. Registration: 2단계 중 1단계. 등록
+Step 2 of 2. Verification: 2/2단계. 확인
+Download Logs: 로그 다운로드
+Copy Logs: 로그 복사
+Logs Copied: 복사된 로그
+Biometric setup failed.: 생체 인식 설정에 실패했습니다.
+Biometric confirmation failed.: 생체인식 확인에 실패했습니다.
+Failed to disable biometrics.: 생체 인식을 비활성화하지 못했습니다.
+Biometric Confirmation: 생체인식 확인
+Create Password: 비밀번호 생성
+Complete: 완료
+Verification: 검증
+Connect Biometrics: 생체 인식 연결
+Use Password: 비밀번호 사용
+Biometrics Disabled: 생체인식 비활성화됨
+Biometrics Enabled: 생체 인식 활성화
+A request is already pending: 요청이 이미 대기 중입니다.
+Please confirm action using biometrics: 생체 인식을 사용하여 조치를 확인하십시오.
+Scan QR Code: QR 코드 스캔
+Open the QR scanner.: QR 스캐너를 엽니다.
+Open scanner in ${applicationName}: ${applicationName}에서 스캐너 열기
+Scan a code with ${applicationName}: ${applicationName}으로 코드 스캔
+Scan QR: QR 스캔
+Scan QR with ${applicationName}: ${applicationName}으로 QR 스캔
+Account: 계정
+Accounts: 계정
+Networks: 네트워크
+Receive Funds: 자금 수령
+Open the receive screen.: 수신 화면을 엽니다.
+Receive with ${applicationName}: ${applicationName}으로 받기
+Add crypto with ${applicationName}: ${applicationName}으로 암호화폐 추가
+Open receive in ${applicationName}: ${applicationName}에서 수신 열기
+Send Token: 토큰 보내기
+Open Token: 오픈 토큰
+Open ${target} in ${applicationName}: ${applicationName}에서 ${target} 열기
+Show ${target} in ${applicationName}: ${applicationName}에 ${target} 표시
+Open the token screen.: 토큰 화면을 엽니다.
+Open the send screen.: 보내기 화면을 엽니다.
+Send token with ${applicationName}: ${applicationName}으로 토큰 보내기
+Send crypto with ${applicationName}: ${applicationName}으로 암호화폐 보내기
+Open send in ${applicationName}: ${applicationName}에서 보내기 열기
+Permission denied. Please grant camera permission to use the QR code scanner.: 카메라 접근이 차단되었습니다. QR 코드를 스캔하려면 시스템 설정에서 카메라 액세스를 허용하세요.
+This QR Code is not supported: 이 QR 코드는 지원되지 않습니다
+An error on the server side. Please try again.: 일시적으로 서비스를 이용할 수 없습니다. 나중에 다시 시도하세요.
+Address Saved: 주소가 저장되었습니다
+US Dollar: 미국 달러
+Euro: 유로
+Russian Ruble: 러시아 루블
+Chinese Yuan: 중국 위안
+Bitcoin: 비트코인
+$max_balance: "최대: %balance%"
+$available_balance: "사용 가능: %balance%"
+$unstake_information_instantly: 자금이 즉시 도착합니다
+Select Token: 토큰 선택
+MY: 내
+Popular: 인기
+Not Found: 찾을 수 없음
+Wallet is ready!: 지갑 준비 완료!
+Wallet is imported!: 지갑이 수입되었습니다!
+Create a code to protect it: 지갑을 보호하기 위해 비밀번호를 만드세요
+Enter your code again: 코드를 다시 입력하세요
+Code set successfully: 코드가 성공적으로 설정되었습니다.
+Use Biometrics: 생체 인식 사용
+Use Touch ID: 터치 ID 사용
+Use Face ID: 얼굴 ID 사용
+Connect Touch ID: 터치 ID 활성화
+Connect Face ID: 얼굴 ID 활성화
+Not Now: 지금은 아님
+Touch ID: 터치 ID
+Face ID: 페이스ID
+Turn Off Touch ID: 터치 ID 끄기
+Turn Off Face ID: 얼굴 ID 끄기
+Turn Off Biometrics: 생체 인식 끄기
+Enter code: 코드 입력
+Enter code or use Face ID: 코드 입력 또는 Face ID 사용
+Enter code or use Touch ID: 코드 입력 또는 Touch ID 사용
+Enter code or use biometrics: 코드를 입력하거나 생체인식을 사용하세요
+Wrong code, please try again: 코드가 잘못되었습니다. 다시 시도해 주세요.
+Scan your fingerprint: 지문을 스캔하세요
+Incorrect code, please try again.: 코드가 잘못되었습니다. 다시 시도해 주세요.
+Correct: 맞다
+Confirm Action: 조치 확인
+$classic_confirm_actions: 조치 확인
+Confirm Swap: 교환 확인
+Confirm Rewards Claim: 보상 청구 확인
+"%amount% to %address%": "%amount%~%address%"
+"%amount_from% to %amount_to%": "%amount_from%~%amount_to%"
+Failed to enable biometrics.: 생체 인식을 활성화하지 못했습니다.
+Please try to confirm your biometrics again: 생체인증을 다시 시도해보세요
+Unknown error: 알 수 없는 오류
+Are you sure you want to disable Face ID?: Face ID를 비활성화하시겠습니까?
+Are you sure you want to disable Touch ID?: Touch ID를 비활성화하시겠습니까?
+Are you sure you want to disable biometrics?: 생체 인식을 비활성화하시겠습니까?
+"Yes": 예
+Biometric confirmation failed: 생체인식 확인 실패
+No Activity: 활동 없음
+Fund: 기금
+Buy with Card: 카드로 구매
+Buy with Crypto: 암호화폐로 구매
+Cannot load widget: 위젯을 로드할 수 없습니다
+Error: 오류
+Explore: 탐색
+$lockdown_mode_enabled_title: 잠금 모드 활성화됨
+$lockdown_mode_walletconnect_unavailable: 잠금 모드에서는 WalletConnect를 사용할 수 없습니다. 이를 사용하려면 설정 > 개인 정보 보호 및 보안 > 잠금 모드 > 웹 검색 구성에서 %app_name%에 대한 잠금 모드를 비활성화하세요.
+No partners yet: 이용 가능한 제공업체 없음
+Clear: 지우기
+Unavailable: 이용 불가
+$unstake_up_to_information: 즉시 – 최대 %value%
+$all_balance: "전체: %balance%"
+$unstaking_not_enough_balance: 스테이킹을 해제하려면 기본 잔액에 최소 %value%을 유지하세요.
+$ledger_verify_address_on_device: Ledger 장치의 주소를 확인하세요.
+Wallet Versions: 지갑 버전
+$read_more_about_wallet_version: "%link%의 지갑 계약 버전에 대해 알아보세요."
+$current_wallet_version: 현재 지갑 버전은 %version%입니다.
+You have tokens on other versions of your wallet. You can import them from here.: 다른 지갑 버전에서 토큰이 발견되었습니다. 여기서 가져올 수 있습니다.
+$wallet_switch_version_1: "%action%할 수도 있습니다."
+$wallet_switch_version_2: 다른 지갑 버전으로 전환
+or import from: 또는 다음에서 가져오기
+Insufficient fee: 수수료가 부족함
+$insufficient_fee: "수수료 부족: %fee%"
+$dapp_insufficient_network_fee_warning: 네트워크 비용을 감당하기에 %token%이 부족함
+Required: 필수
+Comment is too long.: 댓글이 너무 깁니다.
+Memo: 메모
+Memo Copied: 메모가 복사되었습니다
+$hide_tokens_no_cost_help: $%value% 미만의 가치가 있는 토큰을 숨깁니다. 가치가 낮은 토큰에는 스팸이나 사기 콘텐츠가 포함될 수 있습니다. 아래에서 개별 토큰을 표시하거나 숨길 수도 있습니다.
+No internet connection. Please check your connection and try again.: 인터넷에 연결되어 있지 않습니다. 연결을 확인하고 다시 시도하세요.
+To use this feature, first enable Face ID in your phone settings.: 이 기능을 사용하려면 먼저 휴대폰 설정에서 Face ID를 활성화하세요.
+To use this feature, first enable biometrics in your phone settings.: 이 기능을 사용하려면 먼저 휴대폰 설정에서 생체 인식을 활성화하세요.
+Open Settings: 설정 열기
+No Price: 가격 없음
+$dapp_transfer_tokens_burn: "%amount% 굽기"
+$dapp_dns_set_wallet_payload: "%domain% 도메인의 연결된 지갑을 %address%(으)로 변경"
+$dapp_dns_delete_wallet_payload: "%domain% 도메인의 연결된 지갑 삭제 중"
+$dapp_dns_change_record_payload: 도메인 %domain%의 "%category%" 레코드를 %value%로 변경
+$dapp_dns_delete_record_payload: "%domain% 도메인의 \"%category%\" 레코드 삭제 중"
+$dapp_token_bridge_pay_swap_payload: 크로스체인 브릿지를 통한 교환 확인
+$dapp_liquid_staking_deposit_payload: 리퀴드 스테이킹에 입금
+$dapp_liquid_staking_vote_payload: "%votingAddress% 제안에 \"%vote%\" 투표 중"
+$dapp_single_nominator_change_validator_payload: SingleNominator 스테이킹 계약 검증인의 주소를 %address%로 변경
+$dapp_single_nominator_withdraw_payload: SingleNominator 스테이킹 계약에서 %amount% 인출
+$dapp_vesting_add_whitelist_payload: 베스팅 지갑 화이트리스트에 %address% 추가 중
+Connecting apps is not yet supported by Ledger.: Ledger에서는 앱 연결을 아직 지원하지 않습니다.
+Time synchronization issue. Please ensure your device's time settings are correct.: 시간을 동기화할 수 없습니다. 장치 시간 설정을 확인하세요.
+Data Copied: 복사된 데이터
+URL Copied: URL이 복사되었습니다
+Private Key Copied: 개인 키가 복사되었습니다.
+Contract Initialization Data Copied: 계약 초기화 데이터가 복사되었습니다.
+Open NFT Collection: NFT 컬렉션 열기
+Previous: 이전
+Next: 다음
+Updating: 업데이트 중
+Insufficient %token% for fee.%fee%: 수수료를 낼 %token%이(가) 부족합니다.%fee%
+Send NFT: NFT 보내기
+Send Collectible: 수집품 보내기
+Send Collectibles: 수집품 보내기
+$nfts_burned:
+  zeroValue: "%1$d NFT가 소각되었습니다!"
+  oneValue: "%1$d NFT가 소각되었습니다!"
+  otherValue: "%1$d NFT가 소각되었습니다!"
+No NFT selected: NFT가 선택되지 않았습니다.
+Cannot be sent: 보낼 수 없습니다
+NFT is for sale: NFT가 판매 중입니다
+More actions: 추가 작업
+Open on %explorer_name%: "%explorer_name%에 개설"
+Swap is not supported in Testnet.: 테스트넷에서는 스왑이 지원되지 않습니다.
+Swap is not yet supported by Ledger.: 스왑은 아직 Ledger에서 지원되지 않습니다.
+Buying with card is not supported in Testnet.: 테스트넷에서는 카드 구매가 지원되지 않습니다.
+Staking is not supported in Testnet.: 테스트넷에서는 스테이킹이 지원되지 않습니다.
+Get Support: 지원 받기
+$transfer_link_expired: 전송 링크가 만료되었습니다
+$transfer_text_and_bin_exclusive: text 매개변수와 bin 매개변수를 함께 사용할 수 없습니다.
+$unsupported_deeplink_parameter: 이 딥링크에는 지원되지 않는 매개변수가 포함되어 있습니다.
+$unsupported_chain: 지원되지 않는 블록체인.
+Successfully: 성공
+Unstake More: 더 많은 토큰을 언스테이크하세요
+Are you sure you want to burn this NFT? It will be lost forever.: 이 NFT를 소각하시겠습니까? 이 작업은 취소할 수 없습니다.
+$multi_burn_nft_warning: |-
+  %amount% NFT를 소각하려고 합니다. 약 %duration% 정도 걸릴 수 있습니다. 완료될 때까지 앱을 닫거나 지갑을 전환하지 마세요.
+
+  소각된 NFT는 복구할 수 없습니다.
+$duration_minutes:
+  zeroValue: "%1$d분"
+  oneValue: "%1$d분"
+  otherValue: "%1$d분"
+$multi_send_nft_warning: 약 %duration% 정도 걸릴 수 있습니다. 완료될 때까지 앱을 닫거나 계정을 전환하지 마세요.
+Burn NFT: NFT 소각
+Burn Collectibles: 수집품 굽기
+Burn: 화상
+Private Key: 개인 키
+"%amount% NFTs": "%amount% NFT"
+1 NFT: 1 NFT
+1 NFT Selected: 1 NFT 선택됨
+"%amount% NFTs Selected": "%amount% NFT 선택됨"
+For sale. Cannot be sent and burned: 판매용으로 등록되어 전송되거나 소각될 수 없습니다.
+Select: 선택
+Send All: 모두 보내기
+Burn All: 모두 굽기
+Select All: 모두 선택
+Collection: 컬렉션
+Unnamed Collection: 이름 없는 컬렉션
+Transaction ID Copied: 거래 ID 복사됨
+External Exchange ID Copied: 외부 거래소 ID 복사됨
+$swap_cex_support: 문제가 발생한 경우 %support%에 연락하여 이 **외부 교환 ID**를 제공하세요.
+$swap_cex_hold_support: 공급자 검토를 통과하려면 %support%에 연락하여 이 **외부 교환 ID**를 제공하세요.
+$swap_cex_provider_support: "%provider% 지원"
+Email: 이메일
+Your %blockchain% Address: 귀하의 %blockchain% 주소
+My %blockchain% Address: 내 %blockchain% 주소
+"%blockchain% Address": "%blockchain% 주소"
+$view_only_wallet_receive_warning: |-
+  **보기 전용 지갑입니다**
+  자산을 보낼 수 없습니다. 자금을 받기 전에 이 주소를 관리하고 있는지 확인하세요.
+Vesting: 베스팅
+Vesting Balance: 베스팅 잔액
+Ready to Unfreeze: 고정 해제 준비 완료
+You will receive your unfrozen coins in a few minutes.: 동결 해제된 토큰은 몇 분 내에 도착해야 합니다.
+Vesting Schedule: 베스팅 일정
+Loyal User Airdrop: 충성도 높은 사용자 에어드롭
+Unfrozen: 냉동해제
+Missed: 놓친
+Frozen: 냉동
+until %date%: "%date%까지"
+Until %date%: "%date%까지"
+"%volume% in %amount% parts": "%amount% 부분의 %volume%"
+Unfreeze: 고정 해제
+Claim: 청구
+Confirm Unfreezing: 동결 해제 확인
+Insufficient Balance for Fee: 수수료 잔액이 부족함
+$fee_value_bold: "**수수료:** %fee%"
+"%app_name% Features": "%app_name% 기능"
+Security: 보안
+To avoid entering the passcode every time, you can use biometrics.: 매번 비밀번호를 입력하지 않고도 동작을 확인하려면 생체인식을 활성화하세요.
+To avoid entering the password every time, you can use biometrics.: 매번 비밀번호를 입력하지 않고도 작업을 확인하려면 생체 인식을 활성화하세요.
+Change Passcode: 비밀번호 변경
+Change Password: 비밀번호 변경
+Confirm Password: 비밀번호 확인
+The passcode will be changed for all your wallets.: 새로운 비밀번호는 모든 지갑에 적용됩니다.
+The password will be changed for all your wallets.: 새로운 비밀번호는 모든 지갑에 적용됩니다.
+Password Changed!: 비밀번호가 변경되었습니다!
+Passcode Changed!: 비밀번호가 변경되었습니다!
+New code set successfully: 새 코드가 성공적으로 설정되었습니다.
+Codes don’t match: 비밀번호가 일치하지 않습니다
+Enter your new code: 새 코드를 입력하세요
+Re-enter your new code: 새 코드를 다시 입력하세요.
+Install on Desktop: 데스크탑에 설치
+Install on Mobile: 모바일에 설치
+Install App: 앱 설치
+Hide: 숨기기
+Hidden NFTs: 숨겨진 NFT
+Hidden By Me: 나에게 숨겨진
+Probably Scam: 아마도 사기일 것입니다
+$settings_nft_probably_scam_description: 이러한 NFT는 보안 검사에 의해 자동으로 숨겨졌습니다. 귀하가 인식하고 신뢰하는 항목만 복원하십시오.
+Unhide: 숨기기 해제
+Hide All: 모두 숨기기
+Hide NFT: NFT 숨기기
+Reload Page: 페이지 새로고침
+Open in Safari: 사파리에서 열기
+Open in Browser: 브라우저에서 열기
+CopyURL: URL 복사
+Share: 공유
+Unhide NFT: NFT 숨기기 해제
+The NFT has been hidden: NFT가 숨겨져 있습니다
+The NFT is no longer hidden: NFT는 더 이상 숨겨지지 않습니다
+$unhide_nft_warning: "%name% 숨기기를 해제하시겠습니까? 이 NFT는 의심스러워 보이며 이름 및 설명과 일치하지 않을 수 있습니다."
+Hide NFTs: NFT 숨기기
+Are you sure you want to hide this NFT collection containing %number% NFTs?: "%number% NFT가 포함된 이 NFT 컬렉션을 숨기시겠습니까?"
+Are you sure you want to hide these %number% NFTs?: 정말로 이 %number% NFT를 숨기시겠습니까?
+Show: 쇼
+Confirm Sending: 전송 확인
+Confirm Burning: 굽기 확인
+Confirm Passcode: 비밀번호 확인
+Enter your code: 코드를 입력하세요
+$hardware_blind_sign_not_enabled: 계속하려면 Ledger의 %chain% 앱 설정에서 "블라인드 서명" 옵션을 활성화하세요.
+Switch to W5: W5로 전환
+Not Scam: 사기 아님
+Untitled: 제목 없음
+Multichain: 멀티체인
+$swap_too_small_amount: 금액이 너무 적습니다.
+$swap_slippage_violation: 스왑 시뮬레이션이 미끄러짐 한도를 초과했습니다. 다시 시도해 보세요.
+Not enough %symbol%: 충분하지 않습니다 %symbol%
+Enter Secret Words: 비밀 단어를 입력하세요
+Turn this off so you can manually download updates and verify signatures.: 업데이트를 수동으로 다운로드하고 서명을 확인할 수 있도록 이 기능을 끄십시오.
+InvalidMnemonic: 니모닉 단어가 잘못되었습니다.
+NFT Menu: NFT 메뉴
+Connection Type: 연결 유형
+Ledger is not supported on this device: 이 장치에서는 Ledger가 지원되지 않습니다
+Connect your Ledger: Ledger을 연결하세요
+$app_lock_description: 활성화되면 홈 카드의 잠금 버튼을 사용하여 %app_name%을 빠르게 잠급니다.
+App Lock: 앱 잠금
+Auto-Lock: 자동 잠금
+Disabled: 장애인
+30 seconds: 30초
+3 minutes: 3분
+10 minutes: 10분
+If away for 30 sec: 30초 후에
+If away for 3 min: 3분 후
+If away for 10 min: 10분 후
+Unlock: 잠금 해제
+This address mimics another address that you previously interacted with.: 이 주소는 이전에 사용한 주소와 매우 유사하며 주소 중독 사기의 일부일 수 있습니다.
+Biometric authentication failed: 생체 인증 실패
+Reset biometrics in security settings, or use a passcode.: 보안 설정에서 생체인식을 재설정하거나 비밀번호를 사용하세요.
+Best Rate: 최적의 요금
+via %dex_name%: "%dex_name%을 통해"
+$swap_dex_chooser_rate_title: "**DeDust** 및 **STON.fi**의 실시간 견적을 비교하여 **더 나은 가격**을 찾으세요."
+You will receive %amount% **more**.: "**%amount% 더** 받습니다."
+You will spend %amount% **less**.: "**%amount% 덜** 지출합니다."
+Best: 최고
+Use Best Rate: 최적의 요금을 사용하세요
+Switch to %dex_name%: "%dex_name%(으)로 전환"
+Built-in DEX Aggregator: 내장형 DEX 수집기
+Add Tokens: 토큰 추가
+No tokens yet: 아직 토큰이 없습니다.
+$no_tokens_description: 토큰을 받으면 여기에 표시됩니다. 설정에서 수동으로 토큰을 추가할 수도 있습니다.
+Exchange Rate: 환율
+Install Card: 카드 설치
+Reset Card: 카드 재설정
+Apply Palette: 팔레트 설치
+Reset Palette: 팔레트 재설정
+Notifications & Sounds: 알림 및 소리
+Sounds: 소리
+Push Notifications: 푸시 알림
+Select up to %count% wallets for notifications: 알림을 위해 최대 %count% 지갑을 선택하세요.
+$swap_aggregator_fee_tooltip: 내장된 **DEX 수집기**는 사용 가능한 DEX 중에서 **최고의 속도**를 찾습니다. 서비스 수수료는 %percent%입니다.
+Accumulated Rewards: 누적된 보상
+$swap_reverse_prohibited: 이 토큰 쌍에는 구매 금액을 설정할 수 없습니다.
+Blockchain Fee Details: 블록체인 수수료 세부정보
+Final Fee: 최종 수수료
+Excess: 초과
+$fee_details: |
+  수수료를 내기 위해 %full_fee%이(가) 지갑에서 즉시 차감됩니다. 이 중 일부는 몇 분 안에 초과분으로 **%excess_symbol%**에서 반환됩니다.
+
+  이것은 %chain_name% 블록체인의 작동 방식입니다.
+Got It: 알았어
+Wallet: 지갑
+Trending: 인기 급상승
+No Data: 데이터 없음
+Toggle fullscreen: 전체 화면 전환
+Request is sent!: 요청이 전송되었습니다!
+Transaction ID: 거래 ID
+Outgoing Transaction ID: 나가는 거래 ID
+Incoming Transaction ID: 들어오는 거래 ID
+Help Center: 도움말 센터
+"%app_name% Tips": "%app_name% 팁"
+Open %nft_marketplace%: "%nft_marketplace% 열기"
+Link Copied: 링크가 복사되었습니다
+Share Link: 링크 공유
+$dapp_return_details: |-
+  %fee_amount%은(는) 수수료 지불을 위해 지갑에서 즉시 인출됩니다.
+
+  %received_amount%은(는) 몇 분 내에 귀하에게 반환됩니다.
+Additional Amount Sent: 추가 송금 금액
+Show Sensitive Data: 민감한 데이터 표시
+Hide Sensitive Data: 민감한 데이터 숨기기
+Copy Address: 주소 복사
+Copy Transaction ID: 거래 ID 복사
+Requesting Unstake: 언스테이크 요청
+Requested Unstake: 언스테이크 요청
+$request_unstake_action: 언스테이크 요청
+Calling Contract: 호출 계약
+Called Contract: 호출된 계약
+$call_contract_action: 통화 계약
+Deploying Contract: 계약 배포
+Deployed Contract: 배포된 계약
+$deploy_contract_action: 계약 배포
+Minting: 주조
+Minted: 주조됨
+$mint_action: 민트
+Burning: 굽기
+Burned: 태워짐
+$burn_action: 화상
+Updating Address: 주소 업데이트 중
+Updated Address: 업데이트된 주소
+$update_address_action: 주소 업데이트
+Updating Site: 사이트 업데이트 중
+Updated Site: 업데이트된 사이트
+$update_site_action: 사이트 업데이트
+Updating Subdomains: 하위 도메인 업데이트
+Updated Subdomains: 업데이트된 하위 도메인
+$update_subdomains_action: 하위 도메인 업데이트
+Updating Storage: 스토리지 업데이트 중
+Updated Storage: 업데이트된 스토리지
+$update_storage_action: 스토리지 업데이트
+Deleting Domain Record: 도메인 레코드 삭제
+Deleted Domain Record: 삭제된 도메인 레코드
+$delete_domain_record_action: 도메인 레코드 삭제
+Renewing Domain: 도메인 갱신
+Renewed Domain: 갱신된 도메인
+$renew_domain_action: 도메인 갱신
+Providing Liquidity: 유동성 제공
+Provided Liquidity: 유동성 제공
+$provide_liquidity_action: 유동성 제공
+Withdrawing Liquidity: 유동성 인출
+Withdrawn Liquidity: 인출된 유동성
+$withdraw_liquidity_action: 유동성 인출
+Bounced: 반송됨
+Bouncing: 튀는
+$bounce_action: 바운스
+NFT Auction Bid: NFT 경매 입찰
+Bidding at NFT Auction: NFT 경매 입찰
+Buying NFT: NFT 구매
+Bought NFT: NFT를 구매했습니다
+$buy_nft_action: NFT 구매
+Sold NFT: NFT 판매
+Selling NFT: NFT 판매
+$sell_nft_action: NFT 판매
+Receiving: 수신
+$receive_action: 수신
+Change Palette: 팔레트 변경
+Palette: 팔레트
+Unlock New Palettes: 새로운 팔레트 잠금 해제
+Get a unique My Wallet Card to unlock new palettes.: 고유한 My Wallet 카드를 받아 새 팔레트를 잠금 해제하세요.
+Mint Cards: 민트 카드
+Card has been upgraded!: 카드가 업그레이드되었습니다!
+$mint_card_result: NFT 카드는 1분 이내에 **발행**되고 **자동으로 설치**됩니다.
+Unique: 맞춤형
+Get a card with unique background and personalized palette for wallet interface.: 독점적인 배경과 색상 팔레트로 지갑을 맞춤화하세요.
+Transferable: 양도 가능
+Easily send your upgraded card to any of your friends.: 업그레이드된 카드를 다른 사용자에게 양도하세요.
+Tradable: 거래 가능
+Sell or auction your card on third-party NFT marketplaces.: 제3자 NFT 마켓플레이스에서 카드를 판매하거나 경매하세요.
+Upgrade for %amount% %currency%: "%amount% %currency%에 대한 업그레이드"
+"%amount% left": "%amount% 남음"
+"%amount% sold": "%amount% 판매됨"
+This card has been sold out: 이 카드는 매진되었습니다.
+Import Existing Wallet: 기존 지갑 가져오기
+View Any Address: 모든 주소 보기
+View Mode: 보기 전용 모드
+"%counts% Secret Words": "%counts% 비밀 단어"
+Address or Domain: 주소 또는 도메인
+$import_view_account_note: 잔고와 온체인 활동을 추적하려면 주소를 추가하세요.
+$view_mode: 보기
+Import Wallet: 지갑 가져오기
+Please top up your %token% balance.: "%token% 잔액을 충전해 주세요."
+Remember Passcode: 일시적으로 비밀번호 건너뛰기
+Remember Password: 비밀번호 기억
+Not available with biometrics.: 생체 인식에는 사용할 수 없습니다.
+App will not ask for signature for %1$d minutes after last entry.: 확인 후 %1$d분 동안은 비밀번호를 다시 입력할 필요가 없습니다.
+Remember for %1$d minutes: "%1$d분 동안 건너뛰기"
+Preview: 미리보기
+$preview_not_guaranteed: 미리보기 콘텐츠는 제3자에 의해 제공되며 **불완전하거나 위조될 수 있습니다**. 계속하기 전에 실제 서명 데이터를 확인하세요.
+Unverified Source: 확인되지 않은 소스
+DappurlTrustStatusInvalidTitle: 도메인 불일치
+$DappurlTrustStatusInvalidHelp: 원본이 이 애플리케이션의 확인된 도메인과 일치하지 않습니다. 이 사이트를 신뢰하는 경우에만 계속하세요.
+DappurlTrustStatusDangerousTitle: 잠재적으로 악성 사이트
+$DappurlTrustStatusDangerousHelp: 이 도메인은 보안 검사에 의해 위험하다고 표시되었습니다. 연결하면 자금이 위험해질 수 있습니다. 절대적으로 확신하는 경우에만 계속하십시오.
+$reopen_in_iab: 이 경고를 피하려면 내 지갑 %mobileAppButton% 또는 %browserExtensionButton%을(를) 사용하세요.
+$reopen_in_iab_explore: 이 경고를 피하려면 앱을 탐색할 때 %exploreTab% 섹션을 사용하세요.
+My Wallet Browser: My Wallet 브라우저
+mobile app: 모바일 앱
+browser extension: 브라우저 확장
+Exit all wallets: 모든 지갑 제거
+Can't confirm?: 확인할 수 없나요?
+$safe_staking_ethena_description1: 스테이킹은 **Ethena**가 감사한 유동 스테이킹 스마트 계약을 통해 실행됩니다.
+$safe_staking_ethena_description2: 스테이크된 USDe는 Ethena의 거래 및 투자 전략에 참여하여 보상을 생성합니다.
+$safe_staking_ethena_description3: 언제든지 스테이크와 누적 보상을 요청할 수 있습니다. 자금은 일반적으로 **7일** 이내에 반환됩니다.
+Unstake %amount%: "%amount% 언스테이크"
+Request Unstaking: 언스테이크 요청
+$unstaking_when_receive_ethena: 귀하의 스테이킹되지 않은 자금은 **7일** 이내에 도착해야 합니다.
+Coins have been unstaked!: 토큰 언스테이킹!
+Confirm Upgrading: 업그레이드 확인
+How does it work?: 어떻게 작동하나요?
+Multisend: 다중 전송
+Renew All: 모두 갱신
+Renew: 갱신
+Renew Domain: 도메인 갱신
+Renew Domains: 도메인 갱신
+Some domains are about to expire: 일부 도메인이 곧 만료됩니다
+$domain_expire: "**%domain%** 만료 %days%"
+"%token% Staking": "%token% 스테이킹"
+Add Tab: 탭 추가
+Customize Tabs: 탭 사용자 정의
+Remove Tab: 탭 제거
+Reset: 재설정
+Tabs: 탭
+Tap or drag to add tabs.: 탭을 추가하려면 탭하거나 드래그하세요.
+$iab_tabs_count:
+  zeroValue: "%1$d 탭"
+  oneValue: "%1$d 탭"
+  otherValue: "%1$d 탭"
+$domains_amount %1$d:
+  zeroValue: 도메인 없음
+  oneValue: "%1$d 도메인"
+  otherValue: "%1$d 도메인"
+Stake: 스테이크
+Manage Tokens: 토큰 관리
+Claim Rewards: 보상 청구
+Configure DNS: DNS 구성
+Link to Wallet: 월렛에 연결
+Change Wallet: 지갑 변경
+Change Linked Wallet: 연결된 지갑 변경
+Domain has been renewed!: 도메인이 갱신되었습니다!
+Domains have been renewed!: 도메인이 갱신되었습니다!
+Linked Wallet: 연결된 지갑
+Domain Linked: 도메인이 연결됨
+Link: 링크
+Confirm Renewing: 갱신 확인
+Confirm Linking: 연결 확인
+$domains_expire:
+  zeroValue: 만료되는 도메인 없음 %days%
+  oneValue: "**%domain% 도메인**이 %days%에 만료됩니다."
+  otherValue: "**%domain% 도메인** 만료 %days%"
+$in_days:
+  zeroValue: "%1$d일 후"
+  oneValue: "%1$d일 후"
+  otherValue: "%1$d일 후"
+$domain_was_expired: "**%domain%**이 만료되었습니다."
+$domains_was_expired:
+  zeroValue: 만료된 도메인이 없습니다.
+  oneValue: "**%domain% 도메인**이 만료되었습니다"
+  otherValue: "**%domain% 도메인**이 만료되었습니다."
+Reload: 새로고침
+Copy Link: 링크 복사
+Check eligibility for max APY: 최대 APY 자격 확인
+Check eligibility: 자격 확인
+$expired_many: 만료됨
+$one_domain_expires %days%: "%days% 만료"
+$multiple_domains_expire %days%: "%days% 만료"
+Message: 메시지
+Binary Data: 바이너리 데이터
+The binary data content is unclear. Sign it only if you trust the service.: 바이너리 데이터 내용이 불분명합니다. 서비스를 신뢰하는 경우에만 서명하세요.
+Cell Schema: 셀 스키마
+Cell Data: 셀 데이터
+Sign Data: 데이터 서명
+EIP-712 typed data: EIP-712 형식의 데이터
+Domain: 도메인
+Primary type: 기본 유형
+Please confirm signature on your Ledger: Ledger의 서명을 확인해 주세요.
+Utilities: 유틸리티
+Games: 게임
+Entertainment: 엔터테인먼트
+Toggle to landscape layout: 가로 레이아웃으로 전환
+Toggle to portrait layout: 세로 레이아웃으로 전환
+Attributes: 속성
+Show All: 모두 표시
+Description: 설명
+No additional data.: 추가 데이터가 없습니다.
+"%chain% Domain Copied": "%chain% 도메인이 복사되었습니다."
+$in_currency: "%currency%에서"
+Rename Wallet: 지갑 이름 바꾸기
+You can rename this wallet for easier identification.: 더 쉽게 식별할 수 있도록 이 지갑의 이름을 바꿀 수 있습니다.
+$storage_cleared_title: 애플리케이션 저장소가 지워졌습니다.
+$storage_cleared_message: |-
+  브라우저 관련 또는 디스크 공간 문제로 인해 지갑 데이터가 삭제되었습니다. 모든 지갑에서 로그아웃한 후 비밀번호를 사용하여 수동으로 다시 가져오세요.
+
+  도움이 필요하면 %support_link%.
+  에 문의하세요.
+Telegram Gifts: 텔레그램 선물
+Collectibles: 수집품
+Bluetooth unavailable: 블루투스를 사용할 수 없음
+$bluetooth_enable_guide: 기기 설정에서 블루투스를 켜고 앱이 블루투스에 액세스할 수 있도록 허용하세요.
+Canceled by the user: 사용자가 취소함
+The proof for signing provided by the app is too large: 앱에서 제공하는 서명 증명이 너무 큽니다.
+$domain_like_scam_warning: |-
+  이 주소는 **도메인 사칭 사기**의 일부일 가능성이 높습니다. 거래소나 토큰 지갑 주소가 아닙니다.
+
+  공격자는 목적지가 친숙해 보이도록 유사하게 생긴 긴 도메인을 사용합니다.
+
+  **이체를 취소**하고 주소를 다시 확인합니다. %help_center_link%.
+  에서 자세히 알아보세요.
+Allow Suspicious Actions: 의심스러운 작업 허용
+$allow_suspicious_actions_description: 의심스러운 주소로 전송하고 잠재적으로 안전하지 않은 계약과 상호작용하는 것을 허용합니다.
+Multisig Wallet Detected: 다중서명 지갑이 감지되었습니다
+$multisig_warning_text: "%app_name%은(는) 이 다중서명 지갑에서 자산을 보낼 수 없습니다. 자금을 입금하기 전에 지갑을 통제하는지 확인하세요. %multisig_warning_link%"
+$multisig_warning_link: 자세히 알아보려면 탭하세요.
+Multisig sending disabled: 다중서명 전송 비활성화됨
+$try_new_air_version: 장치용으로 제작된 더 가볍고 빠른 기본 버전을 사용하세요. 언제든지 다시 전환할 수 있습니다.
+$accept_terms_with_link: "%link%에 동의합니다."
+use the wallet responsibly: 지갑 위험 이해
+"%app_name% Resources": "%app_name% 리소스"
+Resources: 자원
+Watch Video about Features: 시청 기능 개요
+Enjoy Monthly Updates in Blog: 월간 업데이트 읽기
+Learn New Things in Help Center: 도움말 센터 찾아보기
+Frequent Questions & Answers: 자주 묻는 질문과 답변
+Paste from Clipboard: 클립보드에서 붙여넣기
+Use biometric authentication or create a password to protect it.: 생체 인증을 사용하거나 비밀번호를 만들어 보호하세요.
+Go to Words: 비밀 단어 보기
+Copy to Clipboard: 클립보드에 복사
+$mnemonic_check_words_list: "비밀 단어 %word_numbers% 선택:"
+$mnemonic_check_error: 비밀번호가 일치하지 않습니다. 다시 시도해 보세요.
+Open Wallet: 오픈월렛
+All Set!: 모든 준비가 완료되었습니다!
+$wallet_create_done: 지갑이 성공적으로 생성되었습니다.
+$wallet_import_done:
+  zeroValue: 지갑을 성공적으로 가져왔습니다.
+  oneValue: 지갑을 성공적으로 가져왔습니다.
+  otherValue: "%1$d 지갑을 성공적으로 가져왔습니다."
+$wallet_done_description: 이제 온체인 자산을 수신, 전송, 관리할 수 있습니다.
+Security Warning: 보안 경고
+Go back to Words: 단어로 돌아가기
+I’m sure. Continue: 확신합니다. 계속
+$copy_mnemonic_warning: "**클립보드**를 포함한 디지털 환경에 단어를 저장하는 것은 안전하지 않습니다. 비밀 단어를 안전하게 저장했는지 확인하세요."
+$screenshot_mnemonic_warning: "**스크린샷**을 포함해 디지털 환경에서 단어를 저장하는 것은 안전하지 않습니다. 비밀 단어를 안전하게 저장했는지 확인하세요."
+Other apps will be able to read your secret words!: 다른 앱이 당신의 비밀 단어를 읽을 수 있게 됩니다!
+I’m sure. Copy anyway: 확신합니다. 무시하고 복사
+$auth_biometric_info: 생체 인식을 활성화하면 지갑을 잠금 해제하고 작업을 더 빠르게 확인할 수 있습니다.
+Open wallet without checking: 인증 건너뛰기 및 지갑 오픈
+Make sure you have your secret words securely saved.: 비밀 단어를 안전하게 저장했는지 확인하세요.
+Without it, you won't be able to access your wallet.: 그렇지 않으면 지갑에 접근할 수 없습니다.
+$ledger_connection_broken: Ledger의 연결이 끊어졌습니다. 다시 연결하고 다시 시도해 보세요.
+$ledger_wrong_device: 이 계정은 다른 Ledger 복구 문구 또는 암호 문구를 사용하거나 다른 Ledger 장치에 저장되어 있습니다.
+Show More: 더보기
+Search app or enter address: 앱 검색 또는 주소 입력
+Connected Apps: 연결된 앱
+Connected Sites: 연결된 사이트
+Popular Apps: 인기 앱
+Popular Sites: 인기 사이트
+$wallets_amount:
+  zeroValue: 지갑 없음
+  oneValue: "%1$d 지갑"
+  otherValue: "%1$d 지갑"
+$total_balance: "%balance% 합계"
+No wallets: 지갑 없음
+View as List: 목록으로 보기
+View as Cards: 카드로 보기
+Reorder: 재정렬
+Reorder Tabs: 탭 재정렬
+Rename: 이름 바꾸기
+Customize: 사용자 정의
+Manage Wallets: 지갑 관리
+i18n_dragToSort: 드래그하여 정렬
+My: 내
+All: 모두
+$view_accounts: 보기
+Add your first one to begin.: 자산 관리를 시작하려면 지갑을 추가하세요.
+You don’t have any wallets yet: 아직 지갑이 없습니다
+Add Ledger Wallet: Ledger 지갑 추가
+Add View Wallet: 조회전용 지갑 추가
+No Ledger wallets yet: 아직 Ledger 지갑이 없습니다.
+No view wallets yet: 아직 보기 전용 지갑이 없습니다
+View wallets can receive assets, but you cannot use them to send or sign transactions.: 보기 전용 지갑은 잔액을 추적하고 자산을 받을 수 있지만 자산을 보내거나 거래에 서명할 수는 없습니다.
+Add the first one to track balances and activity for any address.: 잔고와 온체인 활동을 추적하려면 주소를 추가하세요.
+Customize Wallet: 지갑 맞춤설정
+"Select the card stored in this wallet:": "이 지갑에 저장된 카드를 선택하세요:"
+This card will be installed for this wallet and will be displayed on the home screen and in the wallets list.: 카드가 이 지갑에 적용되고 홈 화면과 지갑 목록에 표시됩니다.
+Get More Cards: 더 많은 카드 받기
+Browse My Wallet Cards available for purchase.: 구매할 수 있는 My Wallet 카드를 살펴보세요.
+You don’t have any cards to customize yet: 아직 사용 가능한 카드가 없습니다.
+My Wallet Cards can be installed for wallets and displayed on the home screen and in the wallet list.: My Wallet 카드를 각 지갑에 적용하고 홈 화면과 지갑 목록에 표시할 수 있습니다.
+Get First Card: 첫 번째 카드 받기
+Palette and Card: 팔레트와 카드
+Customize the wallet's home screen and color accents the way you like.: 지갑 홈 화면, 카드, 강조 색상을 맞춤 설정하세요.
+Address doesn't exist: 주소가 존재하지 않습니다
+The address is not a token minter address: 주소가 토큰 발행자 주소가 아닙니다.
+$joining_comma: ","
+$joining_and: 그리고
+$joining_or: 또는
+View in App: 앱에서 보기
+Save Account: 계정 저장
+$invalid_address_format: 잘못된 주소 형식
+$no_valid_view_addresses: 볼 수 있는 유효한 주소가 없습니다.
+Account Saved: 계정이 저장되었습니다
+Share Wallet Link: 지갑 링크 공유
+Remove: 제거
+$missing_offramp_deposit_address: 진입로에서 입금 주소가 누락되었습니다.
+Buy: 구매
+Sell: 매도
+Sell on Card: 카드로 판매
+Sell %symbol%: "%symbol% 매도"
+$connect_dapp_description: 연결된 앱에서는 지갑 주소를 확인하고 서명이나 거래를 요청할 수 있습니다. 모든 자산 작업에는 여전히 확인이 필요합니다.
+$connect_dapp_title: "%name%에 연결하시겠습니까?"
+Choose Wallet: 지갑을 선택하세요
+Wallet to use on %host%: "%host%에서 사용할 지갑"
+Selected Wallet: 선택한 지갑
+Wallet to use for payment: 결제에 사용할 지갑
+$wallet_connect_pay_no_options: 이 지갑에는 결제 옵션이 없습니다.
+$wallet_connect_pay_try_another_wallet: 다른 지갑을 선택해 보세요.
+Connect Wallet: 지갑 연결
+Connect Anyway: 어쨌든 연결
+Insufficient Fee: 수수료가 부족함
+Waiting for a View deeplink to display a wallet address.: 지갑 주소를 표시하기 위해 딥링크 보기를 기다리는 중입니다.
+Adding wallets is not available in explorer mode: 보기 전용 탐색기 모드에서는 지갑을 추가할 수 없습니다.
+$explorer_mode_warning: "보기 전용 탐색기 모드: 주소 링크를 기다리는 중"
+This command is not supported in explorer mode: 보기 전용 탐색기 모드에서는 이 작업을 사용할 수 없습니다.
+$saved_addresses_header: 저장됨
+confirm an action in My Wallet: My Wallet에서 작업 확인
+Timed out waiting for account to be ready: 계정이 준비되기를 기다리는 동안 시간이 초과되었습니다.
+$connected_apps:
+  otherValue: "%1$d 연결됨"
+Night Mode, Palette, Card: 야간 모드, 팔레트, 카드
+Back Up, Passcode, Auto-Lock: 백업, 비밀번호, 자동 잠금
+Back Up, Password, Auto-Lock: 백업, 비밀번호, 자동 잠금
+Base Currency, Token Order, Hidden NFTs: 기본 통화, 토큰 주문, 숨겨진 NFT
+Your assets on other contracts: 다른 계약의 자산
+Wallets, Sounds: 지갑, 소리
+Help: 도움말
+About: 소개
+Wallets: 지갑
+Open: 열기
+Open in %app_name%: "%app_name%에 열기"
+Blog: 블로그
+Apps: 앱
+Permissions: 권한
+Token approvals and wallet permissions: 토큰 승인 및 지갑 권한
+Approvals & Delegations: 승인 및 위임
+Plugins: 플러그인
+No Permissions: 권한 없음
+Unlimited: 무제한
+Approved to %name%: "%name%에게 승인됨"
+Wallet Delegation: 지갑 위임
+Wallet Delegation to %name%: "%name%에 지갑 위임"
+Revoke Delegation: 위임 철회
+Are you sure you want to revoke delegation for %name%?: "%name%에 대한 위임을 취소하시겠습니까?"
+Revoke: 취소
+Revoke Approval: 승인 취소
+Are you sure you want to revoke approval for %token%?: "%token%에 대한 승인을 취소하시겠습니까?"
+Confirm Revoking: 취소 확인
+Unknown Plugin: 알 수 없는 플러그인
+$nft_not_found: NFT를 찾을 수 없습니다
+You will be able to save it again via Transfer Info with this address.: 이 주소로 이체정보를 통해 다시 저장할 수 있습니다.
+Transfer Info: 환승 정보
+Transfer not found: 전송을 찾을 수 없습니다
+Failed to fetch transfer: 이체를 가져오지 못했습니다.
+Transfer in progress: 이전 진행 중
+Transfer Sent!: 송금 보냈습니다!
+Please confirm transfer on your Ledger: Ledger에서 이체를 확인하세요.
+Please confirm action on your Ledger: Ledger에서 조치를 확인하세요.
+Not all transfers were sent successfully: 일부 전송이 성공적으로 전송되지 않았습니다.
+Please confirm transfer using biometrics: 생체 인식을 사용하여 전송을 확인하세요.
+$transfer_inactive_contract_error: |-
+  "EQ..." 형식으로 주소를 입력하셨으나 해당 주소가 활성화되지 않아 전송이 완료되지 않습니다.
+  꼭 이 주소로 보내시려면 "UQ..." 형식으로 주소를 입력해 주세요.
+$transaction_not_found: 전송을 찾을 수 없습니다.
+$could_not_determine_address: 전송에서 지갑 주소를 확인할 수 없습니다.
+WrongAddress: 앱이 다른 지갑에 작업을 요청했습니다.
+WrongNetwork: 앱이 다른 네트워크에서 작업을 요청했습니다.
+Another transfer was sent from this wallet simultaneously. Please try again.: 동시에 이 지갑에서 또 다른 이체가 전송되었습니다. 다시 시도해 주세요.
+Confirm action with your password: 비밀번호로 작업을 확인하세요
+$dapps-description: "%app_name%을 지원하는 앱에 연결하고, 공유 계정 세부정보를 확인하고, 지갑에서 거래 요청을 확인하세요."
+Please verify the action.: 동작을 확인해주세요.
+$service_token_transfer_warning: 이 서비스 토큰은 보증금을 인출하거나 중요한 작업을 완료하는 데 필요할 수 있습니다. 관련 기능을 전송한 후 작동이 중지될 수 있습니다.
+$ledger_outdated: 이 작업은 귀하의 Ledger %chain% 앱 버전에서 지원되지 않습니다. Ledger Live를 사용하여 업데이트해주세요.
+$hardware_payload_warning: "**타사 서비스에서 지갑 서명을 요청하고 있습니다.** 서명하면 자산 운영이 승인될 수 있습니다. 출처를 확인할 수 없으면 취소하세요."
+Pin: 핀
+Unpin: 고정 해제
+My Assets: 내 자산
+Owner: 소유자
+Show All Wallets: 모든 지갑 표시
+Ask a Question: 질문하기
+Ask anything: 무엇이든 물어보세요
+Agent: 대리인
+Learn more: 자세히 알아보기
+Data shared with Agent: 에이전트와 공유되는 데이터
+$agent_consent_allow_button: 에이전트 허용
+$agent_consent_subtitle: 지갑 도움말, 토큰 정보, 지원되는 작업에 대해 상담원에게 문의하세요.
+$agent_consent_feature_answers: "%app_name%, 토큰 및 지갑 활동에 대한 답변을 얻으세요."
+$agent_consent_feature_actions: 보내기, 받기, 스테이킹 등 지원되는 작업을 준비하세요.
+$agent_consent_feature_context: 답변이 관련 자산 및 주소를 참조할 수 있도록 지갑 컨텍스트를 사용하세요.
+$agent_consent_disclosure_text: 에이전트 허용을 탭하면 %app_name%이(가) 에이전트 메시지와 관련 지갑 컨텍스트를 %app_name% Agent(agent.mywallet.io) 및 제3자 AI 제공업체인 Anthropic Claude API에 보내 요청을 처리하도록 허용합니다. 지갑 컨텍스트에는 지갑 주소, 잔액, 토큰, 활동 및 요청한 작업의 세부 정보가 포함될 수 있습니다. 데이터는 에이전트 응답을 제공하고 요청한 작업을 준비하는 데만 사용됩니다.
+$agent_consent_debug_reset_button: 에이전트 동의 상태 재설정
+$agent_consent_debug_reset_footer: 에이전트 탭을 열면 에이전트 동의 화면이 다시 표시됩니다.
+Clear Chat: 채팅 지우기
+Unsupported link: 지원되지 않는 링크
+My Wallet Features: My Wallet 기능
+Notifications: 알림
+Wrong passcode, please try again: 비밀번호가 잘못되었습니다. 다시 시도해 주세요.
+Use biometric authentication or create a passcode to protect it.: 생체 인증을 사용하거나 비밀번호를 만들어 보호하세요.
+Use Passcode: 비밀번호 사용
+Create Passcode: 비밀번호 생성
+Create a passcode to protect it.: 보호하려면 비밀번호를 만드세요.
+Enter Passcode: 비밀번호 입력
+If you turn off biometric protection, you will need to create a passcode.: 생체 인식 보호를 끄면 비밀번호를 생성해야 합니다.
+Enabling biometric confirmation will reset the passcode.: 생체 인식 확인을 활성화하면 비밀번호가 재설정됩니다.
+Confirm action with your passcode: 비밀번호로 작업을 확인하세요
+No Image: 이미지 없음
+Different blockchain. Cannot be selected: 다른 블록체인. 선택할 수 없습니다
+$address_suggestion_no_chain: 아니요 %chain%
+Subwallets: 하위 지갑
+Other addresses for this wallet: 이 지갑의 다른 주소
+Current Wallet: 현재 지갑
+Add Subwallet: 하위 지갑 추가
+Create Subwallet: 하위 지갑 생성
+Add All Found: 찾은 항목 모두 추가
+You have tokens on other subwallets. You can switch to them here.: 다른 하위 지갑에 토큰이 있습니다. 여기에서 전환할 수 있습니다.
+Subwallet Created: 하위 지갑이 생성되었습니다.
+Subwallet Added: 하위 지갑이 추가되었습니다.
+Subwallet Switched: 하위 지갑이 전환됨
+Top 5: 상위 5위
+Top 10: 상위 10위
+Top 30: 상위 30위
+Manage Assets: 자산 관리
+Pulse: 펄스
+Edit Message: 메시지 편집
+Toggle Hints: 힌트 전환
+AgentErrorResponseFailed: "오류: 응답을 받지 못했습니다."
+AgentErrorConnectionFailed: "오류: 연결 실패"
+Scroll To Bottom: 맨 아래로 스크롤
+$agent_clear_chat_confirm: 정말로 채팅 기록을 지우시겠습니까?
+$unknown_swap_token: 스왑 링크에 알 수 없는 토큰이 있습니다. 기본 토큰이 사용되었습니다.
+$action_not_available_view_mode: 지갑 보기에서는 이 작업을 수행할 수 없습니다.
+Deposit: 예금
+Trade: 무역
+Show All Assets: 모든 자산 표시
+Show All Collectibles: 모든 수집품 표시
+Show All %collection_name%: 모두 표시 %collection_name%
+Scanning for subwallets...: 하위 지갑 검색 중...
+This process may take up to a minute. Please wait.: 이 프로세스는 최대 1분 정도 걸릴 수 있습니다. 기다리세요.
+Your assets on other TON contracts: 다른 TON 계약의 자산
+No existing subwallets found: 기존 하위 지갑을 찾을 수 없습니다.
+You can create a new subwallet if you need another address on the same secret words.: 동일한 비밀번호에 다른 주소가 필요한 경우 새 하위 지갑을 생성할 수 있습니다.
+You have tokens on other subwallets. Each subwallet has its own address.: 다른 하위 지갑에 토큰이 있습니다. 각 하위 지갑에는 고유한 주소가 있습니다.
+Scanning...: 스캔 중...
+No collectibles yet: 아직 수집품이 없습니다.
+Hide Tab: 탭 숨기기
+Show Collectibles: 수집품 표시
+Show Assets: 자산 표시
+Top %amount%: 상위 %amount%
+No subwallets yet.: 아직 하위 지갑이 없습니다.
+$subwallets_found:
+  oneValue: "발견됨: %1$d"
+  otherValue: "발견됨: %1$d"
+$subwallet_scan_no_native_balances: 기본 잔액 없음
+$subwallet_scan_other_tokens_suffix:
+  oneValue: + %1$d 기타 토큰
+  otherValue: + %1$d 기타 토큰
+Send, receive, and trade tokens and collectibles.: 토큰과 수집품을 보내고 받고 거래하세요.
+$overview_cell_size_small: 작은
+$overview_cell_size_medium: 중간
+$overview_cell_size_big: 큰
+Set Name: 이름 설정
+Wallet Created: 지갑이 생성되었습니다
+Wallet Imported: 지갑을 가져왔습니다.
+View Wallet Added: 추가된 지갑 보기
+Scroll Left: 왼쪽으로 스크롤
+Scroll Right: 오른쪽으로 스크롤
+Sent NFT: NFT 전송 완료
+Sending NFT: NFT 보내기
+$send_nft_action: NFT 보내기
+Received NFT: NFT를 받았습니다
+Receiving NFT: NFT 수신
+$receive_nft_action: NFT 수신
+Minted NFT: 발행된 NFT
+Minting NFT: NFT 발행
+$mint_nft_action: NFT 발행
+Burned NFT: 소각된 NFT
+Burning NFT: NFT 소각 중
+$burn_nft_action: NFT 소각
+New Wallet: 새로운 지갑
+From new secret words: 새로운 비밀 단어에서
+New Subwallet: 새로운 하위 지갑
+From current secret words: 현재 비밀 단어에서
+$secret_words: 비밀 단어
+Restore wallet from 12 or 24 words: 12 또는 24 단어에서 지갑 복원
+Connect your hardware wallet: 하드웨어 지갑을 연결하세요
+Watch wallet in read-only mode: 읽기 전용 모드에서 지갑 보기
+More: 더보기
+at: ~에
+I agree to %term%: "%term%에 동의합니다."
+See Words: 단어 보기
+Wrong Phrase: 잘못된 문구
+Permission Denied: 권한이 거부되었습니다
+USB: USB
+Bluetooth: 블루투스
+Locked: 잠김
+Enter passcode or use fingerprint: 비밀번호를 입력하거나 지문을 사용하세요
+Use PIN: PIN 사용
+Try again in %1$@: "%1$@에 다시 시도하세요."
+Try again in %1$@ and %2$@: "%1$@ 및 %2$@에서 다시 시도하세요."
+Screen Recording Detected: 화면 녹화가 감지되었습니다.
+$screen_recording_info: |-
+  현재 화면을 녹화하고 있습니다.
+  이 화면에는 민감한 정보나 개인 정보가 포함될 수 있습니다.
+  무엇이 공유될지 확인하시기 바랍니다.
+Screen Recording: 화면 녹화
+Disable Screen Record Warning: 화면 녹화 경고 비활성화
+I Understand, Proceed: 이해합니다. 진행합니다.
+Waiting for Network: 네트워크를 기다리는 중
+My Wallet: My Wallet
+$no_activity_history: 아직 거래 내역이 없습니다.
+Standalone: 독립형
+"Enter wallet name:": "지갑 이름을 입력하세요:"
+All Telegram Gifts: 모든 텔레그램 선물
+Add Crypto: 암호화폐 추가
+Share QR Code: QR 코드 공유
+$send_only_ton: Gram(GRAM) 또는 TON 기반 자산만 이 주소로 보냅니다. 다른 토큰을 보내면 손실이 발생합니다.
+$send_only_chain: "%chain%(%symbol%) 또는 %chain% 기반 자산만 이 주소로 보내세요. 다른 토큰을 보내면 손실이 발생합니다."
+Buying with card is not supported for this account.: 이 계정에서는 카드 구매가 지원되지 않습니다.
+Swapped at: 교환 시기
+Price per: 당 가격
+Swap ID: 스왑 ID
+Swap ID for %provider%: "%provider%의 스왑 ID"
+Copy Swap ID: 스왑 ID 복사
+Swap ID Copied: 스왑 ID가 복사되었습니다.
+from: 에서
+to: 에
+Currency: 통화
+Select Token to Send: 보낼 토큰을 선택하세요
+Send to: 다음으로 보내기
+Add a message, if needed: 필요한 경우 메시지를 추가하세요.
+Collapse: 접기
+Expand: 펼치기
+Standalone NFT: 독립형 NFT
+$nft_select: 선택
+$nft_batch_on_sale: 엄선된 수집품이 판매 중입니다.
+$nft_batch_different_chains: 선택한 수집품은 다른 체인에 있습니다.
+$nft_expired: 만료됨
+Linked Address: 연결된 주소
+Enter Address: 주소 입력
+D: 디
+W: 여
+M: 엠
+3M: 3M
+"Y": "Y"
+$amount_K: "%amount%K"
+$amount_M: "%amount%M"
+Happening Now: 지금 인기 급상승
+No Dapps Found!: dApp을 찾을 수 없습니다
+Edit Wallet Name: 지갑 이름 수정
+Wallet Name: 지갑 이름
+App Icon: 앱 아이콘
+Rounded Toolbars: 둥근 도구 모음
+Side Gutters: 측면 홈통
+Gradient Navigation Bar: 그라데이션 탐색 모음
+Tokens on Home Screen: 홈 화면의 토큰
+Current Wallet Version: 현재 지갑 버전
+Tokens on Other Versions: 다른 버전의 토큰
+Show Secret Words: 비밀 단어 표시
+Passcode: 비밀번호
+Lock the app after: 다음 시간 이후에 앱을 잠그세요
+Never: 절대로
+"%1$@ seconds": "%1$@초"
+"%1$@ minutes": "%1$@분"
+Unstake Request: 언스테이크 요청
+History: 역사
+Earn up to %1$@ per year from your tokens: 최대 %1$@의 예상 연간 보상
+Insufficient %1$@ Balance: "%1$@ 잔액 부족"
+Instant Withdrawal: 즉시출금
+Instantly: 즉시
+Up to %1$@: 최대 %1$@
+up to %1$@: 최대 %1$@
+Current APR: 현재 4월
+in: 안으로
+Network Error: 네트워크 오류
+Enter Amount: 금액 입력
+Swap %1$@ to %2$@: "%1$@을(를) %2$@(으)로 교환"
+"%1$@ to %2$@": "%1$@~%2$@"
+Max %1$@: 최대 %1$@
+Authorize %1$@ fee: "%1$@ 수수료 승인"
+Pending previous fee: 보류 중인 이전 수수료
+AML/KYC: AML/KYC
+Receive to: 수신 대상
+Enter %1$@ address: "%1$@ 주소를 입력하세요"
+"Send %1$@ this address:": "다음 주소로 %1$@을(를) 보내세요:"
+Swap is not supported on this account.: 이 계정에서는 스왑이 지원되지 않습니다.
+"%1$@ will be returned": "%1$@이(가) 반환됩니다"
+Connecting your wallet: 지갑 연결하기
+Action is not possible on a view-only wallet.: 보기 전용 지갑에서는 조치가 불가능합니다.
+No matching chains: 호환되는 네트워크 없음
+Logged in with My Wallet: My Wallet으로 로그인됨
+You have no apps connected to this wallet.: 이 지갑에 연결된 앱이 없습니다.
+Asset: 자산
+Sent to: 보낸 사람
+via %agg%: "%agg%을 통해"
+Switch to Legacy Version: 이전 버전으로 전환
+Received from: 다음에서 수신됨
+Your Secret Words: 당신의 비밀 단어
+day:
+  zeroValue: "%1$d일"
+  oneValue: "%1$d일"
+  otherValue: "%1$d일"
+hour:
+  zeroValue: "%1$d시간"
+  oneValue: "%1$d시간"
+  otherValue: "%1$d시간"
+minute:
+  zeroValue: 분
+  oneValue: 분
+  otherValue: "%1$d분"
+second:
+  zeroValue: "%1$d초"
+  oneValue: "%1$d초"
+  otherValue: "%1$d초"
+transfer:
+  zeroValue: "%1$d 이체"
+  oneValue: "%1$d 이체"
+  otherValue: "%1$d 이체"
+Confirm Actions:
+  zeroValue: "%1$d 작업 확인"
+  oneValue: 조치 확인
+  otherValue: 조치 확인
+A ~ Z: A ~ Z
+Biometric authentication not available.: 생체 인증을 사용할 수 없습니다.
+Payment Address: 지불 주소
+Wallet to use on: 사용할 지갑
+Clipboard empty: 클립보드가 비어 있음
+Confirm Connect: 연결 확인
+Connected apps can only see your wallet address and will not be able to move your assets without permission.: 연결된 앱은 지갑 주소를 보고 작업을 요청할 수 있지만 모든 자산 작업에는 여전히 확인이 필요합니다.
+Connect to %1$@?: "%1$@에 연결하시겠습니까?"
+Don’t show tokens on your account with value less than $0.01. You can also selectively enable and disable particular tokens using the list below.: $0.01 미만의 가치가 있는 토큰을 귀하의 계정에 표시하지 마십시오. 아래 목록을 사용하여 특정 토큰을 선택적으로 활성화 및 비활성화할 수도 있습니다.
+Don’t show transactions of less than $0.01. Such small transactions are often used for spam and scam.: $0.01 미만의 거래는 표시하지 마세요. 이러한 소액 거래는 종종 스팸 및 사기에 사용됩니다.
+Enter your Wallet Passcode: 지갑 비밀번호를 입력하세요
+Import failed: 가져오기 실패
+Install Palette: 팔레트 설치
+Ledger: Ledger
+Moving to staking balance: 스테이킹 잔액으로 이동
+My Wallet uses biometric authentication to unlock and authorize transactions: My Wallet은 생체 인증을 사용해 지갑의 잠금을 해제하고 거래를 확인합니다.
+Network error: 네트워크 오류
+No Camera Access: 카메라 접근 불가
+Not all transactions were sent successfully.: 모든 거래가 성공적으로 전송되지는 않았습니다.
+OK: 알았어
+Open in Explorer: 탐색기에서 열기
+Open in...: 다음에서 열어보세요...
+Passcode changed: 비밀번호가 변경되었습니다.
+Please make sure your internet connection is working and try again.: 인터넷 연결이 작동하는지 확인하고 다시 시도하세요.
+Please set a passcode on your device, and then try to use biometric authentication.: 기기에 비밀번호를 설정한 후 생체 인증을 사용해 보세요.
+Please try again: 다시 시도해 주세요
+Please wait...: 기다려 주세요...
+Preview is currently unavailable.: 현재 미리보기를 사용할 수 없습니다.
+Read-only account: 읽기 전용 계정
+Request for unstaking: 언스테이킹 요청
+Set a passcode: 비밀번호 설정
+Show All %1$@: 모두 표시 %1$@
+TON Wallet Versions: TON 지갑 버전
+Tap to reveal: 공개하려면 탭하세요.
+The current version of Ledger only supports English-language comments without special characters.: Ledger의 현재 버전은 특수문자 없이 영어 댓글만 지원합니다.
+There is no activity history for this wallet yet.: 아직 거래내역이 없습니다.
+This type of transaction is not yet supported by Ledger.: 이러한 유형의 거래는 아직 Ledger에서 지원되지 않습니다.
+Transaction to this smart contract is not yet supported by Ledger.: 이 스마트 계약에 대한 거래는 아직 Ledger에서 지원되지 않습니다.
+Transferring NFT is not yet supported by Ledger.: NFT 전송은 아직 Ledger에서 지원되지 않습니다.
+Connect your Ledger via Bluetooth: 블루투스를 통해 Ledger를 연결하세요
+Discovering wallets: 지갑 검색 중
+Bluetooth Access Denied: 블루투스 액세스가 거부되었습니다
+Bluetooth access is needed to connect Ledger.: Ledger를 연결하려면 블루투스 접근이 필요합니다.
+Address not resolved: 주소가 확인되지 않음
+Sending more than one NFT isn't supported by Ledger: Ledger에서는 둘 이상의 NFT 전송을 지원하지 않습니다.
+Updating…: 업데이트 중…
+This is how the TON Blockchain works.: 이것이 TON이 거래를 처리하는 방법입니다.
+Waiting for network…: 네트워크를 기다리는 중…
+Wallet is Locked: 지갑이 잠겨 있습니다
+Warning: 경고
+Wear: 착용
+Passcodes don't match. Please try again.: 비밀번호가 일치하지 않습니다. 다시 시도해 주세요.
+Secret phrase was copied to clipboard: 복구 문구가 클립보드에 복사되었습니다.
+Copy Anyway: 어쨌든 복사
+12 Words: 12단어
+24 Words: 24단어
+Words don’t match, please try again.: 단어가 일치하지 않습니다. 다시 시도해 주세요.
+Load 5 More Wallets: 5개의 지갑을 더 로드하세요
+$n_wallets_selected:
+  zeroValue: "%1$d 선택됨"
+  oneValue: "%1$d 선택됨"
+  otherValue: "%1$d 선택됨"
+Are you sure you want to unpin %tab%?: "%tab%을(를) 고정 해제하시겠습니까?"
+add: 추가하다
+send: 보내다
+swap: 교환
+earn: 벌다
+Actions: 작업
+$actions_description: 가장 일반적인 작업에 빠르게 액세스하세요.
+Rate: 요금
+$rate_description: 선택한 토큰의 현재 비율을 봅니다.
+Rate with Chart: 차트로 평가하기
+$rate_with_chart_description: 현재 비율을 확인하고 선택한 토큰의 성과를 추적하세요.
+Style: 스타일
+Neutral: 중립
+Vivid: 생생한
+Chart Period: 차트 기간
+$period_all: 모든 시간
+$period_day: 1일
+$period_week: 1주
+$period_month: 1개월
+$period_3months: 3개월
+$period_year: 1년
+Token: 토큰
+All Tokens: 모든 토큰
+Customize Widget: 위젯 사용자 정의
+Recent Searches: 최근 검색
+Clear All: 모두 지우기
+Suggestions: 제안
+Popular and connected apps: 인기 있고 연결된 앱
+Connected Dapp: 연결된 Dapp
+$ago: "%1$d 전"
+$visited_ago: "%1$d 전에 방문함"
+Notifications are disabled: 알림이 비활성화되었습니다.
+Enable in Settings: 설정에서 활성화
+Open Link: 링크 열기
+Open in App: 앱에서 열기
+Search in Google: Google에서 검색
+$remove_wallets:
+  zeroValue: 지갑 삭제
+  oneValue: 지갑 삭제
+  otherValue: "%1$d 지갑 제거"
+Encryption is not possible. The recipient is not a wallet or has no outgoing transactions.: 암호화가 불가능합니다. 수취인이 지갑이 아니거나 나가는 거래가 없습니다.
+just now: 지금 막
+"No": 아니요
+Search: 검색
+State init supplied without message body: 메시지 본문 없이 상태 초기화가 제공됨
+Swap Failed: 스왑 실패
+The wallet is ready: 지갑이 준비되었습니다
+Unexpected error. Please let the support know.: 예상치 못한 오류가 발생했습니다. 계속되면 지원팀에 문의하세요.
+Unlock it and open the TON App: 잠금을 해제하고 TON 앱을 엽니다.
+Use 4-digit Passcode: 4자리 비밀번호 사용
+Use 6-digit Passcode: 6자리 비밀번호 사용
+Authorize %token% Fee: "%token% 수수료 승인"
+Awaiting Previous Fee: 이전 수수료를 기다리는 중
+Lock: 잠금
+My Wallet Cards can be installed for wallets and displayed on the home screen an in the wallet list.: My Wallet 카드를 각 지갑에 적용하고 홈 화면과 지갑 목록에 표시할 수 있습니다.
+Receive: 수신
+Scan: 스캔
+$web_permission_prompt: "%origin%이(가) 귀하의 %permissions%을(를) 사용하도록 허용하시겠습니까?"
+$web_permission_allow: 허용
+$web_permission_deny: 허용하지 않음
+$web_permission_camera: 카메라
+$web_permission_microphone: 마이크
+$web_permission_location: 위치
+$web_permission_device_features: 장치 기능
+$web_permission_this_site: 이 사이트
+push_title_wallet: "%wallet_title%"
+push_activity_token_sent: "%amount% %symbol% 보냄"
+push_activity_token_received: "%amount% %symbol% 수신됨"
+push_activity_contract_called: 스마트 계약이라고 함
+push_activity_contract_deployed: 배포된 스마트 계약
+push_activity_token_minted: 발행된 %amount% %symbol%
+push_activity_token_burned: "%amount% %symbol% 소각됨"
+push_activity_nft_sent: NFT 전송 완료
+push_activity_nft_sent_named: "NFT 전송: %name%"
+push_activity_nft_received: NFT를 받았습니다
+push_activity_nft_received_named: "NFT 수신: %name%"
+push_activity_nft_minted: 발행된 NFT
+push_activity_nft_minted_named: "발행된 NFT: %name%"
+push_activity_liquidity_deposited: 유동성 제공
+push_activity_liquidity_withdrawn: 유동성 인출
+push_activity_stake_deposit: 스테이킹된 %amount% %symbol%
+push_activity_stake_withdrawal: 언스테이킹된 %amount% %symbol%
+push_activity_stake_withdrawal_request: 스테이킹 출금 요청
+push_activity_auction_bid: 제시된 경매 입찰 %amount% %symbol%
+push_activity_dns_changed: 업데이트된 DNS 레코드
+push_activity_dns_deleted: 삭제된 DNS 레코드
+push_activity_dns_renewed: 갱신된 DNS
+push_activity_subscription_started: 구독 시작됨
+push_activity_subscription_payment_received: 구독 결제를 받았습니다 %amount% %symbol%
+push_activity_subscription_canceled: 취소된 구독
+push_activity_swap_completed: "%from_symbol% -> %to_symbol% 교체됨"
+push_activity_swap_failed: "%from_symbol% 교체 -> %to_symbol% 실패"
+push_activity_swap_expired: "%from_symbol% 스왑 -> %to_symbol% 만료됨"
+push_activity_swap_pending: "%from_symbol% -> %to_symbol% %status% 스왑"
+push_activity_staking_profit: 스테이킹 수익 %amount% GRAM
+push_activity_staking_loyalty_profit: 스테이킹 충성도 이익 %amount% GRAM
+push_domain_title_renew: 도메인 갱신
+push_domain_expired_yesterday: 귀하의 도메인 %domain%이(가) 어제 만료되었습니다. 액세스 권한을 잃지 않으려면 최대한 빨리 갱신하세요.
+push_domain_expired_days_ago: 귀하의 도메인 %domain%이(가) %days%일 전에 만료되었습니다. 액세스 권한을 잃지 않으려면 최대한 빨리 갱신하세요.
+push_domain_expires_today: 귀하의 도메인 %domain%이 오늘 만료됩니다. 액세스 권한을 잃지 않으려면 갱신하세요.
+push_domain_expires_tomorrow: 귀하의 도메인 %domain%이(가) 내일 만료됩니다. 액세스 권한을 잃지 않으려면 갱신하세요.
+push_domain_expires_in_days: 귀하의 도메인 %domain%이(가) %days%일 후에 만료됩니다. 액세스 권한을 잃지 않으려면 갱신하세요.
+$more_nfts:
+  zeroValue: NFT 없음
+  oneValue: +1 NFT
+  otherValue: +%1$d NFT
+$subwallets_hint: 새로운 비밀 단어 세트를 만들지 않고도 하위 지갑을 사용하여 추가 주소를 얻을 수 있습니다.
+$subwallets_created_wallets: 이전에 하위 지갑을 생성한 경우 아래 목록에 표시됩니다.
+$subwallets_none: 아직 하위 지갑이 없습니다.
+Tracked asset value over time: 시간 경과에 따른 자산 가치 추적
+Current allocation across tracked assets: 추적된 자산 전체에 대한 현재 할당
+Limited history: 제한된 역사
+Cumulative profit and loss over time: 시간에 따른 누적 손익
+Day-by-day profit and loss: 일일 손익
+This action is not supported in explorer mode.: 이 작업은 탐색기 모드에서 지원되지 않습니다.
+$relative_today: 오늘
+$relative_tomorrow: 내일
+P&L Change: 손익 변경
+Choose Token: 토큰을 선택하세요
+You don't have any eligible tokens for this payment: 이 결제에 적합한 토큰이 없습니다.
+Buy, swap, or receive a supported token to continue.: 계속하려면 지원되는 토큰을 구매, 교환 또는 받으세요.
+Are you sure you want to cancel the payment?: 결제를 취소하시겠습니까?
+Cancel Payment: 결제 취소
+Paid!: 유료!
+Payment: 결제
+Sent!: 보냈습니다!
+$chart_months_short: 1월,2월,3월,4월,5월,6월,7월,8월,9월,10월,11월,12월
+$chart_week_days: 일요일,월요일,화요일,수요일,목요일,금요일,토요일
+$chart_week_days_short: 일,월,화,수,목,금,토
+Select multichain wallet: 멀티체인 지갑 선택
+Unsupported Chain: 지원되지 않는 체인
+Please upgrade to multichain to use this app.: 이 앱을 사용하려면 멀티체인으로 업그레이드하세요.

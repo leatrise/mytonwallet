@@ -1,0 +1,119 @@
+$title: Telegram 2段階認証
+$confirmation-title: この操作を確認
+$confirmed: 確認しました！
+$install-confirmation-title: Telegram 2段階認証を設定
+Go Back: 戻る
+Confirm: 確認する
+Is it all ok?: すべて正しいですか?
+Connect Wallet: ウォレットを接続する
+Confirm Connection: 接続の確認
+Confirm Unlinking: 連携解除を確認
+My Telegram Account: 私のTelegramアカウント
+Without username: ユーザー名なし
+My Wallet: My Wallet
+We’ll ask you to confirm actions with Telegram after entering your passcode in %app_name%.: "%app_name%でパスコードを入力した後、Telegramで対応する操作を確認してください。"
+2FA applies only to actions involving TON assets.: 2段階認証はTON資産に関する操作にのみ適用されます。
+Action Confirmed: 操作を確認しました
+Almost Ready!: あと一歩です
+Your wallet is now connected to your Telegram account.: ウォレットがTelegramアカウントに接続されました。
+Return to the app to pay fee and complete the final confirmation.: アプリに戻り、接続手数料を支払って設定を完了してください。
+Back to %app_name%: "%app_name%に戻る"
+Preview: プレビュー
+$preview_not_guaranteed: プレビュー コンテンツはサードパーティによって提供されており、**不完全または偽造されている可能性があります**。続行する前に、実際の署名データを確認してください。
+$fee_value: 料金 %fee%
+$fee_value_with_colon: "料金: %fee%"
+Fee: 料金
+Details: 詳細
+Transaction ID: トランザクションID
+Transaction ID Copied: トランザクションIDがコピーされました
+Encrypted Message: 暗号化されたメッセージ
+Failed: 失敗しました
+$transaction_on: "%address% で"
+$transaction_from: "%address% から"
+$transaction_to: "%address% へ"
+at %annual_yield%: "%annual_yield%にて"
+Scam: 詐欺
+Staked: 杭打ち
+Staking: ステーキング
+$stake_action: ステーク
+Unstaked: 賭けられていない
+Unstaking: アンステーキング
+$unstake_action: ステークを解除する
+Requested Unstake: アンステークのリクエスト
+Requesting Unstake: アンステークのリクエスト
+$request_unstake_action: アンステークのリクエスト
+Called Contract: 契約と呼ばれる
+Calling Contract: 通話契約
+$call_contract_action: 通話契約
+Excess: 過剰
+Deployed Contract: 導入された契約
+Deploying Contract: 契約の展開
+$deploy_contract_action: デプロイ契約
+Bounced: 跳ね返った
+Bouncing: 跳ねる
+$bounce_action: バウンス
+Minted: 鋳造された
+Minting: 鋳造
+$mint_action: ミント
+Burned: 焼けた
+Burning: 燃えている
+$burn_action: やけど
+NFT Auction Bid: NFTオークション入札
+Bidding at NFT Auction: NFTオークションでの入札
+"NFT Auction Bid ": "NFTオークション入札 "
+Updated Address: 更新された住所
+Updating Address: 住所を更新中
+$update_address_action: 住所を更新する
+Updated Site: 更新されたサイト
+Updating Site: サイトを更新中
+$update_site_action: 更新サイト
+Updated Subdomains: 更新されたサブドメイン
+Updating Subdomains: サブドメインの更新
+$update_subdomains_action: サブドメインの更新
+Updated Storage: 更新されたストレージ
+Updating Storage: ストレージの更新
+$update_storage_action: ストレージの更新
+Deleted Domain Record: 削除されたドメインレコード
+Deleting Domain Record: ドメインレコードの削除
+$delete_domain_record_action: ドメインレコードの削除
+Renewed Domain: リニューアルされたドメイン
+Renewing Domain: ドメインの更新
+$renew_domain_action: ドメインを更新する
+Provided Liquidity: 提供される流動性
+Providing Liquidity: 流動性の提供
+$provide_liquidity_action: 流動性の提供
+Withdrawn Liquidity: 引き出した流動性
+Withdrawing Liquidity: 流動性の引き出し
+$withdraw_liquidity_action: 流動性の引き出し
+Sold NFT: 販売済みNFT
+Selling NFT: NFTの販売
+$sell_nft_action: NFTを販売する
+Bought NFT: NFTを購入しました
+Buying NFT: NFTの購入
+$buy_nft_action: NFTを購入する
+Minted NFT: 鋳造されたNFT
+Minting NFT: NFTの鋳造
+$mint_nft_action: ミントNFT
+Burned NFT: バーン済みNFT
+Burning NFT: NFTをバーン中
+$burn_nft_action: NFTをバーン
+Received NFT: NFTを受け取りました
+Receiving NFT: NFTの受け取り
+$receive_nft_action: NFTを受け取る
+Sent NFT: NFTを送信しました
+Sending NFT: NFTの送信
+$send_nft_action: NFTを送信する
+Received: 受け取りました
+Receiving: 受信中
+$receive_action: 受信
+Sent: 送信済み
+Sending: 送信中
+$send_action: 送信
+Expired: 期限切れ
+Refunded: 返金されました
+On Hold: 保留中
+Waiting for Payment: 支払いを待っています
+In Progress: 進行中
+$swap_action: スワップ
+Swapping: スワッピング
+Swapped: 交換されました

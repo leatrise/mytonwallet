@@ -1,0 +1,1646 @@
+$auth_intro: |-
+  **暗号
+  を安全に管理**し、自信を持ってブロックチェーン トランザクションを実行します。
+Create New Wallet: 新しいウォレットを作成する
+Import From %1$d Secret Words: "%1$d 秘密の単語からインポート"
+More about %app_name%: "%app_name% について詳しく見る"
+Creating Wallet...: ウォレットを作成中...
+On the count of three...: ほぼ準備完了です...
+$back_up_auth: バックアップ
+$back_up_security: バックアップ
+Confirm with: で確認してください
+Add an extra layer of security for your wallet in TON network.: TON ウォレットに別の保護層を追加します。
+Sign transfers and important actions with your passcode, then confirm them in Telegram.: パスコードを使用して転送と重要なアクションを承認し、Telegram で確認します。
+This helps protect your funds even if your recovery phrase or keys are compromised.: これにより、回復フレーズやキーが侵害された場合の安全策がさらに追加されます。
+"Connection Fee:": "接続料金:"
+Connect Telegram: Telegramに接続する
+Add in Gram Wallet: Gram Walletに追加
+Telegram will be used to confirm transfers and important actions.: Telegram を使用して転送と重要なアクションを確認します。
+My Telegram Account: 私のTelegramアカウント
+Without username: ユーザー名なし
+Unlink Account: アカウントのリンクを解除する
+An extra security layer requires confirming actions in Telegram after signing.: アクションを承認した後、Telegramでも確認します。
+Confirm Connection: 接続の確認
+Confirm Disconnection: 切断の確認
+$2fa_security: Telegramによる 2FA
+2FA with Telegram: Telegramによる 2FA
+Confirm operations in Telegram as a second step.: Telegram で 2 回目の確認を完了します。
+Passwords must be equal.: パスワードが一致しません。
+To protect your wallet as much as possible, use a password with: セキュリティを強化するには、次のパスワードを使用してください。
+$auth_password_rule_8chars: 少なくとも 8 文字
+$auth_password_rule_one_small_char: 小文字1文字
+$auth_password_rule_one_capital_char: 大文字1文字
+$auth_password_rule_one_digit: 1桁
+$auth_password_rule_one_special_char: そして特殊文字が 1 つあります
+Create a password to protect it.: パスワードを作成して保護します。
+Enter your password: パスワードを入力してください
+Enter your password...: パスワードを入力してください...
+...and repeat it: ...そしてそれを繰り返します
+Cancel: キャンセル
+Insecure Password: 安全でないパスワード
+Your have entered an insecure password, which can be easily guessed by scammers.: このパスワードは推測しやすく、ウォレットを危険にさらす可能性があります。
+Continue or change password to something more secure?: このパスワードをそのまま使用しますか、それともより強力なパスワードを選択しますか?
+Change: 変更
+"%1$d Secret Words": "%1$d 秘密の言葉"
+Secret Words: 秘密の言葉
+$auth_import_mnemonic_description: |
+  アクセスを復元するには、ウォレット作成時に保存した **%counts%個の秘密の単語** を入力してください。
+Let’s make sure your secrets words are recorded correctly.: 秘密の単語を正しい順序で保存したことを確認してください。
+$check_words_description: 次に、秘密の単語を正しく記録したことを確認します。
+$mnemonic_list_description: これらの単語を **正しい順序**で書き留め、**安全な場所**に保管してください。
+$private_key_description: この秘密キーをバックアップし、**安全な場所**に保管してください。
+$mnemonic_warning: |-
+  決して誰にも送信したり見せたりしないでください。
+  、また他の場所にも入力しないでください。
+View Secret Words: 秘密の言葉を見る
+View %chain% Private Key: "%chain% 秘密キーを表示する"
+Can be imported to non-multichain wallets for %chain%.: "%chain% をサポートするシングルチェーン ウォレットにインポートできます。"
+Can be imported to any multichain wallet supporting %chain%.: "%chain% をサポートするマルチチェーン ウォレットにインポートできます。"
+Let's Check: バックアップの検証
+Let's Check!: バックアップの検証
+Safety Rules: 安全規則
+$safety_rules_private_key_one: 次の画面には、**%chain% 秘密キー**が表示されます。バックアップして **安全な場所**に保管してください。
+$safety_rules_private_key_two: パスワードを忘れた場合、またはこのデバイスにアクセスできなくなった場合は、秘密キーを使用して**ウォレットを復元**できます。
+$safety_rules_private_key_three: この秘密キーを持っている人は誰でもあなたのウォレットを制御できます。 **開発者やサポート スタッフを含む誰にも決して送信したり見せたりしないでください**。
+$safety_rules_one: 次の画面には、**秘密の言葉**が表示されます。正しい順序で書き留めて、**安全な場所**に保管してください。
+$safety_rules_two: パスワードを忘れた場合、またはこのデバイスにアクセスできなくなった場合は、これらの単語を使用して**ウォレットを復元**できます。
+$safety_rules_three: これらの言葉を持っている人は誰でもあなたの財布をコントロールできます。 **開発者やサポート スタッフを含む誰にも決して送信したり見せたりしないでください**。
+Continue: 続ける
+Close: 閉じる
+Back: 戻る
+Search...: 検索...
+Main menu: メインメニュー
+TON Proxy: TONプロキシ
+Toggle TON Proxy: TONプロキシのオン／オフ
+Back Up Secret Words: 秘密の言葉をバックアップする
+Settings: 設定
+About %app_name%: "%app_name%について"
+Exit: 終了
+Remove Wallet: ウォレットを削除する
+Remove Wallets: ウォレットを削除する
+Something went wrong.: アクションを完了できませんでした。後でもう一度試してください。
+Something went wrong: アクションを完了できませんでした
+Logo: ロゴ
+$about_description1: オンチェーン資産を管理し、アプリに接続し、日常のトランザクションを 1 か所で処理します。
+$about_description2: これは**セルフカストディウォレット**です。秘密キーはデバイス上に残るため、誰もあなたの代わりにあなたの資産にアクセスしたり、資産を回復したりすることはできません。
+What is TON Proxy?: TONプロキシとは何ですか?
+$about_extension_description1: TON プロキシは、TON サイトおよび **分散型インターネット**への匿名アクセスを提供します。
+More info and demo.: 詳細とデモ。
+$about_proxy_magic_description: "**TON サイト**にアクセスするには、%extension_link% をインストールします。"
+$about_extension_link_text: "**%app_name% 拡張子**"
+Is it open source?: オープンソースですか?
+$about_wallet_github: はい。 %github_link% のソース コードを調べてください。
+$about_github_link_text: "**GitHub リポジトリ**"
+Is there a community?: コミュニティはありますか？
+$about_wallet_community: "%community_link% のコミュニティに参加してください。"
+$about_community_link_text: "**Telegramチャンネル**"
+Currency History: 通貨の歴史
+Net Worth: 純資産
+Price: 価格
+Enter Password: パスワードを入力してください
+Send: 送信
+Add Wallet: ウォレットの追加
+Done: 完了
+Delete: 削除
+Delete Saved Address: 保存されたアドレスを削除する
+Are you sure you want to remove this address from your saved ones?: このアドレスを保存済みリストから削除しますか?
+Address removed from saved: アドレスが削除されました
+Warning!: 警告！
+$logout_without_backup_warning: このウォレットはバックアップされていません。今削除すると、トークンと NFT にアクセスできなくなります。
+$logout_accounts_without_backup_warning: "%links% をバックアップしていません。続行すると、トークンと NFT にアクセスできなくなります。"
+$logout_current_wallet_warning: これにより、現在のウォレットがアプリから削除されます。
+$logout_selected_wallet_warning: これにより、選択したウォレットがアプリから削除されます。
+$logout_selected_wallets_warning: これにより、選択したウォレットがアプリから削除されます。
+$logout_all_wallets_warning: これにより、アプリからすべてのウォレットが削除されます。
+$secret_words_backup_reminder: "**秘密の言葉**がバックアップされていることを確認してください。"
+$all_secret_words_backup_reminder: すべてのウォレットの**秘密の単語**がバックアップされていることを確認してください。
+Create Deposit Link: 入金リンクの作成
+$receive_invoice_description: |-
+  金額と支払いの詳細を事前に入力してください
+  ので、送信者は確認するだけで済みます。
+Amount: 金額
+Comment: コメント
+Comment or Memo: コメントまたはメモ
+Share this URL to receive %token%: "%token% を受け取るには、この URL を共有してください"
+Invoice Link Copied: 支払いリンクがコピーされました
+Theme: テーマ
+Language: 言語
+Enable Animations: アニメーションを有効にする
+Enable Seasonal Theming: 季節のテーマを有効にする
+Enable Landscape Mode: ランドスケープモードを有効にする
+Disable Seasonal Theming: 季節テーマを無効にする
+You can always enable seasonal theming again in the appearance settings.: 季節テーマは、外観設定でいつでも再度有効にすることができます。
+Base Currency: 基本通貨
+Investor View: 投資家の視点
+Toggle Investor View: 投資家ビューの切り替え
+Hide Tiny Transfers: 小さな転送を非表示にする
+Toggle Hide Tiny Transfers: Toggle 極小転送の非表示
+Show Tiny Transfers: 小さな転送を表示
+Show Low-Value Tokens: 低価値のトークンを表示する
+$show_tiny_transfers_help: "$%value% 未満の価値のある転送を表示します。留意してください: スパム送信者や詐欺師によって少額が送信されることがよくあります。"
+$show_low_value_tokens_help: $%value% 未満の価値のあるトークンを表示します。低価値のトークンはスパマーや詐欺師によって送信されることが多いことに注意してください。
+Network: ネットワーク
+Developer Options: 開発者向けオプション
+All Wallet Versions: すべてのウォレットのバージョン
+Confirmation: 確認
+Signing Data: データに署名する
+Contract Initialization Data: 契約初期化データ
+$dont_have_required_token: 送信に必要なトークンはありませんが、交換することはできます。
+$unknown_token_address: 不明なトークンアドレスです。
+$dont_have_required_nft: 送信に必要な NFT がありません。
+$state_init_invalid: 無効なコントラクト初期化データです。
+$signature_warning: カスタム データに署名すると、機密性の高いアクションが許可される場合があります。リクエストを理解し、そのソースを信頼できる場合にのみ続行してください。
+Sign: サイン
+Done!: 完了！
+Signing was confirmed!: 署名が確認されました！
+Activity Details: 活動内容
+No activities found: まだアクティビティはありません
+Comment Copied: コメントをコピーしました
+Copy Text: テキストをコピーする
+Copy Description: コピーの説明
+Description Copied: コピーされた説明
+Message Copied: メッセージがコピーされました
+Sender: 送信者
+Recipient: 受信者
+"%chain% Address Copied": "%chain% アドレスがコピーされました"
+Repeat: リピート
+Switch Account: アカウントを切り替える
+Copy wallet address: ウォレットアドレスをコピーする
+View address on %explorer_name%: "%explorer_name% のアドレスを表示"
+You have just created a new wallet: 新しいウォレットが作成されました
+Assets: 資産
+Activity: アクティビティ
+NFT: NFT
+No NFTs yet: NFTはまだありません
+$nft_explore_offer: |-
+  マーケットプレイスで NFT コレクション
+   を閲覧します。
+Received: 受け取りました
+Sent: 送信済み
+$transaction_from: "%address% から"
+$transaction_to: "%address% へ"
+$transaction_on: "%address% で"
+Wallet is not backed up: ウォレットがバックアップされていません
+Testnet Version: テストネットのバージョン
+Error reading clipboard: クリップボードを読み取れませんでした
+$fee_value: 料金 %fee%
+$fee_value_with_colon: "料金: %fee%"
+Pay fee with %stars_symbol%: "%stars_symbol% で料金を支払います"
+Loading...: 読み込み中...
+No price data: 価格データなし
+Price Copied: 価格をコピーしました
+Recipient Address: 受信者のアドレス
+Wallet address or domain: ウォレットのアドレスまたはドメイン
+Incorrect address: 間違った住所
+Incorrect address.: 住所が間違っています。
+Paste: ペースト
+Insufficient balance: 残高不足
+Insufficient Balance: 残高不足
+$seed_phrase_scam_warning: |-
+  このウォレットには、トークンの出金手数料をカバーするのに十分な資金がありません。
+
+  これは、手数料をカバーするために自分の資金を入金するよう求める一般的な **詐欺パターン** に一致します。
+
+  **このウォレットに資金を入金しないでください**。そうしないと、資金を失う可能性があります。詳細については、%help_center_link%.
+   をご覧ください。
+$help_center_prepositional: ヘルプセンター
+Optional: オプション
+$send_token_symbol: "%1$s を送信"
+Is it all ok?: すべて正しいですか?
+Receiving Address: 受信アドレス
+Fee: 料金
+Edit: 編集
+Confirm: 確認する
+Data Signed!: データに署名済み!
+Details: 詳細
+View details: 詳細を見る
+Change password visibility: パスワードの表示または非表示
+Amount value: 金額
+Save Address: アドレスを保存
+Name: 名前
+Save: 保存
+Copy: コピー
+Remove from Saved: 保存済みから削除
+View on Explorer: エクスプローラーで見る
+No suggestions, you're on your own!: まだ提案はありません
+Play Sounds: サウンドを再生する
+Focus on asset value rather than current balance: 現在の残高よりも資産価値を重視する
+$logout_confirm: "**すべて**のウォレットを削除する"
+$tiny_transfers_help: "$%value% 未満の転送を非表示にします。留意してください: スパム送信者や詐欺師によって少額が送信されることがよくあります。"
+Today: 今日
+Total: 合計
+Zoom Out: オールタイム
+Yesterday: 昨日
+Now: 今
+$receive_description: QR コードをスキャンするか、アドレスを共有してアセットを受け取ります。
+Wrong password, please try again.: パスワードが間違っています。もう一度お試しください。
+Appearance: 外観
+Light: ライト
+Dark: 暗い
+System: システム
+$stake_asset: ステーク %symbol%
+Add Stake: ステークを追加する
+Earn from your tokens while holding them: トークンを賭けて、時間の経過とともに報酬を獲得しましょう
+Current APY: 現在のAPY
+Est. Yearly Earnings: 推定年間収益
+Staking Details: ステーキングの詳細
+Why this is safe: 仕組み
+$safe_staking_description1: ステーキングは、管理権を集中プロバイダーに移すことなく、TON Liquid ステーキング スマート コントラクトを通じて実行されます。
+$safe_staking_description2: あなたのステークは %chain% ネットワークの検証に役立ち、見返りに報酬を獲得できます。
+$safe_staking_description3: いつでもステークを解除できます。資金は通常 **2 日**以内にアカウントに返金されます。
+$safe_staking_description_jetton1: トークンのステーキングは、%jvault_link% によって開発され、**セキュリティ監査**でレビューされた**オープンソースのスマート コントラクト**を通じて実行されます。
+$safe_staking_description_jetton2: いつでもステークを解除でき、資金は **即座に**アカウントに返されます。
+$min_value: 分 %value%
+Est. balance in a year: 1年間の推定残高
+Confirm Staking: ステーキングを確認する
+Coins have been staked!: トークンが賭けられています！
+View: 見る
+Stake More: さらに賭ける
+Staking: ステーキング
+Currently Staked: 現在ステーク中
+Total Staked: 賭け金総額
+Total Stakers: 合計ステーカー数
+Unstake: ステークを解除する
+Earning History: 収益履歴
+$total: "合計: %value%"
+$unstake_asset: "%symbol% のステークを解除する"
+Amount to unstake: ステークを解除する金額
+Confirm Unstaking: アンステークの確認
+Request for unstaking is sent!: ステーキング解除リクエストが送信されました!
+$unstaking_when_receive: ステーキングされていない資金は %time% 以内に到着するはずです。
+$unstaking_when_receive_with_amount: "%amount% は %time% 以内に到着するはずです。"
+$unstaking_when_receive_with_amount_ethena: "%amount% は %time% に引き出し可能になります。"
+$unstake_insufficient_balance: ステークを解除するには、メイン残高に少なくとも %balance% を保持してください。
+at %annual_yield%: "%annual_yield%にて"
+Est. %annual_yield%: 推定%annual_yield%
+Staked: 杭打ち
+$stake_action: ステーク
+Unstaked: 賭けられていない
+Not staked: 賭けていない
+Unstaking: アンステーキング
+$unstake_action: ステークを解除する
+The network fee has slightly changed, try sending again.: ネットワーク料金が変わりました。更新された料金を確認し、再度送信してください。
+Transfer was unsuccessful. Try again later.: 転送に失敗しました。後でもう一度試してください。
+Invalid amount: 無効な金額です
+Invalid address: 無効なアドレス
+Domain is not connected to a wallet: このドメインはウォレットにリンクされていません
+Unexpected error: 予期しないエラー
+Unexpected Error: 予期しないエラー
+Earn: 稼ぐ
+Earning: 稼ぐ
+Unexpected: 予期しないエラー
+You can save this address for quick access while sending.: 今後の転送でより高速にアクセスできるように、このアドレスを保存してください。
+Stake Again: もう一度賭ける
+Earned: 獲得した
+$staking_history_earned: 獲得した
+Select wallet to use on this app: このアプリで使用するウォレットを選択してください
+Connect: 接続する
+Already Connected: すでに接続されています
+Return to the dapp to proceed, or reconnect.: dApp に戻って続行するか、再接続します。
+Dapp Disconnected: dAppが切断されました
+Please reconnect your wallet from the dapp.: dApp に戻り、ウォレットを再接続します。
+Dapp Not Responding: dAppが応答しない
+You may need to reconnect your wallet from the dapp if this keeps happening.: これが続く場合は、dApp に戻り、ウォレットを再接続してください。
+Payload: ペイロード
+$many_transactions:
+  zeroValue: 転送なし
+  oneValue: "%1$d 転送"
+  otherValue: "%1$d 転送"
+Total Amount: 合計金額
+$unstaking_short: アンステーキング
+Handle ton:// links: ton:// リンクを処理します
+Back up wallet to have full access to it: バックアップしてフルアクセスのロックを解除する
+Consider More Secure Version: より安全なバージョンを使用する
+Install our native app or browser extension.: ネイティブ アプリまたはブラウザ拡張機能をインストールします。
+Scam: 詐欺
+Scam comment is hidden.: 不審なコメントを非表示にしました
+Display: ディスプレイ
+Disconnect All Apps: すべてのアプリを切断する
+Disconnect: 切断する
+Disconnect App: アプリの接続を解除する
+Disconnect Apps: アプリの接続を解除する
+Are you sure you want to disconnect?: "%dappname% を切断してもよろしいですか?"
+Are you sure you want to disconnect all websites?: すべての Web サイトを切断してもよろしいですか?
+Logged in with %app_name%: "%app_name% でログインしました"
+No active connections: アクティブな接続がありません
+Other: その他
+Portfolio: ポートフォリオ
+Performance, insights and P&L: 業績、傾向、損益
+Overview: 概要
+Total Balance: 合計残高
+Net Change: 純変化
+No data: データなし
+Total Value: 合計値
+Tracked asset value over time.: 追跡された資産価値が時間の経過とともにどのように変化するかを確認します。
+Total P&L: 合計損益
+Daily P&L: 日次損益
+Portfolio Share: ポートフォリオシェア
+Current allocation across tracked assets.: 追跡されている資産の現在の割り当てを確認します。
+Deep history analysis will be available in upcoming updates.: 今後のアップデートでは、より多くの履歴分析が行われる予定です。
+By Chain: チェーンごと
+No chain balances: チェーンバランスなし
+Native: ネイティブ
+Stablecoins: ステーブルコイン
+Altcoins: その他のトークン
+Asset Mix: 資産構成
+No asset balances: 資産残高がない
+No staked assets: ステーキングされた資産はありません
+Entire Period: 全期間
+Asset %1$@: 資産 %1$@
+Assets & Activity: 資産と活動
+Token Settings: トークン設定
+Add Token: トークンの追加
+Delete Token: トークンの削除
+Are you sure you want to delete?: "%token% を削除してもよろしいですか?"
+Hide Tokens With No Cost: 価格データのないトークンを非表示にする
+Sort By Cost: 値で並べ替え
+Update %app_name%: "%app_name% を更新します"
+Connect Ledger: Ledgerを接続する
+Connecting to your Ledger...: Ledgerに接続中...
+Failed to connect: 接続に失敗しました
+Ledger Connected!: Ledgerが接続されました!
+Select Ledger Wallets: Ledgerウォレットを選択してください
+"%1$d Selected": "%1$d 選択済み"
+Add: 追加
+Try Again: もう一度試してください
+Driver: ドライバー
+Unlock it and open the %chain% App: ロックを解除して %chain% アプリを開きます
+Maybe you need to check the password or change the driver.: パスワードを確認するか、別のドライバーを試してください。
+Confirm via Ledger: Ledger上で確認する
+$ledger_confirm_progress: "%2$d の %1$d を確認してください"
+Declined: 拒否されました
+Switch to the newly opened tab to connect Ledger.: 新しく開いたタブに切り替えて Ledger に接続します。
+Once connected, switch back to this window to proceed.: 接続したら、このウィンドウに戻って続行します。
+The time on your device is incorrect, sync it and try again.: デバイスの時刻が正しくありません。同期して再試行してください。
+Name or Address...: 名前または住所...
+Such error, many tabs: 開いているタブが多すぎます
+$many_tabs_error_description: |-
+  %app_name% は一度に 1 つのタブでのみ実行できます。
+  他のタブを閉じて、このページを再読み込みしてください。
+Reload App: アプリをリロードする
+Token Not Found: トークンが見つかりません
+Try another keyword or address.: 別のキーワードまたはアドレスを試してください。
+Decrypt: 復号化
+Encrypted Message: 暗号化されたメッセージ
+Message is encrypted: メッセージは暗号化されています
+Agree: 同意する
+$swap_action: スワップ
+$swap_activity_title: スワップ
+Swap: スワップ
+You sell: あなたが支払う
+You buy: あなたが受け取る
+Swap Details: スワップの詳細
+Blockchain Fee: ネットワーク料金
+Aggregator Fee: アグリゲータサービス料金
+Included: 付属
+Price Impact: 価格への影響
+Minimum Received: 最低限受け取るもの
+Slippage: 滑り
+$swap_from_to: スワップ %from% %icon% %to%
+The exchange rate is below market value!: 為替レートは市場価格を%value%下回っています。
+Invalid Pair: 無効なペア
+We do not recommend to perform an exchange, try to specify a lower amount.: この金額は重大な損失を引き起こす可能性があります。少額の交換をご検討ください。
+$swap_minimum_received_tooltip1: 現在の市況、スリッページ、価格への影響を考慮した上で受け取るべき最低額です。
+$swap_minimum_received_tooltip2: スワップの処理中に市場が急激に変動した場合、最終的な金額は変更される可能性があります。
+$swap_price_impact_tooltip1: このスワップが市場価格に及ぼす影響の推定値。
+$swap_price_impact_tooltip2: 通常、取引が大規模になると、価格への影響も大きくなります。
+$swap_slippage_tooltip1: スワップが実行される前に許可される最大価格変更。
+$swap_slippage_tooltip2: 価格がこの制限を超えた場合、スワップはキャンセルされます。
+Coins have been swapped!: 交換完了！
+Slippage not specified: 滑りは指定されていません
+Slippage too high: 滑りが高すぎる
+Not Enough %symbol%: "%symbol% が不十分です"
+Use Responsibly: リスクを理解する
+$auth_responsibly_description1: "%app_name% は **セルフカストディ ウォレット**です。あなただけが鍵を保持し、資産を管理します。"
+$auth_responsibly_description2: 秘密鍵はこのデバイスに保存されます。マルウェア、盗難、または不正アクセスにより、**資金の損失**が発生する可能性があります。
+$auth_responsibly_description3: "%app_name% チームは、あなたの資産にアクセスしたり、凍結したり、回復したりすることはできません。"
+$auth_responsibly_description4: 秘密の単語を安全にバックアップしてください。残高が大きい場合は、複数のウォレットまたはハードウェア デバイスにリスクを分散することを検討してください。
+Start Wallet: 始めましょう
+$auth_backup_warning_notice: "**今すぐキーをバックアップしてください。** パスワードを忘れた場合、またはこのデバイスにアクセスできなくなった場合に、ウォレットを復元する唯一の方法です。"
+$ledger_verify_address: Ledger デバイスを使用して、貼り付けたアドレスを必ず確認してください。
+$ledger_not_ready: Ledger が接続されていないか、%chain% アプリが開いていません。
+Verify now: 今すぐ確認
+Invalid address format. Only URL Safe Base64 format is allowed.: 無効なアドレス形式です。 URL Safe Base64 形式のみが許可されます。
+Swap Placed: スワップが送信されました
+Swapping: スワッピング
+Swapped: 交換されました
+Swap Again: もう一度交換する
+Terms of Use: 利用規約
+Privacy Policy: プライバシーポリシー
+Insufficient liquidity: 不十分な流動性
+This address is new and never received transfers before.: このアドレスは新しいアドレスであり、転送を受け取ったことがありません。続行する前に慎重に確認してください。
+Create Backup: バックアップの作成
+Sending: 送信中
+$send_action: 送信
+Failed: 失敗しました
+Refunded: 返金されました
+On Hold: 処理が一時停止されました
+Expired: 期限切れ
+In Progress: 進行中
+Waiting for Payment: 支払いを待っています
+Processing Payment: 支払いの処理中
+It may take a few seconds: 数秒かかる場合があります
+Blockchain: ブロックチェーン
+Your address on another blockchain: 別のネットワーク上のアドレスを受信する
+Please provide an address of your wallet in %blockchain% blockchain to receive bought tokens.: "%blockchain% ウォレット アドレスを入力して、交換されたトークンを受け取ります。"
+The time for sending coins is over.: 支払い期限が切れました。
+You have not sent the coins to the specified address.: 指定された住所に支払いが送られていません。
+$swap_cex_to_wallet_description: "%time% 内の %blockchain% のこのアドレスに %value% を送信します"
+Exchange failed and coins were refunded to your wallet.: 交換は失敗し、トークンはウォレットに返されました。
+Swap Expired: スワップの期限が切れました
+Address for %blockchain% transfer: "%blockchain% 転送アドレス"
+Cross-chain exchange provided by %provider%: "%provider% が提供するクロスチェーン交換サービス"
+$swap_cex_terms_of_use: 利用規約
+$swap_cex_privacy_policy: プライバシーポリシー
+$swap_cex_aml_kyc_policy: AML/KYC
+$swap_cex_legal_message: 続行すると、%terms% および %policy% に同意したことになります。
+$swap_cex_legal_message_with_aml: 続行すると、%terms% および %policy% に同意し、転送により %aml% に従って検証が開始される可能性があることを理解したものとみなされます。
+Password must contain %length% digits.: パスワードには %length% 桁の数字を含める必要があります。
+Deposit Link: デポジットリンク
+$swap_cex_from_wallet_description: 交換されたトークンは、%blockchain% アドレスに送信されます。
+Please note that it may take up to a few hours for tokens to appear in your wallet.: トークンがウォレットに表示されるまでに数時間かかる場合があります。
+Minimum amount: 最小 %value%
+Maximum amount: 最大 %value%
+Display Tray Icon: トレイアイコンを表示
+Auto-Updates: 自動アップデート
+Biometric Authentication: 生体認証
+If you turn off biometric protection, you will need to create a password.: 生体認証保護をオフにした場合は、パスワードを作成する必要があります。
+Enter your current password: 現在のパスワードを入力してください
+Turn On Biometrics: 生体認証をオンにする
+Enabling biometric confirmation will reset the password.: 生体認証確認を有効にすると、パスワードがリセットされます。
+Biometric Registration: 生体認証登録
+Step 1 of 2. Registration: ステップ 1/2. 登録
+Step 2 of 2. Verification: ステップ 2/2. 検証
+Download Logs: ログのダウンロード
+Copy Logs: ログのコピー
+Logs Copied: コピーされたログ
+Biometric setup failed.: 生体認証のセットアップに失敗しました。
+Biometric confirmation failed.: 生体認証に失敗しました。
+Failed to disable biometrics.: 生体認証を無効にできませんでした。
+Biometric Confirmation: 生体認証の確認
+Create Password: パスワードの作成
+Complete: 完了
+Verification: 検証
+Connect Biometrics: 生体認証を接続する
+Use Password: パスワードを使用する
+Biometrics Disabled: 生体認証が無効です
+Biometrics Enabled: 生体認証の有効化
+A request is already pending: リクエストはすでに保留中です
+Please confirm action using biometrics: 生体認証を使用してアクションを確認してください
+Scan QR Code: QRコードをスキャン
+Open the QR scanner.: QR スキャナーを開きます。
+Open scanner in ${applicationName}: ${applicationName} でスキャナを開く
+Scan a code with ${applicationName}: ${applicationName} でコードをスキャンします
+Scan QR: QRをスキャン
+Scan QR with ${applicationName}: ${applicationName} で QR をスキャンします
+Account: アカウント
+Accounts: アカウント
+Networks: ネットワーク
+Receive Funds: 資金を受け取る
+Open the receive screen.: 受信画面を開きます。
+Receive with ${applicationName}: ${applicationName} で受信する
+Add crypto with ${applicationName}: ${applicationName} を使用して暗号を追加します
+Open receive in ${applicationName}: ${applicationName} で受信を開く
+Send Token: トークンの送信
+Open Token: オープントークン
+Open ${target} in ${applicationName}: ${applicationName} で ${target} を開きます
+Show ${target} in ${applicationName}: ${applicationName} の ${target} を表示
+Open the token screen.: トークン画面を開きます。
+Open the send screen.: 送信画面を開きます。
+Send token with ${applicationName}: ${applicationName} でトークンを送信します
+Send crypto with ${applicationName}: ${applicationName} を使用して暗号を送信します
+Open send in ${applicationName}: ${applicationName} で送信を開く
+Permission denied. Please grant camera permission to use the QR code scanner.: カメラへのアクセスがブロックされています。システム設定で QR コードをスキャンするためのカメラ アクセスを許可します。
+This QR Code is not supported: この QR コードはサポートされていません
+An error on the server side. Please try again.: サービスは一時的にご利用いただけません。後でもう一度試してください。
+Address Saved: アドレスが保存されました
+US Dollar: 米ドル
+Euro: ユーロ
+Russian Ruble: ロシアルーブル
+Chinese Yuan: 中国人民元
+Bitcoin: ビットコイン
+$max_balance: "最大: %balance%"
+$available_balance: "利用可能: %balance%"
+$unstake_information_instantly: 資金はすぐに届きます
+Select Token: トークンの選択
+MY: 私の
+Popular: 人気のある
+Not Found: 見つかりません
+Wallet is ready!: 財布の準備完了！
+Wallet is imported!: ウォレットが輸入されました！
+Create a code to protect it: パスコードを作成してウォレットを保護する
+Enter your code again: コードをもう一度入力してください
+Code set successfully: コードが正常に設定されました
+Use Biometrics: 生体認証を使用する
+Use Touch ID: Touch IDを使用する
+Use Face ID: 顔認証を使用する
+Connect Touch ID: Touch IDを有効にする
+Connect Face ID: 顔認証を有効にする
+Not Now: 今ではありません
+Touch ID: タッチID
+Face ID: 顔認証
+Turn Off Touch ID: Touch IDをオフにする
+Turn Off Face ID: 顔認証をオフにする
+Turn Off Biometrics: 生体認証をオフにする
+Enter code: コードを入力してください
+Enter code or use Face ID: コードを入力するか、Face ID を使用してください
+Enter code or use Touch ID: コードを入力するか、Touch ID を使用してください
+Enter code or use biometrics: コードを入力するか生体認証を使用する
+Wrong code, please try again: コードが間違っています。もう一度お試しください
+Scan your fingerprint: 指紋をスキャンします
+Incorrect code, please try again.: コードが間違っています。もう一度お試しください。
+Correct: 正しい
+Confirm Action: アクションの確認
+$classic_confirm_actions: アクションの確認
+Confirm Swap: スワップの確認
+Confirm Rewards Claim: 報酬請求の確認
+"%amount% to %address%": "%amount% ～ %address%"
+"%amount_from% to %amount_to%": "%amount_from% ～ %amount_to%"
+Failed to enable biometrics.: 生体認証を有効にできませんでした。
+Please try to confirm your biometrics again: 生体認証をもう一度試してください
+Unknown error: 不明なエラー
+Are you sure you want to disable Face ID?: Face ID を無効にしてもよろしいですか?
+Are you sure you want to disable Touch ID?: Touch ID を無効にしてもよろしいですか?
+Are you sure you want to disable biometrics?: 生体認証を無効にしてもよろしいですか?
+"Yes": はい
+Biometric confirmation failed: 生体認証に失敗しました
+No Activity: アクティビティがありません
+Fund: 基金
+Buy with Card: カードで買う
+Buy with Crypto: 暗号通貨で購入する
+Cannot load widget: ウィジェットを読み込めません
+Error: エラー
+Explore: 探検する
+$lockdown_mode_enabled_title: ロックダウンモードが有効になりました
+$lockdown_mode_walletconnect_unavailable: WalletConnect はロックダウン モードでは利用できません。これを使用するには、[設定] > [プライバシーとセキュリティ] > [ロックダウン モード] > [Web ブラウジングの構成] で %app_name% のロックダウン モードを無効にします。
+No partners yet: 利用可能なプロバイダーがありません
+Clear: クリア
+Unavailable: 利用不可
+$unstake_up_to_information: 即時 – 最大 %value%
+$all_balance: "すべて: %balance%"
+$unstaking_not_enough_balance: ステークを解除するには、メイン残高に少なくとも %value% を保持してください。
+$ledger_verify_address_on_device: Ledger デバイスのアドレスを確認します。
+Wallet Versions: ウォレットのバージョン
+$read_more_about_wallet_version: ウォレット契約のバージョンについては、%link% をご覧ください。
+$current_wallet_version: 現在のウォレットのバージョンは %version% です。
+You have tokens on other versions of your wallet. You can import them from here.: トークンが他のウォレットのバージョンで見つかりました。ここでインポートできます。
+$wallet_switch_version_1: "%action% することもできます。"
+$wallet_switch_version_2: 別のウォレットのバージョンに切り替える
+or import from: またはからインポートします
+Insufficient fee: 料金が不十分です
+$insufficient_fee: "料金が不十分です: %fee%"
+$dapp_insufficient_network_fee_warning: "%token% がネットワーク料金をカバーするには不十分です"
+Required: 必須
+Comment is too long.: コメントが長すぎます。
+Memo: メモ
+Memo Copied: メモをコピーしました
+$hide_tokens_no_cost_help: $%value% 未満の価値のトークンを非表示にします。低価値のトークンには、スパムまたは詐欺コンテンツが含まれている可能性があります。以下で個々のトークンを表示または非表示にすることもできます。
+No internet connection. Please check your connection and try again.: インターネット接続がありません。接続を確認して、もう一度試してください。
+To use this feature, first enable Face ID in your phone settings.: この機能を使用するには、まず携帯電話の設定で Face ID を有効にしてください。
+To use this feature, first enable biometrics in your phone settings.: この機能を使用するには、まず携帯電話の設定で生体認証を有効にします。
+Open Settings: 設定を開く
+No Price: 価格なし
+$dapp_transfer_tokens_burn: "%amount% を燃やす"
+$dapp_dns_set_wallet_payload: ドメイン %domain% のリンクされたウォレットを %address% に変更します
+$dapp_dns_delete_wallet_payload: ドメイン %domain% のリンクされたウォレットを削除しています
+$dapp_dns_change_record_payload: ドメイン %domain% の「%category%」レコードを %value% に変更します
+$dapp_dns_delete_record_payload: ドメイン %domain% の「%category%」レコードを削除しています
+$dapp_token_bridge_pay_swap_payload: クロスチェーンブリッジ経由での交換確認
+$dapp_liquid_staking_deposit_payload: リキッドステーキングへの入金
+$dapp_liquid_staking_vote_payload: 提案 %votingAddress% に「%vote%」を投票します
+$dapp_single_nominator_change_validator_payload: SingleNominator ステーキング契約バリデーターのアドレスを %address% に変更します
+$dapp_single_nominator_withdraw_payload: SingleNominator ステーキング契約からの %amount% の撤回
+$dapp_vesting_add_whitelist_payload: "%address% を権利確定ウォレットのホワイトリストに追加します"
+Connecting apps is not yet supported by Ledger.: アプリの接続は Ledger ではまだサポートされていません。
+Time synchronization issue. Please ensure your device's time settings are correct.: 時刻を同期できませんでした。デバイスの時刻設定を確認してください。
+Data Copied: コピーされたデータ
+URL Copied: URLをコピーしました
+Private Key Copied: 秘密キーがコピーされました
+Contract Initialization Data Copied: 契約初期化データがコピーされました
+Open NFT Collection: NFTコレクションを開く
+Previous: 前へ
+Next: 次へ
+Updating: 更新中
+Insufficient %token% for fee.%fee%: 手数料に必要な %token% が不足しています。%fee%
+Send NFT: NFTを送信する
+Send Collectible: 収集品を送る
+Send Collectibles: 収集品を送る
+$nfts_burned:
+  zeroValue: "%1$d NFT が焼き付けられました。"
+  oneValue: "%1$d NFT が焼き付けられました。"
+  otherValue: "%1$d NFT が焼き付けられました。"
+No NFT selected: NFTが選択されていません
+Cannot be sent: 送信できません
+NFT is for sale: NFTが販売されています
+More actions: さらなるアクション
+Open on %explorer_name%: "%explorer_name% にオープン"
+Swap is not supported in Testnet.: スワップはテストネットではサポートされていません。
+Swap is not yet supported by Ledger.: スワップは Ledger ではまだサポートされていません。
+Buying with card is not supported in Testnet.: カードでの購入はテストネットではサポートされていません。
+Staking is not supported in Testnet.: テストネットではステーキングはサポートされていません。
+Get Support: サポートを受ける
+$transfer_link_expired: 転送リンクの有効期限が切れています
+$transfer_text_and_bin_exclusive: text パラメータと bin パラメータの両方を一緒に使用することはできません
+$unsupported_deeplink_parameter: このディープリンクにはサポートされていないパラメータが含まれています。
+$unsupported_chain: サポートされていないブロックチェーン。
+Successfully: 成功しました
+Unstake More: より多くのトークンのステークを解除する
+Are you sure you want to burn this NFT? It will be lost forever.: このNFTを焼きますか？この操作は元に戻すことができません。
+$multi_burn_nft_warning: |-
+  %amount% NFT を書き込もうとしています。これには %duration% ほどかかる場合があります。終了するまでアプリを閉じたり、ウォレットを切り替えたりしないでください。
+
+  バーンされたNFTは回復できません。
+$duration_minutes:
+  zeroValue: "%1$d分"
+  oneValue: "%1$d分"
+  otherValue: "%1$d分"
+$multi_send_nft_warning: これには %duration% ほどかかる場合があります。終了するまで、アプリを閉じたり、アカウントを切り替えたりしないでください。
+Burn NFT: NFTをバーン
+Burn Collectibles: グッズを燃やす
+Burn: やけど
+Private Key: 秘密鍵
+"%amount% NFTs": "%amount% NFT"
+1 NFT: 1 NFT
+1 NFT Selected: 1 つの NFT が選択されました
+"%amount% NFTs Selected": "%amount% NFT が選択されました"
+For sale. Cannot be sent and burned: 販売用に出品されているため、送信または焼却することはできません
+Select: 選択
+Send All: すべて送信
+Burn All: すべて燃やす
+Select All: すべて選択
+Collection: コレクション
+Unnamed Collection: 名前のないコレクション
+Transaction ID Copied: トランザクションIDがコピーされました
+External Exchange ID Copied: 外部 Exchange ID がコピーされました
+$swap_cex_support: 何か問題が発生した場合は、%support% に連絡し、次の **外部 Exchange ID** を提供してください。
+$swap_cex_hold_support: プロバイダーのレビューに合格するには、%support% に連絡し、次の **外部エクスチェンジ ID** を提供してください。
+$swap_cex_provider_support: "%provider% のサポート"
+Email: 電子メール
+Your %blockchain% Address: あなたの%blockchain%アドレス
+My %blockchain% Address: 私の%blockchain%アドレス
+"%blockchain% Address": "%blockchain% アドレス"
+$view_only_wallet_receive_warning: |-
+  **これは表示専用ウォレットです**
+  そこからアセットを送信することはできません。資金を受け取る前に、このアドレスを管理していることを確認してください。
+Vesting: 権利確定
+Vesting Balance: 権利確定残高
+Ready to Unfreeze: 解凍の準備完了
+You will receive your unfrozen coins in a few minutes.: 凍結されていないトークンは数分以内に到着するはずです。
+Vesting Schedule: 権利確定スケジュール
+Loyal User Airdrop: ロイヤルユーザーのエアドロップ
+Unfrozen: 凍結していない
+Missed: 逃した
+Frozen: 冷凍
+until %date%: "%date%まで"
+Until %date%: "%date%まで"
+"%volume% in %amount% parts": "%amount% パーツ内の %volume%"
+Unfreeze: 解凍する
+Claim: クレーム
+Confirm Unfreezing: 解凍の確認
+Insufficient Balance for Fee: 料金残高不足
+$fee_value_bold: "**料金:** %fee%"
+"%app_name% Features": "%app_name% の特徴"
+Security: セキュリティ
+To avoid entering the passcode every time, you can use biometrics.: 生体認証を有効にすると、毎回パスコードを入力しなくてもアクションを確認できます。
+To avoid entering the password every time, you can use biometrics.: 生体認証を有効にすると、毎回パスワードを入力しなくてもアクションを確認できます。
+Change Passcode: パスコードの変更
+Change Password: パスワードの変更
+Confirm Password: パスワードの確認
+The passcode will be changed for all your wallets.: 新しいパスコードはすべてのウォレットに適用されます。
+The password will be changed for all your wallets.: 新しいパスワードはすべてのウォレットに適用されます。
+Password Changed!: パスワードが変更されました!
+Passcode Changed!: パスコードが変更されました!
+New code set successfully: 新しいコードが正常に設定されました
+Codes don’t match: パスコードが一致しません
+Enter your new code: 新しいコードを入力してください
+Re-enter your new code: 新しいコードを再入力してください
+Install on Desktop: デスクトップにインストールする
+Install on Mobile: モバイルにインストールする
+Install App: アプリをインストールする
+Hide: 隠す
+Hidden NFTs: 隠されたNFT
+Hidden By Me: ヒドゥン・バイ・ミー
+Probably Scam: おそらく詐欺
+$settings_nft_probably_scam_description: これらのNFTはセキュリティチェックによって自動的に隠蔽されました。あなたが認識し信頼できるアイテムのみを復元します。
+Unhide: 再表示
+Hide All: すべて隠す
+Hide NFT: NFTを隠す
+Reload Page: ページをリロードする
+Open in Safari: Safariで開く
+Open in Browser: ブラウザで開く
+CopyURL: URLをコピー
+Share: シェアする
+Unhide NFT: NFTの再表示
+The NFT has been hidden: NFTは隠されています
+The NFT is no longer hidden: NFTはもう隠されていません
+$unhide_nft_warning: "%name% を再表示してもよろしいですか?この NFT は疑わしく、名前と説明が一致しない可能性があります。"
+Hide NFTs: NFTを隠す
+Are you sure you want to hide this NFT collection containing %number% NFTs?: "%number% NFT を含むこの NFT コレクションを非表示にしてもよろしいですか?"
+Are you sure you want to hide these %number% NFTs?: これらの %number% NFT を非表示にしてもよろしいですか?
+Show: 表示する
+Confirm Sending: 送信の確認
+Confirm Burning: 書き込みの確認
+Confirm Passcode: パスコードの確認
+Enter your code: コードを入力してください
+$hardware_blind_sign_not_enabled: 続行するには、Ledger の %chain% アプリの設定で「ブラインド署名」オプションを有効にしてください。
+Switch to W5: W5に切り替える
+Not Scam: 詐欺ではありません
+Untitled: 無題
+Multichain: マルチチェーン
+$swap_too_small_amount: 金額が少なすぎます
+$swap_slippage_violation: スワップシミュレーションがスリッページ制限を超えました。もう一度やり直してください。
+Not enough %symbol%: "%symbol% が足りません"
+Enter Secret Words: 秘密の言葉を入力してください
+Turn this off so you can manually download updates and verify signatures.: これをオフにすると、アップデートを手動でダウンロードして署名を検証できるようになります。
+InvalidMnemonic: 記憶に残る単語が無効です
+NFT Menu: NFTメニュー
+Connection Type: 接続タイプ
+Ledger is not supported on this device: このデバイスではLedgerはサポートされていません
+Connect your Ledger: Ledgerを接続する
+$app_lock_description: 有効にすると、ホーム カードのロック ボタンを使用して、%app_name% をすばやくロックできます。
+App Lock: アプリロック
+Auto-Lock: オートロック
+Disabled: 障害者
+30 seconds: 30秒
+3 minutes: 3分
+10 minutes: 10分
+If away for 30 sec: 30秒後
+If away for 3 min: 3分後には
+If away for 10 min: 10分後には
+Unlock: ロックを解除する
+This address mimics another address that you previously interacted with.: このアドレスは以前に使用したアドレスによく似ており、アドレスポイズニング詐欺の一部である可能性があります。
+Biometric authentication failed: 生体認証に失敗しました
+Reset biometrics in security settings, or use a passcode.: セキュリティ設定で生体認証をリセットするか、パスコードを使用します。
+Best Rate: ベストレート
+via %dex_name%: "%dex_name% 経由"
+$swap_dex_chooser_rate_title: "**DeDust** と **STON.fi** のライブ見積もりを比較して、**より良いレート**を見つけてください。"
+You will receive %amount% **more**.: "**%amount% 多く**受け取れます。"
+You will spend %amount% **less**.: 支払額が **%amount% 少なく**なります。
+Best: ベスト
+Use Best Rate: ベストレートを利用する
+Switch to %dex_name%: "%dex_name% に切り替えます"
+Built-in DEX Aggregator: 内蔵のDEXアグリゲーター
+Add Tokens: トークンの追加
+No tokens yet: まだトークンがありません
+$no_tokens_description: トークンを受け取ると、ここにトークンが表示されます。 [設定] でトークンを手動で追加することもできます。
+Exchange Rate: 為替レート
+Install Card: インストールカード
+Reset Card: リセットカード
+Apply Palette: パレットのインストール
+Reset Palette: パレットをリセット
+Notifications & Sounds: 通知とサウンド
+Sounds: 音
+Push Notifications: プッシュ通知
+Select up to %count% wallets for notifications: 通知用に最大 %count% ウォレットを選択します
+$swap_aggregator_fee_tooltip: 内蔵の **DEX アグリゲータ**は、利用可能な DEX 全体で**最良レート**を見つけます。サービス料金は%percent%です。
+Accumulated Rewards: 累計報酬
+$swap_reverse_prohibited: このトークンペアには購入額を設定できません
+Blockchain Fee Details: ブロックチェーン料金の詳細
+Final Fee: 最終料金
+Excess: 過剰
+$fee_details: |
+  手数料の支払いのため、%full_fee% がウォレットから直ちに引き落とされます。その一部は数分以内に余剰分として **%excess_symbol%** で返却されます。
+
+  これは %chain_name% ブロックチェーンの仕組みによるものです。
+Got It: わかりました
+Wallet: 財布
+Trending: トレンド
+No Data: データなし
+Toggle fullscreen: 全画面表示の切り替え
+Request is sent!: リクエストが送信されました！
+Transaction ID: トランザクションID
+Outgoing Transaction ID: 送信トランザクションID
+Incoming Transaction ID: 受信トランザクションID
+Help Center: ヘルプセンター
+"%app_name% Tips": "%app_name% ヒント"
+Open %nft_marketplace%: "%nft_marketplace% を開く"
+Link Copied: リンクがコピーされました
+Share Link: リンクを共有する
+$dapp_return_details: |-
+  %fee_amount% はすぐにウォレットから引き落とされて料金が支払われます。
+
+  %received_amount% は数分以内に返金されます。
+Additional Amount Sent: 追加送金額
+Show Sensitive Data: 機密データを表示する
+Hide Sensitive Data: 機密データを隠す
+Copy Address: アドレスをコピー
+Copy Transaction ID: トランザクションIDのコピー
+Requesting Unstake: アンステークのリクエスト
+Requested Unstake: アンステークのリクエスト
+$request_unstake_action: アンステークのリクエスト
+Calling Contract: 通話契約
+Called Contract: 契約と呼ばれる
+$call_contract_action: 通話契約
+Deploying Contract: 契約の展開
+Deployed Contract: 導入された契約
+$deploy_contract_action: デプロイ契約
+Minting: 鋳造
+Minted: 鋳造された
+$mint_action: ミント
+Burning: 燃えている
+Burned: 焼けた
+$burn_action: やけど
+Updating Address: 住所を更新中
+Updated Address: 更新された住所
+$update_address_action: 住所を更新する
+Updating Site: サイトを更新中
+Updated Site: 更新されたサイト
+$update_site_action: 更新サイト
+Updating Subdomains: サブドメインの更新
+Updated Subdomains: 更新されたサブドメイン
+$update_subdomains_action: サブドメインの更新
+Updating Storage: ストレージの更新
+Updated Storage: 更新されたストレージ
+$update_storage_action: ストレージの更新
+Deleting Domain Record: ドメインレコードの削除
+Deleted Domain Record: 削除されたドメインレコード
+$delete_domain_record_action: ドメインレコードの削除
+Renewing Domain: ドメインの更新
+Renewed Domain: リニューアルされたドメイン
+$renew_domain_action: ドメインを更新する
+Providing Liquidity: 流動性の提供
+Provided Liquidity: 提供される流動性
+$provide_liquidity_action: 流動性の提供
+Withdrawing Liquidity: 流動性の引き出し
+Withdrawn Liquidity: 引き出した流動性
+$withdraw_liquidity_action: 流動性の引き出し
+Bounced: 跳ね返った
+Bouncing: 跳ねる
+$bounce_action: バウンス
+NFT Auction Bid: NFTオークション入札
+Bidding at NFT Auction: NFTオークションでの入札
+Buying NFT: NFTの購入
+Bought NFT: NFTを購入しました
+$buy_nft_action: NFTを購入する
+Sold NFT: 販売済みNFT
+Selling NFT: NFTの販売
+$sell_nft_action: NFTを販売する
+Receiving: 受信中
+$receive_action: 受信
+Change Palette: パレットの変更
+Palette: パレット
+Unlock New Palettes: 新しいパレットのロックを解除する
+Get a unique My Wallet Card to unlock new palettes.: 新しいパレットのロックを解除するには、独自のMy Wallet カードを入手してください。
+Mint Cards: ミントカード
+Card has been upgraded!: カードがバージョンアップしました！
+$mint_card_result: NFT カードは 1 分以内に **鋳造**され、**自動的にインストールされます**。
+Unique: パーソナライズされた
+Get a card with unique background and personalized palette for wallet interface.: 独自の背景とカラーパレットでウォレットをカスタマイズします。
+Transferable: 譲渡可能
+Easily send your upgraded card to any of your friends.: アップグレードされたカードを別のユーザーに譲渡します。
+Tradable: 取引可能
+Sell or auction your card on third-party NFT marketplaces.: サードパーティの NFT マーケットプレイスでカードを販売またはオークションします。
+Upgrade for %amount% %currency%: "%amount% %currency% のアップグレード"
+"%amount% left": "%amount% 残り"
+"%amount% sold": "%amount% が販売されました"
+This card has been sold out: このカードは完売しました
+Import Existing Wallet: 既存のウォレットをインポートする
+View Any Address: 任意のアドレスを表示
+View Mode: 表示専用モード
+"%counts% Secret Words": "%counts% 秘密の言葉"
+Address or Domain: アドレスまたはドメイン
+$import_view_account_note: アドレスを追加して、その残高とオンチェーンアクティビティを追跡します。
+$view_mode: 見る
+Import Wallet: ウォレットをインポートする
+Please top up your %token% balance.: "%token% 残高を補充してください。"
+Remember Passcode: パスコードを一時的にスキップする
+Remember Password: パスワードを記憶する
+Not available with biometrics.: 生体認証では利用できません。
+App will not ask for signature for %1$d minutes after last entry.: 確認後、%1$d 分間はパスコードを再度入力する必要はありません。
+Remember for %1$d minutes: "%1$d 分間スキップします"
+Preview: プレビュー
+$preview_not_guaranteed: プレビュー コンテンツはサードパーティによって提供されており、**不完全または偽造されている可能性があります**。続行する前に、実際の署名データを確認してください。
+Unverified Source: 未検証のソース
+DappurlTrustStatusInvalidTitle: ドメインの不一致
+$DappurlTrustStatusInvalidHelp: オリジンがこのアプリケーションの検証済みドメインと一致しません。このサイトを信頼できる場合にのみ続行してください。
+DappurlTrustStatusDangerousTitle: 悪意のある可能性のあるサイト
+$DappurlTrustStatusDangerousHelp: このドメインはセキュリティ チェックによって危険であるとフラグが立てられました。接続すると資金が危険にさらされる可能性があります。絶対に確信がある場合にのみ続行してください。
+$reopen_in_iab: この警告を回避するには、My Wallet %mobileAppButton% または %browserExtensionButton% を使用してください。
+$reopen_in_iab_explore: この警告を回避するには、アプリを参照するときに %exploreTab% セクションを使用してください。
+My Wallet Browser: My Walletブラウザ
+mobile app: モバイルアプリ
+browser extension: ブラウザ拡張機能
+Exit all wallets: すべてのウォレットを削除する
+Can't confirm?: 確認できませんか？
+$safe_staking_ethena_description1: ステーキングは、**Ethena** によって監査されたリキッド ステーキング スマート コントラクトを通じて実行されます。
+$safe_staking_ethena_description2: ステーキングされた USDe は、報酬を生み出すために Ethena の取引および投資戦略に参加します。
+$safe_staking_ethena_description3: 賭け金と獲得した報酬はいつでもリクエストできます。資金は通常 **7 日**以内に返金されます。
+Unstake %amount%: "%amount% のステークを解除する"
+Request Unstaking: アンステークのリクエスト
+$unstaking_when_receive_ethena: ステーキングされていない資金は **7 日**以内に到着するはずです。
+Coins have been unstaked!: トークンは賭けられていません!
+Confirm Upgrading: アップグレードの確認
+How does it work?: どのように機能するのでしょうか?
+Multisend: マルチセンド
+Renew All: すべて更新
+Renew: 更新する
+Renew Domain: ドメインを更新する
+Renew Domains: ドメインを更新する
+Some domains are about to expire: 一部のドメインの有効期限が近づいています
+$domain_expire: "**%domain%** の有効期限は %days% です"
+"%token% Staking": "%token% ステーキング"
+Add Tab: タブの追加
+Customize Tabs: タブのカスタマイズ
+Remove Tab: タブの削除
+Reset: リセット
+Tabs: タブ
+Tap or drag to add tabs.: タップまたはドラッグしてタブを追加します。
+$iab_tabs_count:
+  zeroValue: "%1$d タブ"
+  oneValue: "%1$d タブ"
+  otherValue: "%1$d タブ"
+$domains_amount %1$d:
+  zeroValue: ドメインなし
+  oneValue: "%1$d ドメイン"
+  otherValue: "%1$d ドメイン"
+Stake: ステーク
+Manage Tokens: トークンの管理
+Claim Rewards: 報酬を受け取る
+Configure DNS: DNSの構成
+Link to Wallet: ウォレットへのリンク
+Change Wallet: ウォレットを変更する
+Change Linked Wallet: リンクされたウォレットを変更する
+Domain has been renewed!: ドメインがリニューアルされました！
+Domains have been renewed!: ドメインがリニューアルされました！
+Linked Wallet: リンクされたウォレット
+Domain Linked: ドメインリンク済み
+Link: リンク
+Confirm Renewing: 更新の確認
+Confirm Linking: リンクの確認
+$domains_expire:
+  zeroValue: "%days% 期限切れのドメインはありません"
+  oneValue: "**%domain% ドメイン** の有効期限が切れます %days%"
+  otherValue: "**%domain% ドメイン** 有効期限が切れます %days%"
+$in_days:
+  zeroValue: "%1$d日後"
+  oneValue: "%1$d日以内に"
+  otherValue: "%1$d日後"
+$domain_was_expired: "**%domain%** の有効期限が切れました"
+$domains_was_expired:
+  zeroValue: 有効期限が切れたドメインはありません
+  oneValue: "**%domain% ドメイン** の有効期限が切れました"
+  otherValue: "**%domain% ドメイン** の有効期限が切れました"
+Reload: リロード
+Copy Link: リンクをコピー
+Check eligibility for max APY: 最大 APY の資格を確認する
+Check eligibility: 資格を確認する
+$expired_many: 期限切れ
+$one_domain_expires %days%: 有効期限 %days%
+$multiple_domains_expire %days%: 有効期限 %days%
+Message: メッセージ
+Binary Data: バイナリデータ
+The binary data content is unclear. Sign it only if you trust the service.: バイナリデータの内容は不明です。サービスを信頼できる場合にのみ署名してください。
+Cell Schema: セルスキーマ
+Cell Data: セルデータ
+Sign Data: データに署名する
+EIP-712 typed data: EIP-712 型付きデータ
+Domain: ドメイン
+Primary type: プライマリタイプ
+Please confirm signature on your Ledger: Ledgerの署名を確認してください
+Utilities: 公共事業
+Games: ゲーム
+Entertainment: エンターテイメント
+Toggle to landscape layout: 横向きレイアウトに切り替える
+Toggle to portrait layout: 縦向きレイアウトに切り替える
+Attributes: 属性
+Show All: すべて表示
+Description: 説明
+No additional data.: 追加データはありません。
+"%chain% Domain Copied": "%chain% ドメインがコピーされました"
+$in_currency: "%currency% で"
+Rename Wallet: ウォレットの名前を変更する
+You can rename this wallet for easier identification.: 識別しやすくするために、このウォレットの名前を変更できます。
+$storage_cleared_title: アプリケーションストレージがクリアされました
+$storage_cleared_message: |-
+  ブラウザ関連またはディスク容量の問題により、ウォレット データが消去されました。すべてのウォレットからログアウトし、秘密の単語を使用して手動で再インポートしてください。
+
+  サポートが必要な場合は、%support_link%.
+   までご連絡ください。
+Telegram Gifts: Telegramギフト
+Collectibles: 収集品
+Bluetooth unavailable: Bluetooth が使用できない
+$bluetooth_enable_guide: デバイス設定で Bluetooth をオンにし、アプリが Bluetooth にアクセスできるようにします。
+Canceled by the user: ユーザーによるキャンセル
+The proof for signing provided by the app is too large: アプリが提供する署名証明書が大きすぎます
+$domain_like_scam_warning: |-
+  このアドレスは **ドメイン偽装詐欺**の一部である可能性があります。これは取引所やトークン ウォレットのアドレスではありません。
+
+  攻撃者は、宛先を見慣れたものに見せるために、似たような長いドメインを使用します。
+
+  **転送をキャンセル**し、アドレスを再度確認してください。詳細については、%help_center_link%.
+   をご覧ください。
+Allow Suspicious Actions: 不審なアクションを許可する
+$allow_suspicious_actions_description: 不審なアドレスへの送信や、安全でない可能性のある契約とのやり取りを許可します。
+Multisig Wallet Detected: マルチシグウォレットが検出されました
+$multisig_warning_text: "%app_name% はこのマルチシグ ウォレットからアセットを送信できません。資金を入金する前に必ずウォレットを管理してください。 %multisig_warning_link%"
+$multisig_warning_link: タップして詳細を確認する
+Multisig sending disabled: マルチシグ送信が無効になっています
+$try_new_air_version: お使いのデバイス用に構築された、軽量で高速なネイティブ バージョンを使用してください。いつでも元に戻すことができます。
+$accept_terms_with_link: "%link% に同意します"
+use the wallet responsibly: ウォレットのリスクを理解する
+"%app_name% Resources": "%app_name% リソース"
+Resources: リソース
+Watch Video about Features: ウォッチ機能の概要
+Enjoy Monthly Updates in Blog: 毎月の更新情報を読む
+Learn New Things in Help Center: ヘルプセンターを参照する
+Frequent Questions & Answers: よくある質問と回答
+Paste from Clipboard: クリップボードから貼り付け
+Use biometric authentication or create a password to protect it.: 生体認証を使用するか、パスワードを作成して保護します。
+Go to Words: 秘密の言葉を見る
+Copy to Clipboard: クリップボードにコピー
+$mnemonic_check_words_list: "秘密の単語 %word_numbers% を選択してください:"
+$mnemonic_check_error: 秘密の言葉が一致しません。もう一度やり直してください。
+Open Wallet: オープンウォレット
+All Set!: 準備は完了です!
+$wallet_create_done: ウォレットが正常に作成されました。
+$wallet_import_done:
+  zeroValue: ウォレットが正常にインポートされました。
+  oneValue: ウォレットが正常にインポートされました。
+  otherValue: "%1$d ウォレットが正常にインポートされました。"
+$wallet_done_description: オンチェーン資産を受信、送信、管理できるようになりました。
+Security Warning: セキュリティ警告
+Go back to Words: 言葉に戻る
+I’m sure. Continue: 確かに。続ける
+$copy_mnemonic_warning: "**クリップボード**などのデジタル環境に単語を保存することは安全ではありません。秘密の単語は安全に保存してください。"
+$screenshot_mnemonic_warning: "**スクリーンショット**を含め、デジタル環境に単語を保存することは安全ではありません。秘密の単語は安全に保存してください。"
+Other apps will be able to read your secret words!: 他のアプリでもあなたの秘密の言葉を読み取ることができます。
+I’m sure. Copy anyway: 確かに。とにかくコピーする
+$auth_biometric_info: 生体認証を有効にしてウォレットのロックを解除し、アクションをより迅速に確認します。
+Open wallet without checking: 認証をスキップしてウォレットを開く
+Make sure you have your secret words securely saved.: 秘密の単語は安全に保存してください。
+Without it, you won't be able to access your wallet.: これがないとウォレットにアクセスできません。
+$ledger_connection_broken: Ledgerが切断されました。再接続してもう一度お試しください。
+$ledger_wrong_device: このアカウントは、別の Ledger 回復フレーズまたはパスフレーズを使用しているか、別の Ledger デバイスに保存されています。
+Show More: もっと見る
+Search app or enter address: アプリを検索するかアドレスを入力してください
+Connected Apps: 接続されたアプリ
+Connected Sites: 接続されたサイト
+Popular Apps: 人気のアプリ
+Popular Sites: 人気のサイト
+$wallets_amount:
+  zeroValue: 財布はありません
+  oneValue: "%1$d ウォレット"
+  otherValue: "%1$d ウォレット"
+$total_balance: 合計 %balance%
+No wallets: 財布はありません
+View as List: リストとして表示
+View as Cards: カードとして表示
+Reorder: 再注文
+Reorder Tabs: タブの並べ替え
+Rename: 名前の変更
+Customize: カスタマイズ
+Manage Wallets: ウォレットの管理
+i18n_dragToSort: ドラッグして並べ替えます
+My: 私の
+All: すべて
+$view_accounts: 見る
+Add your first one to begin.: ウォレットを追加して資産管理を始めましょう。
+You don’t have any wallets yet: まだウォレットがありません
+Add Ledger Wallet: Ledgerウォレットの追加
+Add View Wallet: 表示専用ウォレットを追加する
+No Ledger wallets yet: Ledger ウォレットはまだありません
+No view wallets yet: 表示専用ウォレットはまだありません
+View wallets can receive assets, but you cannot use them to send or sign transactions.: 表示専用ウォレットは残高を追跡し、資産を受信できますが、資産を送信したり、トランザクションに署名したりすることはできません。
+Add the first one to track balances and activity for any address.: アドレスを追加して、その残高とオンチェーンアクティビティを追跡します。
+Customize Wallet: ウォレットをカスタマイズする
+"Select the card stored in this wallet:": "このウォレットに保存されているカードを選択します:"
+This card will be installed for this wallet and will be displayed on the home screen and in the wallets list.: カードはこのウォレットに適用され、ホーム画面とウォレットのリストに表示されます。
+Get More Cards: さらにカードを入手
+Browse My Wallet Cards available for purchase.: 購入可能なMy Wallet カードを参照してください。
+You don’t have any cards to customize yet: まだ利用可能なカードはありません
+My Wallet Cards can be installed for wallets and displayed on the home screen and in the wallet list.: My Walletカードを個別のウォレットに適用し、ホーム画面やウォレットリストに表示します。
+Get First Card: 最初のカードを入手
+Palette and Card: パレットとカード
+Customize the wallet's home screen and color accents the way you like.: ウォレットのホーム画面、カード、アクセントカラーをカスタマイズします。
+Address doesn't exist: 住所が存在しません
+The address is not a token minter address: アドレスはトークンミンターアドレスではありません
+$joining_comma: 、
+$joining_and: そして
+$joining_or: または
+View in App: アプリで見る
+Save Account: アカウントを保存する
+$invalid_address_format: 無効なアドレス形式です
+$no_valid_view_addresses: 表示できる有効なアドレスがありません
+Account Saved: アカウントが保存されました
+Share Wallet Link: ウォレットリンクを共有する
+Remove: 削除
+$missing_offramp_deposit_address: オフランプ用の入金アドレスがありません。
+Buy: 購入する
+Sell: 売る
+Sell on Card: カードで販売
+Sell %symbol%: "%symbol% を販売する"
+$connect_dapp_description: 接続されたアプリはウォレット アドレスを表示し、署名やトランザクションを要求できます。すべての資産アクションには依然として確認が必要です。
+$connect_dapp_title: "%name% に接続しますか?"
+Choose Wallet: ウォレットを選択してください
+Wallet to use on %host%: "%host% で使用するウォレット"
+Selected Wallet: 選択されたウォレット
+Wallet to use for payment: 支払いに使用するウォレット
+$wallet_connect_pay_no_options: このウォレットでは使用できる支払いオプションがありません。
+$wallet_connect_pay_try_another_wallet: 別のウォレットを選択してみてください。
+Connect Wallet: ウォレットを接続する
+Connect Anyway: とにかく接続する
+Insufficient Fee: 不十分な料金
+Waiting for a View deeplink to display a wallet address.: View ディープリンクがウォレット アドレスを表示するのを待機しています。
+Adding wallets is not available in explorer mode: ウォレットは表示専用のエクスプローラー モードでは追加できません
+$explorer_mode_warning: "表示専用エクスプローラー モード: アドレス リンクを待機しています"
+This command is not supported in explorer mode: このアクションは表示専用のエクスプローラー モードでは使用できません。
+$saved_addresses_header: 保存されました
+confirm an action in My Wallet: My Walletでアクションを確認する
+Timed out waiting for account to be ready: アカウントの準備ができるまで待機中にタイムアウトになりました
+$connected_apps:
+  otherValue: "%1$d が接続されました"
+Night Mode, Palette, Card: ナイトモード、パレット、カード
+Back Up, Passcode, Auto-Lock: バックアップ、パスコード、自動ロック
+Back Up, Password, Auto-Lock: バックアップ、パスワード、自動ロック
+Base Currency, Token Order, Hidden NFTs: 基本通貨、トークン注文、隠しNFT
+Your assets on other contracts: 他の契約上の資産
+Wallets, Sounds: 財布、サウンド
+Help: ヘルプ
+About: について
+Wallets: 財布
+Open: 開く
+Open in %app_name%: "%app_name%にオープン"
+Blog: ブログ
+Apps: アプリ
+Permissions: 権限
+Token approvals and wallet permissions: トークンの承認とウォレットの許可
+Approvals & Delegations: 承認と委任
+Plugins: プラグイン
+No Permissions: 権限がありません
+Unlimited: 無制限
+Approved to %name%: "%name% に承認されました"
+Wallet Delegation: ウォレットの委任
+Wallet Delegation to %name%: "%name% へのウォレットの委任"
+Revoke Delegation: 委任を取り消す
+Are you sure you want to revoke delegation for %name%?: "%name% の委任を取り消してもよろしいですか?"
+Revoke: 取り消し
+Revoke Approval: 承認の取り消し
+Are you sure you want to revoke approval for %token%?: "%token% の承認を取り消してもよろしいですか?"
+Confirm Revoking: 取り消しの確認
+Unknown Plugin: 不明なプラグイン
+$nft_not_found: NFTが見つかりません
+You will be able to save it again via Transfer Info with this address.: このアドレスを使用して転送情報から再度保存できるようになります。
+Transfer Info: 乗り換え情報
+Transfer not found: 転送が見つかりません
+Failed to fetch transfer: 転送の取得に失敗しました
+Transfer in progress: 転送中です
+Transfer Sent!: 転送が送信されました!
+Please confirm transfer on your Ledger: Ledgerで振込を確認してください
+Please confirm action on your Ledger: Ledgerでのアクションを確認してください
+Not all transfers were sent successfully: すべての転送が正常に送信されたわけではありません
+Please confirm transfer using biometrics: 生体認証を使用して転送を確認してください
+$transfer_inactive_contract_error: |-
+  「EQ...」形式でアドレスを入力しましたが、そのアドレスはアクティブではないため、転送は完了しません。
+  このアドレスに必ず送信したい場合は、アドレスを「UQ...」形式で入力してください。
+$transaction_not_found: 転送が見つかりません。
+$could_not_determine_address: 転送からウォレットアドレスを特定できませんでした
+WrongAddress: アプリは別のウォレットからのアクションをリクエストしました。
+WrongNetwork: アプリは別のネットワークからのアクションを要求しました。
+Another transfer was sent from this wallet simultaneously. Please try again.: このウォレットから同時に別の送金が送信されました。もう一度試してください。
+Confirm action with your password: パスワードでアクションを確認します
+$dapps-description: "%app_name% をサポートするアプリに接続し、共有アカウントの詳細を表示し、ウォレット内のトランザクション リクエストを確認します。"
+Please verify the action.: 動作を確認してください。
+$service_token_transfer_warning: このサービス トークンは、入金の引き出しや重要なアクションの完了に必要になる場合があります。転送後、関連機能が動作しなくなる可能性があります。
+$ledger_outdated: このアクションは、お使いのバージョンの Ledger %chain% アプリではサポートされていません。 Ledger Liveを使用して更新してください。
+$hardware_payload_warning: "**サードパーティのサービスがウォレットの署名を要求しています。** 署名により資産の操作が許可される場合があります。出典が確認できない場合はキャンセルしてください。"
+Pin: ピン
+Unpin: 固定を解除する
+My Assets: 私の資産
+Owner: オーナー
+Show All Wallets: すべてのウォレットを表示
+Ask a Question: 質問する
+Ask anything: 何でも聞いてください
+Agent: エージェント
+Learn more: さらに詳しく
+Data shared with Agent: エージェントと共有されるデータ
+$agent_consent_allow_button: エージェントを許可する
+$agent_consent_subtitle: ウォレットのヘルプ、トークン情報、サポートされているアクションについてエージェントに問い合わせます。
+$agent_consent_feature_answers: "%app_name%、トークン、ウォレットのアクティビティに関する回答を入手します。"
+$agent_consent_feature_actions: 送信、受信、ステーキングなどのサポートされているアクションを準備します。
+$agent_consent_feature_context: ウォレットコンテキストを使用して、回答が関連するアセットとアドレスを参照できるようにします。
+$agent_consent_disclosure_text: 「エージェントを許可」をタップすると、%app_name% がエージェントへのメッセージと関連するウォレット情報を、%app_name% Agent (agent.mywallet.io) および外部AIプロバイダーのAnthropic Claude APIに送信し、リクエストを処理することを許可します。ウォレット情報には、ウォレットアドレス、残高、トークン、アクティビティ、リクエストされた操作の詳細が含まれる場合があります。データはエージェントの応答と、リクエストされた操作の準備にのみ使用されます。
+$agent_consent_debug_reset_button: エージェントの同意状態をリセット
+$agent_consent_debug_reset_footer: "[エージェント] タブを開くと、エージェントの同意画面が再度表示されます。"
+Clear Chat: チャットをクリアする
+Unsupported link: サポートされていないリンク
+My Wallet Features: My Walletの機能
+Notifications: 通知
+Wrong passcode, please try again: パスコードが間違っています。もう一度お試しください
+Use biometric authentication or create a passcode to protect it.: 生体認証を使用するか、パスコードを作成して保護します。
+Use Passcode: パスコードを使用する
+Create Passcode: パスコードの作成
+Create a passcode to protect it.: パスコードを作成して保護します。
+Enter Passcode: パスコードを入力してください
+If you turn off biometric protection, you will need to create a passcode.: 生体認証保護をオフにする場合は、パスコードを作成する必要があります。
+Enabling biometric confirmation will reset the passcode.: 生体認証確認を有効にすると、パスコードがリセットされます。
+Confirm action with your passcode: パスコードでアクションを確認する
+No Image: 画像なし
+Different blockchain. Cannot be selected: 異なるブロックチェーン。選択できません
+$address_suggestion_no_chain: いいえ %chain%
+Subwallets: サブウォレット
+Other addresses for this wallet: このウォレットの他のアドレス
+Current Wallet: 現在のウォレット
+Add Subwallet: サブウォレットの追加
+Create Subwallet: サブウォレットの作成
+Add All Found: 見つかったものをすべて追加
+You have tokens on other subwallets. You can switch to them here.: 他のサブウォレットにトークンがあります。ここでそれらに切り替えることができます。
+Subwallet Created: サブウォレットが作成されました
+Subwallet Added: サブウォレットが追加されました
+Subwallet Switched: サブウォレットが切り替わりました
+Top 5: トップ5
+Top 10: トップ10
+Top 30: トップ30
+Manage Assets: 資産の管理
+Pulse: パルス
+Edit Message: メッセージの編集
+Toggle Hints: ヒントの切り替え
+AgentErrorResponseFailed: "エラー: 応答を取得できませんでした"
+AgentErrorConnectionFailed: "エラー: 接続に失敗しました"
+Scroll To Bottom: 最後までスクロール
+$agent_clear_chat_confirm: チャット履歴を消去してもよろしいですか?
+$unknown_swap_token: スワップリンクに不明なトークンがあります。デフォルトのトークンが使用されました。
+$action_not_available_view_mode: このアクションは View ウォレットでは使用できません
+Deposit: デポジット
+Trade: 貿易
+Show All Assets: すべてのアセットを表示
+Show All Collectibles: すべての収集品を表示
+Show All %collection_name%: すべて表示 %collection_name%
+Scanning for subwallets...: サブウォレットをスキャンしています...
+This process may take up to a minute. Please wait.: このプロセスには最大 1 分かかる場合があります。お待ちください。
+Your assets on other TON contracts: 他の TON 契約上の資産
+No existing subwallets found: 既存のサブウォレットが見つかりません
+You can create a new subwallet if you need another address on the same secret words.: 同じ秘密のワードで別のアドレスが必要な場合は、新しいサブウォレットを作成できます。
+You have tokens on other subwallets. Each subwallet has its own address.: 他のサブウォレットにトークンがあります。各サブウォレットには独自のアドレスがあります。
+Scanning...: スキャン中...
+No collectibles yet: まだ収集品はありません
+Hide Tab: タブを非表示にする
+Show Collectibles: グッズを表示する
+Show Assets: アセットの表示
+Top %amount%: トップ %amount%
+No subwallets yet.: サブウォレットはまだありません。
+$subwallets_found:
+  oneValue: "見つかりました: %1$d"
+  otherValue: "見つかりました: %1$d"
+$subwallet_scan_no_native_balances: ネイティブ残高なし
+$subwallet_scan_other_tokens_suffix:
+  oneValue: + %1$d 他のトークン
+  otherValue: + %1$d 他のトークン
+Send, receive, and trade tokens and collectibles.: トークンや収集品を送信、受信、交換します。
+$overview_cell_size_small: 小
+$overview_cell_size_medium: 中
+$overview_cell_size_big: 大きい
+Set Name: セット名
+Wallet Created: ウォレットが作成されました
+Wallet Imported: ウォレットがインポートされました
+View Wallet Added: 追加されたウォレットを表示
+Scroll Left: 左にスクロール
+Scroll Right: 右にスクロール
+Sent NFT: NFTを送信しました
+Sending NFT: NFTの送信
+$send_nft_action: NFTを送信する
+Received NFT: NFTを受け取りました
+Receiving NFT: NFTの受け取り
+$receive_nft_action: NFTを受け取る
+Minted NFT: ミント済みNFT
+Minting NFT: NFTをミント中
+$mint_nft_action: NFTをミント
+Burned NFT: バーン済みNFT
+Burning NFT: NFTをバーン中
+$burn_nft_action: NFTをバーン
+New Wallet: 新しい財布
+From new secret words: 新しい合言葉から
+New Subwallet: 新しいサブウォレット
+From current secret words: 現在の合言葉より
+$secret_words: 秘密の言葉
+Restore wallet from 12 or 24 words: 12 または 24 ワードからウォレットを復元する
+Connect your hardware wallet: ハードウェアウォレットを接続する
+Watch wallet in read-only mode: ウォレットを読み取り専用モードで監視する
+More: もっと見る
+at: で
+I agree to %term%: "%term% に同意します"
+See Words: 言葉を見る
+Wrong Phrase: 間違ったフレーズ
+Permission Denied: 許可が拒否されました
+USB: USB
+Bluetooth: ブルートゥース
+Locked: ロックされています
+Enter passcode or use fingerprint: パスコードを入力するか指紋を使用する
+Use PIN: PINを使用する
+Try again in %1$@: "%1$@ でもう一度お試しください"
+Try again in %1$@ and %2$@: "%1$@ および %2$@ で再試行してください"
+Screen Recording Detected: 画面録画が検出されました
+$screen_recording_info: |-
+  現在画面を録画中です。
+  この画面には機密情報または個人情報が含まれている可能性があります。
+  何が共有されるのかを必ず確認してください。
+Screen Recording: 画面録画
+Disable Screen Record Warning: 画面録画警告を無効にする
+I Understand, Proceed: 理解しました、続行してください
+Waiting for Network: ネットワークを待っています
+My Wallet: My Wallet
+$no_activity_history: トランザクション履歴はまだありません。
+Standalone: スタンドアロン
+"Enter wallet name:": "ウォレット名を入力してください:"
+All Telegram Gifts: すべてのTelegramギフト
+Add Crypto: 暗号の追加
+Share QR Code: QRコードを共有する
+$send_only_ton: このアドレスにはグラム (GRAM) または TON ベースのアセットのみを送信してください。他のトークンを送信すると損失が発生します。
+$send_only_chain: "%chain% (%symbol%) または %chain% ベースのアセットのみをこのアドレスに送信してください。他のトークンを送信すると損失が発生します。"
+Buying with card is not supported for this account.: このアカウントではカードでの購入はサポートされていません。
+Swapped at: で交換されました
+Price per: あたりの価格
+Swap ID: IDを交換する
+Swap ID for %provider%: "%provider% の ID を交換します"
+Copy Swap ID: スワップIDをコピーする
+Swap ID Copied: スワップIDがコピーされました
+from: から
+to: に
+Currency: 通貨
+Select Token to Send: 送信するトークンを選択してください
+Send to: 送信先
+Add a message, if needed: 必要に応じてメッセージを追加します
+Collapse: 崩壊する
+Expand: 拡大する
+Standalone NFT: スタンドアロンNFT
+$nft_select: 選択
+$nft_batch_on_sale: 厳選されたコレクションが販売されています。
+$nft_batch_different_chains: 選択された収集品はさまざまなチェーンにあります。
+$nft_expired: 期限切れ
+Linked Address: リンクされたアドレス
+Enter Address: 住所を入力してください
+D: D
+W: W
+M: M
+3M: 3M
+"Y": "Y"
+$amount_K: "%amount%K"
+$amount_M: "%amount%M"
+Happening Now: 今のトレンド
+No Dapps Found!: dApp が見つかりません
+Edit Wallet Name: ウォレット名の編集
+Wallet Name: ウォレット名
+App Icon: アプリアイコン
+Rounded Toolbars: 丸いツールバー
+Side Gutters: 側溝
+Gradient Navigation Bar: グラデーションナビゲーションバー
+Tokens on Home Screen: ホーム画面のトークン
+Current Wallet Version: 現在のウォレットのバージョン
+Tokens on Other Versions: 他のバージョンのトークン
+Show Secret Words: 秘密の言葉を表示する
+Passcode: パスコード
+Lock the app after: 後はアプリをロックしてください
+Never: 決してしない
+"%1$@ seconds": "%1$@ 秒"
+"%1$@ minutes": "%1$@分"
+Unstake Request: アンステークリクエスト
+History: 歴史
+Earn up to %1$@ per year from your tokens: 推定年間報酬は最大 %1$@ まで
+Insufficient %1$@ Balance: "%1$@ 残高が不十分です"
+Instant Withdrawal: 即時出金
+Instantly: 瞬時に
+Up to %1$@: "%1$@まで"
+up to %1$@: "%1$@まで"
+Current APR: 現在の年利
+in: で
+Network Error: ネットワークエラー
+Enter Amount: 金額を入力してください
+Swap %1$@ to %2$@: "%1$@ を %2$@ に交換します"
+"%1$@ to %2$@": "%1$@ ～ %2$@"
+Max %1$@: 最大 %1$@
+Authorize %1$@ fee: "%1$@ 手数料を承認する"
+Pending previous fee: 前回の料金は保留中
+AML/KYC: AML/KYC
+Receive to: 受信先
+Enter %1$@ address: "%1$@ アドレスを入力してください"
+"Send %1$@ this address:": "%1$@ に次のアドレスを送信してください:"
+Swap is not supported on this account.: このアカウントではスワップはサポートされていません。
+"%1$@ will be returned": "%1$@ が返されます"
+Connecting your wallet: ウォレットを接続する
+Action is not possible on a view-only wallet.: 表示専用ウォレットではアクションは実行できません。
+No matching chains: 互換性のあるネットワークがありません
+Logged in with My Wallet: My Walletでログインしました
+You have no apps connected to this wallet.: このウォレットに接続されているアプリはありません。
+Asset: 資産
+Sent to: 送信先
+via %agg%: "%agg% 経由"
+Switch to Legacy Version: 以前のバージョンに切り替える
+Received from: から受け取りました
+Your Secret Words: あなたの秘密の言葉
+day:
+  zeroValue: "%1$d 日"
+  oneValue: "%1$d 日"
+  otherValue: "%1$d 日"
+hour:
+  zeroValue: "%1$d 時間"
+  oneValue: "%1$d 時間"
+  otherValue: "%1$d時間"
+minute:
+  zeroValue: 分
+  oneValue: 分
+  otherValue: "%1$d分"
+second:
+  zeroValue: "%1$d 秒"
+  oneValue: "%1$d 秒"
+  otherValue: "%1$d 秒"
+transfer:
+  zeroValue: "%1$d 転送"
+  oneValue: "%1$d 転送"
+  otherValue: "%1$d 転送"
+Confirm Actions:
+  zeroValue: "%1$d アクションの確認"
+  oneValue: アクションの確認
+  otherValue: アクションの確認
+A ~ Z: A〜Z
+Biometric authentication not available.: 生体認証は利用できません。
+Payment Address: 支払い先住所
+Wallet to use on: 使用する財布
+Clipboard empty: クリップボードが空です
+Confirm Connect: 接続の確認
+Connected apps can only see your wallet address and will not be able to move your assets without permission.: 接続されたアプリはウォレットのアドレスを表示してアクションをリクエストできますが、すべての資産操作には依然として確認が必要です。
+Connect to %1$@?: "%1$@ に接続しますか?"
+Don’t show tokens on your account with value less than $0.01. You can also selectively enable and disable particular tokens using the list below.: アカウントに 0.01 ドル未満のトークンを表示しないでください。以下のリストを使用して、特定のトークンを選択的に有効または無効にすることもできます。
+Don’t show transactions of less than $0.01. Such small transactions are often used for spam and scam.: 0.01 ドル未満の取引は表示しないでください。このような小規模なトランザクションは、スパムや詐欺によく使用されます。
+Enter your Wallet Passcode: ウォレットのパスコードを入力してください
+Import failed: インポートに失敗しました
+Install Palette: パレットのインストール
+Ledger: Ledger
+Moving to staking balance: ステーキング残高への移行
+My Wallet uses biometric authentication to unlock and authorize transactions: My Wallet は生体認証を使用してウォレットのロックを解除し、取引を確認します
+Network error: ネットワークエラー
+No Camera Access: カメラにアクセスできません
+Not all transactions were sent successfully.: すべてのトランザクションが正常に送信されたわけではありません。
+OK: OK
+Open in Explorer: エクスプローラーで開く
+Open in...: で開く...
+Passcode changed: パスコードが変更されました
+Please make sure your internet connection is working and try again.: インターネット接続が機能していることを確認して、もう一度お試しください。
+Please set a passcode on your device, and then try to use biometric authentication.: 端末にパスコードを設定してから生体認証をお試しください。
+Please try again: もう一度試してください
+Please wait...: お待ちください...
+Preview is currently unavailable.: 現在プレビューは利用できません。
+Read-only account: 読み取り専用アカウント
+Request for unstaking: アンステーキングリクエスト
+Set a passcode: パスコードを設定する
+Show All %1$@: すべて表示 %1$@
+TON Wallet Versions: TON ウォレットのバージョン
+Tap to reveal: タップして表示します
+The current version of Ledger only supports English-language comments without special characters.: Ledger の現在のバージョンでは、特殊文字を含まない英語のコメントのみがサポートされています。
+There is no activity history for this wallet yet.: まだ取引履歴はありません。
+This type of transaction is not yet supported by Ledger.: このタイプのトランザクションは、Ledger ではまだサポートされていません。
+Transaction to this smart contract is not yet supported by Ledger.: このスマート コントラクトへのトランザクションは、Ledger ではまだサポートされていません。
+Transferring NFT is not yet supported by Ledger.: NFT の転送は Ledger ではまだサポートされていません。
+Connect your Ledger via Bluetooth: Bluetooth 経由でLedgerを接続する
+Discovering wallets: ウォレットを探す
+Bluetooth Access Denied: Bluetooth アクセスが拒否されました
+Bluetooth access is needed to connect Ledger.: Ledger に接続するには Bluetooth アクセスが必要です。
+Address not resolved: 住所が解決されていない
+Sending more than one NFT isn't supported by Ledger: 複数の NFT の送信は Ledger ではサポートされていません
+Updating…: 更新中…
+This is how the TON Blockchain works.: これが TON によるトランザクションの処理方法です。
+Waiting for network…: ネットワークを待っています…
+Wallet is Locked: ウォレットがロックされています
+Warning: 警告
+Wear: 摩耗
+Passcodes don't match. Please try again.: パスコードが一致しません。もう一度試してください。
+Secret phrase was copied to clipboard: リカバリフレーズがクリップボードにコピーされました
+Copy Anyway: とにかくコピーする
+12 Words: 12の言葉
+24 Words: 24の言葉
+Words don’t match, please try again.: 単語が一致しません。もう一度試してください。
+Load 5 More Wallets: さらに5つのウォレットをロードする
+$n_wallets_selected:
+  zeroValue: "%1$d が選択されました"
+  oneValue: "%1$d が選択されました"
+  otherValue: "%1$d が選択されました"
+Are you sure you want to unpin %tab%?: "%tab% の固定を解除してもよろしいですか?"
+add: 追加する
+send: 送信する
+swap: 交換する
+earn: 稼ぐ
+Actions: アクション
+$actions_description: 最も一般的なアクションにすぐにアクセスできます。
+Rate: 料金
+$rate_description: 選択したトークンの現在のレートを表示します。
+Rate with Chart: チャート付きのレート
+$rate_with_chart_description: 現在のレートを表示し、選択したトークンのパフォーマンスを追跡します。
+Style: スタイル
+Neutral: ニュートラル
+Vivid: 鮮やかな
+Chart Period: チャート期間
+$period_all: オールタイム
+$period_day: 1日
+$period_week: 1週間
+$period_month: 1ヶ月
+$period_3months: 3ヶ月
+$period_year: 1年
+Token: トークン
+All Tokens: すべてのトークン
+Customize Widget: ウィジェットのカスタマイズ
+Recent Searches: 最近の検索
+Clear All: すべてクリア
+Suggestions: 提案
+Popular and connected apps: 人気の連携アプリ
+Connected Dapp: 接続されたDapp
+$ago: "%1$d前"
+$visited_ago: "%1$d前に訪問しました"
+Notifications are disabled: 通知が無効になっています
+Enable in Settings: 設定で有効にする
+Open Link: リンクを開く
+Open in App: アプリで開く
+Search in Google: Googleで検索
+$remove_wallets:
+  zeroValue: ウォレットを削除する
+  oneValue: ウォレットを削除する
+  otherValue: "%1$d ウォレットを削除する"
+Encryption is not possible. The recipient is not a wallet or has no outgoing transactions.: 暗号化はできません。受信者はウォレットではないか、送信トランザクションがありません。
+just now: たった今
+"No": いいえ
+Search: 検索
+State init supplied without message body: 状態の初期化がメッセージ本文なしで提供されました
+Swap Failed: スワップに失敗しました
+The wallet is ready: 財布の準備ができました
+Unexpected error. Please let the support know.: 予期しないエラーが発生しました。継続する場合はサポートにお問い合わせください。
+Unlock it and open the TON App: ロックを解除してTONアプリを開きます
+Use 4-digit Passcode: 4桁のパスコードを使用する
+Use 6-digit Passcode: 6桁のパスコードを使用する
+Authorize %token% Fee: "%token% 手数料を承認する"
+Awaiting Previous Fee: 前回の料金を待っています
+Lock: ロック
+My Wallet Cards can be installed for wallets and displayed on the home screen an in the wallet list.: My Walletカードを個別のウォレットに適用し、ホーム画面やウォレットリストに表示します。
+Receive: 受信
+Scan: スキャン
+$web_permission_prompt: "%origin% があなたの %permissions% を使用することを許可しますか?"
+$web_permission_allow: 許可する
+$web_permission_deny: 許可しないでください
+$web_permission_camera: カメラ
+$web_permission_microphone: マイク
+$web_permission_location: 場所
+$web_permission_device_features: デバイスの機能
+$web_permission_this_site: このサイト
+push_title_wallet: "%wallet_title%"
+push_activity_token_sent: "%amount% %symbol% を送信しました"
+push_activity_token_received: "%amount% %symbol% を受信しました"
+push_activity_contract_called: スマートコントラクトと呼ばれる
+push_activity_contract_deployed: 導入されたスマートコントラクト
+push_activity_token_minted: 鋳造済み %amount% %symbol%
+push_activity_token_burned: 焼けた %amount% %symbol%
+push_activity_nft_sent: NFTを送信しました
+push_activity_nft_sent_named: "送信された NFT: %name%"
+push_activity_nft_received: NFTを受け取りました
+push_activity_nft_received_named: "受け取ったNFT: %name%"
+push_activity_nft_minted: 鋳造されたNFT
+push_activity_nft_minted_named: "鋳造されたNFT: %name%"
+push_activity_liquidity_deposited: 提供される流動性
+push_activity_liquidity_withdrawn: 流動性の引き出し
+push_activity_stake_deposit: ステーク済み %amount% %symbol%
+push_activity_stake_withdrawal: アンステーク %amount% %symbol%
+push_activity_stake_withdrawal_request: ステーキング引き出しのリクエスト
+push_activity_auction_bid: オークション入札 %amount% %symbol%
+push_activity_dns_changed: 更新されたDNSレコード
+push_activity_dns_deleted: 削除されたDNSレコード
+push_activity_dns_renewed: 更新されたDNS
+push_activity_subscription_started: 購読を開始しました
+push_activity_subscription_payment_received: サブスクリプションの支払いを受け取りました %amount% %symbol%
+push_activity_subscription_canceled: キャンセルされたサブスクリプション
+push_activity_swap_completed: "%from_symbol% -> %to_symbol% を交換しました"
+push_activity_swap_failed: "%from_symbol% -> %to_symbol% のスワップに失敗しました"
+push_activity_swap_expired: スワップ %from_symbol% -> %to_symbol% の有効期限が切れました
+push_activity_swap_pending: "%from_symbol% -> %to_symbol% %status% をスワップ"
+push_activity_staking_profit: ステーキング利益 %amount% GRAM
+push_activity_staking_loyalty_profit: ステーキングロイヤルティ利益 %amount% GRAM
+push_domain_title_renew: ドメインを更新する
+push_domain_expired_yesterday: ドメイン %domain% は昨日期限切れになりました。アクセスできなくなるのを避けるため、できるだけ早く更新してください
+push_domain_expired_days_ago: ドメイン %domain% は %days% 日前に期限切れになりました。アクセスできなくなるのを避けるため、できるだけ早く更新してください
+push_domain_expires_today: あなたのドメイン %domain% は今日期限切れになります。アクセスできなくなるのを避けるために更新してください
+push_domain_expires_tomorrow: あなたのドメイン %domain% は明日期限切れになります。アクセスできなくなるのを避けるために更新してください
+push_domain_expires_in_days: ドメイン %domain% は %days% 日後に期限切れになります。アクセスできなくなるのを避けるために更新してください
+$more_nfts:
+  zeroValue: NFTなし
+  oneValue: +1 NFT
+  otherValue: +%1$d NFT
+$subwallets_hint: サブウォレットを使用すると、新しい秘密の単語のセットを作成せずに追加のアドレスを取得できます。
+$subwallets_created_wallets: 以前にサブウォレットを作成したことがある場合は、以下のリストに表示されます。
+$subwallets_none: サブウォレットはまだありません。
+Tracked asset value over time: 長期にわたる資産価値の追跡
+Current allocation across tracked assets: 追跡対象資産全体にわたる現在の配分
+Limited history: 限られた歴史
+Cumulative profit and loss over time: 時間の経過に伴う累積損益
+Day-by-day profit and loss: 日々の損益
+This action is not supported in explorer mode.: このアクションはエクスプローラー モードではサポートされていません。
+$relative_today: 今日
+$relative_tomorrow: 明日
+P&L Change: 損益変動
+Choose Token: トークンの選択
+You don't have any eligible tokens for this payment: この支払いに適格なトークンがありません
+Buy, swap, or receive a supported token to continue.: 続行するには、サポートされているトークンを購入、交換、または受け取ります。
+Are you sure you want to cancel the payment?: 支払いをキャンセルしてもよろしいですか?
+Cancel Payment: 支払いのキャンセル
+Paid!: 有料です！
+Payment: お支払い
+Sent!: 送信されました！
+$chart_months_short: 1月、2月、3月、4月、5月、6月、7月、8月、9月、10月、11月、12月
+$chart_week_days: 日曜日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日
+$chart_week_days_short: 日、月、火、水、木、金、土
+Select multichain wallet: マルチチェーンウォレットを選択
+Unsupported Chain: サポートされていないチェーン
+Please upgrade to multichain to use this app.: このアプリを使用するには、マルチチェーンにアップグレードしてください。

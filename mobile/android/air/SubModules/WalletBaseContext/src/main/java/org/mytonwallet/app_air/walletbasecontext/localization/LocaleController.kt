@@ -45,6 +45,8 @@ object LocaleController {
         },
         WLanguage.CHINESE_SIMPLIFIED.langCode to { n -> if (n == 0) 1 else 6 },
         WLanguage.CHINESE_TRADITIONAL.langCode to { n -> if (n == 0) 1 else 6 },
+        WLanguage.JAPANESE.langCode to { n -> if (n == 0) 1 else 6 },
+        WLanguage.KOREAN.langCode to { n -> if (n == 0) 1 else 6 },
         //WLanguage.PERSIAN.langCode to { n -> if (n == 0) 1 else if (n != 1) 6 else 2 },
     )
 

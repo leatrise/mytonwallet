@@ -1,0 +1,119 @@
+$title: Telegram 2차 인증
+$confirmation-title: 이 작업 확인
+$confirmed: 확인됨!
+$install-confirmation-title: Telegram 2차 인증 설정
+Go Back: 돌아가기
+Confirm: 확인
+Is it all ok?: 모든 것이 정확합니까?
+Connect Wallet: 지갑 연결
+Confirm Connection: 연결 확인
+Confirm Unlinking: 연결 해제 확인
+My Telegram Account: 내 텔레그램 계정
+Without username: 사용자 이름 없음
+My Wallet: 내 지갑
+We’ll ask you to confirm actions with Telegram after entering your passcode in %app_name%.: "%app_name%에서 암호를 입력한 후 Telegram에서 지원되는 작업을 확인하세요."
+2FA applies only to actions involving TON assets.: 2차 인증은 TON 자산과 관련된 작업에만 적용됩니다.
+Action Confirmed: 작업 확인됨
+Almost Ready!: 한 단계만 남았습니다
+Your wallet is now connected to your Telegram account.: 지갑이 Telegram 계정에 연결되었습니다.
+Return to the app to pay fee and complete the final confirmation.: 앱으로 돌아가 연결 수수료를 지불하고 설정을 완료하세요.
+Back to %app_name%: "%app_name%(으)로 돌아가기"
+Preview: 미리보기
+$preview_not_guaranteed: 미리보기 콘텐츠는 제3자에 의해 제공되며 **불완전하거나 위조될 수 있습니다**. 계속하기 전에 실제 서명 데이터를 확인하세요.
+$fee_value: 수수료 %fee%
+$fee_value_with_colon: "수수료: %fee%"
+Fee: 수수료
+Details: 세부정보
+Transaction ID: 거래 ID
+Transaction ID Copied: 거래 ID 복사됨
+Encrypted Message: 암호화된 메시지
+Failed: 실패
+$transaction_on: "%address%에"
+$transaction_from: "%address%에서"
+$transaction_to: "%address%에게"
+at %annual_yield%: "%annual_yield%에"
+Scam: 사기
+Staked: 스테이킹됨
+Staking: 스테이킹
+$stake_action: 스테이크
+Unstaked: 언스테이크
+Unstaking: 언스테이킹
+$unstake_action: 언스테이킹
+Requested Unstake: 언스테이크 요청
+Requesting Unstake: 언스테이크 요청
+$request_unstake_action: 언스테이크 요청
+Called Contract: 호출된 계약
+Calling Contract: 호출 계약
+$call_contract_action: 통화 계약
+Excess: 초과
+Deployed Contract: 배포된 계약
+Deploying Contract: 계약 배포
+$deploy_contract_action: 계약 배포
+Bounced: 반송됨
+Bouncing: 튀는
+$bounce_action: 바운스
+Minted: 주조됨
+Minting: 주조
+$mint_action: 민트
+Burned: 태워짐
+Burning: 굽기
+$burn_action: 화상
+NFT Auction Bid: NFT 경매 입찰
+Bidding at NFT Auction: NFT 경매 입찰
+"NFT Auction Bid ": "NFT 경매 입찰 "
+Updated Address: 업데이트된 주소
+Updating Address: 주소 업데이트 중
+$update_address_action: 주소 업데이트
+Updated Site: 업데이트된 사이트
+Updating Site: 사이트 업데이트 중
+$update_site_action: 사이트 업데이트
+Updated Subdomains: 업데이트된 하위 도메인
+Updating Subdomains: 하위 도메인 업데이트
+$update_subdomains_action: 하위 도메인 업데이트
+Updated Storage: 업데이트된 스토리지
+Updating Storage: 스토리지 업데이트 중
+$update_storage_action: 스토리지 업데이트
+Deleted Domain Record: 삭제된 도메인 레코드
+Deleting Domain Record: 도메인 레코드 삭제
+$delete_domain_record_action: 도메인 레코드 삭제
+Renewed Domain: 갱신된 도메인
+Renewing Domain: 도메인 갱신
+$renew_domain_action: 도메인 갱신
+Provided Liquidity: 유동성 제공
+Providing Liquidity: 유동성 제공
+$provide_liquidity_action: 유동성 제공
+Withdrawn Liquidity: 인출된 유동성
+Withdrawing Liquidity: 유동성 인출
+$withdraw_liquidity_action: 유동성 인출
+Sold NFT: NFT 판매
+Selling NFT: NFT 판매
+$sell_nft_action: NFT 판매
+Bought NFT: NFT를 구매했습니다
+Buying NFT: NFT 구매
+$buy_nft_action: NFT 구매
+Minted NFT: 발행된 NFT
+Minting NFT: NFT 발행
+$mint_nft_action: 민트 NFT
+Burned NFT: 소각된 NFT
+Burning NFT: NFT 소각 중
+$burn_nft_action: NFT 소각
+Received NFT: NFT를 받았습니다
+Receiving NFT: NFT 수신
+$receive_nft_action: NFT 수신
+Sent NFT: NFT로 전송됨
+Sending NFT: NFT 보내기
+$send_nft_action: NFT 보내기
+Received: 접수됨
+Receiving: 수신
+$receive_action: 수신
+Sent: 보냄
+Sending: 보내는 중
+$send_action: 보내기
+Expired: 만료됨
+Refunded: 환불됨
+On Hold: 보류 중
+Waiting for Payment: 결제 대기 중
+In Progress: 진행 중
+$swap_action: 스왑
+Swapping: 스와핑
+Swapped: 교환됨
