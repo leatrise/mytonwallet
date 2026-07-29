@@ -515,7 +515,6 @@ class PhoneTabsVC(context: Context) : BaseTabsVC(context), WThemedView, WProtect
 
         view.addView(contentView, ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT))
         view.addView(bottomNavigationView, ViewGroup.LayoutParams(MATCH_PARENT, 0))
-        bottomNavigationView.isGone = true
         view.addView(toastHostView, FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
         view.addView(
             searchView,
@@ -552,7 +551,7 @@ class PhoneTabsVC(context: Context) : BaseTabsVC(context), WThemedView, WProtect
         adoptPendingSearchText()
         view.post {
             activeNavigationController?.insetsUpdated()
-            // Keep Settings warm; Explore is intentionally absent from primary navigation.
+            getNavigationStack(IBottomNavigationView.ID_EXPLORE)
             getNavigationStack(IBottomNavigationView.ID_SETTINGS)
         }
 
@@ -908,8 +907,9 @@ class PhoneTabsVC(context: Context) : BaseTabsVC(context), WThemedView, WProtect
 
     override fun switchToExplore(targetUri: Uri?) {
         navigationController?.popToRoot(false)
-        bottomNavigationView.selectedItemId = IBottomNavigationView.ID_HOME
+        bottomNavigationView.selectedItemId = IBottomNavigationView.ID_EXPLORE
         window?.dismissToRoot()
+        targetUri?.let { cachedExploreVC?.findSiteAndOpenTargetUri(it) }
     }
 
     override fun switchToAgent() {
@@ -1152,7 +1152,9 @@ class PhoneTabsVC(context: Context) : BaseTabsVC(context), WThemedView, WProtect
     override fun getBottomNavigationHeight(): Int {
         val keyboard = keyboardHeight
         val minimizedNavHeight = minimizedNavHeight ?: 0f
-        return (keyboard + minimizedNavHeight).roundToInt() + bottomBarHeight
+        val additionalHeight =
+            ((if (bottomNavigationView.selectedItemId == IBottomNavigationView.ID_EXPLORE) (SEARCH_BOTTOM_MARGIN + SEARCH_HEIGHT + SEARCH_TOP_MARGIN).dp else 0) + keyboard + minimizedNavHeight).roundToInt()
+        return BOTTOM_TABS_LAYOUT_HEIGHT.dp + additionalHeight + bottomBarHeight
     }
 
     private var minimizedNav: WNavigationController? = null
@@ -1423,11 +1425,11 @@ class PhoneTabsVC(context: Context) : BaseTabsVC(context), WThemedView, WProtect
     }
 
     override fun hideTabBar() {
-        bottomNavigationView.isGone = true
+        bottomNavigationView.fadeOut()
     }
 
     override fun showTabBar() {
-        bottomNavigationView.isGone = true
+        bottomNavigationView.fadeIn()
     }
 
     private fun updateToastAvailability(selectedItemId: Int = bottomNavigationView.selectedItemId) {

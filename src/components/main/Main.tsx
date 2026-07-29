@@ -55,6 +55,7 @@ import MainSkeleton from './MainSkeleton';
 import AccountSelectorModal from './modals/accountSelector/AccountSelectorModal';
 import PromotionModal from './modals/PromotionModal';
 import {
+  LandscapeNavBar,
   LandscapeWalletList,
   PortraitActions,
 } from './sections/Actions';
@@ -271,6 +272,7 @@ function Main({
             onYieldClick={handleEarnClick}
           />
 
+          <LandscapeNavBar />
           {/* Core is single-account, and its `Add Wallet` would be dead anyway: AccountSelectorModal is not rendered below. */}
           {!IS_CORE_WALLET && <LandscapeWalletList />}
           {IS_EXPLORER && <PromoteWallet />}

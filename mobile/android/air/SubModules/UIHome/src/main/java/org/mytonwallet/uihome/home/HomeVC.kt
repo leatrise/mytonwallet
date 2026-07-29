@@ -518,10 +518,6 @@ class HomeVC(context: Context, private val mode: MScreenMode) :
                 }.show()
             }
 
-            HeaderActionsView.Identifier.SETTINGS -> {
-                navigationController?.tabBarController?.switchToSettings()
-            }
-
             HeaderActionsView.Identifier.EARN -> {
                 val canShowEarn =
                     homeVM.isGeneralDataAvailable || AccountStore.activeAccount?.isNew == true

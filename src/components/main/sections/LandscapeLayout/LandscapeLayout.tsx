@@ -8,6 +8,7 @@ import { selectCurrentAccountId } from '../../../../global/selectors';
 import buildClassName from '../../../../util/buildClassName';
 
 import Agent from '../../../agent/Agent';
+import Explore from '../../../explore/Explore';
 import Portfolio from '../../../portfolio/Portfolio';
 import Settings from '../../../settings/Settings';
 import Transition from '../../../ui/Transition';
@@ -22,11 +23,12 @@ interface OwnProps {
 interface StateProps {
   areSettingsOpen?: boolean;
   isAgentOpen?: boolean;
+  isExploreOpen?: boolean;
   isPortfolioOpen?: boolean;
 }
 
 function LandscapeLayout({
-  onStakedTokenClick, areSettingsOpen, isAgentOpen, isPortfolioOpen,
+  onStakedTokenClick, areSettingsOpen, isAgentOpen, isExploreOpen, isPortfolioOpen,
 }: OwnProps & StateProps) {
   function renderSlide(isActive: boolean, _isFrom: boolean, currentKey: ContentTab) {
     switch (currentKey) {
@@ -38,7 +40,11 @@ function LandscapeLayout({
           </div>
         );
       case ContentTab.Explore:
-        return <LandscapeContent onStakedTokenClick={onStakedTokenClick} />;
+        return (
+          <div className={styles.standaloneWrapper}>
+            <Explore isActive={isActive} />
+          </div>
+        );
       case ContentTab.Settings:
         return (
           <div className={styles.settingsWrapper}>
@@ -60,6 +66,7 @@ function LandscapeLayout({
   function getActiveKey() {
     if (areSettingsOpen) return ContentTab.Settings;
     if (!NO_AGENT && isAgentOpen) return ContentTab.Agent;
+    if (isExploreOpen) return ContentTab.Explore;
     if (!NO_PORTFOLIO && isPortfolioOpen) return ContentTab.Portfolio;
 
     return ContentTab.Overview;
@@ -83,11 +90,11 @@ export default memo(
   withGlobal<OwnProps>(
     (global): StateProps => {
       const {
-        areSettingsOpen, isAgentOpen, isPortfolioOpen,
+        areSettingsOpen, isAgentOpen, isExploreOpen, isPortfolioOpen,
       } = global;
 
       return {
-        areSettingsOpen, isAgentOpen, isPortfolioOpen,
+        areSettingsOpen, isAgentOpen, isExploreOpen, isPortfolioOpen,
       };
     },
     (global, _, stickToFirst) => stickToFirst(selectCurrentAccountId(global)),

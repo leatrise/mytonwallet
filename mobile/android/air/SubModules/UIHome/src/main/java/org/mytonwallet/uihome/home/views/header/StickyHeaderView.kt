@@ -111,15 +111,6 @@ class StickyHeaderView(
         v
     }
 
-    private val settingsButton: WImageButton by lazy {
-        val v = WImageButton(context)
-        v.setImageDrawable(context.getDrawableCompat(R.drawable.ic_settings))
-        v.setOnClickListener {
-            onActionClick(HeaderActionsView.Identifier.SETTINGS)
-        }
-        v
-    }
-
     private val editButtonRipple = WRippleDrawable.create(20f.dp)
     private val editButton: WLabel by lazy {
         WLabel(context).apply {
@@ -189,14 +180,6 @@ class StickyHeaderView(
             }
         }
         addView(lockButton, LayoutParams(40.dp, 40.dp).apply {
-            gravity = Gravity.START or Gravity.CENTER_VERTICAL
-            if (LocaleController.isRTL)
-                rightMargin = 56.dp
-            else
-                leftMargin = 56.dp
-            topMargin = 1.dp
-        })
-        addView(eyeButton, LayoutParams(40.dp, 40.dp).apply {
             gravity = Gravity.END or Gravity.CENTER_VERTICAL
             if (LocaleController.isRTL)
                 leftMargin = 56.dp
@@ -204,7 +187,7 @@ class StickyHeaderView(
                 rightMargin = 56.dp
             topMargin = 1.dp
         })
-        addView(settingsButton, LayoutParams(40.dp, 40.dp).apply {
+        addView(eyeButton, LayoutParams(40.dp, 40.dp).apply {
             gravity = Gravity.END or Gravity.CENTER_VERTICAL
             if (LocaleController.isRTL)
                 leftMargin = 8.dp
@@ -223,7 +206,7 @@ class StickyHeaderView(
             gravity = Gravity.CENTER or Gravity.TOP
         })
 
-        listOf(scanButton, lockButton, eyeButton, settingsButton).forEach {
+        listOf(scanButton, lockButton, eyeButton).forEach {
             it.updateColors(WColor.Tint, WColor.BackgroundRipple)
         }
         updateActions()
@@ -320,18 +303,13 @@ class StickyHeaderView(
         val isWideScreen = appliedWideScreen == true
         applyButtonEdge(
             lockButton,
-            atStart = true,
+            atStart = isWideScreen,
             edgeMargin = if (isWideScreen) 8.dp else 56.dp
         )
         applyButtonEdge(
             eyeButton,
-            atStart = false,
-            edgeMargin = 56.dp
-        )
-        applyButtonEdge(
-            settingsButton,
-            atStart = false,
-            edgeMargin = 8.dp
+            atStart = isWideScreen,
+            edgeMargin = if (isWideScreen && lockButton.isVisible) 56.dp else 8.dp
         )
     }
 
@@ -493,9 +471,6 @@ class StickyHeaderView(
         if (eyeButton.isVisible) {
             views.add(eyeButton)
         }
-        if (settingsButton.isVisible) {
-            views.add(settingsButton)
-        }
         if (editButton.isVisible) {
             views.add(editButton)
         }
@@ -503,6 +478,6 @@ class StickyHeaderView(
     }
 
     private fun defaultStatusViewMargin(): Int {
-        return 96.dp
+        return if (lockButton.isVisible) 96.dp else 56.dp
     }
 }

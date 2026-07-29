@@ -144,7 +144,6 @@ class HeaderActionsView(
         LOCK_APP,
         TOGGLE_SENSITIVE_DATA_PROTECTION,
         SCAN_QR,
-        SETTINGS,
         SCROLL_TO_TOP,
         DETAILS,
         REPEAT,

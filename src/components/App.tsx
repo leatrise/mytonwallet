@@ -10,11 +10,12 @@ import {
   IS_ANDROID_DIRECT,
   IS_CAPACITOR,
   IS_CORE_WALLET,
+  IS_EXPLORER,
   NO_AGENT,
   NO_PORTFOLIO,
   NO_SWAP,
 } from '../config';
-import { selectCurrentAccountId, selectCurrentAccountSettings } from '../global/selectors';
+import { selectCurrentAccountId, selectCurrentAccountSettings, selectCurrentAccountState } from '../global/selectors';
 import { useAccentColor } from '../util/accentColor';
 import { setActiveTabChangeListener } from '../util/activeTabMonitor';
 import buildClassName from '../util/buildClassName';
@@ -50,6 +51,7 @@ import DappSignDataModal from './dapps/DappSignDataModal';
 import DappTransferModal from './dapps/DappTransferModal';
 import Dialogs from './Dialogs';
 import ElectronHeader from './electron/ElectronHeader';
+import Explore from './explore/Explore';
 import LedgerModal from './ledger/LedgerModal';
 import Main from './main/Main';
 import BackupModal from './main/modals/BackupModal';
@@ -57,6 +59,7 @@ import NftAttributesModal from './main/modals/NftAttributesModal';
 import QrScannerModal from './main/modals/QrScannerModal';
 import SignatureModal from './main/modals/SignatureModal';
 import UnhideNftModal from './main/modals/UnhideNftModal';
+import BottomBar from './main/sections/Actions/BottomBar';
 import Toasts from './main/Toasts';
 import WalletRenameModal from './main/WalletRenameModal';
 import MediaViewer from './mediaViewer/MediaViewer';
@@ -83,13 +86,16 @@ interface StateProps {
   isHardwareModalOpen?: boolean;
   isCustomizeWalletModalOpen?: boolean;
   isAgentOpen?: boolean;
+  isExploreOpen?: boolean;
   isPortfolioOpen?: boolean;
   isFullscreen: boolean;
   areSettingsOpen?: boolean;
   theme: Theme;
   accentColorIndex?: number;
+  isAppReady?: boolean;
 }
 
+const APP_STATES_WITH_BOTTOM_BAR = new Set([AppState.Main, AppState.Agent, AppState.Settings, AppState.Explore]);
 const APP_UPDATE_INTERVAL = (IS_ELECTRON && !IS_LINUX) || IS_ANDROID_DIRECT
   ? 5 * MINUTE
   : undefined;
@@ -106,11 +112,13 @@ function App({
   isCustomizeWalletModalOpen,
   isQrScannerOpen,
   isAgentOpen,
+  isExploreOpen,
   isPortfolioOpen,
   isFullscreen,
   areSettingsOpen,
   theme,
   accentColorIndex,
+  isAppReady,
 }: StateProps) {
   const {
     closeBackupWalletModal,
@@ -127,9 +135,9 @@ function App({
   const [canPrerenderMain, prerenderMain] = useFlag();
 
   const renderingKey = resolveRenderingKey({
-    isInactive, areSettingsOpen, isAgentOpen, isPortfolioOpen, isPortrait, appState,
+    isInactive, areSettingsOpen, isAgentOpen, isExploreOpen, isPortfolioOpen, isPortrait, appState,
   });
-  const withBottomBar = false;
+  const withBottomBar = isPortrait && (!IS_EXPLORER || isAppReady) && APP_STATES_WITH_BOTTOM_BAR.has(renderingKey);
   const transitionName = withBottomBar
     ? 'semiFade'
     : isPortrait
@@ -213,7 +221,7 @@ function App({
       case AppState.Agent:
         return NO_AGENT ? <Main isActive={isActive} /> : <Agent isActive={isActive} />;
       case AppState.Explore:
-        return <Main isActive={isActive} />;
+        return <Explore isActive={isActive} />;
       case AppState.Settings:
         return <Settings isActive={isActive} />;
       case AppState.Portfolio:
@@ -287,6 +295,7 @@ function App({
           <LoadingOverlay />
         </>
       )}
+      {withBottomBar && <BottomBar />}
     </>
   );
 }
@@ -299,21 +308,24 @@ export default memo(withGlobal((global): StateProps => {
     isHardwareModalOpen: global.isHardwareModalOpen,
     isCustomizeWalletModalOpen: global.isCustomizeWalletModalOpen,
     isAgentOpen: global.isAgentOpen,
+    isExploreOpen: global.isExploreOpen,
     isPortfolioOpen: global.isPortfolioOpen,
     areSettingsOpen: global.areSettingsOpen,
     isQrScannerOpen: global.isQrScannerOpen,
     isFullscreen: Boolean(global.isFullscreen),
     theme: global.settings.theme,
     accentColorIndex: selectCurrentAccountSettings(global)?.accentColorIndex,
+    isAppReady: selectCurrentAccountState(global)?.isAppReady,
   };
 })(App));
 
 function resolveRenderingKey({
-  isInactive, areSettingsOpen, isAgentOpen, isPortfolioOpen, isPortrait, appState,
+  isInactive, areSettingsOpen, isAgentOpen, isExploreOpen, isPortfolioOpen, isPortrait, appState,
 }: {
   isInactive: boolean;
   areSettingsOpen?: boolean;
   isAgentOpen?: boolean;
+  isExploreOpen?: boolean;
   isPortfolioOpen?: boolean;
   isPortrait: boolean;
   appState: AppState;
@@ -321,6 +333,7 @@ function resolveRenderingKey({
   if (isInactive) return AppState.Inactive;
   if (areSettingsOpen && isPortrait) return AppState.Settings;
   if (!NO_AGENT && isAgentOpen && isPortrait) return AppState.Agent;
+  if (isExploreOpen && isPortrait) return AppState.Explore;
   if (!NO_PORTFOLIO && isPortfolioOpen && isPortrait) return AppState.Portfolio;
   return appState;
 }

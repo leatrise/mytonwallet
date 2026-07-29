@@ -41,6 +41,7 @@ const ACTIVITY_ITEMS: ActivityItemData[][] = [
 ];
 
 const NAVIGATION_LINKS_COUNT = 4;
+const BOTTOM_BAR_BUTTONS_COUNT = 3;
 
 function sizeVar(min: number, max: number, seed: string) {
   return `--size: ${getDeterministicRandom(min, max, seed)}`;
@@ -138,6 +139,19 @@ function renderActivityList() {
   );
 }
 
+function renderBottomBar() {
+  return (
+    <div className={styles.bottomBar}>
+      {Array.from({ length: BOTTOM_BAR_BUTTONS_COUNT }, (_, index) => (
+        <div key={index} className={styles.bottomBarButton}>
+          <Skeleton className={styles.bottomBarIcon} />
+          <Skeleton className={styles.bottomBarLabel} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function MainSkeleton({ isViewMode }: OwnProps) {
   const { isPortrait } = useDeviceScreen();
 
@@ -181,6 +195,7 @@ function MainSkeleton({ isViewMode }: OwnProps) {
             {renderActivityList()}
           </div>
         </div>
+        {renderBottomBar()}
       </div>
     );
   }

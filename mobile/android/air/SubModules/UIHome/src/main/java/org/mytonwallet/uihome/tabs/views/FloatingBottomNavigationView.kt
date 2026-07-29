@@ -84,6 +84,8 @@ class FloatingBottomNavigationView(
 
     private val tabDefs = listOf(
         TabDef(ID_HOME, R.drawable.ic_home_thin, R.drawable.ic_home_filled, "Wallet"),
+        TabDef(ID_EXPLORE, R.drawable.ic_explore_thin, R.drawable.ic_explore_filled, "Explore"),
+        TabDef(ID_SETTINGS, R.drawable.ic_settings_thin, R.drawable.ic_settings_filled, "Settings"),
     )
 
     private val tabs = linkedMapOf<Int, TabItem>()
