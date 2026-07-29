@@ -1654,3 +1654,7 @@ $chart_week_days: Pazar,Pazartesi,Salı,Çarşamba,Perşembe,Cuma,Cumartesi
 $chart_week_days_short: Paz,Pzt,Sal,Çar,Per,Cum,Cmt
 Unsupported Chain: Desteklenmeyen ağ
 Please upgrade to multichain to use this app.: Bu uygulamayı kullanmak için çoklu zincir cüzdanına yükseltin.
+Blockchain Fee: Ağ Ücreti
+EIP-712 typed data: EIP-712 türündeki veriler
+Domain: Alan adı
+Primary type: Birincil tür

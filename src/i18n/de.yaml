@@ -1662,3 +1662,8 @@ $chart_week_days: Sonntag,Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag
 $chart_week_days_short: So,Mo,Di,Mi,Do,Fr,Sa
 Unsupported Chain: Nicht unterstütztes Netzwerk
 Please upgrade to multichain to use this app.: Bitte auf Multichain aktualisieren, um diese App zu verwenden.
+Blockchain Fee: Netzwerkgebühr
+EIP-712 typed data: Typisierte EIP-712-Daten
+Domain: Domain
+Primary type: Primärtyp
+Wrong passcode, please try again: Falscher Passcode, bitte versuchen Sie es erneut

@@ -2,7 +2,7 @@ $auth_intro: |
   **安全的**儲存加密貨幣，
   並享有**光速的**區塊鏈支付速度。
 Create New Wallet: 創建新錢包
-Import From %1$d Secret Words: 輸入註記詞
+Import From %1$d Secret Words: 從 %1$d 個密語匯入
 More about %app_name%: 更多關於 %app_name%
 Creating Wallet...: 錢包創建中...
 On the count of three...: 數到三...
@@ -397,7 +397,7 @@ Included: 包括
 Price Impact: 價格影響
 Minimum Received: 最低接收數量
 Slippage: 下單誤差
-$swap_from_to: 從 %from% 交換至 %to%
+$swap_from_to: 兌換 %from% %icon% %to%
 The exchange rate is below market value!: 匯率低於市場價值 %value%！
 Invalid Pair: 無效交易對
 We do not recommend to perform an exchange, try to specify a lower amount.: 我們不建議進行交換，請嘗試指定較小的金額。
@@ -1640,3 +1640,8 @@ $chart_week_days: 星期日,星期一,星期二,星期三,星期四,星期五,�
 $chart_week_days_short: 週日,週一,週二,週三,週四,週五,週六
 Unsupported Chain: 不支援的網路
 Please upgrade to multichain to use this app.: 請升級至多鏈錢包以使用此應用程式。
+Unexpected: 未預期的錯誤
+Bitcoin: 比特幣
+EIP-712 typed data: EIP-712 類型化資料
+Domain: 網域
+Primary type: 主要類型

@@ -400,7 +400,7 @@ Included: รวมอยู่ด้วย
 Price Impact: ผลกระทบด้านราคา
 Minimum Received: ขั้นต่ำที่ได้รับ
 Slippage: ค่าความคลาดเคลื่อน
-$swap_from_to: จาก %from% เป็น %to%
+$swap_from_to: สลับ %from% %icon% %to%
 The exchange rate is below market value!: อัตราการแลกเปลี่ยนที่ %value% ต่ำกว่ามูลค่าตลาด!
 Invalid Pair: การจับคู่ไม่ถูกต้อง
 We do not recommend to perform an exchange, try to specify a lower amount.: เราไม่แนะนำให้ทำการแลกเปลี่ยน, โปรดระบุจำนวนที่ต่ำกว่านี้.
@@ -1648,3 +1648,7 @@ $chart_week_days: วันอาทิตย์,วันจันทร์,ว
 $chart_week_days_short: อาทิตย์,จันทร์,อังคาร,พุธ,พฤหัส,ศุกร์,เสาร์
 Unsupported Chain: เครือข่ายที่ไม่รองรับ
 Please upgrade to multichain to use this app.: โปรดอัปเกรดเป็นกระเป๋ามัลติเชนเพื่อใช้งานแอปนี้
+Insufficient %token% for fee.%fee%: "%token% ไม่เพียงพอสำหรับค่าธรรมเนียม.%fee%"
+EIP-712 typed data: ข้อมูลแบบระบุชนิด EIP-712
+Domain: โดเมน
+Primary type: ประเภทหลัก

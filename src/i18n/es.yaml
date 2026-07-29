@@ -3,7 +3,7 @@ $auth_intro: |
   y realice pagos blockchain
   a la **velocidad de la luz**.
 Create New Wallet: Crear un monedero nuevo
-Import From %1$d Secret Words: Importar usando la frase semilla
+Import From %1$d Secret Words: Importar desde %1$d palabras secretas
 More about %app_name%: Más sobre %app_name%
 Creating Wallet...: Creando monedero...
 On the count of three...: A la cuenta de tres...
@@ -42,7 +42,7 @@ Insecure Password: Contraseña insegura
 Your have entered an insecure password, which can be easily guessed by scammers.: Ha ingresado una contraseña insegura, que puede ser fácilmente adivinada por los estafadores.
 Continue or change password to something more secure?: ¿Continuar o cambiar la contraseña a una más segura?
 Change: Cambiar
-"%1$d Secret Words": Frases Semilla
+"%1$d Secret Words": "%1$d palabras secretas"
 Secret Words: Frases Semilla
 $auth_import_mnemonic_description: |
   Puedes restaurar el acceso a tu billetera ingresando las **%counts% palabras secretas** que anotaste al crear la billetera.
@@ -610,7 +610,7 @@ To use this feature, first enable Face ID in your phone settings.: Para utilizar
 To use this feature, first enable biometrics in your phone settings.: Para utilizar esta función, primero habilite la biometría en la configuración de su teléfono.
 Open Settings: Configuración abierta
 No Price: Sin precio
-$dapp_transfer_tokens_burn: Quemando %cantidad%
+$dapp_transfer_tokens_burn: Quemar %amount%
 $dapp_dns_set_wallet_payload: Cambiar la billetera vinculada del dominio %domain% a %address%
 $dapp_dns_delete_wallet_payload: Eliminando la billetera vinculada del dominio %domain%
 $dapp_dns_change_record_payload: Cambiando el registro "%category%" del dominio %domain% a %value%
@@ -1659,3 +1659,8 @@ $chart_week_days: domingo,lunes,martes,miércoles,jueves,viernes,sábado
 $chart_week_days_short: dom,lun,mar,mié,jue,vie,sáb
 Unsupported Chain: Red no compatible
 Please upgrade to multichain to use this app.: Actualiza a multichain para usar esta aplicación.
+$signature_warning: Firmar datos personalizados puede autorizar acciones confidenciales. Continúa solo si entiendes la solicitud y confías en su origen.
+Bitcoin: Bitcoin
+EIP-712 typed data: Datos tipados EIP-712
+Domain: Dominio
+Primary type: Tipo principal

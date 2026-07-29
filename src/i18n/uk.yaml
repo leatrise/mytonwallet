@@ -128,7 +128,7 @@ $receive_invoice_description: |
 Amount: Сума
 Comment: Коментар
 Comment or Memo: Коментар або Memo
-Share this URL to receive %token%: Поділитися посиланням
+Share this URL to receive %token%: Поділіться цим посиланням, щоб отримати %token%
 Invoice Link Copied: Посилання скопійовано
 Theme: Тема
 Language: Мова
@@ -245,7 +245,7 @@ Dark: Темна
 System: Системна
 $stake_asset: Застейкати %symbol%
 Add Stake: Додати до стейкінгу
-Earn from your tokens while holding them: Отримуйте пасивний дохід від зберігання %symbol%
+Earn from your tokens while holding them: Розмістіть токени у стейкінгу й отримуйте винагороди з часом
 Current APY: Поточний APY
 Est. Yearly Earnings: Орієнт. дохід за рік
 Staking Details: Деталі стейкінгу
@@ -1685,3 +1685,10 @@ $chart_week_days: неділя,понеділок,вівторок,середа,
 $chart_week_days_short: нд,пн,вт,ср,чт,пт,сб
 Unsupported Chain: Мережа не підтримується
 Please upgrade to multichain to use this app.: Оновіть до мультичейн-гаманця, щоб використовувати цей застосунок.
+Unexpected: Неочікувана помилка
+Bitcoin: Біткоїн
+Connecting apps is not yet supported by Ledger.: Підключення застосунків поки що не підтримується Ledger.
+EIP-712 typed data: Типізовані дані EIP-712
+Domain: Домен
+Primary type: Основний тип
+Add the first one to track balances and activity for any address.: Додайте будь-яку адресу, щоб відстежувати її баланс і активність у блокчейні.

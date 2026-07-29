@@ -128,7 +128,7 @@ $receive_invoice_description: |
 Amount: Сумма
 Comment: Комментарий
 Comment or Memo: Комментарий или Memo
-Share this URL to receive %token%: Поделиться ссылкой
+Share this URL to receive %token%: Поделитесь этой ссылкой, чтобы получить %token%
 Invoice Link Copied: Ссылка скопирована
 Theme: Тема
 Language: Язык
@@ -244,7 +244,7 @@ Dark: Тёмная
 System: Системная
 $stake_asset: Застейкать %symbol%
 Add Stake: Добавить
-Earn from your tokens while holding them: Получайте пассивный доход от хранения %symbol%
+Earn from your tokens while holding them: Разместите токены в стейкинге и получайте вознаграждения со временем
 Est. %annual_yield%: Доходность %annual_yield%
 Current APY: Текущий APY
 Est. Yearly Earnings: Приблизительный доход в год
@@ -619,7 +619,7 @@ $dapp_dns_change_record_payload: Изменение %category% записи до
 $dapp_dns_delete_record_payload: Удаление %category% записи домена %domain%
 $dapp_token_bridge_pay_swap_payload: Подтверждение обмена через кроссчейн-мост
 $dapp_liquid_staking_deposit_payload: Депозит в ликвидный стейкинг
-$dapp_liquid_staking_vote_payload: Голосование "%vote%" за предложение %voteAddress%
+$dapp_liquid_staking_vote_payload: Голосование "%vote%" за предложение %votingAddress%
 $dapp_single_nominator_change_validator_payload: Изменение адреса валидатора стейкинг-контракта SingleNominator на %address%
 $dapp_single_nominator_withdraw_payload: Вывод %amount% из стейкинг-контракта SingleNominator
 $dapp_vesting_add_whitelist_payload: Добавление адреса %address% в whitelist вестинг-кошелька
@@ -1678,3 +1678,10 @@ $chart_week_days: воскресенье,понедельник,вторник,�
 $chart_week_days_short: вс,пн,вт,ср,чт,пт,сб
 Unsupported Chain: Сеть не поддерживается
 Please upgrade to multichain to use this app.: Обновите до мультичейн-кошелька, чтобы использовать это приложение.
+Unexpected: Непредвиденная ошибка
+Bitcoin: Биткоин
+$dapp_transfer_tokens_burn: Сжечь %amount%
+Connecting apps is not yet supported by Ledger.: Подключение приложений пока не поддерживается Ledger.
+EIP-712 typed data: Типизированные данные EIP-712
+Domain: Домен
+Primary type: Основной тип

@@ -36,7 +36,9 @@ class WTokenMaxButton(context: Context) : View(context), Counter.Callback, WThem
         setPaddingDp(PADDING_HORIZONTAL, 0, PADDING_HORIZONTAL, 0)
         updateTheme()
 
-        val maxString = LocaleController.getString("\$max_balance").replace(" %balance%", "")
+        val maxString = LocaleController.getString("\$max_balance")
+            .replace("%balance%", "")
+            .trimEnd()
         maxStaticLayout = StaticLayout(
             maxString,
             textPaintSecondary,

@@ -1687,3 +1687,6 @@ $chart_week_days: niedziela,poniedziałek,wtorek,środa,czwartek,piątek,sobota
 $chart_week_days_short: niedz.,pon.,wt.,śr.,czw.,pt.,sob.
 Unsupported Chain: Nieobsługiwana sieć
 Please upgrade to multichain to use this app.: Zaktualizuj portfel do multichain, aby korzystać z tej aplikacji.
+EIP-712 typed data: Dane typowane EIP-712
+Domain: Domena
+Primary type: Typ główny
