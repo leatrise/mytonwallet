@@ -697,11 +697,6 @@ class TabletTabsVC(context: Context) : BaseTabsVC(context), WThemedView,
         targetUri?.let { cachedExploreVC?.findSiteAndOpenTargetUri(it) }
     }
 
-    override fun switchToAgent() {
-        selectTab(IBottomNavigationView.ID_HOME)
-        window?.dismissToRoot()
-    }
-
     override fun switchToSettings(pushVC: WViewController?) {
         selectTab(IBottomNavigationView.ID_SETTINGS)
         window?.dismissToRoot()

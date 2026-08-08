@@ -36,7 +36,7 @@ import org.mytonwallet.uihome.tabs.views.IBottomNavigationView
 
 /**
  * Shared base for the two tab containers (phone [TabsVC] and tablet TabletTabsVC). Owns the four
- * per-tab navigation stacks (Home/Agent/Explore/Settings) and the shared [WalletEvent] routing, and
+ * per-tab navigation stacks (Home/Explore/Settings) and the shared [WalletEvent] routing, and
  * supports transferring the live stacks between containers on a layout swap so each tab's back stack
  * survives. Container-specific chrome (bottom bar, minimize, blur, search, mounting) is left to the
  * subclasses via the [ITabsVC] members they implement.

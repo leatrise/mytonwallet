@@ -12,14 +12,13 @@ enum class DeeplinkOpenSource {
     OS_EXTERNAL,
     IN_APP_BROWSER,
     INTERNAL_UI,
-    QR_SCAN,
-    AGENT;
+    QR_SCAN;
 
     val requiresFreshAuth: Boolean
         get() = this != INTERNAL_UI
 
     val canRouteOfframp: Boolean
-        get() = this == OS_EXTERNAL || this == INTERNAL_UI || this == AGENT
+        get() = this == OS_EXTERNAL || this == INTERNAL_UI
 }
 
 interface WalletContextManagerDelegate {

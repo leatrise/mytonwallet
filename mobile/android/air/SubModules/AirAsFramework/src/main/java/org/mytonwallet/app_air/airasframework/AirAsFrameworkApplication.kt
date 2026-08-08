@@ -19,7 +19,6 @@ import org.mytonwallet.app_air.walletbasecontext.theme.ThemeManager
 import org.mytonwallet.app_air.walletbasecontext.theme.ThemeManager.setNftAccentColor
 import org.mytonwallet.app_air.walletbasecontext.utils.ApplicationContextHolder
 import org.mytonwallet.app_air.walletcontext.cacheStorage.WCacheStorage
-import org.mytonwallet.app_air.walletcontext.sqlStorage.WSQLStorage
 import org.mytonwallet.app_air.walletcontext.globalStorage.IGlobalStorageProvider
 import org.mytonwallet.app_air.walletcontext.helpers.LaunchConfig
 import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
@@ -73,13 +72,6 @@ class AirAsFrameworkApplication {
             Logger.i(
                 Logger.LogTag.AIR_APPLICATION,
                 "WCacheStorage.init: ${System.currentTimeMillis() - t}ms"
-            )
-
-            t = System.currentTimeMillis()
-            WSQLStorage.init(applicationContext)
-            Logger.i(
-                Logger.LogTag.AIR_APPLICATION,
-                "WSQLStorage.init: ${System.currentTimeMillis() - t}ms"
             )
 
             t = System.currentTimeMillis()

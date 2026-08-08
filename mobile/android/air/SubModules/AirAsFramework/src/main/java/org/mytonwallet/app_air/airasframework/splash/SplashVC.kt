@@ -754,8 +754,7 @@ class SplashVC(context: Context) : WViewController(context),
             deeplink is Deeplink.Offramp ||
             deeplink is Deeplink.Stake ||
             deeplink is Deeplink.StakeTx ||
-            deeplink is Deeplink.Portfolio ||
-            deeplink is Deeplink.Agent
+            deeplink is Deeplink.Portfolio
         ) {
             nextDeeplink = null
             return
@@ -1082,10 +1081,6 @@ class SplashVC(context: Context) : WViewController(context),
 
             is Deeplink.Explore -> {
                 tabsVC?.switchToExplore(deeplink.targetUri)
-            }
-
-            is Deeplink.Agent -> {
-                tabsVC?.switchToAgent()
             }
 
             is Deeplink.Url -> {

@@ -37,7 +37,6 @@ import org.mytonwallet.app_air.walletcore.moshi.api.ApiUpdate
 import org.mytonwallet.app_air.walletcore.stores.AccountStore
 import org.mytonwallet.app_air.walletcore.stores.ActivityStore
 import org.mytonwallet.app_air.walletcore.stores.AddressStore
-import org.mytonwallet.app_air.walletcore.stores.AgentMessageStore
 import org.mytonwallet.app_air.walletcore.stores.AuthStore
 import org.mytonwallet.app_air.walletcore.stores.BalanceStore
 import org.mytonwallet.app_air.walletcore.stores.ConfigStore
@@ -252,7 +251,7 @@ object WalletCore {
     }
 
     val stores = listOf<IStore>(
-        AccountStore, ActivityStore, AddressStore, AgentMessageStore, AuthStore, BalanceStore,
+        AccountStore, ActivityStore, AddressStore, AuthStore, BalanceStore,
         ConfigStore, DappsStore, ExploreHistoryStore, NftStore, PortfolioStore, StakingStore,
         TokenStore
     )

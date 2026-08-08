@@ -76,10 +76,6 @@ sealed class Deeplink {
         val targetUri: Uri?
     ) : Deeplink()
 
-    data class Agent(
-        override val accountAddress: String?
-    ) : Deeplink()
-
     data class Url(
         override val accountAddress: String?,
         val config: InAppBrowserConfig
@@ -374,10 +370,6 @@ class DeeplinkParser {
                 "explore" -> Deeplink.Explore(
                     accountAddress = null,
                     targetUri = uri.extractSubUri()
-                )
-
-                "agent" -> Deeplink.Agent(
-                    accountAddress = null,
                 )
 
                 "settings" -> {

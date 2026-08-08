@@ -912,12 +912,6 @@ class PhoneTabsVC(context: Context) : BaseTabsVC(context), WThemedView, WProtect
         targetUri?.let { cachedExploreVC?.findSiteAndOpenTargetUri(it) }
     }
 
-    override fun switchToAgent() {
-        navigationController?.popToRoot(false)
-        bottomNavigationView.selectedItemId = IBottomNavigationView.ID_HOME
-        window?.dismissToRoot()
-    }
-
     override fun switchToSettings(pushVC: WViewController?) {
         navigationController?.popToRoot(false)
         bottomNavigationView.selectedItemId = IBottomNavigationView.ID_SETTINGS

@@ -31,7 +31,6 @@ interface ITabsVC {
 
     val isOnHomeScreen: Boolean
     fun switchToExplore(targetUri: Uri? = null)
-    fun switchToAgent()
     fun switchToSettings(pushVC: WViewController? = null)
     fun navStackUpdated(nav: WNavigationController) {}
 }

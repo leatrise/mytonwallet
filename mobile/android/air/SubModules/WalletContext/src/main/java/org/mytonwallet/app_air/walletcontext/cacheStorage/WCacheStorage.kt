@@ -18,7 +18,6 @@ object WCacheStorage {
     private const val CACHE_PREF_EXPLORE = "exploreHistory."
     private const val CACHE_PREF_PORTFOLIO = "portfolio."
     private const val CACHE_INITIAL_SCREEN = "initialScreen"
-    private const val CACHE_AGENT_CLIENT_ID = "agentClientId"
 
     fun init(context: Context) {
         sharedPreferences = context.getSharedPreferences(CACHE_PREF_NAME, Context.MODE_PRIVATE)
@@ -178,20 +177,6 @@ object WCacheStorage {
         cachedInitialScreen = initialScreen
         sharedPreferences.edit {
             putInt(CACHE_INITIAL_SCREEN, initialScreen.value)
-        }
-    }
-
-    fun getAgentClientId(): String? {
-        return sharedPreferences.getString(CACHE_AGENT_CLIENT_ID, null)
-    }
-
-    fun setAgentClientId(value: String?) {
-        sharedPreferences.edit {
-            value?.let {
-                putString(CACHE_AGENT_CLIENT_ID, value)
-            } ?: run {
-                remove(CACHE_AGENT_CLIENT_ID)
-            }
         }
     }
 
