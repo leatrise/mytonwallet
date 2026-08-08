@@ -137,7 +137,6 @@ class HeaderActionsView(
         BUY,
         RECEIVE,
         SEND,
-        MULTISEND,
         SELL,
         EARN,
         SWAP,

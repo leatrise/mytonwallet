@@ -22,7 +22,6 @@
   <string name="app_tips_telegram_username_en" translatable="false">MyTonWalletTips</string>
   <string name="app_tips_telegram_username_ru" translatable="false">MyTonWalletTipsRu</string>
   <string name="app_desktop_install_url" translatable="false"></string>
-  <string name="app_multisend_url" translatable="false"></string>
   <string name="app_portfolio_url" translatable="false">https://portfolio.mywallet.io</string>
   <string name="app_giveaway_url" translatable="false"></string>
   <string name="app_direct_apk_release_url" translatable="false">https://github.com/mytonwallet-org/mytonwallet/releases/latest</string>

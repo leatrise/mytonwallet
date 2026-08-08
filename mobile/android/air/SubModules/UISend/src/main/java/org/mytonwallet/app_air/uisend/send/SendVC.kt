@@ -897,30 +897,13 @@ class SendVC(
             WClearSegmentedControl.Item(
                 LocaleController.getString("Send"),
                 null,
-                if (isSell) null else { anchorView ->
-                    presentOffRampSendMenu(anchorView)
-                }
+                null
             )
         )
         if (shouldShowSellTab) {
             items.add(WClearSegmentedControl.Item(LocaleController.getString("Sell"), null, null))
         }
         return items
-    }
-
-    private fun presentOffRampSendMenu(anchorView: View) {
-        WMenuPopup.present(
-            anchorView,
-            listOf(
-                WMenuPopup.Item(
-                    R.drawable.ic_header_popup_menu_multisend_outline,
-                    LocaleController.getString("Multisend"),
-                ) {
-                    MultisendLauncher.launch(this)
-                }
-            ),
-            positioning = WMenuPopup.Positioning.BELOW
-        )
     }
 
     private fun openSellWithCard() {

@@ -36,7 +36,6 @@ import org.mytonwallet.app_air.uicomponents.widgets.WThemedView
 import org.mytonwallet.app_air.uicomponents.widgets.fadeIn
 import org.mytonwallet.app_air.uireceive.BuyWithCardLauncher
 import org.mytonwallet.app_air.uireceive.ReceiveVC
-import org.mytonwallet.app_air.uisend.send.MultisendLauncher
 import org.mytonwallet.app_air.uisend.send.SellWithCardLauncher
 import org.mytonwallet.app_air.uisend.send.SendVC
 import org.mytonwallet.app_air.uistake.earn.EarnRootVC
@@ -464,10 +463,6 @@ class HomeVC(context: Context, private val mode: MScreenMode) :
 
             HeaderActionsView.Identifier.SELL -> {
                 openSellWithCard(TONCOIN_SLUG)
-            }
-
-            HeaderActionsView.Identifier.MULTISEND -> {
-                MultisendLauncher.launch(this)
             }
 
             HeaderActionsView.Identifier.SWAP -> {

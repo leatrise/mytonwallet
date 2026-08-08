@@ -43,7 +43,6 @@ import org.mytonwallet.app_air.uicomponents.widgets.WRecyclerView
 import org.mytonwallet.app_air.uicomponents.widgets.WThemedView
 import org.mytonwallet.app_air.uicomponents.widgets.fadeOut
 import org.mytonwallet.app_air.uireceive.ReceiveVC
-import org.mytonwallet.app_air.uisend.send.MultisendLauncher
 import org.mytonwallet.app_air.uisend.send.SellWithCardLauncher
 import org.mytonwallet.app_air.uisend.send.SendVC
 import org.mytonwallet.app_air.uistake.earn.EarnRootVC
@@ -453,10 +452,6 @@ class TokenVC(context: Context, private val account: MAccount, var token: MToken
 
             HeaderActionsView.Identifier.SELL -> {
                 openSellWithCard(token.slug)
-            }
-
-            HeaderActionsView.Identifier.MULTISEND -> {
-                MultisendLauncher.launch(this)
             }
 
             HeaderActionsView.Identifier.EARN -> {
