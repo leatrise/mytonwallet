@@ -124,6 +124,7 @@ export default function createConfig(
         NO_PORTFOLIO: '1',
         NO_MFA: '1',
         NO_AGENT: '1',
+        NO_ACCOUNT_CONFIG: '1',
         NO_LEDGER: '0',
         NO_NOTIFICATIONS: '1',
       }),

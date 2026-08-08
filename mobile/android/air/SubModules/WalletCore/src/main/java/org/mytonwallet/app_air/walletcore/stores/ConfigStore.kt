@@ -48,7 +48,7 @@ object ConfigStore : IStore {
         supportAccountsCount = configMap["supportAccountsCount"] as? Double
         isLimited = configMap["isLimited"] as? Boolean
         countryCode = configMap["countryCode"] as? String
-        isAppUpdateRequired = configMap["isAppUpdateRequired"] as? Boolean
+        isAppUpdateRequired = false
         swapVersion = (configMap["swapVersion"] as? Number)?.toInt()
 
         // Seasonal Theme

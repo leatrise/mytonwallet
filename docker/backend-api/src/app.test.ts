@@ -1,0 +1,152 @@
+import assert from 'node:assert/strict';
+import { after, before, describe, it } from 'node:test';
+import { fileURLToPath } from 'node:url';
+
+import type { Cache, Upstreams } from './types.js';
+
+import { buildApp } from './app.js';
+import { PriceService } from './prices.js';
+
+class MemoryCache implements Cache {
+  values = new Map<string, string>();
+  // Cache misses use null to match the Redis API and the Cache contract.
+  // eslint-disable-next-line no-null/no-null
+  get(key: string) { return Promise.resolve(this.values.get(key) ?? null); }
+  set(key: string, value: string) {
+    this.values.set(key, value);
+    return Promise.resolve();
+  }
+
+  ping() { return Promise.resolve(true); }
+  close() { return Promise.resolve(); }
+}
+
+const cache = new MemoryCache();
+const upstreams: Upstreams = {
+  toncenter: {
+    mainnet: { primary: 'http://127.0.0.1:1' },
+    testnet: { primary: 'http://127.0.0.1:1' },
+  },
+  tonapi: {
+    mainnet: { primary: 'http://127.0.0.1:1' },
+    testnet: { primary: 'http://127.0.0.1:1' },
+  },
+};
+const dataDir = fileURLToPath(new URL('../data', import.meta.url));
+let app: Awaited<ReturnType<typeof buildApp>>;
+
+before(async () => {
+  app = await buildApp({
+    cache,
+    prices: new PriceService(cache, '', ''),
+    upstreams,
+    allowedOrigins: ['https://yohi.io'],
+    timeoutMs: 50,
+    dataDir,
+  });
+});
+after(async () => app.close());
+
+void describe('business API contracts', () => {
+  void it('returns assets in the client shape', async () => {
+    const response = await app.inject({ method: 'GET', url: '/assets' });
+    const assets = response.json();
+    assert.equal(response.statusCode, 200);
+    assert.ok(assets.length >= 3);
+    assert.equal(typeof assets[0].slug, 'string');
+    assert.equal(typeof assets[0].priceUsd, 'number');
+    assert.equal(typeof assets[0].percentChange24h, 'number');
+  });
+
+  void it('limits batch metadata requests', async () => {
+    const response = await app.inject({ method: 'POST', url: '/assets', payload: { assets: Array(101).fill('x') } });
+    assert.equal(response.statusCode, 400);
+  });
+
+  void it('returns all required currencies', async () => {
+    const response = await app.inject({ method: 'GET', url: '/currency-rates' });
+    assert.deepEqual(Object.keys(response.json().rates), ['USD', 'EUR', 'RUB', 'CNY', 'BTC', 'TON']);
+  });
+
+  void it('returns known-address and launch config contracts', async () => {
+    const known = await app.inject({ method: 'GET', url: '/known-addresses' });
+    assert.ok(known.json().knownAddresses.mainnet);
+    const config = await app.inject({ method: 'GET', url: '/utils/get-config' });
+    assert.equal(typeof config.json().now, 'number');
+    assert.equal(config.json().country, 'US');
+  });
+
+  void it('discards legacy account config payloads', async () => {
+    const response = await app.inject({ method: 'POST', url: '/account-config', payload: { address: 'not-logged' } });
+    assert.deepEqual(response.json(), {});
+  });
+
+  void it('reports liveness and readiness separately', async () => {
+    assert.deepEqual((await app.inject({ method: 'GET', url: '/' })).json(), { ok: true, service: 'yohi-api' });
+    assert.equal((await app.inject({ method: 'GET', url: '/healthz' })).statusCode, 200);
+    assert.equal((await app.inject({ method: 'GET', url: '/readyz' })).statusCode, 200);
+  });
+});
+
+void describe('proxy boundary', () => {
+  void it('rejects unknown methods and paths', async () => {
+    assert.equal((await app.inject({ method: 'DELETE', url: '/toncenter/mainnet/api/v2/jsonRPC' })).statusCode, 404);
+    assert.equal((await app.inject({ method: 'GET', url: '/tonapi/mainnet/v2/evil' })).statusCode, 404);
+    assert.equal((await app.inject({ method: 'GET', url: '/toncenter/mainnet/admin' })).statusCode, 404);
+  });
+
+  void it('fails over reads but never duplicates a broadcast', async () => {
+    let secondaryHits = 0;
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = (input) => {
+      const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+      if (url.startsWith('https://secondary.example')) {
+        secondaryHits += 1;
+        return Promise.resolve(new Response('{"fallback":true}', {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        }));
+      }
+      return Promise.resolve(new Response('{"primary":false}', {
+        status: 503,
+        headers: { 'content-type': 'application/json' },
+      }));
+    };
+    const proxyApp = await buildApp({
+      cache,
+      prices: new PriceService(cache, '', ''),
+      upstreams: {
+        ...upstreams,
+        toncenter: {
+          ...upstreams.toncenter,
+          mainnet: { primary: 'https://primary.example', secondary: 'https://secondary.example' },
+        },
+      },
+      allowedOrigins: [],
+      timeoutMs: 500,
+      dataDir,
+    });
+    try {
+      const read = await proxyApp.inject({ method: 'GET', url: '/toncenter/mainnet/api/v3/actions' });
+      assert.equal(read.statusCode, 200);
+      assert.deepEqual(read.json(), { fallback: true });
+      const broadcast = await proxyApp.inject({
+        method: 'POST',
+        url: '/toncenter/mainnet/api/v2/jsonRPC',
+        payload: { jsonrpc: '2.0', id: 1, method: 'sendBoc', params: { boc: 'signed' } },
+      });
+      assert.equal(broadcast.statusCode, 503);
+      assert.equal(secondaryHits, 1);
+    } finally {
+      globalThis.fetch = originalFetch;
+      await proxyApp.close();
+    }
+  });
+
+  void it('enforces CORS allowlisting', async () => {
+    const denied = await app.inject({ method: 'OPTIONS', url: '/assets', headers: { origin: 'https://evil.example', 'access-control-request-method': 'GET' } });
+    assert.equal(denied.headers['access-control-allow-origin'], undefined);
+    const allowed = await app.inject({ method: 'OPTIONS', url: '/assets', headers: { origin: 'https://yohi.io', 'access-control-request-method': 'GET' } });
+    assert.equal(allowed.headers['access-control-allow-origin'], 'https://yohi.io');
+  });
+});

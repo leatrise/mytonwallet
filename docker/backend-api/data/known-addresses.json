@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "knownAddresses": {
+    "mainnet": {},
+    "testnet": {}
+  },
+  "scamMarkers": ["(?:^|\\s)seed phrase(?:$|\\s)", "(?:^|\\s)recovery phrase(?:$|\\s)"],
+  "trustedSites": ["ton.org", "tonconnect.org", "yohi.io"],
+  "trustedCollections": [],
+  "tonNftSuperCollections": []
+}

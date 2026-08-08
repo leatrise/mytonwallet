@@ -26,6 +26,7 @@ import okio.IOException
 import org.json.JSONArray
 import org.json.JSONObject
 import org.mytonwallet.app_air.walletbasecontext.DEBUG_MODE
+import org.mytonwallet.app_air.walletbasecontext.WBaseStorage
 import org.mytonwallet.app_air.walletbasecontext.logger.Logger
 import org.mytonwallet.app_air.walletbasecontext.utils.decodeUrlOrNull
 import org.mytonwallet.app_air.walletbasecontext.utils.takeIfNotBlank
@@ -57,6 +58,7 @@ import java.math.BigInteger
 
 const val INIT_SCRIPT =
     "window.airBridge.initApi((data) => {androidApp.onUpdate(JSON.stringify(data))}, {isAndroidApp: true})"
+private const val DEBUG_BACKEND_STORAGE_KEY = "yohiDebugBackendBaseUrl"
 
 @SuppressLint("SetJavaScriptEnabled")
 class JSWebViewBridge(context: Context) : WebView(context) {
@@ -82,14 +84,14 @@ class JSWebViewBridge(context: Context) : WebView(context) {
 
         Logger.d(Logger.LogTag.JS_WEBVIEW_BRIDGE, "setupBridge: WebViewVersion=$webViewVersion")
 
-        loadUrl("file:///android_asset/js/index.html")
-
         addJavascriptInterface(JsWebInterface(this), "androidApp")
         webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 post {
-                    injectIfNeeded(onBridgeReady)
+                    applyDebugBackendOverride {
+                        injectIfNeeded(onBridgeReady)
+                    }
                 }
             }
 
@@ -110,6 +112,7 @@ class JSWebViewBridge(context: Context) : WebView(context) {
                 return true
             }
         }
+        loadUrl("file:///android_asset/js/index.html")
     }
 
     var isRenderProcessGone: Boolean = false
@@ -118,6 +121,25 @@ class JSWebViewBridge(context: Context) : WebView(context) {
     private var injecting: Boolean = false
     var injected: Boolean = false
         private set
+
+    private fun applyDebugBackendOverride(onReady: () -> Unit) {
+        // Release builds clear any override left behind by an installed debug build.
+        val value = if (DEBUG_MODE) WBaseStorage.getDebugBackendBaseUrl().orEmpty() else ""
+        val script = """
+            (() => {
+                const key = ${JSONObject.quote(DEBUG_BACKEND_STORAGE_KEY)};
+                const value = ${JSONObject.quote(value)};
+                const current = window.localStorage.getItem(key) || '';
+                if (current === value) return false;
+                if (value) window.localStorage.setItem(key, value);
+                else window.localStorage.removeItem(key);
+                return true;
+            })()
+        """.trimIndent()
+        evaluateJavascript(script) { changed ->
+            if (changed == "true") reload() else onReady()
+        }
+    }
 
     private fun injectIfNeeded(onBridgeReady: () -> Unit) {
         if (injecting || injected)

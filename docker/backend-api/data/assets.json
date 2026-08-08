@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "name": "Gram",
+      "symbol": "GRAM",
+      "slug": "toncoin",
+      "decimals": 9,
+      "chain": "ton",
+      "cmcSlug": "toncoin",
+      "isPopular": true
+    },
+    {
+      "name": "Tether USD",
+      "symbol": "USD₮",
+      "slug": "ton-eqcxe6mutq",
+      "decimals": 6,
+      "chain": "ton",
+      "tokenAddress": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
+      "label": "TON",
+      "isPopular": true
+    },
+    {
+      "name": "Yohi crypto",
+      "symbol": "Yohi",
+      "slug": "ton-eqashzl336",
+      "decimals": 9,
+      "chain": "ton",
+      "tokenAddress": "EQAs-hZL3-36FyP7C0y36sgXLBzhVwBwXaOVOrwtmSPs9S1K",
+      "image": "https://static.yohi.io/images/2024-12-18/d5a641d224404c69a6b97516e974fb11.png",
+      "isPopular": true
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import React, { memo } from '../../lib/teact/teact';
+import React, { memo, useState } from '../../lib/teact/teact';
 import { getActions, withGlobal } from '../../global';
 
 import type { ApiNetwork } from '../../api/types';
@@ -7,7 +7,8 @@ import type { Log } from '../../util/logs';
 import type { DropdownItem } from '../ui/Dropdown';
 
 import {
-  APP_COMMIT_HASH, APP_ENV, APP_VERSION, IS_EXTENSION, IS_GRAM_WALLET, IS_TELEGRAM_APP, IS_TON_BRAND,
+  APP_COMMIT_HASH, APP_ENV, APP_VERSION, DEBUG, DEBUG_BACKEND_BASE_URL, IS_EXTENSION, IS_GRAM_WALLET,
+  IS_TELEGRAM_APP, IS_TON_BRAND, saveDebugBackendBaseUrl,
 } from '../../config';
 import { selectCurrentAccountId, selectIsMultichainAccount, selectSeasonalThemeOverride } from '../../global/selectors';
 import buildClassName from '../../util/buildClassName';
@@ -25,6 +26,7 @@ import useLastCallback from '../../hooks/useLastCallback';
 
 import Button from '../ui/Button';
 import Dropdown from '../ui/Dropdown';
+import Input from '../ui/Input';
 import Modal from '../ui/Modal';
 
 import styles from './Settings.module.scss';
@@ -98,6 +100,8 @@ function SettingsDeveloperOptions({
   } = getActions();
   const lang = useLang();
   const currentNetwork = NETWORK_OPTIONS[isTestnet ? 1 : 0].value;
+  const [backendBaseUrl, setBackendBaseUrl] = useState(DEBUG_BACKEND_BASE_URL ?? '');
+  const [isBackendBaseUrlInvalid, setIsBackendBaseUrlInvalid] = useState(false);
 
   const handleNetworkChange = useLastCallback((newNetwork: ApiNetwork) => {
     startChangingNetwork({ network: newNetwork });
@@ -115,6 +119,19 @@ function SettingsDeveloperOptions({
       key: 'seasonalTheme',
       value: newValue === 'default' ? undefined : newValue,
     });
+  });
+
+  const handleApplyBackendBaseUrl = useLastCallback(() => {
+    if (!saveDebugBackendBaseUrl(backendBaseUrl)) {
+      setIsBackendBaseUrlInvalid(true);
+      return;
+    }
+    window.location.reload();
+  });
+
+  const handleBackendBaseUrlInput = useLastCallback((value: string) => {
+    setBackendBaseUrl(value);
+    setIsBackendBaseUrlInvalid(false);
   });
 
   const handleDownloadLogs = useLastCallback(async () => {
@@ -195,6 +212,22 @@ function SettingsDeveloperOptions({
           className={buildClassName(styles.item, styles.item_small)}
           onChange={handleSeasonalThemeOverrideChange}
         />
+
+        {DEBUG && (
+          <div className={styles.backendOverride}>
+            <Input
+              label="Backend URL"
+              placeholder="https://api.yohi.io"
+              value={backendBaseUrl}
+              error={isBackendBaseUrlInvalid ? 'Enter an HTTP or HTTPS base URL' : undefined}
+              autoCapitalize="off"
+              autoComplete="off"
+              autoCorrect={false}
+              onInput={handleBackendBaseUrlInput}
+            />
+            <Button isSmall isPrimary onClick={handleApplyBackendBaseUrl}>Apply</Button>
+          </div>
+        )}
       </div>
 
       {isCopyStorageEnabled && (

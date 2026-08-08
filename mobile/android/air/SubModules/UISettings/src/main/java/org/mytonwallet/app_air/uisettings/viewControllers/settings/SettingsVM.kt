@@ -227,33 +227,6 @@ class SettingsVM {
         get() = buildList {
             add(
                 SettingsItem(
-                    identifier = SettingsItem.Identifier.HELP_CENTER,
-                    icon = R.drawable.ic_help_center,
-                    title = LocaleController.getString("Help Center"),
-                    hasTintColor = false
-                )
-            )
-            val tipsUsername = ApplicationContextHolder.applicationContext
-                .getString(BaseR.string.app_tips_telegram_username_en)
-            if (tipsUsername.isNotEmpty()) {
-                add(
-                    SettingsItem(
-                        identifier = SettingsItem.Identifier.MTW_FEATURES,
-                        icon = R.drawable.ic_features,
-                        title = LocaleController.getStringWithKeyValues(
-                            "%app_name% Features", listOf(
-                                Pair(
-                                    "%app_name%",
-                                    ApplicationContextHolder.applicationContext.getString(BaseR.string.app_locale_name_key)
-                                )
-                            )
-                        ),
-                        hasTintColor = false
-                    )
-                )
-            }
-            add(
-                SettingsItem(
                     identifier = SettingsItem.Identifier.USE_RESPONSIBILITY,
                     icon = R.drawable.ic_responsibility,
                     title = LocaleController.getString("Use Responsibly"),

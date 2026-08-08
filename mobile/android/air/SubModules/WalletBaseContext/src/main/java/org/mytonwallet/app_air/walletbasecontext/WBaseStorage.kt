@@ -18,6 +18,7 @@ object WBaseStorage {
     private const val CACHE_ACTIVE_LANGUAGE = "language"
     private const val CACHE_BASE_CURRENCY = "baseCurrency"
     private const val CACHE_WIDGET_CONFIG = "widgetConfig."
+    private const val CACHE_DEBUG_BACKEND_BASE_URL = "debugBackendBaseUrl"
 
     var isInitialized = false
         private set
@@ -67,6 +68,17 @@ object WBaseStorage {
 
     fun setBaseCurrency(value: String) {
         sharedPreferences.edit { putString(CACHE_BASE_CURRENCY, value) }
+    }
+
+    fun getDebugBackendBaseUrl(): String? {
+        return sharedPreferences.getString(CACHE_DEBUG_BACKEND_BASE_URL, null)
+    }
+
+    fun setDebugBackendBaseUrl(value: String?) {
+        sharedPreferences.edit {
+            if (value.isNullOrBlank()) remove(CACHE_DEBUG_BACKEND_BASE_URL)
+            else putString(CACHE_DEBUG_BACKEND_BASE_URL, value)
+        }
     }
 
     fun getWidgetConfigurations(appWidgetId: Int?): JSONObject? {

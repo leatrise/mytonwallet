@@ -405,6 +405,7 @@ export default function createConfig(
         TONAPIIO_MAINNET_URL: '',
         TONAPIIO_TESTNET_URL: '',
         BRILLIANT_API_BASE_URL: '',
+        SSE_BRIDGE_URL: '',
         TRON_MAINNET_API_URL: '',
         SOLANA_MAINNET_RPC_URL: '',
         SOLANA_TESTNET_RPC_URL: '',
@@ -458,6 +459,7 @@ export default function createConfig(
         NO_AGENT: '1',
         NO_LEDGER: '0',
         NO_NOTIFICATIONS: '1',
+        NO_ACCOUNT_CONFIG: '1',
       }),
       new ProvidePlugin({
         Buffer: ['buffer', 'Buffer'],

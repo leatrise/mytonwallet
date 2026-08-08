@@ -2,11 +2,14 @@ package org.mytonwallet.app_air.uisettings.viewControllers.debugMenu
 
 import android.content.Context
 import android.os.Build
+import android.text.InputType
 import android.view.View.generateViewId
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.FrameLayout
 import android.widget.ScrollView
+import androidx.core.widget.addTextChangedListener
 import androidx.constraintlayout.widget.ConstraintLayout
 import org.mytonwallet.app_air.uicomponents.base.WNavigationController
 import org.mytonwallet.app_air.uicomponents.base.WViewController
@@ -17,14 +20,18 @@ import org.mytonwallet.app_air.uicomponents.extensions.dp
 import org.mytonwallet.app_air.uicomponents.helpers.ShakeDetector
 import org.mytonwallet.app_air.uicomponents.widgets.WBaseView
 import org.mytonwallet.app_air.uicomponents.widgets.WEditableItemView
+import org.mytonwallet.app_air.uicomponents.widgets.WEditText
 import org.mytonwallet.app_air.uicomponents.widgets.WScrollView
 import org.mytonwallet.app_air.uicomponents.widgets.WView
+import org.mytonwallet.app_air.uicomponents.widgets.dialog.WDialog
+import org.mytonwallet.app_air.uicomponents.widgets.dialog.WDialogButton
 import org.mytonwallet.app_air.uicomponents.widgets.menu.WMenuPopup
 import org.mytonwallet.app_air.uicomponents.widgets.menu.WMenuPopup.BackgroundStyle
 import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
 import org.mytonwallet.app_air.uisettings.viewControllers.logs.LogsVC
 import org.mytonwallet.app_air.uisettings.viewControllers.permissions.PermissionsVC
 import org.mytonwallet.app_air.walletbasecontext.DEBUG_MODE
+import org.mytonwallet.app_air.walletbasecontext.WBaseStorage
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.logger.Logger
 import org.mytonwallet.app_air.walletbasecontext.theme.ViewConstants
@@ -40,6 +47,7 @@ import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.WalletEvent
 import org.mytonwallet.app_air.walletcore.stores.ConfigStore
 import java.lang.ref.WeakReference
+import java.net.URI
 
 class DebugMenuVC(context: Context) : WViewController(context) {
     override val TAG = "DebugMenu"
@@ -199,10 +207,33 @@ class DebugMenuVC(context: Context) : WViewController(context) {
             "Seasonal Theme",
             "",
             KeyValueRowView.Mode.PRIMARY,
-            isLast = true,
+            isLast = false,
         ).apply {
             setValueView(seasonalThemeDropdown!!)
             setOnClickListener { presentSeasonalThemeOverrideMenu() }
+        }
+    } else null
+
+    private val backendUrlDropdown: WEditableItemView? = if (DEBUG_MODE) {
+        WEditableItemView(context).apply {
+            id = generateViewId()
+            drawable = context.getDrawableCompat(
+                org.mytonwallet.app_air.icons.R.drawable.ic_arrows_18
+            )
+            setText(WBaseStorage.getDebugBackendBaseUrl() ?: "Default")
+        }
+    } else null
+
+    private val backendUrlRow: KeyValueRowView? = if (DEBUG_MODE) {
+        KeyValueRowView(
+            context,
+            "Backend URL",
+            "",
+            KeyValueRowView.Mode.PRIMARY,
+            isLast = true,
+        ).apply {
+            setValueView(backendUrlDropdown!!)
+            setOnClickListener { presentBackendUrlDialog() }
         }
     } else null
 
@@ -233,6 +264,7 @@ class DebugMenuVC(context: Context) : WViewController(context) {
                 addView(spacer4!!, ViewGroup.LayoutParams(MATCH_PARENT, ViewConstants.GAP.dp))
                 addView(debugTitleLabel!!, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
                 addView(seasonalThemeRow!!, ConstraintLayout.LayoutParams(MATCH_PARENT, 50.dp))
+                addView(backendUrlRow!!, ConstraintLayout.LayoutParams(MATCH_PARENT, 50.dp))
             }
             setConstraints {
                 // Logs
@@ -265,7 +297,8 @@ class DebugMenuVC(context: Context) : WViewController(context) {
                     topToBottom(spacer4!!, performanceClassRow)
                     topToBottom(debugTitleLabel!!, spacer4)
                     topToBottom(seasonalThemeRow!!, debugTitleLabel)
-                    toBottomPx(seasonalThemeRow, navigationController?.bottomInset ?: 0)
+                    topToBottom(backendUrlRow!!, seasonalThemeRow)
+                    toBottomPx(backendUrlRow, navigationController?.bottomInset ?: 0)
                 } else {
                     toBottomPx(
                         performanceClassRow,
@@ -347,6 +380,7 @@ class DebugMenuVC(context: Context) : WViewController(context) {
                 0f,
             )
             seasonalThemeRow?.setBackgroundColor(WColor.Background.color)
+            backendUrlRow?.setBackgroundColor(WColor.Background.color)
         }
     }
 
@@ -400,5 +434,74 @@ class DebugMenuVC(context: Context) : WViewController(context) {
                 roundRadius = 40f.dp
             )
         )
+    }
+
+    private fun presentBackendUrlDialog() {
+        val input = object : WEditText(context, null, false) {
+            init {
+                setSingleLine()
+                setStyle(16f)
+                setPadding(12.dp, 10.dp, 12.dp, 10.dp)
+                inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_URI
+                updateTheme()
+            }
+
+            override fun updateTheme() {
+                super.updateTheme()
+                setBackgroundColor(WColor.SecondaryBackground.color, 10f.dp)
+            }
+        }.apply {
+            hint = "https://api.yohi.io"
+            setText(WBaseStorage.getDebugBackendBaseUrl().orEmpty())
+            setSelection(text?.length ?: 0)
+        }
+        val container = FrameLayout(context).apply {
+            setPadding(24.dp, 0, 24.dp, 0)
+            addView(input, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
+        }
+        lateinit var dialog: WDialog
+        dialog = WDialog(
+            container,
+            WDialog.Config(
+                title = "Backend URL",
+                subtitle = "Leave empty to use the build default.",
+                actionButton = WDialogButton.Config(
+                    title = "Apply",
+                    onTap = {
+                        normalizeBackendUrl(input.text?.toString().orEmpty())?.let { normalized ->
+                            WBaseStorage.setDebugBackendBaseUrl(normalized.ifEmpty { null })
+                            backendUrlDropdown?.setText(normalized.ifEmpty { "Default" })
+                            WalletContextManager.delegate?.get()?.restartApp()
+                        }
+                    }
+                )
+            )
+        )
+        if (!dialog.presentOn(this)) return
+        dialog.setActionButtonEnabled(normalizeBackendUrl(input.text?.toString().orEmpty()) != null)
+        val watcher = input.addTextChangedListener {
+            val valid = normalizeBackendUrl(it?.toString().orEmpty()) != null
+            input.textIsAcceptable = valid
+            dialog.setActionButtonEnabled(valid)
+        }
+        dialog.setOnDismissListener { input.removeTextChangedListener(watcher) }
+        input.requestFocus()
+    }
+
+    private fun normalizeBackendUrl(value: String): String? {
+        val trimmed = value.trim()
+        if (trimmed.isEmpty()) return ""
+        return try {
+            val uri = URI(trimmed)
+            if (uri.scheme !in setOf("http", "https") || uri.host.isNullOrBlank() ||
+                uri.rawUserInfo != null || uri.rawQuery != null || uri.rawFragment != null
+            ) {
+                null
+            } else {
+                trimmed.trimEnd('/')
+            }
+        } catch (_: Exception) {
+            null
+        }
     }
 }

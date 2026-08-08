@@ -1,0 +1,53 @@
+{
+	email ops@yohi.io
+	servers {
+		protocols h1 h2 h3
+		timeouts {
+			read_body 15s
+			read_header 10s
+			write 30s
+			idle 2m
+		}
+	}
+}
+
+{$API_DOMAIN:api.yohi.io} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		-Server
+	}
+
+	request_body {
+		max_size 64KB
+	}
+
+	handle /bridge/* {
+		reverse_proxy ton-connect-bridge:8081 {
+			flush_interval -1
+		}
+	}
+
+	handle {
+		reverse_proxy backend-api:3000 {
+			flush_interval -1
+		}
+	}
+
+	log {
+		output stdout
+		format filter {
+			wrap json
+			fields {
+				request>uri delete
+				request>headers delete
+				request>remote_ip ip_mask 24 56
+			}
+		}
+	}
+}

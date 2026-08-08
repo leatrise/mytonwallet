@@ -393,7 +393,7 @@ export function isActivityUpdateFinal(update: DefaultActivitiesUpdate) {
 function getSocketUrl(network: ApiNetwork) {
   const url = new URL(NETWORK_CONFIG[network].toncenterUrl);
   url.protocol = 'wss:';
-  url.pathname = '/api/streaming/v2/ws';
+  url.pathname = `${url.pathname.replace(/\/$/, '')}/api/streaming/v2/ws`;
   addBackendHeadersToSocketUrl(url);
   return url;
 }

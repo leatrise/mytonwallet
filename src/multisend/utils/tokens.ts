@@ -29,7 +29,7 @@ export function fetchKnownTokens(): Promise<RemoteToken[]> {
 
 async function fetchTokensFromApi(): Promise<RemoteToken[]> {
   try {
-    const response = await fetch('https://api.mywallet.io/assets');
+    const response = await fetch('https://api.yohi.io/assets');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -72,7 +72,7 @@ export async function findTokenInfo(identifier: string): Promise<RemoteToken | u
       return matchingTokens[0];
     } else if (matchingTokens.length > 1) {
       throw new Error(
-        // eslint-disable-next-line @stylistic/max-len
+
         `Ambiguous token identifier "${identifier}". Multiple tokens found: ${matchingTokens.map((t) => `${t.name} (${t.symbol})`)
           .join(', ')}. Please be more specific.`,
       );

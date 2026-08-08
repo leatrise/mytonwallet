@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/max-len */
 import type { ApiTonWalletVersion } from './api/chains/ton/types';
 import type {
   ApiBaseCurrency,
@@ -36,6 +35,42 @@ export const DEBUG_API = false;
 export const DEBUG_VIEW_ACCOUNTS = false;
 export const TEST_MNEMONIC = process.env.TEST_MNEMONIC?.trim();
 export const TEST_PASSWORD = process.env.TEST_PASSWORD || 'test';
+
+export const DEBUG_BACKEND_STORAGE_KEY = 'yohiDebugBackendBaseUrl';
+
+function getDebugBackendBaseUrl() {
+  if ((!DEBUG && !IS_AIR_APP) || typeof window === 'undefined') return undefined;
+  try {
+    return normalizeBackendBaseUrl(window.localStorage.getItem(DEBUG_BACKEND_STORAGE_KEY) || '');
+  } catch {
+    return undefined;
+  }
+}
+
+export function normalizeBackendBaseUrl(value: string) {
+  try {
+    const url = new URL(value.trim());
+    if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password || url.search || url.hash) {
+      return undefined;
+    }
+    return url.origin + url.pathname.replace(/\/+$/, '');
+  } catch {
+    return undefined;
+  }
+}
+
+export function saveDebugBackendBaseUrl(value: string) {
+  if ((!DEBUG && !IS_AIR_APP) || typeof window === 'undefined') return false;
+  const normalized = value.trim() ? normalizeBackendBaseUrl(value) : '';
+  if (value.trim() && !normalized) return false;
+  try {
+    if (normalized) window.localStorage.setItem(DEBUG_BACKEND_STORAGE_KEY, normalized);
+    else window.localStorage.removeItem(DEBUG_BACKEND_STORAGE_KEY);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export const IS_PRODUCTION = APP_ENV === 'production';
 export const IS_TEST = APP_ENV === 'test';
@@ -128,20 +163,33 @@ export const THEME_DEFAULT = 'system';
 export const MAIN_ACCOUNT_ID = '0-ton-mainnet';
 export const TEMPORARY_ACCOUNT_NAME = 'Wallet';
 
-export const TONCENTER_MAINNET_URL = process.env.TONCENTER_MAINNET_URL || 'https://toncenter.mytonwallet.org';
+export const DEBUG_BACKEND_BASE_URL = getDebugBackendBaseUrl();
+const DEFAULT_BACKEND_BASE_URL = process.env.BRILLIANT_API_BASE_URL || 'https://api.yohi.io';
+
+export const TONCENTER_MAINNET_URL = DEBUG_BACKEND_BASE_URL
+  ? `${DEBUG_BACKEND_BASE_URL}/toncenter/mainnet`
+  : process.env.TONCENTER_MAINNET_URL || 'https://api.yohi.io/toncenter/mainnet';
 export const TONCENTER_MAINNET_KEY = process.env.TONCENTER_MAINNET_KEY;
 export const ELECTRON_TONCENTER_MAINNET_KEY = process.env.ELECTRON_TONCENTER_MAINNET_KEY;
-export const TONAPIIO_MAINNET_URL = process.env.TONAPIIO_MAINNET_URL || 'https://tonapiio.mytonwallet.org';
+export const TONAPIIO_MAINNET_URL = DEBUG_BACKEND_BASE_URL
+  ? `${DEBUG_BACKEND_BASE_URL}/tonapi/mainnet`
+  : process.env.TONAPIIO_MAINNET_URL || 'https://api.yohi.io/tonapi/mainnet';
 
-export const TONCENTER_TESTNET_URL = process.env.TONCENTER_TESTNET_URL || 'https://toncenter-testnet.mytonwallet.org';
+export const TONCENTER_TESTNET_URL = DEBUG_BACKEND_BASE_URL
+  ? `${DEBUG_BACKEND_BASE_URL}/toncenter/testnet`
+  : process.env.TONCENTER_TESTNET_URL || 'https://api.yohi.io/toncenter/testnet';
 export const TONCENTER_TESTNET_KEY = process.env.TONCENTER_TESTNET_KEY;
 export const ELECTRON_TONCENTER_TESTNET_KEY = process.env.ELECTRON_TONCENTER_TESTNET_KEY;
-export const TONAPIIO_TESTNET_URL = process.env.TONAPIIO_TESTNET_URL || 'https://tonapiio-testnet.mytonwallet.org';
+export const TONAPIIO_TESTNET_URL = DEBUG_BACKEND_BASE_URL
+  ? `${DEBUG_BACKEND_BASE_URL}/tonapi/testnet`
+  : process.env.TONAPIIO_TESTNET_URL || 'https://api.yohi.io/tonapi/testnet';
 
-export const BRILLIANT_API_BASE_URL = process.env.BRILLIANT_API_BASE_URL || 'https://api.mywallet.io';
-export const PROXY_API_BASE_URL = process.env.PROXY_API_BASE_URL || 'https://api.mywallet.io/proxy';
+export const BRILLIANT_API_BASE_URL = DEBUG_BACKEND_BASE_URL || DEFAULT_BACKEND_BASE_URL;
+export const PROXY_API_BASE_URL = process.env.PROXY_API_BASE_URL || `${BRILLIANT_API_BASE_URL}/proxy`;
 export const IPFS_GATEWAY_BASE_URL = 'https://ipfs.io/ipfs/';
-export const SSE_BRIDGE_URL = 'https://tonconnectbridge.mytonwallet.org/bridge/';
+export const SSE_BRIDGE_URL = DEBUG_BACKEND_BASE_URL
+  ? `${DEBUG_BACKEND_BASE_URL}/bridge/`
+  : process.env.SSE_BRIDGE_URL || 'https://api.yohi.io/bridge/';
 
 export const TON_CONNECT_ANALYTICS_URL = 'https://analytics.ton.org';
 
@@ -317,6 +365,7 @@ export const NO_MFA = process.env.NO_MFA === '1';
 export const NO_LEDGER = process.env.NO_LEDGER === '1';
 export const NO_NOTIFICATIONS = process.env.NO_NOTIFICATIONS === '1';
 export const NO_AGENT = process.env.NO_AGENT === '1';
+export const NO_ACCOUNT_CONFIG = process.env.NO_ACCOUNT_CONFIG === '1';
 export const VALIDATION_PERIOD_MS = 65_536_000; // 18.2 h.
 export const ONE_TON = 1_000_000_000n;
 export const DEFAULT_FEE = 15_000_000n; // 0.015 TON
@@ -760,7 +809,7 @@ export const PORTRAIT_MIN_ASSETS_TAB_VIEW = 6;
 export const DEFAULT_PRICE_CURRENCY = 'USD';
 export const CURRENCIES: Record<
   ApiBaseCurrency,
-  // Get the fallback rates at https://api.mywallet.io/currency-rates
+  // Keep these in sync with the launch backend's /currency-rates fallback.
   { name: string; decimals: number; shortSymbol?: string; shortSymbolPosition?: 'start' | 'end'; fallbackRate: string }
 > = {
   USD: {

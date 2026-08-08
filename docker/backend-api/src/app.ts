@@ -1,0 +1,123 @@
+import cors from '@fastify/cors';
+import rateLimit from '@fastify/rate-limit';
+import websocket from '@fastify/websocket';
+import Fastify from 'fastify';
+import { readFile } from 'node:fs/promises';
+import WebSocket from 'ws';
+
+import type { Cache, Upstreams } from './types.js';
+
+import { PriceService } from './prices.js';
+import { proxyRequest } from './proxy.js';
+
+interface Dependencies {
+  cache: Cache;
+  prices: PriceService;
+  upstreams: Upstreams;
+  allowedOrigins: string[];
+  timeoutMs: number;
+  dataDir: string;
+}
+
+export async function buildApp(deps: Dependencies) {
+  const app = Fastify({
+    logger: { level: 'warn', redact: ['req.headers.authorization', 'req.headers.x-api-key'] },
+    bodyLimit: 64 * 1024,
+    requestTimeout: 15_000,
+    trustProxy: true,
+  });
+  await app.register(cors, {
+    // Fastify CORS uses null to indicate that no callback error occurred.
+    // eslint-disable-next-line no-null/no-null
+    origin: (origin, cb) => cb(null, !origin || deps.allowedOrigins.includes(origin)),
+    methods: ['GET', 'POST', 'OPTIONS'],
+  });
+  await app.register(rateLimit, { max: 120, timeWindow: '1 minute' });
+  await app.register(websocket, { options: { maxPayload: 64 * 1024 } });
+
+  const assetsFile = JSON.parse(await readFile(`${deps.dataDir}/assets.json`, 'utf8')) as { assets: Record<string, unknown>[] };
+  const knownAddresses = JSON.parse(await readFile(`${deps.dataDir}/known-addresses.json`, 'utf8')) as object;
+
+  app.get('/', () => ({ ok: true, service: 'yohi-api' }));
+  app.get('/healthz', () => ({ ok: true }));
+  app.get('/readyz', async (_request, reply) => {
+    const valkey = await deps.cache.ping();
+    const configuredUpstreams = Object.values(deps.upstreams).every((networks) => (
+      Object.values(networks).every((upstream) => Boolean(upstream.primary))
+    ));
+    return reply.code(valkey && configuredUpstreams ? 200 : 503).send({ ok: valkey && configuredUpstreams, valkey, upstreams: configuredUpstreams });
+  });
+
+  app.get('/assets', async () => {
+    const snapshot = await deps.prices.get();
+    return assetsFile.assets.map((asset) => ({
+      ...asset,
+      priceUsd: snapshot?.prices[String(asset.slug)]?.priceUsd ?? 0,
+      percentChange24h: snapshot?.prices[String(asset.slug)]?.percentChange24h ?? 0,
+    }));
+  });
+
+  app.post<{ Body: { assets?: unknown } }>('/assets', {
+    config: { rateLimit: { max: 20, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    const addresses = request.body?.assets;
+    if (!Array.isArray(addresses) || addresses.length > 100 || addresses.some((x) => typeof x !== 'string' || x.length > 80)) {
+      return reply.code(400).send({ error: 'assets must contain at most 100 contract addresses' });
+    }
+    const snapshot = await deps.prices.get();
+    return assetsFile.assets.filter((asset) => addresses.includes(asset.tokenAddress)).map((asset) => ({
+      slug: asset.slug,
+      type: asset.type,
+      priceUsd: snapshot?.prices[String(asset.slug)]?.priceUsd ?? 0,
+      percentChange24h: snapshot?.prices[String(asset.slug)]?.percentChange24h ?? 0,
+    }));
+  });
+
+  app.get('/currency-rates', async () => ({ rates: (await deps.prices.get())?.rates ?? PriceService.emptyRates() }));
+  app.get('/known-addresses', () => knownAddresses);
+  app.get('/utils/get-config', () => ({
+    isLimited: false,
+    isCopyStorageEnabled: false,
+    supportAccountsCount: 10,
+    now: Date.now(),
+    country: 'US',
+    isUpdateRequired: false,
+    isWebSocketEnabled: true,
+    isTonConnectAnalyticsEnabled: false,
+    shouldAutoSwitchToAir: false,
+  }));
+  app.post('/account-config', () => ({}));
+
+  app.get<{ Params: { network: 'mainnet' | 'testnet' } }>(
+    '/toncenter/:network/api/streaming/v2/ws',
+    { websocket: true },
+    (client, request) => {
+      const upstream = deps.upstreams.toncenter[request.params.network];
+      if (!upstream?.primary) return client.close(1013, 'Upstream unavailable');
+      const target = new URL('/api/streaming/v2/ws', upstream.primary);
+      const query = new URL(request.raw.url ?? '', 'http://internal').searchParams;
+      query.forEach((value, key) => target.searchParams.append(key, value));
+      if (upstream.apiKey) target.searchParams.set('api_key', upstream.apiKey);
+      target.protocol = target.protocol === 'http:' ? 'ws:' : 'wss:';
+
+      const provider = new WebSocket(target, {
+        handshakeTimeout: deps.timeoutMs,
+        maxPayload: 2 * 1024 * 1024,
+      });
+      client.on('message', (data, binary) => {
+        if (provider.readyState === WebSocket.OPEN) provider.send(data, { binary });
+      });
+      provider.on('message', (data, binary) => {
+        if (client.readyState === WebSocket.OPEN) client.send(data, { binary });
+      });
+      provider.on('error', () => client.close(1011, 'Provider error'));
+      provider.on('close', (code) => client.close(code));
+      client.on('close', () => provider.close());
+    },
+  );
+
+  app.all('/toncenter/*', (request, reply) => proxyRequest(request, reply, deps.upstreams, deps.timeoutMs));
+  app.all('/tonapi/*', (request, reply) => proxyRequest(request, reply, deps.upstreams, deps.timeoutMs));
+  app.setNotFoundHandler((_request, reply) => reply.code(404).send({ error: 'Not found' }));
+  return app;
+}
