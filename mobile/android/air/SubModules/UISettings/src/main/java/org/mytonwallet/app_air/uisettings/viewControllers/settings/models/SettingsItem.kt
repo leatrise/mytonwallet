@@ -27,7 +27,6 @@ data class SettingsItem(
         HELP_CENTER,
         MTW_FEATURES,
         USE_RESPONSIBILITY,
-        INSTALL_ON_DESKTOP,
         ABOUT_MTW,
         SWITCH_TO_LEGACY,
         NONE,

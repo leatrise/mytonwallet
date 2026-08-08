@@ -47,12 +47,6 @@ class SettingsVM {
             title = LocaleController.getString("About"),
             children = listOf(
                 SettingsItem(
-                    identifier = SettingsItem.Identifier.INSTALL_ON_DESKTOP,
-                    icon = R.drawable.ic_desktop,
-                    title = LocaleController.getString("Install on Desktop"),
-                    hasTintColor = false
-                ),
-                SettingsItem(
                     identifier = SettingsItem.Identifier.ABOUT_MTW,
                     icon = R.drawable.ic_about,
                     title = LocaleController.getStringWithKeyValues(

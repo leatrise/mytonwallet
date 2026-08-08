@@ -551,11 +551,6 @@ class SettingsVC(context: Context) : WViewController(context),
                 if (username.isNotEmpty()) openExternalUrl("https://t.me/$username")
             }
 
-            SettingsItem.Identifier.INSTALL_ON_DESKTOP -> {
-                val url = context.getString(BaseR.string.app_desktop_install_url)
-                if (url.isNotEmpty()) openExternalUrl(url)
-            }
-
             SettingsItem.Identifier.ABOUT_MTW -> {
                 navigationController?.tabBarController?.mainNavigationController?.push(
                     AppInfoVC(context)
