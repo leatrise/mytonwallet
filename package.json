@@ -96,7 +96,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": "eslint --fix",
+    "*.{ts,tsx,js}": "eslint --fix --rule '@stylistic/max-len: off'",
     "*.{css,scss}": "stylelint --fix"
   },
   "author": "MyTonWallet",
