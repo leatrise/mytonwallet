@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import type { Cache, Upstreams } from './types.js';
 
 import { buildApp } from './app.js';
-import { PriceService } from './prices.js';
+import { normalizePriceResponse, PriceService } from './prices.js';
 
 class MemoryCache implements Cache {
   values = new Map<string, string>();
@@ -48,6 +48,28 @@ before(async () => {
 after(async () => app.close());
 
 void describe('business API contracts', () => {
+  void it('normalizes TONAPI rates into the backend price snapshot', () => {
+    const snapshot = normalizePriceResponse({
+      rates: {
+        TON: {
+          prices: { USD: 2, EUR: 1.8, CNY: 14, BTC: 0.00004, TON: 1 },
+          diff_24h: { USD: '+2.5%' },
+        },
+        EQTokenAddress: {
+          prices: { USD: 0.5 },
+          diff_24h: { USD: '−1.2%' },
+        },
+      },
+    });
+    assert.deepEqual(snapshot?.rates, {
+      USD: '1', EUR: '0.9', RUB: '0', CNY: '7', BTC: '0.00002', TON: '0.5',
+    });
+    assert.deepEqual(snapshot?.prices, {
+      toncoin: { priceUsd: 2, percentChange24h: 2.5 },
+      'ton-eqtokenadd': { priceUsd: 0.5, percentChange24h: -1.2 },
+    });
+  });
+
   void it('returns assets in the client shape', async () => {
     const response = await app.inject({ method: 'GET', url: '/assets' });
     const assets = response.json();
