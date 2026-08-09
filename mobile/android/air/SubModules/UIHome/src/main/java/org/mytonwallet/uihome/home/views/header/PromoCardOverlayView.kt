@@ -17,10 +17,7 @@ import org.mytonwallet.app_air.walletbasecontext.theme.WColor
 import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
 import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.WalletEvent
-import org.mytonwallet.app_air.walletcore.helpers.ExplorerHelpers
 import org.mytonwallet.app_air.walletcore.moshi.ApiPromotion
-import org.mytonwallet.app_air.walletcore.stores.AccountStore
-import org.mytonwallet.app_air.walletcontext.models.MBlockchainNetwork
 import org.mytonwallet.uihome.R
 
 class PromoCardOverlayView(context: Context) : FrameLayout(context) {
@@ -60,12 +57,6 @@ class PromoCardOverlayView(context: Context) : FrameLayout(context) {
                     WalletCore.notifyEvent(WalletEvent.ShowPromotion(promo))
                 }
 
-                "openMintCardModal" -> {
-                    val url = ExplorerHelpers.getMtwCardsUrl(
-                        AccountStore.activeAccount?.network ?: MBlockchainNetwork.MAINNET
-                    )
-                    WalletCore.notifyEvent(WalletEvent.OpenUrl(url))
-                }
             }
         }
     }
@@ -80,7 +71,10 @@ class PromoCardOverlayView(context: Context) : FrameLayout(context) {
         }
 
         val promo = ApiPromotion.fromJson(promoJson)
-        if (promo == null || promo.kind != "cardOverlay") {
+        if (promo == null ||
+            promo.kind != "cardOverlay" ||
+            promo.cardOverlay.onClickAction != "openPromotionModal"
+        ) {
             currentPromotion = null
             visibility = GONE
             return

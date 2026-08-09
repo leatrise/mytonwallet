@@ -90,7 +90,7 @@ class WalletCustomizationVC(context: Context, defaultSelectedAccountId: String) 
             configure(background)
             cardsView.reload(accountId)
             if (AccountStore.activeAccountId == accountId || isPresentedOverWalletTabs) {
-                WalletCore.notifyEvent(WalletEvent.NftCardUpdated)
+                WalletCore.notifyEvent(WalletEvent.WalletCardUpdated)
             }
         }
     }

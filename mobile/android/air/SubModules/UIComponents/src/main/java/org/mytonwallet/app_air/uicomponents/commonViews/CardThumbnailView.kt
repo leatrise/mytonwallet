@@ -14,11 +14,8 @@ import org.mytonwallet.app_air.uicomponents.image.WCustomImageView
 import org.mytonwallet.app_air.uicomponents.widgets.WFrameLayout
 import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
 import org.mytonwallet.app_air.walletcore.models.MAccount
-import org.mytonwallet.app_air.walletcore.moshi.ApiNft
 
 class CardThumbnailView(context: Context) : WFrameLayout(context) {
-
-    private var cardNft: ApiNft? = null
 
     private val imageView = WCustomImageView(context).apply {
         defaultRounding = Content.Rounding.Radius(3f.dp)
@@ -65,32 +62,19 @@ class CardThumbnailView(context: Context) : WFrameLayout(context) {
 
     fun configure(account: MAccount?, showDefaultCard: Boolean = false) {
         val accountId = account?.accountId
-        cardNft =
-            accountId?.let { activeAccountId ->
-                WGlobalStorage.getCardBackgroundNft(activeAccountId)
-                    ?.let { ApiNft.fromJson(it) }
-            }
-        cardNft?.metadata?.cardImageUrl(true)?.let { url ->
+        if (showDefaultCard) {
+            val background = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
             imageView.set(
-                Content.ofUrl(url).copy(scaleType = ScalingUtils.ScaleType.FIT_XY)
+                Content(
+                    Content.Image.Res(background.imageRes),
+                    scaleType = ScalingUtils.ScaleType.FIT_XY
+                ),
             )
-            val colors = cardNft?.metadata?.mtwCardColors ?: return@let
-            updateMiniPlaceholderColors(colors.first, colors.second)
+            updateMiniPlaceholderColors(Color.WHITE, Color.WHITE)
             isGone = false
-        } ?: run {
+        } else {
             imageView.clear()
-            if (showDefaultCard) {
-                val background = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
-                imageView.set(
-                    Content(
-                        Content.Image.Res(background.imageRes),
-                        scaleType = ScalingUtils.ScaleType.FIT_XY
-                    ),
-                )
-                updateMiniPlaceholderColors(Color.WHITE, Color.WHITE)
-            } else {
-                isGone = true
-            }
+            isGone = true
         }
     }
 

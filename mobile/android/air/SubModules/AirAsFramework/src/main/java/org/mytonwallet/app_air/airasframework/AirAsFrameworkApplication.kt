@@ -11,7 +11,6 @@ import com.facebook.imagepipeline.decoder.ImageDecoderConfig
 import org.mytonwallet.app_air.uicomponents.helpers.FontManager
 import org.mytonwallet.app_air.uicomponents.image.svg.SvgDecoder
 import org.mytonwallet.app_air.uicomponents.image.svg.SvgImageFormat
-import org.mytonwallet.app_air.uicomponents.helpers.palette.ImagePaletteHelpers
 import org.mytonwallet.app_air.walletbasecontext.WBaseStorage
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.logger.Logger
@@ -146,10 +145,6 @@ class AirAsFrameworkApplication {
                 Logger.LogTag.AIR_APPLICATION,
                 "TokenStore.loadFromCache: ${System.currentTimeMillis() - t}ms"
             )
-
-            NftStore.init(paletteExtractor = { nft, onResult ->
-                ImagePaletteHelpers.extractPaletteFromNft(nft, onResult)
-            })
 
             t = System.currentTimeMillis()
             ValueAnimator.setFrameDelay(8)

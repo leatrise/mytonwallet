@@ -470,7 +470,7 @@ class AppearanceVC(context: Context) : WViewController(context), WalletCore.Even
                 appPaletteView.configure(AccountStore.activeAccount)
             }
 
-            WalletEvent.NftCardUpdated -> {
+            WalletEvent.WalletCardUpdated -> {
                 appPaletteView.configure(AccountStore.activeAccount)
             }
 

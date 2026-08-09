@@ -51,7 +51,6 @@ import org.mytonwallet.app_air.uicomponents.extensions.unspecified
 import org.mytonwallet.app_air.uicomponents.helpers.AddressPopupHelpers.Companion.presentMenu
 import org.mytonwallet.app_air.uicomponents.helpers.DirectionalTouchHandler
 import org.mytonwallet.app_air.uicomponents.helpers.WFont
-import org.mytonwallet.app_air.uicomponents.helpers.palette.ImagePaletteHelpers
 import org.mytonwallet.app_air.uicomponents.helpers.spans.WTypefaceSpan
 import org.mytonwallet.app_air.uicomponents.image.Content
 import org.mytonwallet.app_air.uicomponents.viewControllers.preview.PreviewVC
@@ -70,7 +69,6 @@ import org.mytonwallet.app_air.uicomponents.widgets.scaleOut
 import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
 import org.mytonwallet.app_air.uisend.sendNft.SendNftVC
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
-import org.mytonwallet.app_air.walletbasecontext.theme.NftAccentColors
 import org.mytonwallet.app_air.walletbasecontext.theme.ViewConstants
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
 import org.mytonwallet.app_air.walletbasecontext.theme.color
@@ -78,9 +76,6 @@ import org.mytonwallet.app_air.walletbasecontext.utils.WORD_JOIN
 import org.mytonwallet.app_air.walletbasecontext.utils.getDrawableCompat
 import org.mytonwallet.app_air.walletbasecontext.utils.replaceSpacesWithNbsp
 import org.mytonwallet.app_air.walletbasecontext.utils.requireDrawableCompat
-import org.mytonwallet.app_air.walletcontext.WalletContextManager
-import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
-import org.mytonwallet.app_air.walletcontext.utils.AnimUtils.Companion.lerp
 import org.mytonwallet.app_air.walletcontext.utils.VerticalImageSpan
 import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.WalletEvent
@@ -120,11 +115,8 @@ class NftVC(
 
     companion object {
         const val COLLAPSED_ATTRIBUTES_COUNT = 5
-        const val WEAR_ITEM_SIZE = 56
+        const val PRIMARY_ITEM_SIZE = 56
         const val SECONDARY_ITEM_SIZE = 36
-        const val SECONDARY_ITEM_SCALE = SECONDARY_ITEM_SIZE / WEAR_ITEM_SIZE.toFloat()
-        const val NO_WEAR_TRANSLATION_X = SECONDARY_ITEM_SIZE + 12f
-        const val NO_WEAR_SHARE_TRANSLATION_X = (WEAR_ITEM_SIZE + SECONDARY_ITEM_SIZE) / 2f + 12f
     }
 
     private val headerView: NftHeaderView by lazy {
@@ -425,25 +417,10 @@ class NftVC(
         }
     }
 
-    private val wearActionButton: AppCompatImageButton by lazy {
-        AppCompatImageButton(context).apply {
-            id = View.generateViewId()
-            elevation = 8f.dp
-            setOnClickListener {
-                presentWearMenu()
-            }
-        }
-    }
     private val shareActionButton: AppCompatImageButton by lazy {
         AppCompatImageButton(context).apply {
             id = View.generateViewId()
             elevation = 8f.dp
-            scaleX = if (isShowingWearButton) {
-                SECONDARY_ITEM_SCALE
-            } else {
-                1f
-            }
-            scaleY = scaleX
             setOnClickListener {
                 navigationController?.let {
                     CollectionsMenuHelpers.shareNft(showingAccountId, nft, it)
@@ -463,17 +440,14 @@ class NftVC(
     }
     private val actionsView: WView by lazy {
         WView(context).apply {
-            addView(wearActionButton, LayoutParams(WEAR_ITEM_SIZE.dp, WEAR_ITEM_SIZE.dp))
-            addView(shareActionButton, LayoutParams(WEAR_ITEM_SIZE.dp, WEAR_ITEM_SIZE.dp))
+            addView(shareActionButton, LayoutParams(PRIMARY_ITEM_SIZE.dp, PRIMARY_ITEM_SIZE.dp))
             addView(sendActionButton, LayoutParams(SECONDARY_ITEM_SIZE.dp, SECONDARY_ITEM_SIZE.dp))
             setConstraints {
                 toStart(sendActionButton, 4f)
                 toCenterY(sendActionButton)
-                toEnd(sendActionButton, WEAR_ITEM_SIZE + SECONDARY_ITEM_SIZE + 42f)
+                toEnd(sendActionButton, SECONDARY_ITEM_SIZE + 68f)
                 toCenterY(shareActionButton)
-                toEnd(shareActionButton, WEAR_ITEM_SIZE + 20f)
-                toCenterY(wearActionButton)
-                toEnd(wearActionButton, 18f)
+                toEnd(shareActionButton, 18f)
             }
         }
     }
@@ -631,7 +605,6 @@ class NftVC(
         }
     }
 
-    private var isShowingWearButton = nft.isMtwCard
     private fun setupNft(isChanged: Boolean) {
         ownerView.isGone = !shouldShowOwnerSection
         if (ownerView.isVisible) {
@@ -688,77 +661,8 @@ class NftVC(
         }
         updateSendActionState()
         updateSectionsBackground(currentVal)
-        // Update theme and animate actions
         if (isChanged) {
-            val hadWearBefore = isShowingWearButton
-            isShowingWearButton = nft.isMtwCard
-            if (isShowingWearButton) {
-                updateWearButtonTheme()
-            }
-            val hidingWearButton = hadWearBefore && !nft.isMtwCard
-            val showingWearButton = !hadWearBefore && nft.isMtwCard
-            val startSendTransactionX = sendActionButton.translationX
-            val startShareTransactionX = shareActionButton.translationX
-            val startShareScale = shareActionButton.scaleX
-            if (hidingWearButton || showingWearButton) {
-                ValueAnimator.ofFloat(0f, 1f).apply {
-                    duration = AnimationConstants.VERY_QUICK_ANIMATION
-                    interpolator = AccelerateDecelerateInterpolator()
-                    addUpdateListener { animation ->
-                        if (hidingWearButton) {
-                            sendActionButton.translationX =
-                                lerp(
-                                    startSendTransactionX,
-                                    NO_WEAR_TRANSLATION_X.dp,
-                                    animation.animatedFraction
-                                ) * LocaleController.rtlMultiplier
-                            shareActionButton.translationX =
-                                lerp(
-                                    startShareTransactionX,
-                                    NO_WEAR_SHARE_TRANSLATION_X.dp,
-                                    animation.animatedFraction
-                                ) * LocaleController.rtlMultiplier
-                            shareActionButton.scaleX =
-                                lerp(startShareScale, 1f, animatedFraction)
-                            wearActionButton.scaleX = 1 - animatedFraction
-                        } else {
-                            sendActionButton.translationX =
-                                lerp(
-                                    startSendTransactionX,
-                                    0f.dp,
-                                    animation.animatedFraction
-                                )
-                            shareActionButton.translationX =
-                                lerp(
-                                    startShareTransactionX,
-                                    0f.dp,
-                                    animation.animatedFraction
-                                )
-                            shareActionButton.scaleX =
-                                lerp(startShareScale, SECONDARY_ITEM_SCALE, animatedFraction)
-                            wearActionButton.scaleX = animatedFraction
-                        }
-                        shareActionButton.scaleY = shareActionButton.scaleX
-                        wearActionButton.scaleY = wearActionButton.scaleX
-                    }
-                    start()
-                }
-            }
             updateAttributesTheme()
-        } else {
-            if (isShowingWearButton) {
-                updateWearButtonTheme()
-                sendActionButton.translationX = 0f
-                shareActionButton.translationX = 0f
-                wearActionButton.scaleX = 1f
-            } else {
-                sendActionButton.translationX =
-                    NO_WEAR_TRANSLATION_X.dp * LocaleController.rtlMultiplier
-                shareActionButton.translationX =
-                    NO_WEAR_SHARE_TRANSLATION_X.dp * LocaleController.rtlMultiplier
-                wearActionButton.scaleX = 0f
-            }
-            wearActionButton.scaleY = shareActionButton.scaleX
         }
     }
 
@@ -945,9 +849,6 @@ class NftVC(
         updateShareActionTheme()
         shareActionButton.setBackgroundColor(WColor.Background.color, 28f.dp)
         shareActionButton.addRippleEffect(WColor.BackgroundRipple.color, 28f.dp)
-        if (nft.isMtwCard) {
-            updateWearButtonTheme()
-        }
         updateAttributesTheme()
     }
 
@@ -980,28 +881,11 @@ class NftVC(
             org.mytonwallet.app_air.uiassets.R.drawable.ic_nft_share
         )?.mutate()
         drawable?.setTint(WColor.PrimaryLightText.color)
-        if (!nft.isMtwCard && drawable != null) {
+        if (drawable != null) {
             shareActionButton.setImageDrawable(drawable.resize(context, 34.dp, 34.dp))
         } else {
             shareActionButton.setImageDrawable(drawable)
         }
-    }
-
-    private fun updateWearButtonTheme() {
-        wearActionButton.setImageDrawable(
-            context.requireDrawableCompat(
-                org.mytonwallet.app_air.uiassets.R.drawable.ic_nft_wear
-            ).apply {
-                setTint(
-                    if (!NftAccentColors.veryBrightColors.contains(WColor.Tint.color))
-                        Color.WHITE
-                    else
-                        Color.BLACK
-                )
-            }
-        )
-        wearActionButton.setBackgroundColor(WColor.Tint.color, 28f.dp)
-        wearActionButton.addRippleEffect(WColor.TintRipple.color, 28f.dp)
     }
 
     private fun updateAttributesTheme() {
@@ -1167,19 +1051,7 @@ class NftVC(
     override fun showActions() {
         actionsView.children.forEachIndexed { index, child ->
             child.clearAnimation()
-            val scaleX = when (child) {
-                shareActionButton -> {
-                    if (isShowingWearButton) SECONDARY_ITEM_SCALE else 1f
-                }
-
-                wearActionButton -> {
-                    if (isShowingWearButton) 1f else 0f
-                }
-
-                else -> {
-                    1f
-                }
-            }
+            val scaleX = 1f
             child.animate()
                 .scaleX(scaleX)
                 .scaleY(scaleX)
@@ -1288,105 +1160,6 @@ class NftVC(
             backdropStyle = WMenuPopup.BackdropStyle.Transparent,
             usePillShadow = true
         )
-    }
-
-    private fun presentWearMenu() {
-        WMenuPopup.present(
-            wearActionButton,
-            mutableListOf(
-                WMenuPopup.Item(
-                    WMenuPopup.Item.Config.Item(
-                        icon = WMenuPopup.Item.Config.Icon(
-                            iconResId = org.mytonwallet.app_air.uiassets.R.drawable.ic_card_install,
-                            tintColor = null,
-                            iconSize = 28.dp
-                        ),
-                        title = LocaleController.getString(
-                            if (nft.isInstalledMtwCard)
-                                "Reset Card"
-                            else
-                                "Install Card"
-                        ),
-                    ),
-                    false,
-                ) {
-                    if (nft.isInstalledMtwCard) {
-                        WGlobalStorage.setCardBackgroundNft(
-                            showingAccountId,
-                            null
-                        )
-                        resetPalette()
-                    } else {
-                        WGlobalStorage.setCardBackgroundNft(
-                            showingAccountId,
-                            nft.toDictionary()
-                        )
-                        if (!nft.isInstalledMtwCardPalette) {
-                            installPalette()
-                        }
-                    }
-                    WalletCore.notifyEvent(WalletEvent.NftCardUpdated)
-                },
-                WMenuPopup.Item(
-                    WMenuPopup.Item.Config.Item(
-                        icon = WMenuPopup.Item.Config.Icon(
-                            iconResId = org.mytonwallet.app_air.uiassets.R.drawable.ic_card_pallete,
-                            tintColor = null,
-                            iconSize = 28.dp
-                        ),
-                        title = LocaleController.getString(
-                            if (nft.isInstalledMtwCardPalette)
-                                "Reset Palette"
-                            else
-                                "Install Palette"
-                        )
-                    ),
-                    false,
-                ) {
-                    if (nft.isInstalledMtwCardPalette) {
-                        resetPalette()
-                    } else {
-                        installPalette()
-                    }
-                },
-            ),
-            yOffset = 2.dp,
-            popupWidth = WRAP_CONTENT,
-            positioning = WMenuPopup.Positioning.BELOW,
-            windowBackgroundStyle = BackgroundStyle.Cutout.fromView(
-                wearActionButton,
-                roundRadius = WEAR_ITEM_SIZE.dp.toFloat()
-            )
-        )
-    }
-
-    private var isInstallingPaletteColor = false
-    private fun installPalette() {
-        if (isInstallingPaletteColor)
-            return
-        isInstallingPaletteColor = true
-        ImagePaletteHelpers.extractPaletteFromNft(
-            nft
-        ) { colorIndex ->
-            isInstallingPaletteColor = false
-            if (colorIndex != null) {
-                WGlobalStorage.setNftAccentColor(
-                    showingAccountId,
-                    colorIndex,
-                    nft.toDictionary()
-                )
-            }
-            WalletContextManager.delegate?.get()?.themeChanged()
-        }
-    }
-
-    private fun resetPalette() {
-        WGlobalStorage.setNftAccentColor(
-            showingAccountId,
-            null,
-            null
-        )
-        WalletContextManager.delegate?.get()?.themeChanged()
     }
 
 }

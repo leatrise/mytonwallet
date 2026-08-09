@@ -12,9 +12,6 @@ import org.mytonwallet.app_air.walletcontext.globalStorage.IGlobalStorageProvide
 import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
 import org.mytonwallet.app_air.walletcontext.helpers.AudioHelpers
 import org.mytonwallet.app_air.walletcontext.utils.ensureMainThread
-import org.mytonwallet.app_air.walletcore.MINT_CARD_ADDRESS
-import org.mytonwallet.app_air.walletcore.MINT_CARD_REFUND_COMMENT
-import org.mytonwallet.app_air.walletcore.MTW_CARDS_COLLECTION
 import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.WalletEvent
 import org.mytonwallet.app_air.walletcore.helpers.ActivityHelpers
@@ -708,8 +705,6 @@ object ActivityStore : IStore, WalletCore.EventObserver {
 
             // Auto-install MTW card from incoming activity that carries an NFT.
             if (eventType == WalletEvent.ReceivedNewActivities.EventType.UPDATE) {
-                applyMtwCardsFromActivities(accountId, newActivities)
-                clearCardMintingIfResolved(accountId, newActivities)
             }
 
             // Play notification sound for incoming transactions
@@ -795,48 +790,6 @@ object ActivityStore : IStore, WalletCore.EventObserver {
             val newCache = HashMap(filteredActivities.associateBy { it.id })
             setCachedTransactions(accountId, newCache)
         }
-    }
-
-    private fun applyMtwCardsFromActivities(
-        accountId: String,
-        activities: List<MApiTransaction>
-    ) {
-        val incomingNfts = activities.mapNotNull { activity ->
-            if (activity !is MApiTransaction.Transaction) return@mapNotNull null
-            if (activity.isPending() || activity.isLocal()) return@mapNotNull null
-            val nft = activity.nft ?: return@mapNotNull null
-            // `nftTrade` (marketplace buy/sell) reports `isIncoming` for the TONCOIN leg,
-            // not the NFT leg, so it must be inverted.
-            val isNftIncoming = if (activity.type == ApiTransactionType.NFT_TRADE) {
-                !activity.isIncoming
-            } else {
-                activity.isIncoming
-            }
-            if (!isNftIncoming) null else nft
-        }
-        if (incomingNfts.isEmpty()) return
-        ensureMainThread {
-            for (nft in incomingNfts) {
-                NftStore.applyIncomingMtwCard(accountId, nft)
-            }
-        }
-    }
-
-    private fun clearCardMintingIfResolved(
-        accountId: String,
-        activities: List<MApiTransaction>
-    ) {
-        if (!NftStore.isCardMinting(accountId)) return
-        val resolved = activities.any { activity ->
-            if (activity !is MApiTransaction.Transaction) return@any false
-            if (activity.isPending() || activity.isLocal() || !activity.isIncoming) return@any false
-            val isCardArrival = activity.nft?.collectionAddress == MTW_CARDS_COLLECTION
-            val isRefund = activity.fromAddress == MINT_CARD_ADDRESS &&
-                activity.comment == MINT_CARD_REFUND_COMMENT
-            isCardArrival || isRefund
-        }
-        if (!resolved) return
-        NftStore.setCardMinting(accountId, false)
     }
 
     private fun playIncomingTransactionSound(

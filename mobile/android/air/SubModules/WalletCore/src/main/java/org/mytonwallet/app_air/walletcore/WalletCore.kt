@@ -93,11 +93,6 @@ const val HYPERLIQUID_USDC_MAINNET_SLUG = "hyperliquid-0xb88339cb"
 const val VIRTUAL_STAKING_SLUG_PREFIX = "staking-"
 const val TON_DNS_COLLECTION = "EQC3dNlesgVD8YbAazcauIrXBPfiVhMMr5YYk2in0Mtsz0Bz"
 const val TELEGRAM_USERNAMES_COLLECTION = "EQCA14o1-VWhS2efqoh_9M1b_A9DtKTuoqfmkn83AbJzwnPi"
-const val MTW_CARDS_COLLECTION = "EQCQE2L9hfwx1V8sgmF9keraHx1rNK9VmgR1ctVvINBGykyM"
-const val MTW_CARDS_MINT_BASE_URL = "https://static.mytonwallet.org/mint-cards/"
-const val MINT_CARD_ADDRESS = "EQBpst3ZWJ9Dqq5gE2YH-yPsFK_BqMOmgi7Z_qK6v7WbrPWv"
-const val MINT_CARD_COMMENT = "Mint card"
-const val MINT_CARD_REFUND_COMMENT = "Refund"
 
 val STAKING_SLUGS = setOf(
     STAKE_SLUG, STAKED_MYCOIN_SLUG, STAKED_USDE_SLUG

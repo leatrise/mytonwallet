@@ -8,7 +8,6 @@ import android.view.TouchDelegate
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
@@ -35,8 +34,6 @@ import org.mytonwallet.app_air.uicomponents.extensions.styleDots
 import org.mytonwallet.app_air.uicomponents.helpers.ClipboardHelpers
 import org.mytonwallet.app_air.uicomponents.helpers.HapticType
 import org.mytonwallet.app_air.uicomponents.helpers.Haptics
-import org.mytonwallet.app_air.uicomponents.helpers.NftGradientHelpers
-import org.mytonwallet.app_air.uicomponents.helpers.TiltSensorManager
 import org.mytonwallet.app_air.uicomponents.helpers.WFont
 import org.mytonwallet.app_air.uicomponents.helpers.adaptiveFontSize
 import org.mytonwallet.app_air.uicomponents.helpers.spans.WLetterSpacingSpan
@@ -51,7 +48,6 @@ import org.mytonwallet.app_air.uicomponents.widgets.WGradientMaskView
 import org.mytonwallet.app_air.uicomponents.widgets.WLabel
 import org.mytonwallet.app_air.uicomponents.widgets.WLinearLayout
 import org.mytonwallet.app_air.uicomponents.widgets.WMultichainAddressLabel
-import org.mytonwallet.app_air.uicomponents.widgets.WShiningView
 import org.mytonwallet.app_air.uicomponents.widgets.WThemedView
 import org.mytonwallet.app_air.uicomponents.widgets.WView
 import org.mytonwallet.app_air.uicomponents.widgets.balance.WBalanceView
@@ -66,7 +62,6 @@ import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
 import org.mytonwallet.app_air.uiwidgets.configurations.WidgetsConfigurations
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.models.MBaseCurrency
-import org.mytonwallet.app_air.walletbasecontext.theme.ThemeManager
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
 import org.mytonwallet.app_air.walletbasecontext.theme.color
 import org.mytonwallet.app_air.walletbasecontext.utils.getDrawableCompat
@@ -90,11 +85,7 @@ import org.mytonwallet.app_air.walletcore.helpers.ExplorerHelpers
 import org.mytonwallet.app_air.walletcore.models.MAccount
 import org.mytonwallet.app_air.walletcore.models.MAccount.AccountChain
 import org.mytonwallet.app_air.walletcore.models.blockchain.MBlockchain
-import org.mytonwallet.app_air.walletcore.moshi.ApiNft
 import org.mytonwallet.app_air.walletcore.stores.BalanceStore
-import org.mytonwallet.app_air.walletcore.stores.NftStore
-import org.mytonwallet.app_air.uisettings.viewControllers.mintCard.MintCardVC
-import org.mytonwallet.app_air.walletcore.stores.ConfigStore
 import org.mytonwallet.uihome.home.views.UpdateStatusView
 import org.mytonwallet.uihome.home.views.header.seasonal.SeasonalOverlayView
 import java.math.BigInteger
@@ -106,7 +97,7 @@ import org.mytonwallet.app_air.walletbasecontext.R as BaseR
 @SuppressLint("ViewConstructor")
 class WalletCardView(
     val window: WWindow
-) : WView(window), WThemedView, TiltSensorManager.TiltObserver {
+) : WView(window), WThemedView {
 
     companion object {
         const val EXPANDED_RADIUS = 26
@@ -122,7 +113,6 @@ class WalletCardView(
     // PRIVATE VARIABLES ///////////////////////////////////////////////////////////////////////////
     var account: MAccount? = null
         private set
-    private var cardNft: ApiNft? = null
     private var balanceAmount: BigInteger? = null
     private var isShowingSkeletons = false
     private var isPresentingImage = false
@@ -134,24 +124,6 @@ class WalletCardView(
         get() {
             return (window.window.decorView.width - 32.dp).coerceAtLeast(0)
         }
-
-    // Tilt Effect
-    private var isSensorListening = false
-    private var currentTiltX = 0f
-    private var currentTiltY = 0f
-    override fun onTilt(x: Float, y: Float) {
-        if (shiningView.visibility != VISIBLE) return
-
-        currentTiltX = x
-        currentTiltY = y
-
-        shiningView.background =
-            NftGradientHelpers(cardNft).gradient(
-                cardFullWidth.toFloat(),
-                currentTiltX,
-                currentTiltY
-            )
-    }
 
     // CHILDREN ////////////////////////////////////////////////////////////////////////////////////
     private val img = WCustomImageView(context).apply {
@@ -306,27 +278,6 @@ class WalletCardView(
         addView(addressLabel, LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
     }
 
-    private val mintIconRipple = WRippleDrawable.create(20f.dp).apply {
-        rippleColor = Color.WHITE.colorWithAlpha(25)
-    }
-    private val mintIcon = AppCompatImageView(context).apply {
-        id = generateViewId()
-        scaleType = ImageView.ScaleType.CENTER
-        setOnClickListener {
-            if (mode == HomeHeaderView.Mode.Collapsed)
-                return@setOnClickListener
-            window.navigationControllers.lastOrNull()?.let {
-                MintCardVC.present(it)
-            }
-        }
-        background = mintIconRipple
-        isGone = true
-    }
-
-    private val shiningView = WShiningView(context).apply {
-        visibility = GONE
-    }
-
     private val balanceChangeBlurView: WBlurryBackgroundView? =
         if (DevicePerformanceClassifier.isHighClass)
             WBlurryBackgroundView(
@@ -362,7 +313,6 @@ class WalletCardView(
         val maxBottomContainerWidth = max(240.dp, window.windowView.width - 100.dp)
 
         clippedContainer.addView(img, LayoutParams(MATCH_PARENT, MATCH_PARENT))
-        clippedContainer.addView(shiningView, LayoutParams(MATCH_PARENT, MATCH_PARENT))
         clippedContainer.addView(
             seasonalOverlayView,
             LayoutParams(MATCH_CONSTRAINT, MATCH_CONSTRAINT)
@@ -380,7 +330,6 @@ class WalletCardView(
             bottomViewContainer,
             LayoutParams(maxBottomContainerWidth, WRAP_CONTENT)
         )
-        clippedContainer.addView(mintIcon, LayoutParams(40.dp, 40.dp))
 
         clippedContainer.setConstraints {
             allEdges(img)
@@ -400,7 +349,6 @@ class WalletCardView(
             topToTop(balanceSkeletonView, balanceViewContainer)
             centerXToCenterX(balanceSkeletonView, balanceViewContainer)
             edgeToEdge(balanceChangeSkeletonView, balanceChangeLabel)
-            toEnd(mintIcon, 4f)
         }
 
         v.addView(clippedContainer, LayoutParams(MATCH_CONSTRAINT, MATCH_CONSTRAINT))
@@ -415,7 +363,6 @@ class WalletCardView(
 
         v.post {
             clippedContainer.setConstraints {
-                toBottom(mintIcon, 5f)
                 constrainMaxWidth(balanceViewContainer.id, (parent as View).width - 34.dp)
             }
         }
@@ -472,35 +419,14 @@ class WalletCardView(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        startSensorListening()
         resumeBlurringIfNeeded()
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        stopSensorListening()
     }
 
     override fun updateTheme() {
-        if (ThemeManager.isDark)
-            startSensorListening()
-        else
-            stopSensorListening()
-        cardNft?.let {
-            startSensorListening()
-            shiningView.background =
-                NftGradientHelpers(cardNft).gradient(
-                    cardFullWidth.toFloat(),
-                    currentTiltX,
-                    currentTiltY
-                )
-            val colors = cardNft?.metadata?.mtwCardColors ?: return@let
-            setLabelColors(colors.first, colors.second, drawGradient = true)
-            return
-        } ?: run {
-            stopSensorListening()
-            shiningView.background = null
-        }
         setLabelColors(Color.WHITE, Color.WHITE.colorWithAlpha(191), drawGradient = false)
 
         if (balanceChangeBlurView == null)
@@ -514,27 +440,9 @@ class WalletCardView(
     }
 
     fun onDestroy() {
-        stopSensorListening()
         balanceView.onTotalWidthChanged = null
         if (this::balanceViewMaskWrapper.isInitialized)
             balanceViewMaskWrapper.onDestroy()
-    }
-
-    fun startSensorListening() {
-        if (isSensorListening ||
-            cardNft == null ||
-            !ThemeManager.isDark ||
-            !isAttachedToWindow ||
-            headerMode != HomeHeaderView.Mode.Expanded
-        ) return
-        isSensorListening = true
-        TiltSensorManager.addObserver(this)
-    }
-
-    fun stopSensorListening() {
-        if (!isSensorListening) return
-        TiltSensorManager.removeObserver(this)
-        isSensorListening = false
     }
 
     // PUBLIC METHODS //////////////////////////////////////////////////////////////////////////////
@@ -706,7 +614,6 @@ class WalletCardView(
         }
         updateAddressLabel()
         updateCardImage()
-        updateMintIconVisibility()
         walletTypeView.configure(account)
         balanceAmount = null
         animateBalance(
@@ -724,29 +631,9 @@ class WalletCardView(
 
     fun updateCardImage() {
         val accountId = account?.accountId
-        cardNft =
-            accountId?.let {
-                WGlobalStorage.getCardBackgroundNft(it)
-                    ?.let { ApiNft.fromJson(it) }
-            }
         updateTheme()
-
-        if (cardNft == null) {
-            val background = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
-            img.set(Content(Content.Image.Res(background.imageRes)))
-            clippedContainer.setConstraints {
-                allEdges(img)
-            }
-            shiningView.visibility = GONE
-            return
-        }
-        shiningView.visibility = VISIBLE
-        img.hierarchy.setPlaceholderImage(
-            context.getDrawableCompat(
-                org.mytonwallet.app_air.uicomponents.R.drawable.img_card
-            )
-        )
-        img.set(Content.ofUrl(cardNft?.metadata?.cardImageUrl(false) ?: ""))
+        val background = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
+        img.set(Content(Content.Image.Res(background.imageRes)))
     }
 
     fun updateAddressLabel() {
@@ -758,13 +645,6 @@ class WalletCardView(
     }
 
     var headerMode = HomeHeaderView.DEFAULT_MODE
-        set(value) {
-            field = value
-            if (value == HomeHeaderView.Mode.Expanded)
-                startSensorListening()
-            else
-                stopSensorListening()
-        }
     var mode = HomeHeaderView.DEFAULT_MODE
     fun expand(animated: Boolean) {
         if (mode == HomeHeaderView.Mode.Expanded)
@@ -773,35 +653,29 @@ class WalletCardView(
         updateContentAlpha(animated)
         if (animated) {
             miniPlaceholders.fadeOut(AnimationConstants.INSTANT_ANIMATION)
-            shiningView.fadeIn(AnimationConstants.VERY_QUICK_ANIMATION)
             seasonalOverlayView.fadeIn(AnimationConstants.VERY_QUICK_ANIMATION)
             if (promoOverlayView.isVisible)
                 promoOverlayView.fadeIn(AnimationConstants.VERY_QUICK_ANIMATION)
         } else {
             miniPlaceholders.alpha = 0f
-            shiningView.alpha = 1f
             seasonalOverlayView.alpha = 1f
             promoOverlayView.alpha = if (promoOverlayView.isVisible) 1f else 0f
         }
-        startSensorListening()
     }
 
     fun collapse(animated: Boolean) {
         if (mode == HomeHeaderView.Mode.Collapsed)
             return
-        stopSensorListening()
         mode = HomeHeaderView.Mode.Collapsed
         updateContentAlpha(animated)
         if (animated) {
             miniPlaceholders.alpha = 0f
             miniPlaceholders.fadeIn(AnimationConstants.VERY_QUICK_ANIMATION)
-            shiningView.fadeOut(AnimationConstants.VERY_QUICK_ANIMATION)
             seasonalOverlayView.fadeOut(AnimationConstants.VERY_QUICK_ANIMATION)
             if (promoOverlayView.isVisible)
                 promoOverlayView.fadeOut(AnimationConstants.VERY_QUICK_ANIMATION)
         } else {
             miniPlaceholders.alpha = 1f
-            shiningView.alpha = 0f
             seasonalOverlayView.alpha = 0f
             promoOverlayView.alpha = 0f
         }
@@ -815,17 +689,6 @@ class WalletCardView(
         clippedContainer.setBackgroundColor(Color.TRANSPARENT, radius, true)
         img.setBackgroundColor(Color.TRANSPARENT, radius, true)
         img.defaultRounding = Content.Rounding.Radius(radius)
-        shiningView.radius = radius
-    }
-
-    fun updateMintIconVisibility() {
-        val accountId = account?.accountId
-        val eligible = account?.network?.isMainnet == true &&
-            account?.isViewOnly == false &&
-            ConfigStore.isLimited != true
-        val hasCardsOrMinting = accountId != null &&
-            (WGlobalStorage.getCardsInfo(accountId) != null || NftStore.isCardMinting(accountId))
-        mintIcon.isGone = !(eligible && hasCardsOrMinting)
     }
 
     fun updatePromotion() {
@@ -843,7 +706,6 @@ class WalletCardView(
     // PRIVATE METHODS /////////////////////////////////////////////////////////////////////////////
     private fun updateActionsAlpha(actionsAlpha: Float) {
         addressLabel.alpha = actionsAlpha
-        mintIcon.alpha = actionsAlpha
         walletTypeView.alpha = actionsAlpha
         balanceChangeLabel.alpha = actionsAlpha
         balanceChangeBlurView?.alpha = actionsAlpha
@@ -876,43 +738,21 @@ class WalletCardView(
         addressLabel.setTextColor(primaryColor, secondaryColor, drawGradient)
         updateAddressLabel()
         miniPlaceholders.setColor(primaryColor)
-        mintIcon.setImageDrawable(
-            context.requireDrawableCompat(
-                org.mytonwallet.app_air.walletcontext.R.drawable.ic_mint
-            ).apply {
-                setTint(secondaryColor.colorWithAlpha(191))
-            }
+        walletTypeView.setColor(
+            secondaryColor.colorWithAlpha(41),
+            secondaryColor.colorWithAlpha(191)
         )
-        cardNft?.metadata?.overlayLabelBackground?.let { it ->
-            walletTypeView.setColor(
-                it.colorWithAlpha(25),
-                it.colorWithAlpha(204)
-            )
-        } ?: run {
-            walletTypeView.setColor(
-                secondaryColor.colorWithAlpha(41),
-                secondaryColor.colorWithAlpha(191)
-            )
-        }
         applyBalanceChangeColors()
     }
 
     private fun applyBalanceChangeColors() {
-        cardNft?.metadata?.overlayLabelBackground?.let { it ->
-            balanceChangeLabel.contentView.setTextColor(it.colorWithAlpha(204))
-            balanceChangeLabel.contentView.setBackgroundColor(
-                if (balanceChangeBlurView == null) it.colorWithAlpha(25) else Color.TRANSPARENT,
-                13f.dp
-            )
-        } ?: run {
-            val secondaryColor = _secondaryColor ?: Color.WHITE.colorWithAlpha(191)
-            balanceChangeLabel.contentView.setTextColor(secondaryColor.colorWithAlpha(191))
-            balanceChangeLabel.contentView.setBackgroundColor(
-                if (balanceChangeBlurView == null) secondaryColor.colorWithAlpha(41) else Color.TRANSPARENT,
-                13f.dp
-            )
-        }
-        if (isBalanceChangePositive && cardNft == null) {
+        val secondaryColor = _secondaryColor ?: Color.WHITE.colorWithAlpha(191)
+        balanceChangeLabel.contentView.setTextColor(secondaryColor.colorWithAlpha(191))
+        balanceChangeLabel.contentView.setBackgroundColor(
+            if (balanceChangeBlurView == null) secondaryColor.colorWithAlpha(41) else Color.TRANSPARENT,
+            13f.dp
+        )
+        if (isBalanceChangePositive) {
             val positiveColor = WColor.PositiveBalance.color
             balanceChangeLabel.contentView.setTextColor(positiveColor)
         }

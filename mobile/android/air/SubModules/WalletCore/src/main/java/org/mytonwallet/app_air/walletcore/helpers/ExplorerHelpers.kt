@@ -5,7 +5,6 @@ import androidx.core.net.toUri
 import org.mytonwallet.app_air.walletbasecontext.utils.ApplicationContextHolder
 import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
 import org.mytonwallet.app_air.walletcontext.models.MBlockchainNetwork
-import org.mytonwallet.app_air.walletcore.MTW_CARDS_COLLECTION
 import org.mytonwallet.app_air.walletcore.models.IInAppBrowser
 import org.mytonwallet.app_air.walletcore.models.InAppBrowserConfig
 import org.mytonwallet.app_air.walletcore.models.MAccount
@@ -85,10 +84,6 @@ class ExplorerHelpers {
 
         fun getgemsUrl(network: MBlockchainNetwork): String {
             return MMarketplace.Getgems.homeUrl(network)
-        }
-
-        fun getMtwCardsUrl(network: MBlockchainNetwork): String {
-            return "${getgemsUrl(network)}collection/$MTW_CARDS_COLLECTION"
         }
 
         fun defaultNftMarketplace(account: MAccount): MMarketplace {

@@ -29,13 +29,11 @@ import org.mytonwallet.app_air.uicomponents.widgets.sensitiveDataContainer.Sensi
 import org.mytonwallet.app_air.uicomponents.widgets.sensitiveDataContainer.WSensitiveDataContainer
 import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
-import org.mytonwallet.app_air.walletbasecontext.utils.getDrawableCompat
 import org.mytonwallet.app_air.walletbasecontext.utils.toBigInteger
 import org.mytonwallet.app_air.walletcontext.globalStorage.WGlobalStorage
 import org.mytonwallet.app_air.walletcontext.utils.colorWithAlpha
 import org.mytonwallet.app_air.walletcore.WalletCore
 import org.mytonwallet.app_air.walletcore.models.MAccount
-import org.mytonwallet.app_air.walletcore.moshi.ApiNft
 import org.mytonwallet.app_air.walletcore.stores.BalanceStore
 import kotlin.math.roundToInt
 
@@ -140,16 +138,10 @@ class WalletCustomizationCardCell(context: Context, cellWidth: Int) :
 
     override fun updateTheme() {
         setBackgroundColor(Color.TRANSPARENT, 20f.dp, true)
-        cardNft?.let {
-            val colors = cardNft?.metadata?.mtwCardColors ?: return@let
-            setLabelColors(colors.first, colors.second, drawGradient = true)
-            return
-        }
         setLabelColors(Color.WHITE, Color.WHITE.colorWithAlpha(191), drawGradient = false)
     }
 
     private var account: MAccount? = null
-    private var cardNft: ApiNft? = null
     private var cardBackground: CardBackground = CardBackground.DEFAULT
 
     fun configure(account: MAccount) {
@@ -162,27 +154,9 @@ class WalletCustomizationCardCell(context: Context, cellWidth: Int) :
 
     fun updateCardImage() {
         val accountId = account?.accountId
-        cardNft =
-            accountId?.let { activeAccountId ->
-                WGlobalStorage.getCardBackgroundNft(activeAccountId)
-                    ?.let { ApiNft.fromJson(it) }
-            }
         cardBackground = CardBackground.fromId(accountId?.let { WGlobalStorage.getCardBackground(it) })
         updateTheme()
-
-        if (cardNft == null) {
-            imageView.loadRes(cardBackground.imageRes)
-            setConstraints {
-                allEdges(imageView)
-            }
-            return
-        }
-        imageView.hierarchy.setPlaceholderImage(
-            context.getDrawableCompat(
-                org.mytonwallet.app_air.uicomponents.R.drawable.img_card
-            )
-        )
-        imageView.loadUrl(cardNft?.metadata?.cardImageUrl(false) ?: "")
+        imageView.loadRes(cardBackground.imageRes)
         setConstraints {
             allEdges(imageView)
         }
@@ -190,22 +164,8 @@ class WalletCustomizationCardCell(context: Context, cellWidth: Int) :
 
     private fun setLabelColors(primaryColor: Int, secondaryColor: Int, drawGradient: Boolean) {
         var textShader: LinearGradient?
-        cardNft?.let {
-            balanceView.alpha = 0.95f
-            textShader = LinearGradient(
-                0f, 0f,
-                width.toFloat(), 0f,
-                intArrayOf(
-                    secondaryColor,
-                    primaryColor,
-                    secondaryColor,
-                ),
-                null, Shader.TileMode.CLAMP
-            )
-        } ?: run {
-            balanceView.alpha = 1f
-            textShader = null
-        }
+        balanceView.alpha = 1f
+        textShader = null
         titleLabel.setTextColor(primaryColor)
         balanceView.updateColors(primaryColor, secondaryColor, drawGradient)
         addressLabel.setTextColor(primaryColor, secondaryColor, drawGradient)

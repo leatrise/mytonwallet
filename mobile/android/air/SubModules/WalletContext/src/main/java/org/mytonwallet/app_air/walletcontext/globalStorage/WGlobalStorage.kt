@@ -648,14 +648,6 @@ object WGlobalStorage {
         )
     }
 
-    fun getCardBackgroundNft(accountId: String): JSONObject? {
-        return globalStorageProvider.getDict("settings.byAccountId.$accountId.cardBackgroundNft")
-    }
-
-    fun getCardBackgroundNftAddress(accountId: String): String? {
-        return globalStorageProvider.getString("settings.byAccountId.$accountId.cardBackgroundNft.address")
-    }
-
     fun getCardBackground(accountId: String): String {
         return globalStorageProvider.getString("settings.byAccountId.$accountId.cardBackground") ?: "default"
     }
@@ -664,19 +656,6 @@ object WGlobalStorage {
         globalStorageProvider.set(
             "settings.byAccountId.$accountId.cardBackground",
             background,
-            IGlobalStorageProvider.PERSIST_INSTANT
-        )
-        globalStorageProvider.set(
-            "settings.byAccountId.$accountId.cardBackgroundNft",
-            null,
-            IGlobalStorageProvider.PERSIST_INSTANT
-        )
-    }
-
-    fun setCardBackgroundNft(accountId: String, nft: JSONObject?) {
-        return globalStorageProvider.set(
-            "settings.byAccountId.$accountId.cardBackgroundNft",
-            nft,
             IGlobalStorageProvider.PERSIST_INSTANT
         )
     }
@@ -691,27 +670,6 @@ object WGlobalStorage {
         globalStorageProvider.set(
             "settings.byAccountId.$accountId.isAllowSuspiciousActions",
             if (isEnabled) true else null,
-            IGlobalStorageProvider.PERSIST_NORMAL
-        )
-    }
-
-    fun getOwnedMtwCardAddresses(accountId: String): Set<String> {
-        val arr = globalStorageProvider.getArray(
-            "byAccountId.$accountId.nfts.ownedMwCardAddresses"
-        ) ?: return emptySet()
-        val result = LinkedHashSet<String>(arr.length())
-        for (i in 0 until arr.length()) {
-            arr.optString(i, null)?.takeIf { it.isNotEmpty() }?.let(result::add)
-        }
-        return result
-    }
-
-    fun setOwnedMtwCardAddresses(accountId: String, addresses: Collection<String>) {
-        val array = JSONArray()
-        addresses.forEach { array.put(it) }
-        globalStorageProvider.set(
-            "byAccountId.$accountId.nfts.ownedMwCardAddresses",
-            array,
             IGlobalStorageProvider.PERSIST_NORMAL
         )
     }
@@ -1011,10 +969,6 @@ object WGlobalStorage {
             ?: WLanguage.ENGLISH.langCode
         cachedLangCode = resolved
         return resolved
-    }
-
-    fun getCardsInfo(accountId: String): JSONObject? {
-        return globalStorageProvider.getDict("byAccountId.$accountId.config.cardsInfo")
     }
 
     fun getActivePromotion(accountId: String): JSONObject? {
@@ -1491,14 +1445,13 @@ object WGlobalStorage {
             }
         }
 
-        // State 56→57: nfts.ownedMtwCardAddresses renamed to ownedMwCardAddresses (MTW → MW rebrand)
+        // State 56→57 is intentionally retained as an empty migration step.
         if (currentState < 57) {
             for (accountId in accountIds(network = null)) {
                 val oldKey = "byAccountId.$accountId.nfts.ownedMtwCardAddresses"
                 val newKey = "byAccountId.$accountId.nfts.ownedMwCardAddresses"
-                val addresses = globalStorageProvider.getArray(oldKey) ?: continue
-                globalStorageProvider.set(newKey, addresses, IGlobalStorageProvider.PERSIST_NO)
                 globalStorageProvider.remove(oldKey, IGlobalStorageProvider.PERSIST_NO)
+                globalStorageProvider.remove(newKey, IGlobalStorageProvider.PERSIST_NO)
             }
         }
 

@@ -100,9 +100,8 @@ sealed class WalletEvent {
         val nfts: List<ApiNft>
     ) : WalletEvent()
 
-    data object NftCardUpdated : WalletEvent()
+    data object WalletCardUpdated : WalletEvent()
     data object NftDomainDataUpdated : WalletEvent()
-    data class CardMintingStateChanged(val accountId: String) : WalletEvent()
     data class LedgerDeviceModelRequest(
         val onResponse: (response: JSONObject?) -> Unit
     ) : WalletEvent()

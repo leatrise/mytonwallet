@@ -267,7 +267,7 @@ class HomeVM(
                 waitingForNetwork = true
             }
 
-            WalletEvent.NftCardUpdated -> {
+            WalletEvent.WalletCardUpdated -> {
                 if (!mode.isScreenActive)
                     return
                 delegate.get()?.reloadCard()
@@ -287,10 +287,6 @@ class HomeVM(
             }
 
             WalletEvent.AccountConfigReceived -> {
-                delegate.get()?.accountConfigChanged()
-            }
-
-            is WalletEvent.CardMintingStateChanged -> {
                 delegate.get()?.accountConfigChanged()
             }
 

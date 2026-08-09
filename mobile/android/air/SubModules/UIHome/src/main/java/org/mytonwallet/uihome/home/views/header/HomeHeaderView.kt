@@ -788,10 +788,6 @@ open class HomeHeaderView(
         cardViews.find { it.account?.accountId == accountId }?.account?.name = accountName
     }
 
-    fun updateMintIconVisibility() {
-        cardView.updateMintIconVisibility()
-    }
-
     fun updatePromotion() {
         cardView.updatePromotion()
     }

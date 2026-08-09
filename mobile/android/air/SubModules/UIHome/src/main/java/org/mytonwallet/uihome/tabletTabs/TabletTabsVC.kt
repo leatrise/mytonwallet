@@ -602,7 +602,7 @@ class TabletTabsVC(context: Context) : BaseTabsVC(context), WThemedView,
                 sidePanel.setAccounts(WalletCore.getAllAccounts())
             }
 
-            WalletEvent.NftCardUpdated -> {
+            WalletEvent.WalletCardUpdated -> {
                 sidePanel.setAccounts(WalletCore.getAllAccounts())
                 routeWalletEvent(walletEvent)
             }

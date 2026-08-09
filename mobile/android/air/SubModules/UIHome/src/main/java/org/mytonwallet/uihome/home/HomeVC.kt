@@ -310,7 +310,6 @@ class HomeVC(context: Context, private val mode: MScreenMode) :
     var panelHeaderView: HomeHeaderView? = null
         set(value) {
             field = value
-            value?.updateMintIconVisibility()
             value?.updatePromotion()
         }
 
@@ -1258,9 +1257,7 @@ class HomeVC(context: Context, private val mode: MScreenMode) :
     }
 
     override fun accountConfigChanged() {
-        phoneHeaderView.updateMintIconVisibility()
         phoneHeaderView.updatePromotion()
-        panelHeaderView?.updateMintIconVisibility()
         panelHeaderView?.updatePromotion()
     }
 
