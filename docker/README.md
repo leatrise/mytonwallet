@@ -15,4 +15,10 @@ the emulator uses `http://10.0.2.2:8080`, while a physical device uses the host 
 
 Recommended capacity is 4 vCPU and 8 GB RAM; 2 vCPU and 4 GB RAM is the minimum. Provider credentials remain server-side. Caddy access logs omit the URI, headers, request body, and full client IP.
 
+## Static assets
+
+Put public images and other immutable files under `docker/backend-api/data/static`. They are copied into the backend image and served at `https://api.yohi.io/static/<relative-path>` with a one-year immutable cache. Use content-hashed filenames when replacing files, for example `tokens/yohi.a1b2c3.webp`, so clients do not retain an older image.
+
+After adding or changing an asset, rebuild the backend image with `docker compose -f docker/compose.yml up -d --build backend-api`. Do not put secrets or user uploads in this directory; everything below `/static/` is public.
+
 The official TON Connect bridge source is fixed to commit `bc97ab0a6d0d874a1e49344c6ae96252124fc923`. That release requires a Valkey cluster for persistent storage; this minimal single-host profile intentionally uses its in-memory mode. Pairing messages are temporary and are lost if the bridge container restarts. Move the bridge to the upstream clustered Valkey deployment before requiring restart-transparent pairing.

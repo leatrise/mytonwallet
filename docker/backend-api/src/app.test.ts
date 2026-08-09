@@ -80,6 +80,11 @@ void describe('business API contracts', () => {
     assert.equal(typeof assets[0].percentChange24h, 'number');
   });
 
+  void it('keeps static assets inside the data directory', async () => {
+    assert.equal((await app.inject({ method: 'GET', url: '/static/not-found.png' })).statusCode, 404);
+    assert.equal((await app.inject({ method: 'GET', url: '/static/%2e%2e/assets.json' })).statusCode, 400);
+  });
+
   void it('limits batch metadata requests', async () => {
     const response = await app.inject({ method: 'POST', url: '/assets', payload: { assets: Array(101).fill('x') } });
     assert.equal(response.statusCode, 400);

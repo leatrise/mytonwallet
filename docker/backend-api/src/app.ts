@@ -2,7 +2,8 @@ import cors from '@fastify/cors';
 import rateLimit from '@fastify/rate-limit';
 import websocket from '@fastify/websocket';
 import Fastify from 'fastify';
-import { readFile } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
+import { join, normalize } from 'node:path';
 import WebSocket from 'ws';
 
 import type { Cache, Upstreams } from './types.js';
@@ -55,6 +56,37 @@ export async function buildApp(deps: Dependencies) {
       priceUsd: snapshot?.prices[String(asset.slug)]?.priceUsd ?? 0,
       percentChange24h: snapshot?.prices[String(asset.slug)]?.percentChange24h ?? 0,
     }));
+  });
+
+  app.get<{ Params: { '*': string } }>('/static/*', async (request, reply) => {
+    const relativePath = request.params['*'];
+    const staticRoot = normalize(`${deps.dataDir}/static`);
+    const filePath = normalize(join(staticRoot, relativePath));
+    if (!filePath.startsWith(`${staticRoot}/`)) {
+      return reply.code(400).send({ error: 'Invalid static asset path' });
+    }
+
+    try {
+      const fileStat = await stat(filePath);
+      if (!fileStat.isFile()) return reply.code(404).send({ error: 'Asset not found' });
+      const extension = filePath.slice(filePath.lastIndexOf('.')).toLowerCase();
+      const contentTypes: Record<string, string> = {
+        '.avif': 'image/avif',
+        '.gif': 'image/gif',
+        '.ico': 'image/x-icon',
+        '.jpeg': 'image/jpeg',
+        '.jpg': 'image/jpeg',
+        '.json': 'application/json; charset=utf-8',
+        '.mp3': 'audio/mpeg',
+        '.png': 'image/png',
+        '.svg': 'image/svg+xml',
+        '.webp': 'image/webp',
+      };
+      reply.header('Cache-Control', 'public, max-age=31536000, immutable');
+      return reply.type(contentTypes[extension] ?? 'application/octet-stream').send(await readFile(filePath));
+    } catch {
+      return reply.code(404).send({ error: 'Asset not found' });
+    }
   });
 
   app.post<{ Body: { assets?: unknown } }>('/assets', {
