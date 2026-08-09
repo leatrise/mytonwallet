@@ -5,6 +5,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.mytonwallet.app_air.walletbasecontext.DEBUG_MODE
+import org.mytonwallet.app_air.walletbasecontext.WBaseStorage
 import org.mytonwallet.app_air.walletsdk.WalletSDK
 import org.mytonwallet.app_air.walletsdk.utils.NetworkUtils
 import java.lang.reflect.Type
@@ -16,8 +18,14 @@ sealed class SDKApiMethod<T> {
         fun onError(error: Throwable)
     }
 
-    enum class Service(val baseUrl: String) {
-        MyTonWallet("https://api.mytonwallet.org/")
+    enum class Service {
+        Backend;
+
+        val baseUrl: String
+            get() {
+                val override = if (DEBUG_MODE) WBaseStorage.getDebugBackendBaseUrl() else null
+                return (override ?: DEFAULT_BACKEND_BASE_URL).trimEnd('/') + "/"
+            }
     }
 
     abstract val service: Service
@@ -32,7 +40,7 @@ sealed class SDKApiMethod<T> {
                 val rates: Map<String, Double>
             )
 
-            override val service = Service.MyTonWallet
+            override val service = Service.Backend
             override val path = "currency-rates"
             override val method = NetworkUtils.Method.GET
             override val responseType: Type = CurrencyRates::class.java
@@ -45,7 +53,7 @@ sealed class SDKApiMethod<T> {
             period: String,
             baseCurrency: String
         ) : SDKApiMethod<Array<Array<Double>>>() {
-            override val service = Service.MyTonWallet
+            override val service = Service.Backend
             override val path = "prices/chart/${assetId}?period=$period&base=$baseCurrency"
             override val method = NetworkUtils.Method.GET
             override val responseType: Type = Array<Array<Double>>::class.java
@@ -86,5 +94,9 @@ sealed class SDKApiMethod<T> {
                 }
             }
         }
+    }
+
+    companion object {
+        private const val DEFAULT_BACKEND_BASE_URL = "https://api.yohi.io"
     }
 }

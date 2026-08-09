@@ -106,6 +106,24 @@ export async function buildApp(deps: Dependencies) {
   });
 
   app.get('/currency-rates', async () => ({ rates: (await deps.prices.get())?.rates ?? PriceService.emptyRates() }));
+  app.get<{ Params: { assetId: string }; Querystring: { period?: string; base?: string } }>(
+    '/prices/chart/:assetId',
+    async (request, reply) => {
+      const { assetId } = request.params;
+      const period = request.query.period ?? '';
+      const base = request.query.base ?? '';
+      if (!/^[A-Za-z0-9:_-]{1,80}$/.test(assetId)
+        || !['1D', '7D', '1M', '3M', '1Y', 'ALL'].includes(period)
+        || !/^[A-Za-z]{2,10}$/.test(base)) {
+        return reply.code(400).send({ error: 'Invalid price chart parameters' });
+      }
+
+      const chart = await deps.prices.getChart(assetId, period, base);
+      return chart
+        ? reply.send(chart)
+        : reply.code(503).send({ error: 'Price chart unavailable' });
+    },
+  );
   app.get('/known-addresses', () => knownAddresses);
   app.get('/utils/get-config', () => ({
     isLimited: false,

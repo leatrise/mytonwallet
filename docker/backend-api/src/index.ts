@@ -9,7 +9,12 @@ const cache = new ValkeyCache(runtimeConfig.valkeyUrl);
 const dataDir = fileURLToPath(new URL('../data', import.meta.url));
 const app = await buildApp({
   cache,
-  prices: new PriceService(cache, runtimeConfig.priceUrl, runtimeConfig.priceApiKey),
+  prices: new PriceService(
+    cache,
+    runtimeConfig.priceUrl,
+    runtimeConfig.priceChartUrl,
+    runtimeConfig.priceApiKey,
+  ),
   upstreams: loadUpstreams(),
   allowedOrigins: runtimeConfig.allowedOrigins,
   timeoutMs: runtimeConfig.requestTimeoutMs,

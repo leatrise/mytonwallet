@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import type { Cache, Upstreams } from './types.js';
 
 import { buildApp } from './app.js';
-import { normalizePriceResponse, PriceService } from './prices.js';
+import { normalizeChartResponse, normalizePriceResponse, PriceService } from './prices.js';
 
 class MemoryCache implements Cache {
   values = new Map<string, string>();
@@ -38,7 +38,7 @@ let app: Awaited<ReturnType<typeof buildApp>>;
 before(async () => {
   app = await buildApp({
     cache,
-    prices: new PriceService(cache, '', ''),
+    prices: new PriceService(cache, '', '', ''),
     upstreams,
     allowedOrigins: ['https://yohi.io'],
     timeoutMs: 50,
@@ -95,6 +95,39 @@ void describe('business API contracts', () => {
     assert.deepEqual(Object.keys(response.json().rates), ['USD', 'EUR', 'RUB', 'CNY', 'BTC', 'TON']);
   });
 
+  void it('normalizes price chart points into chronological order', () => {
+    assert.deepEqual(normalizeChartResponse({ points: [[3, 1.3], [1, 1.1], ['bad', 2], [2, 1.2]] }), [
+      [1, 1.1], [2, 1.2], [3, 1.3],
+    ]);
+  });
+
+  void it('fetches price charts from the configured upstream', async () => {
+    const originalFetch = globalThis.fetch;
+    let requestedUrl = '';
+    globalThis.fetch = (input) => {
+      requestedUrl = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+      return Promise.resolve(new Response(JSON.stringify({ points: [[2, 1.2], [1, 1.1]] }), {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      }));
+    };
+    try {
+      const service = new PriceService(cache, '', 'https://prices.example/v2/rates/chart', 'secret');
+      assert.deepEqual(await service.getChart('TON', '1D', 'USD'), [[1, 1.1], [2, 1.2]]);
+      const target = new URL(requestedUrl);
+      assert.equal(target.searchParams.get('token'), 'ton');
+      assert.equal(target.searchParams.get('currency'), 'usd');
+      assert.equal(target.searchParams.get('points_count'), '289');
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
+  });
+
+  void it('validates price chart requests before contacting the upstream', async () => {
+    assert.equal((await app.inject({ method: 'GET', url: '/prices/chart/TON?period=bad&base=USD' })).statusCode, 400);
+    assert.equal((await app.inject({ method: 'GET', url: '/prices/chart/TON?period=1D&base=USD' })).statusCode, 503);
+  });
+
   void it('returns known-address and launch config contracts', async () => {
     const known = await app.inject({ method: 'GET', url: '/known-addresses' });
     assert.ok(known.json().knownAddresses.mainnet);
@@ -141,7 +174,7 @@ void describe('proxy boundary', () => {
     };
     const proxyApp = await buildApp({
       cache,
-      prices: new PriceService(cache, '', ''),
+      prices: new PriceService(cache, '', '', ''),
       upstreams: {
         ...upstreams,
         toncenter: {

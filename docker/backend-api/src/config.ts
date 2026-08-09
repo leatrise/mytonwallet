@@ -31,6 +31,7 @@ export const runtimeConfig = {
   allowedOrigins: env('ALLOWED_ORIGINS', 'https://yohi.io,capacitor://localhost,http://localhost')
     .split(',').map((x) => x.trim()).filter(Boolean),
   priceUrl: env('PRICE_URL'),
+  priceChartUrl: env('PRICE_CHART_URL', 'https://tonapi.io/v2/rates/chart'),
   priceApiKey: env('PRICE_API_KEY'),
   requestTimeoutMs: Number(env('UPSTREAM_TIMEOUT_MS', '8000')),
 };

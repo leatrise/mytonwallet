@@ -14,6 +14,19 @@ type TonApiResponse = {
   rates?: Record<string, TonApiRate>;
 };
 
+type TonApiChartResponse = {
+  points?: unknown;
+};
+
+const PERIOD_SECONDS: Record<string, number> = {
+  '1D': 24 * 60 * 60,
+  '7D': 7 * 24 * 60 * 60,
+  '1M': 30 * 24 * 60 * 60,
+  '3M': 90 * 24 * 60 * 60,
+  '1Y': 365 * 24 * 60 * 60,
+  ALL: 10 * 365 * 24 * 60 * 60,
+};
+
 function parsePercent(value: string | undefined) {
   if (!value) return 0;
   const parsed = Number(value.replace('%', '').replace('−', '-'));
@@ -71,10 +84,28 @@ export function normalizePriceResponse(body: unknown): PriceSnapshot | undefined
   return { updatedAt: Date.now(), prices, rates: normalizedRates };
 }
 
+export function normalizeChartResponse(body: unknown): number[][] | undefined {
+  const points = (body as TonApiChartResponse | undefined)?.points;
+  if (!Array.isArray(points)) return undefined;
+
+  return points
+    .filter((point): point is [number, number] => (
+      Array.isArray(point)
+      && point.length >= 2
+      && typeof point[0] === 'number'
+      && Number.isFinite(point[0])
+      && typeof point[1] === 'number'
+      && Number.isFinite(point[1])
+    ))
+    .map(([timestamp, price]): [number, number] => [timestamp, price])
+    .sort((a, b) => a[0] - b[0]);
+}
+
 export class PriceService {
   constructor(
     private readonly cache: Cache,
     private readonly url: string,
+    private readonly chartUrl: string,
     private readonly apiKey: string,
   ) {}
 
@@ -108,5 +139,29 @@ export class PriceService {
 
   static emptyRates() {
     return { ...EMPTY_RATES };
+  }
+
+  async getChart(assetId: string, period: string, base: string): Promise<number[][] | undefined> {
+    const periodSeconds = PERIOD_SECONDS[period];
+    if (!this.chartUrl || !periodSeconds) return undefined;
+
+    const endDate = Math.floor(Date.now() / 1000);
+    const target = new URL(this.chartUrl);
+    target.searchParams.set('token', assetId.toUpperCase() === 'TON' ? 'ton' : assetId);
+    target.searchParams.set('currency', base.toLowerCase());
+    target.searchParams.set('start_date', String(Math.max(0, endDate - periodSeconds)));
+    target.searchParams.set('end_date', String(endDate));
+    target.searchParams.set('points_count', '289');
+
+    try {
+      const response = await fetch(target, {
+        headers: this.apiKey ? { Authorization: `Bearer ${this.apiKey}` } : {},
+        signal: AbortSignal.timeout(5000),
+      });
+      if (!response.ok) return undefined;
+      return normalizeChartResponse(await response.json());
+    } catch {
+      return undefined;
+    }
   }
 }
