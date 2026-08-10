@@ -9,6 +9,7 @@ import WebSocket from 'ws';
 
 import type { Cache, Upstreams } from './types.js';
 
+import { DappCatalogService } from './dapps.js';
 import { DomainService } from './domains.js';
 import { PriceService } from './prices.js';
 import { proxyRequest } from './proxy.js';
@@ -24,6 +25,7 @@ interface Dependencies {
 
 export async function buildApp(deps: Dependencies) {
   const domains = new DomainService(deps.cache, deps.upstreams.tonapi.mainnet, deps.timeoutMs);
+  const dapps = await DappCatalogService.fromFile(`${deps.dataDir}/dapp-catalog.json`);
   const app = Fastify({
     logger: { level: 'warn', redact: ['req.headers.authorization', 'req.headers.x-api-key'] },
     bodyLimit: 64 * 1024,
@@ -128,6 +130,14 @@ export async function buildApp(deps: Dependencies) {
     },
   );
   app.get('/known-addresses', () => knownAddresses);
+  app.get<{ Querystring: { isLandscape?: string; langCode?: string } }>('/v2/dapp/catalog', (request, reply) => {
+    const { isLandscape = 'false', langCode = 'en' } = request.query;
+    if (!['true', 'false'].includes(isLandscape) || !/^[A-Za-z-]{2,12}$/.test(langCode)) {
+      return reply.code(400).send({ error: 'Invalid DApp catalog parameters' });
+    }
+
+    return dapps.get(isLandscape === 'true', langCode);
+  });
   app.get('/utils/get-config', () => ({
     isLimited: false,
     isCopyStorageEnabled: false,

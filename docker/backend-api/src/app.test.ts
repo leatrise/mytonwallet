@@ -80,6 +80,21 @@ void describe('business API contracts', () => {
     assert.equal(typeof assets[0].percentChange24h, 'number');
   });
 
+  void it('returns the DApp catalog in the client shape', async () => {
+    const response = await app.inject({ method: 'GET', url: '/v2/dapp/catalog?isLandscape=false&langCode=en' });
+    const catalog = response.json();
+    assert.equal(response.statusCode, 200);
+    assert.ok(catalog.categories.length > 0);
+    assert.ok(catalog.sites.length > 0);
+    assert.equal(typeof catalog.sites[0].url, 'string');
+    assert.equal(typeof catalog.sites[0].canBeRestricted, 'boolean');
+  });
+
+  void it('validates DApp catalog parameters', async () => {
+    assert.equal((await app.inject({ method: 'GET', url: '/v2/dapp/catalog?isLandscape=maybe&langCode=en' })).statusCode, 400);
+    assert.equal((await app.inject({ method: 'GET', url: '/v2/dapp/catalog?isLandscape=false&langCode=中文' })).statusCode, 400);
+  });
+
   void it('keeps static assets inside the data directory', async () => {
     assert.equal((await app.inject({ method: 'GET', url: '/static/not-found.png' })).statusCode, 404);
     assert.equal((await app.inject({ method: 'GET', url: '/static/%2e%2e/assets.json' })).statusCode, 400);
