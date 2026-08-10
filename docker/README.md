@@ -15,6 +15,18 @@ the emulator uses `http://10.0.2.2:8080`, while a physical device uses the host 
 
 Recommended capacity is 4 vCPU and 8 GB RAM; 2 vCPU and 4 GB RAM is the minimum. Provider credentials remain server-side. Caddy access logs omit the URI, headers, request body, and full client IP.
 
+## Content proxy
+
+The Air SDK loads TON Connect manifests and off-chain token/NFT metadata through
+`/proxy/download-json`. Whitelisted NFT animations use `/proxy/download-lottie`.
+The backend accepts only HTTP(S) targets, rejects credentials and private or reserved
+network addresses, revalidates redirects, pins the validated DNS result for the request,
+and limits responses to 1 MiB for JSON and 2 MiB for Lottie data.
+
+The Android Buy/Sell screens still require `/onramp-url` and `/offramp-url`. Those
+partner-specific endpoints are not included in this launch backend and must remain
+hidden until provider credentials and URL-signing rules are configured.
+
 ## Static assets
 
 Put public images and other immutable files under `docker/backend-api/data/static`. They are copied into the backend image and served at `https://api.yohi.io/static/<relative-path>` with a one-year immutable cache. Use content-hashed filenames when replacing files, for example `tokens/yohi.a1b2c3.webp`, so clients do not retain an older image.

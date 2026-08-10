@@ -151,6 +151,55 @@ void describe('business API contracts', () => {
     assert.equal(config.json().country, 'US');
   });
 
+  void it('returns an empty referrer when attribution is not configured', async () => {
+    assert.deepEqual((await app.inject({ method: 'GET', url: '/referrer/get' })).json(), {});
+  });
+
+  void it('rejects private content-proxy targets', async () => {
+    const response = await app.inject({
+      method: 'GET',
+      url: '/proxy/download-json?url=http%3A%2F%2F127.0.0.1%2Fmetadata.json',
+    });
+    assert.equal(response.statusCode, 400);
+  });
+
+  void it('serves validated JSON and Lottie proxy responses', async () => {
+    const proxyApp = await buildApp({
+      cache,
+      prices: new PriceService(cache, '', '', ''),
+      upstreams,
+      allowedOrigins: [],
+      timeoutMs: 50,
+      dataDir,
+      contentProxy: {
+        fetchJson: (url) => Promise.resolve({ source: url }),
+        fetchLottie: () => Promise.resolve({
+          body: Buffer.from('{"v":"5.5.0"}'),
+          contentType: 'application/json',
+        }),
+      },
+    });
+    try {
+      const json = await proxyApp.inject({
+        method: 'GET',
+        url: '/proxy/download-json?url=https%3A%2F%2Fexample.com%2Fmanifest.json',
+      });
+      assert.equal(json.statusCode, 200);
+      assert.deepEqual(json.json(), { source: 'https://example.com/manifest.json' });
+      assert.equal(json.headers['cache-control'], 'public, max-age=300');
+
+      const lottie = await proxyApp.inject({
+        method: 'GET',
+        url: '/proxy/download-lottie?url=https%3A%2F%2Fexample.com%2Fanimation.json',
+      });
+      assert.equal(lottie.statusCode, 200);
+      assert.equal(lottie.headers['content-type'], 'application/json');
+      assert.equal(lottie.body, '{"v":"5.5.0"}');
+    } finally {
+      await proxyApp.close();
+    }
+  });
+
   void it('discards legacy account config payloads', async () => {
     const response = await app.inject({ method: 'POST', url: '/account-config', payload: { address: 'not-logged' } });
     assert.deepEqual(response.json(), {});
@@ -175,6 +224,24 @@ void describe('proxy boundary', () => {
     assert.equal((await app.inject({ method: 'DELETE', url: '/toncenter/mainnet/api/v2/jsonRPC' })).statusCode, 404);
     assert.equal((await app.inject({ method: 'GET', url: '/tonapi/mainnet/v2/evil' })).statusCode, 404);
     assert.equal((await app.inject({ method: 'GET', url: '/toncenter/mainnet/admin' })).statusCode, 404);
+  });
+
+  void it('allows every Toncenter v3 path used by the Air SDK', async () => {
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = () => Promise.resolve(new Response('{}', {
+      status: 200,
+      headers: { 'content-type': 'application/json' },
+    }));
+    try {
+      assert.equal((await app.inject({
+        method: 'GET', url: '/toncenter/mainnet/api/v3/walletStates?address=test',
+      })).statusCode, 200);
+      assert.equal((await app.inject({
+        method: 'GET', url: '/toncenter/mainnet/api/v3/pendingTraces?ext_msg_hash=test',
+      })).statusCode, 200);
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
   });
 
   void it('fails over reads but never duplicates a broadcast', async () => {

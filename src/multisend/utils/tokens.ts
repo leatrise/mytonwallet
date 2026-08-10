@@ -1,6 +1,7 @@
 import { Address } from '@ton/core';
 import { JettonMaster, TonClient } from '@ton/ton';
 
+import { BRILLIANT_API_BASE_URL } from '../../config';
 import { safeExecAsync } from '../../util/safeExec';
 import { pause } from '../../util/schedulers';
 import { buildTokenTransferBody, commentToBytes, packBytesAsSnakeCell } from './tonCore';
@@ -29,7 +30,7 @@ export function fetchKnownTokens(): Promise<RemoteToken[]> {
 
 async function fetchTokensFromApi(): Promise<RemoteToken[]> {
   try {
-    const response = await fetch('https://api.yohi.io/assets');
+    const response = await fetch(`${BRILLIANT_API_BASE_URL}/assets`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

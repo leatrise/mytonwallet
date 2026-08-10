@@ -185,7 +185,9 @@ export const TONAPIIO_TESTNET_URL = DEBUG_BACKEND_BASE_URL
   : process.env.TONAPIIO_TESTNET_URL || 'https://api.yohi.io/tonapi/testnet';
 
 export const BRILLIANT_API_BASE_URL = DEBUG_BACKEND_BASE_URL || DEFAULT_BACKEND_BASE_URL;
-export const PROXY_API_BASE_URL = process.env.PROXY_API_BASE_URL || `${BRILLIANT_API_BASE_URL}/proxy`;
+export const PROXY_API_BASE_URL = DEBUG_BACKEND_BASE_URL
+  ? `${DEBUG_BACKEND_BASE_URL}/proxy`
+  : process.env.PROXY_API_BASE_URL || `${BRILLIANT_API_BASE_URL}/proxy`;
 export const IPFS_GATEWAY_BASE_URL = 'https://ipfs.io/ipfs/';
 export const SSE_BRIDGE_URL = DEBUG_BACKEND_BASE_URL
   ? `${DEBUG_BACKEND_BASE_URL}/bridge/`

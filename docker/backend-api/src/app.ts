@@ -7,8 +7,10 @@ import { readFile, stat } from 'node:fs/promises';
 import { join, normalize } from 'node:path';
 import WebSocket from 'ws';
 
+import type { ContentProxy } from './contentProxy.js';
 import type { Cache, Upstreams } from './types.js';
 
+import { ContentProxyError, OutboundContentProxy } from './contentProxy.js';
 import { DappCatalogService } from './dapps.js';
 import { DomainService } from './domains.js';
 import { PriceService } from './prices.js';
@@ -21,11 +23,13 @@ interface Dependencies {
   allowedOrigins: string[];
   timeoutMs: number;
   dataDir: string;
+  contentProxy?: ContentProxy;
 }
 
 export async function buildApp(deps: Dependencies) {
   const domains = new DomainService(deps.cache, deps.upstreams.tonapi.mainnet, deps.timeoutMs);
   const dapps = await DappCatalogService.fromFile(`${deps.dataDir}/dapp-catalog.json`);
+  const contentProxy = deps.contentProxy ?? new OutboundContentProxy(deps.timeoutMs);
   const app = Fastify({
     logger: { level: 'warn', redact: ['req.headers.authorization', 'req.headers.x-api-key'] },
     bodyLimit: 64 * 1024,
@@ -130,6 +134,33 @@ export async function buildApp(deps: Dependencies) {
     },
   );
   app.get('/known-addresses', () => knownAddresses);
+  app.get('/referrer/get', () => ({}));
+  app.get<{ Querystring: { url?: string } }>('/proxy/download-json', {
+    config: { rateLimit: { max: 60, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    try {
+      const result = await contentProxy.fetchJson(request.query.url ?? '');
+      reply.header('cache-control', 'public, max-age=300');
+      return result;
+    } catch (error) {
+      const statusCode = error instanceof ContentProxyError ? error.statusCode : 502;
+      const message = error instanceof ContentProxyError ? error.message : 'Upstream unavailable';
+      return reply.code(statusCode).send({ error: message });
+    }
+  });
+  app.get<{ Querystring: { url?: string } }>('/proxy/download-lottie', {
+    config: { rateLimit: { max: 30, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    try {
+      const result = await contentProxy.fetchLottie(request.query.url ?? '');
+      reply.header('cache-control', 'public, max-age=300');
+      return reply.type(result.contentType).send(result.body);
+    } catch (error) {
+      const statusCode = error instanceof ContentProxyError ? error.statusCode : 502;
+      const message = error instanceof ContentProxyError ? error.message : 'Upstream unavailable';
+      return reply.code(statusCode).send({ error: message });
+    }
+  });
   app.get<{ Querystring: { isLandscape?: string; langCode?: string } }>('/v2/dapp/catalog', (request, reply) => {
     const { isLandscape = 'false', langCode = 'en' } = request.query;
     if (!['true', 'false'].includes(isLandscape) || !/^[A-Za-z-]{2,12}$/.test(langCode)) {
