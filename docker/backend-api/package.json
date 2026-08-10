@@ -12,6 +12,7 @@
     "test": "npm run build && node --test dist/*.test.js"
   },
   "dependencies": {
+    "@ton/core": "0.60.1",
     "@fastify/cors": "11.1.0",
     "@fastify/rate-limit": "10.3.0",
     "@fastify/websocket": "11.2.0",

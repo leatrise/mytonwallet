@@ -1,6 +1,7 @@
 import cors from '@fastify/cors';
 import rateLimit from '@fastify/rate-limit';
 import websocket from '@fastify/websocket';
+import { Address } from '@ton/core';
 import Fastify from 'fastify';
 import { readFile, stat } from 'node:fs/promises';
 import { join, normalize } from 'node:path';
@@ -8,6 +9,7 @@ import WebSocket from 'ws';
 
 import type { Cache, Upstreams } from './types.js';
 
+import { DomainService } from './domains.js';
 import { PriceService } from './prices.js';
 import { proxyRequest } from './proxy.js';
 
@@ -21,6 +23,7 @@ interface Dependencies {
 }
 
 export async function buildApp(deps: Dependencies) {
+  const domains = new DomainService(deps.cache, deps.upstreams.tonapi.mainnet, deps.timeoutMs);
   const app = Fastify({
     logger: { level: 'warn', redact: ['req.headers.authorization', 'req.headers.x-api-key'] },
     bodyLimit: 64 * 1024,
@@ -137,6 +140,24 @@ export async function buildApp(deps: Dependencies) {
     shouldAutoSwitchToAir: false,
   }));
   app.post('/account-config', () => ({}));
+
+  app.get<{ Querystring: { address?: string } }>('/dns/getDomains', {
+    config: { rateLimit: { max: 60, timeWindow: '1 minute' } },
+  }, async (request, reply) => {
+    const { address } = request.query;
+    if (!address || address.length > 80) return reply.code(400).send({ error: 'Invalid TON address' });
+    try {
+      Address.parse(address);
+    } catch {
+      return reply.code(400).send({ error: 'Invalid TON address' });
+    }
+
+    try {
+      return await domains.get(address);
+    } catch {
+      return reply.code(502).send({ error: 'TON DNS data unavailable' });
+    }
+  });
 
   app.get<{ Params: { network: 'mainnet' | 'testnet' } }>(
     '/toncenter/:network/api/streaming/v2/ws',

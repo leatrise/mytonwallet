@@ -141,6 +141,13 @@ void describe('business API contracts', () => {
     assert.deepEqual(response.json(), {});
   });
 
+  void it('validates TON DNS addresses and reports upstream outages', async () => {
+    assert.equal((await app.inject({ method: 'GET', url: '/dns/getDomains' })).statusCode, 400);
+    assert.equal((await app.inject({ method: 'GET', url: '/dns/getDomains?address=invalid' })).statusCode, 400);
+    const address = 'UQBjKqthWBE6GEcqb_epTRFrQ1niS6Z1Z1MHMwR-mnAYRoYr';
+    assert.equal((await app.inject({ method: 'GET', url: `/dns/getDomains?address=${address}` })).statusCode, 502);
+  });
+
   void it('reports liveness and readiness separately', async () => {
     assert.deepEqual((await app.inject({ method: 'GET', url: '/' })).json(), { ok: true, service: 'yohi-api' });
     assert.equal((await app.inject({ method: 'GET', url: '/healthz' })).statusCode, 200);
