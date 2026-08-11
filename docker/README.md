@@ -9,9 +9,15 @@ Single-host deployment for the non-custodial TON launch profile. The backend nev
 3. Run `docker compose -f docker/compose.yml config`, then `docker compose -f docker/compose.yml up -d --build`.
 4. Verify `https://api.yohi.io/healthz` and `https://api.yohi.io/readyz`.
 
-For local Android development when ports 80/443 are already occupied, set `API_DOMAIN=:80`,
-`HTTP_PORT=8080`, and `HTTPS_PORT=8443`. This intentionally serves plain HTTP for Debug builds:
-the emulator uses `http://10.0.2.2:8080`, while a physical device uses the host LAN address.
+For local Android development, start Caddy in explicit HTTP mode on port 8080:
+
+```sh
+API_ADDRESS=http://:80 HTTP_PORT=8080 HTTPS_PORT=8443 \
+  docker compose -f docker/compose.yml up -d --force-recreate caddy
+```
+
+Debug builds permit cleartext traffic. The emulator uses `http://10.0.2.2:8080`; a physical
+device uses `http://<host-lan-ip>:8080`. Keep the production default `https://api.yohi.io`.
 
 Recommended capacity is 4 vCPU and 8 GB RAM; 2 vCPU and 4 GB RAM is the minimum. Provider credentials remain server-side. Caddy access logs omit the URI, headers, request body, and full client IP.
 

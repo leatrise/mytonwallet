@@ -35,7 +35,8 @@ function parsePercent(value: string | undefined) {
 
 function tonApiSlug(token: string) {
   // The client asset catalog uses the first ten lowercase address characters.
-  return token === 'TON' ? 'toncoin' : `ton-${token.toLowerCase().slice(0, 10)}`;
+  const addressPart = token.replace(/[^a-z\d]/gi, '').slice(0, 10).toLowerCase();
+  return token === 'TON' ? 'toncoin' : `ton-${addressPart}`;
 }
 
 export function normalizePriceResponse(body: unknown): PriceSnapshot | undefined {

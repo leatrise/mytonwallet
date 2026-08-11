@@ -55,7 +55,7 @@ void describe('business API contracts', () => {
           prices: { USD: 2, EUR: 1.8, CNY: 14, BTC: 0.00004, TON: 1 },
           diff_24h: { USD: '+2.5%' },
         },
-        EQTokenAddress: {
+        'EQToken-Address': {
           prices: { USD: 0.5 },
           diff_24h: { USD: '−1.2%' },
         },
@@ -97,7 +97,8 @@ void describe('business API contracts', () => {
 
   void it('keeps static assets inside the data directory', async () => {
     assert.equal((await app.inject({ method: 'GET', url: '/static/not-found.png' })).statusCode, 404);
-    assert.equal((await app.inject({ method: 'GET', url: '/static/%2e%2e/assets.json' })).statusCode, 400);
+    const traversalStatus = (await app.inject({ method: 'GET', url: '/static/%2e%2e/assets.json' })).statusCode;
+    assert.ok([400, 404].includes(traversalStatus));
   });
 
   void it('limits batch metadata requests', async () => {

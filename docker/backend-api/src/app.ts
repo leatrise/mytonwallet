@@ -4,7 +4,7 @@ import websocket from '@fastify/websocket';
 import { Address } from '@ton/core';
 import Fastify from 'fastify';
 import { readFile, stat } from 'node:fs/promises';
-import { join, normalize } from 'node:path';
+import { isAbsolute, relative, resolve, sep } from 'node:path';
 import WebSocket from 'ws';
 
 import type { ContentProxy } from './contentProxy.js';
@@ -69,9 +69,10 @@ export async function buildApp(deps: Dependencies) {
 
   app.get<{ Params: { '*': string } }>('/static/*', async (request, reply) => {
     const relativePath = request.params['*'];
-    const staticRoot = normalize(`${deps.dataDir}/static`);
-    const filePath = normalize(join(staticRoot, relativePath));
-    if (!filePath.startsWith(`${staticRoot}/`)) {
+    const staticRoot = resolve(deps.dataDir, 'static');
+    const filePath = resolve(staticRoot, relativePath);
+    const pathFromRoot = relative(staticRoot, filePath);
+    if (pathFromRoot === '..' || pathFromRoot.startsWith(`..${sep}`) || isAbsolute(pathFromRoot)) {
       return reply.code(400).send({ error: 'Invalid static asset path' });
     }
 

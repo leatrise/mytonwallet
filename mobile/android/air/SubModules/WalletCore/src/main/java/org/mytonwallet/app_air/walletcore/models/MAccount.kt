@@ -200,7 +200,8 @@ class MAccount(
 
     val supportsBuyWithCard: Boolean
         get() {
-            return isMainnet && accountType != AccountType.VIEW
+            // Fiat ramps stay disabled while this deployment has no signed on/off-ramp URL service.
+            return false
         }
 
     val supportsBuyWithCrypto: Boolean

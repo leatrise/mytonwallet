@@ -11,7 +11,7 @@
 	}
 }
 
-{$API_DOMAIN:api.yohi.io} {
+{$API_ADDRESS:https://api.yohi.io} {
 	encode zstd gzip
 
 	header {

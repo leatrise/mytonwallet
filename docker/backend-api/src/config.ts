@@ -30,7 +30,10 @@ export const runtimeConfig = {
   valkeyUrl: env('VALKEY_URL', 'redis://valkey:6379/0'),
   allowedOrigins: env('ALLOWED_ORIGINS', 'https://yohi.io,capacitor://localhost,http://localhost')
     .split(',').map((x) => x.trim()).filter(Boolean),
-  priceUrl: env('PRICE_URL'),
+  priceUrl: env(
+    'PRICE_URL',
+    'https://tonapi.io/v2/rates?tokens=ton,EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs,EQAs-hZL3-36FyP7C0y36sgXLBzhVwBwXaOVOrwtmSPs9S1K&currencies=usd,eur,rub,cny,btc,ton',
+  ),
   priceChartUrl: env('PRICE_CHART_URL', 'https://tonapi.io/v2/rates/chart'),
   priceApiKey: env('PRICE_API_KEY'),
   requestTimeoutMs: Number(env('UPSTREAM_TIMEOUT_MS', '8000')),

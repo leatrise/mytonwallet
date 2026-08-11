@@ -156,7 +156,8 @@ function requestPinned(
         'accept-encoding': 'identity',
         'user-agent': 'Yohi-Content-Proxy/1.0',
       },
-      lookup: (_hostname, _options, callback) => callback(undefined, resolved.address, resolved.family),
+      // eslint-disable-next-line no-null/no-null
+      lookup: (_hostname, _options, callback) => callback(null, resolved.address, resolved.family),
       signal: AbortSignal.timeout(timeoutMs),
     }, (response) => {
       const contentLength = Number(firstHeader(response.headers['content-length']));

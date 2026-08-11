@@ -9,7 +9,7 @@ services:
       - "${HTTPS_PORT:-443}:443"
       - "${HTTPS_PORT:-443}:443/udp"
     environment:
-      API_DOMAIN: ${API_DOMAIN:-api.yohi.io}
+      API_ADDRESS: ${API_ADDRESS:-https://api.yohi.io}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
@@ -43,7 +43,7 @@ services:
     depends_on:
       valkey:
         condition: service_healthy
-    networks: [internal]
+    networks: [internal, outbound]
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:3000/healthz').then(r=>{if(!r.ok)process.exit(1)})"]
       interval: 15s
@@ -100,6 +100,7 @@ services:
 
 networks:
   edge: {}
+  outbound: {}
   internal:
     internal: true
 

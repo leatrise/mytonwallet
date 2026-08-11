@@ -391,8 +391,12 @@ export function isActivityUpdateFinal(update: DefaultActivitiesUpdate) {
 }
 
 function getSocketUrl(network: ApiNetwork) {
-  const url = new URL(NETWORK_CONFIG[network].toncenterUrl);
-  url.protocol = 'wss:';
+  return buildToncenterSocketUrl(NETWORK_CONFIG[network].toncenterUrl);
+}
+
+export function buildToncenterSocketUrl(baseUrl: string) {
+  const url = new URL(baseUrl);
+  url.protocol = url.protocol === 'http:' ? 'ws:' : 'wss:';
   url.pathname = `${url.pathname.replace(/\/$/, '')}/api/streaming/v2/ws`;
   addBackendHeadersToSocketUrl(url);
   return url;
