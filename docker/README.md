@@ -4,20 +4,26 @@ Single-host deployment for the non-custodial TON launch profile. The backend nev
 
 ## Deploy
 
-1. Point `api.yohi.io` at the host and open TCP 80/443 and UDP 443.
+1. In Cloudflare Zero Trust, create a remotely managed tunnel. Add public hostname
+   `wallet-api.yohi.io` with service URL `http://caddy:80`.
 2. Copy `backend.env.example` to `/opt/yohi/secrets/backend.env`, set mode `0600`, and add provider credentials.
-3. Run `docker compose -f docker/compose.yml config`, then `docker compose -f docker/compose.yml up -d --build`.
-4. Verify `https://api.yohi.io/healthz` and `https://api.yohi.io/readyz`.
+3. Create `/opt/yohi/secrets/cloudflared.env` with mode `0600` containing
+   `TUNNEL_TOKEN=<token shown by Cloudflare>`.
+4. Run `docker compose -f docker/compose.yml config`, then `docker compose -f docker/compose.yml up -d --build`.
+5. Verify `https://wallet-api.yohi.io/healthz` and `https://wallet-api.yohi.io/readyz`.
 
-For local Android development, start Caddy in explicit HTTP mode on port 8080:
+The host publishes no application ports and needs no inbound 80/443 firewall rules.
+`cloudflared` connects outbound to Cloudflare, while Caddy accepts HTTP only inside
+the Docker `edge` network. TLS terminates at Cloudflare.
+
+For local Android development, publish Caddy on port 8080 with the local override:
 
 ```sh
-API_ADDRESS=http://:80 HTTP_PORT=8080 HTTPS_PORT=8443 \
-  docker compose -f docker/compose.yml up -d --force-recreate caddy
+docker compose -f docker/compose.yml -f docker/compose.local.yml up -d --force-recreate caddy
 ```
 
 Debug builds permit cleartext traffic. The emulator uses `http://10.0.2.2:8080`; a physical
-device uses `http://<host-lan-ip>:8080`. Keep the production default `https://api.yohi.io`.
+device uses `http://<host-lan-ip>:8080`. Keep the production default `https://wallet-api.yohi.io`.
 
 Recommended capacity is 4 vCPU and 8 GB RAM; 2 vCPU and 4 GB RAM is the minimum. Provider credentials remain server-side. Caddy access logs omit the URI, headers, request body, and full client IP.
 
@@ -35,7 +41,7 @@ hidden until provider credentials and URL-signing rules are configured.
 
 ## Static assets
 
-Put public images and other immutable files under `docker/backend-api/data/static`. They are copied into the backend image and served at `https://api.yohi.io/static/<relative-path>` with a one-year immutable cache. Use content-hashed filenames when replacing files, for example `tokens/yohi.a1b2c3.webp`, so clients do not retain an older image.
+Put public images and other immutable files under `docker/backend-api/data/static`. They are copied into the backend image and served at `https://wallet-api.yohi.io/static/<relative-path>` with a one-year immutable cache. Use content-hashed filenames when replacing files, for example `tokens/yohi.a1b2c3.webp`, so clients do not retain an older image.
 
 After adding or changing an asset, rebuild the backend image with `docker compose -f docker/compose.yml up -d --build backend-api`. Do not put secrets or user uploads in this directory; everything below `/static/` is public.
 

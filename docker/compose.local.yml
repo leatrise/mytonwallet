@@ -1,0 +1,7 @@
+services:
+  cloudflared:
+    profiles: [cloudflare]
+
+  caddy:
+    ports:
+      - "8080:80"

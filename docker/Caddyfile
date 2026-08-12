@@ -1,7 +1,7 @@
 {
-	email ops@yohi.io
+	auto_https off
 	servers {
-		protocols h1 h2 h3
+		protocols h1 h2
 		timeouts {
 			read_body 15s
 			read_header 10s
@@ -11,11 +11,10 @@
 	}
 }
 
-{$API_ADDRESS:https://api.yohi.io} {
+:80 {
 	encode zstd gzip
 
 	header {
-		Strict-Transport-Security "max-age=31536000; includeSubDomains"
 		X-Content-Type-Options "nosniff"
 		X-Frame-Options "DENY"
 		Referrer-Policy "no-referrer"
