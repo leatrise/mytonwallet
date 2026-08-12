@@ -10,7 +10,7 @@
     {
       "url": "https://getgems.io/",
       "name": "Getgems",
-      "icon": "https://static.mytonwallet.org/explore-icons/getgems.jpg",
+      "icon": "https://api.yohi.io/static/explore-icons/getgems.jpg",
       "description": "The first NFT marketplace on TON",
       "canBeRestricted": false,
       "isExternal": false,
@@ -21,7 +21,7 @@
     {
       "url": "https://fragment.com/",
       "name": "Fragment",
-      "icon": "https://static.mytonwallet.org/explore-icons/fragment.png",
+      "icon": "https://api.yohi.io/static/explore-icons/fragment.png",
       "manifestUrl": "https://fragment.com/tonconnect-manifest.json",
       "description": "Telegram Premium subscriptions, anonymous numbers and usernames",
       "canBeRestricted": false,
@@ -33,7 +33,7 @@
     {
       "url": "https://app.storm.tg/",
       "name": "Storm Trade",
-      "icon": "https://static.mytonwallet.org/explore-icons/storm.jpg",
+      "icon": "https://api.yohi.io/static/explore-icons/storm.jpg",
       "description": "Leveraged DEX to trade on TON",
       "canBeRestricted": true,
       "isExternal": false,
@@ -43,7 +43,7 @@
     {
       "url": "https://app.evaa.finance/",
       "name": "EVAA Protocol",
-      "icon": "https://static.mytonwallet.org/explore-icons/evaa.png",
+      "icon": "https://api.yohi.io/static/explore-icons/evaa.png",
       "description": "Lending protocol on TON",
       "canBeRestricted": true,
       "isExternal": false,
@@ -52,7 +52,7 @@
     {
       "url": "https://dns.ton.org/",
       "name": "TON Domains",
-      "icon": "https://static.mytonwallet.org/explore-icons/ton.jpg",
+      "icon": "https://api.yohi.io/static/explore-icons/ton.jpg",
       "description": "Secure your unique TON domain name",
       "canBeRestricted": false,
       "isExternal": false,
@@ -62,7 +62,7 @@
     {
       "url": "https://tonscan.org/",
       "name": "Tonscan",
-      "icon": "https://static.mytonwallet.org/explore-icons/tonscan.png",
+      "icon": "https://api.yohi.io/static/explore-icons/ton_scan.png",
       "description": "The most powerful TON explorer",
       "canBeRestricted": false,
       "isExternal": false,
@@ -71,7 +71,7 @@
     {
       "url": "https://ton.app/",
       "name": "TON App",
-      "icon": "https://static.mytonwallet.org/explore-icons/ton_app.png",
+      "icon": "https://api.yohi.io/static/explore-icons/ton_app.png",
       "description": "Discover top TON apps and services",
       "canBeRestricted": false,
       "isExternal": false,
@@ -80,7 +80,7 @@
     {
       "url": "https://t.me/catizenbot",
       "name": "Catizen",
-      "icon": "https://static.mytonwallet.org/explore-icons/catizen.jpg",
+      "icon": "https://api.yohi.io/static/explore-icons/catizen.jpg",
       "description": "A popular game in the TON ecosystem",
       "canBeRestricted": false,
       "isExternal": true,

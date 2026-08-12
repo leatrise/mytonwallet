@@ -1,5 +1,9 @@
 import { buildToncenterSocketUrl } from './socket';
 
+jest.mock('../../../common/backend', () => ({
+  addBackendHeadersToSocketUrl: jest.fn(),
+}));
+
 describe('buildToncenterSocketUrl', () => {
   it.each([
     ['http://192.168.1.45:8080/toncenter/mainnet', 'ws:'],

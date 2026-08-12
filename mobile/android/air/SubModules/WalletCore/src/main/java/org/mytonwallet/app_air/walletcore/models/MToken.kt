@@ -84,7 +84,7 @@ class MToken(json: JSONObject) : IApiToken, WEquatable<MToken> {
         // TODO:: Remove this temporary fix for usdt on trc20 after image added to back-end services.
         if (slug == TRON_USDT_SLUG) {
             image =
-                "https://cache.tonapi.io/imgproxy/T3PB4s7oprNVaJkwqbGg54nexKE0zzKhcrPv8jcWYzU/rs:fill:200:200:1/g:no/aHR0cHM6Ly90ZXRoZXIudG8vaW1hZ2VzL2xvZ29DaXJjbGUucG5n.webp"
+                "https://api.yohi.io/static/tokens/usdt.webp"
         }
     }
 

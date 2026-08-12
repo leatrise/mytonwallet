@@ -32,13 +32,13 @@ import org.mytonwallet.app_air.walletcore.models.MToken
 internal object DefaultTokens {
 
     private const val TON_USDT_MAINNET_IMAGE =
-        "https://imgproxy.mytonwallet.org/imgproxy/T3PB4s7oprNVaJkwqbGg54nexKE0zzKhcrPv8jcWYzU/rs:fill:200:200:1/g:no/aHR0cHM6Ly90ZXRoZXIudG8vaW1hZ2VzL2xvZ29DaXJjbGUucG5n.webp"
+        "https://api.yohi.io/static/tokens/usdt.webp"
     private const val SOLANA_USDC_MAINNET_IMAGE =
         "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png"
     private const val USDE_IMAGE =
-        "https://imgproxy.toncenter.com/binMwUmcnFtjvgjp4wSEbsECXwfXUwbPkhVvsvpubNw/pr:small/aHR0cHM6Ly9tZXRhZGF0YS5sYXllcnplcm8tYXBpLmNvbS9hc3NldHMvVVNEZS5wbmc"
+        "https://api.yohi.io/static/tokens/usde.png"
     private const val TSUSDE_IMAGE =
-        "https://cache.tonapi.io/imgproxy/vGZJ7erwsWPo7DpVG_V7ygNn7VGs0szZXcNLHB_l0ms/rs:fill:200:200:1/g:no/aHR0cHM6Ly9tZXRhZGF0YS5sYXllcnplcm8tYXBpLmNvbS9hc3NldHMvdHNVU0RlLnBuZw.webp"
+        "https://api.yohi.io/static/tokens/tsusde.webp"
 
     private fun token(
         slug: String,

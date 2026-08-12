@@ -565,7 +565,7 @@ export const TON_USDT_MAINNET = {
   slug: 'ton-eqcxe6mutq',
   decimals: 6,
   tokenAddress: 'EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs',
-  image: 'https://imgproxy.mytonwallet.org/imgproxy/T3PB4s7oprNVaJkwqbGg54nexKE0zzKhcrPv8jcWYzU/rs:fill:200:200:1/g:no/aHR0cHM6Ly90ZXRoZXIudG8vaW1hZ2VzL2xvZ29DaXJjbGUucG5n.webp',
+  image: 'https://api.yohi.io/static/tokens/usdt.webp',
   label: 'TON',
   priceUsd: 1,
 } as const;
@@ -585,7 +585,7 @@ export const TON_USDE = {
   tokenAddress: 'EQAIb6KmdfdDR7CN1GBqVJuP25iCnLKCvBlJ07Evuu2dzP5f',
   slug: 'ton-eqaib6kmdf',
   decimals: 6,
-  image: 'https://imgproxy.toncenter.com/binMwUmcnFtjvgjp4wSEbsECXwfXUwbPkhVvsvpubNw/pr:small/aHR0cHM6Ly9tZXRhZGF0YS5sYXllcnplcm8tYXBpLmNvbS9hc3NldHMvVVNEZS5wbmc',
+  image: 'https://api.yohi.io/static/tokens/usde.png',
 } as const;
 
 export const TON_TSUSDE = {
@@ -595,7 +595,7 @@ export const TON_TSUSDE = {
   tokenAddress: 'EQDQ5UUyPHrLcQJlPAczd_fjxn8SLrlNQwolBznxCdSlfQwr',
   slug: 'ton-eqdq5uuyph',
   decimals: 6,
-  image: 'https://cache.tonapi.io/imgproxy/vGZJ7erwsWPo7DpVG_V7ygNn7VGs0szZXcNLHB_l0ms/rs:fill:200:200:1/g:no/aHR0cHM6Ly9tZXRhZGF0YS5sYXllcnplcm8tYXBpLmNvbS9hc3NldHMvdHNVU0RlLnBuZw.webp',
+  image: 'https://api.yohi.io/static/tokens/tsusde.webp',
 } as const;
 
 export const SOLANA_USDT_MAINNET = {
@@ -606,7 +606,7 @@ export const SOLANA_USDT_MAINNET = {
   slug: 'solana-es9vmfrzac',
   tokenAddress: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
   label: 'SOL',
-  image: 'https://imgproxy.mytonwallet.org/imgproxy/T3PB4s7oprNVaJkwqbGg54nexKE0zzKhcrPv8jcWYzU/rs:fill:200:200:1/g:no/aHR0cHM6Ly90ZXRoZXIudG8vaW1hZ2VzL2xvZ29DaXJjbGUucG5n.webp',
+  image: 'https://api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 
@@ -630,7 +630,7 @@ export const ETH_USDT_MAINNET = {
   slug: 'ethereum-0xdac17f95',
   tokenAddress: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
   label: 'ERC-20',
-  image: 'https://imgproxy.mytonwallet.org/imgproxy/T3PB4s7oprNVaJkwqbGg54nexKE0zzKhcrPv8jcWYzU/rs:fill:200:200:1/g:no/aHR0cHM6Ly90ZXRoZXIudG8vaW1hZ2VzL2xvZ29DaXJjbGUucG5n.webp',
+  image: 'https://api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 
@@ -654,7 +654,7 @@ export const BASE_USDT_MAINNET = {
   slug: 'base-0xfde4c96c',
   tokenAddress: '0xfde4C96c8593536E31F229EA8f37b2ADa2699bb2',
   label: 'ERC-20',
-  image: 'https://imgproxy.mytonwallet.org/imgproxy/T3PB4s7oprNVaJkwqbGg54nexKE0zzKhcrPv8jcWYzU/rs:fill:200:200:1/g:no/aHR0cHM6Ly90ZXRoZXIudG8vaW1hZ2VzL2xvZ29DaXJjbGUucG5n.webp',
+  image: 'https://api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 
@@ -690,7 +690,7 @@ export const BSC_USDT_MAINNET = {
   slug: 'bnb-0x55d39832',
   tokenAddress: '0x55d398326f99059ff775485246999027b3197955',
   label: 'BEP-20',
-  image: 'https://imgproxy.mytonwallet.org/imgproxy/T3PB4s7oprNVaJkwqbGg54nexKE0zzKhcrPv8jcWYzU/rs:fill:200:200:1/g:no/aHR0cHM6Ly90ZXRoZXIudG8vaW1hZ2VzL2xvZ29DaXJjbGUucG5n.webp',
+  image: 'https://api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 
@@ -702,7 +702,7 @@ export const AVALANCHE_USDT_MAINNET = {
   slug: 'avalanche-0x9702230a',
   tokenAddress: '0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7',
   label: 'ERC-20',
-  image: 'https://imgproxy.mytonwallet.org/imgproxy/T3PB4s7oprNVaJkwqbGg54nexKE0zzKhcrPv8jcWYzU/rs:fill:200:200:1/g:no/aHR0cHM6Ly90ZXRoZXIudG8vaW1hZ2VzL2xvZ29DaXJjbGUucG5n.webp',
+  image: 'https://api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 

@@ -3,7 +3,7 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 import type { Network, Provider, Upstream, Upstreams } from './types.js';
 
 const ALLOWED: Record<Provider, RegExp> = {
-  toncenter: /^\/(?:api\/v2\/[A-Za-z][\w-]*|api\/v3\/(?:accountStates|actions|addressBook|jettonMasters|jettonWallets|messages|metadata|nftCollections|nftItems|pendingActions|pendingTraces|traces|transactions|walletStates)(?:\/[^/?#]+)?|api\/emulate\/v1\/emulateTrace|api\/streaming\/v2\/ws)\/?$/,
+  toncenter: /^\/(?:api\/v2\/[A-Za-z][\w-]*|api\/v3\/(?:accountStates|actions|addressBook|jetton\/wallets|jettonMasters|jettonWallets|messages|metadata|nftCollections|nftItems|pendingActions|pendingTraces|traces|transactions|walletStates)(?:\/[^/?#]+)?|api\/emulate\/v1\/emulateTrace|api\/streaming\/v2\/ws)\/?$/,
   tonapi: /^\/v2\/(?:accounts|blockchain|dns|events|gasless|jettons|lite-server|nfts|rates|status|traces|wallet)(?:\/[^?#]*)?$/,
 };
 

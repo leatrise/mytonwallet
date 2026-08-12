@@ -78,6 +78,10 @@ void describe('business API contracts', () => {
     assert.equal(typeof assets[0].slug, 'string');
     assert.equal(typeof assets[0].priceUsd, 'number');
     assert.equal(typeof assets[0].percentChange24h, 'number');
+
+    const swapAssets = await app.inject({ method: 'GET', url: '/swap/assets' });
+    assert.equal(swapAssets.statusCode, 200);
+    assert.deepEqual(swapAssets.json(), assets);
   });
 
   void it('returns the DApp catalog in the client shape', async () => {
@@ -239,6 +243,9 @@ void describe('proxy boundary', () => {
       })).statusCode, 200);
       assert.equal((await app.inject({
         method: 'GET', url: '/toncenter/mainnet/api/v3/pendingTraces?ext_msg_hash=test',
+      })).statusCode, 200);
+      assert.equal((await app.inject({
+        method: 'GET', url: '/toncenter/mainnet/api/v3/jetton/wallets?owner_address=test',
       })).statusCode, 200);
     } finally {
       globalThis.fetch = originalFetch;

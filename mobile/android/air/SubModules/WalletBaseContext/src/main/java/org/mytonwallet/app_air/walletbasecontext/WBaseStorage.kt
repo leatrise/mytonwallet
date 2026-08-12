@@ -72,6 +72,7 @@ object WBaseStorage {
 
     fun getDebugBackendBaseUrl(): String? {
         return sharedPreferences.getString(CACHE_DEBUG_BACKEND_BASE_URL, null)
+            ?: if (DEBUG_MODE) DEFAULT_DEBUG_BACKEND_BASE_URL else null
     }
 
     fun setDebugBackendBaseUrl(value: String?) {
@@ -102,4 +103,6 @@ object WBaseStorage {
             }
         }
     }
+
+    private const val DEFAULT_DEBUG_BACKEND_BASE_URL = "http://10.0.2.2:8080"
 }

@@ -58,14 +58,16 @@ export async function buildApp(deps: Dependencies) {
     return reply.code(valkey && configuredUpstreams ? 200 : 503).send({ ok: valkey && configuredUpstreams, valkey, upstreams: configuredUpstreams });
   });
 
-  app.get('/assets', async () => {
+  const getAssets = async () => {
     const snapshot = await deps.prices.get();
     return assetsFile.assets.map((asset) => ({
       ...asset,
       priceUsd: snapshot?.prices[String(asset.slug)]?.priceUsd ?? 0,
       percentChange24h: snapshot?.prices[String(asset.slug)]?.percentChange24h ?? 0,
     }));
-  });
+  };
+  app.get('/assets', getAssets);
+  app.get('/swap/assets', getAssets);
 
   app.get<{ Params: { '*': string } }>('/static/*', async (request, reply) => {
     const relativePath = request.params['*'];
