@@ -451,7 +451,7 @@ class DebugMenuVC(context: Context) : WViewController(context) {
                 setBackgroundColor(WColor.SecondaryBackground.color, 10f.dp)
             }
         }.apply {
-            hint = "https://api.yohi.io"
+            hint = "https://wallet-api.yohi.io"
             setText(WBaseStorage.getDebugBackendBaseUrl().orEmpty())
             setSelection(text?.length ?: 0)
         }

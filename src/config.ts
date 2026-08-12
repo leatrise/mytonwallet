@@ -164,25 +164,25 @@ export const MAIN_ACCOUNT_ID = '0-ton-mainnet';
 export const TEMPORARY_ACCOUNT_NAME = 'Wallet';
 
 export const DEBUG_BACKEND_BASE_URL = getDebugBackendBaseUrl();
-const DEFAULT_BACKEND_BASE_URL = process.env.BRILLIANT_API_BASE_URL || 'https://api.yohi.io';
+const DEFAULT_BACKEND_BASE_URL = process.env.BRILLIANT_API_BASE_URL || 'https://wallet-api.yohi.io';
 
 export const TONCENTER_MAINNET_URL = DEBUG_BACKEND_BASE_URL
   ? `${DEBUG_BACKEND_BASE_URL}/toncenter/mainnet`
-  : process.env.TONCENTER_MAINNET_URL || 'https://api.yohi.io/toncenter/mainnet';
+  : process.env.TONCENTER_MAINNET_URL || 'https://wallet-api.yohi.io/toncenter/mainnet';
 export const TONCENTER_MAINNET_KEY = process.env.TONCENTER_MAINNET_KEY;
 export const ELECTRON_TONCENTER_MAINNET_KEY = process.env.ELECTRON_TONCENTER_MAINNET_KEY;
 export const TONAPIIO_MAINNET_URL = DEBUG_BACKEND_BASE_URL
   ? `${DEBUG_BACKEND_BASE_URL}/tonapi/mainnet`
-  : process.env.TONAPIIO_MAINNET_URL || 'https://api.yohi.io/tonapi/mainnet';
+  : process.env.TONAPIIO_MAINNET_URL || 'https://wallet-api.yohi.io/tonapi/mainnet';
 
 export const TONCENTER_TESTNET_URL = DEBUG_BACKEND_BASE_URL
   ? `${DEBUG_BACKEND_BASE_URL}/toncenter/testnet`
-  : process.env.TONCENTER_TESTNET_URL || 'https://api.yohi.io/toncenter/testnet';
+  : process.env.TONCENTER_TESTNET_URL || 'https://wallet-api.yohi.io/toncenter/testnet';
 export const TONCENTER_TESTNET_KEY = process.env.TONCENTER_TESTNET_KEY;
 export const ELECTRON_TONCENTER_TESTNET_KEY = process.env.ELECTRON_TONCENTER_TESTNET_KEY;
 export const TONAPIIO_TESTNET_URL = DEBUG_BACKEND_BASE_URL
   ? `${DEBUG_BACKEND_BASE_URL}/tonapi/testnet`
-  : process.env.TONAPIIO_TESTNET_URL || 'https://api.yohi.io/tonapi/testnet';
+  : process.env.TONAPIIO_TESTNET_URL || 'https://wallet-api.yohi.io/tonapi/testnet';
 
 export const BRILLIANT_API_BASE_URL = DEBUG_BACKEND_BASE_URL || DEFAULT_BACKEND_BASE_URL;
 export const PROXY_API_BASE_URL = DEBUG_BACKEND_BASE_URL
@@ -191,7 +191,7 @@ export const PROXY_API_BASE_URL = DEBUG_BACKEND_BASE_URL
 export const IPFS_GATEWAY_BASE_URL = 'https://ipfs.io/ipfs/';
 export const SSE_BRIDGE_URL = DEBUG_BACKEND_BASE_URL
   ? `${DEBUG_BACKEND_BASE_URL}/bridge/`
-  : process.env.SSE_BRIDGE_URL || 'https://api.yohi.io/bridge/';
+  : process.env.SSE_BRIDGE_URL || 'https://wallet-api.yohi.io/bridge/';
 
 export const TON_CONNECT_ANALYTICS_URL = 'https://analytics.ton.org';
 
@@ -565,7 +565,7 @@ export const TON_USDT_MAINNET = {
   slug: 'ton-eqcxe6mutq',
   decimals: 6,
   tokenAddress: 'EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs',
-  image: 'https://api.yohi.io/static/tokens/usdt.webp',
+  image: 'https://wallet-api.yohi.io/static/tokens/usdt.webp',
   label: 'TON',
   priceUsd: 1,
 } as const;
@@ -585,7 +585,7 @@ export const TON_USDE = {
   tokenAddress: 'EQAIb6KmdfdDR7CN1GBqVJuP25iCnLKCvBlJ07Evuu2dzP5f',
   slug: 'ton-eqaib6kmdf',
   decimals: 6,
-  image: 'https://api.yohi.io/static/tokens/usde.png',
+  image: 'https://wallet-api.yohi.io/static/tokens/usde.png',
 } as const;
 
 export const TON_TSUSDE = {
@@ -595,7 +595,7 @@ export const TON_TSUSDE = {
   tokenAddress: 'EQDQ5UUyPHrLcQJlPAczd_fjxn8SLrlNQwolBznxCdSlfQwr',
   slug: 'ton-eqdq5uuyph',
   decimals: 6,
-  image: 'https://api.yohi.io/static/tokens/tsusde.webp',
+  image: 'https://wallet-api.yohi.io/static/tokens/tsusde.webp',
 } as const;
 
 export const SOLANA_USDT_MAINNET = {
@@ -606,7 +606,7 @@ export const SOLANA_USDT_MAINNET = {
   slug: 'solana-es9vmfrzac',
   tokenAddress: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
   label: 'SOL',
-  image: 'https://api.yohi.io/static/tokens/usdt.webp',
+  image: 'https://wallet-api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 
@@ -630,7 +630,7 @@ export const ETH_USDT_MAINNET = {
   slug: 'ethereum-0xdac17f95',
   tokenAddress: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
   label: 'ERC-20',
-  image: 'https://api.yohi.io/static/tokens/usdt.webp',
+  image: 'https://wallet-api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 
@@ -654,7 +654,7 @@ export const BASE_USDT_MAINNET = {
   slug: 'base-0xfde4c96c',
   tokenAddress: '0xfde4C96c8593536E31F229EA8f37b2ADa2699bb2',
   label: 'ERC-20',
-  image: 'https://api.yohi.io/static/tokens/usdt.webp',
+  image: 'https://wallet-api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 
@@ -690,7 +690,7 @@ export const BSC_USDT_MAINNET = {
   slug: 'bnb-0x55d39832',
   tokenAddress: '0x55d398326f99059ff775485246999027b3197955',
   label: 'BEP-20',
-  image: 'https://api.yohi.io/static/tokens/usdt.webp',
+  image: 'https://wallet-api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 
@@ -702,7 +702,7 @@ export const AVALANCHE_USDT_MAINNET = {
   slug: 'avalanche-0x9702230a',
   tokenAddress: '0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7',
   label: 'ERC-20',
-  image: 'https://api.yohi.io/static/tokens/usdt.webp',
+  image: 'https://wallet-api.yohi.io/static/tokens/usdt.webp',
   priceUsd: 1,
 } as const;
 

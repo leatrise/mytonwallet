@@ -217,7 +217,7 @@ function SettingsDeveloperOptions({
           <div className={styles.backendOverride}>
             <Input
               label="Backend URL"
-              placeholder="https://api.yohi.io"
+              placeholder="https://wallet-api.yohi.io"
               value={backendBaseUrl}
               error={isBackendBaseUrlInvalid ? 'Enter an HTTP or HTTPS base URL' : undefined}
               autoCapitalize="off"

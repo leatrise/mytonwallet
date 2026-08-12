@@ -32,13 +32,13 @@ import org.mytonwallet.app_air.walletcore.models.MToken
 internal object DefaultTokens {
 
     private const val TON_USDT_MAINNET_IMAGE =
-        "https://api.yohi.io/static/tokens/usdt.webp"
+        "https://wallet-api.yohi.io/static/tokens/usdt.webp"
     private const val SOLANA_USDC_MAINNET_IMAGE =
         "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png"
     private const val USDE_IMAGE =
-        "https://api.yohi.io/static/tokens/usde.png"
+        "https://wallet-api.yohi.io/static/tokens/usde.png"
     private const val TSUSDE_IMAGE =
-        "https://api.yohi.io/static/tokens/tsusde.webp"
+        "https://wallet-api.yohi.io/static/tokens/tsusde.webp"
 
     private fun token(
         slug: String,

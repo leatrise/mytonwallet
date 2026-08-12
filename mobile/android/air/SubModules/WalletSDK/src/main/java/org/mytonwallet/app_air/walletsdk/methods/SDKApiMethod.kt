@@ -97,6 +97,6 @@ sealed class SDKApiMethod<T> {
     }
 
     companion object {
-        private const val DEFAULT_BACKEND_BASE_URL = "https://api.yohi.io"
+        private const val DEFAULT_BACKEND_BASE_URL = "https://wallet-api.yohi.io"
     }
 }
