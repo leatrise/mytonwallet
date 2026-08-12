@@ -90,6 +90,7 @@ export class BalanceStream {
 
   #updateListeners = createCallbackManager<OnBalancesUpdate>();
   #loadingListeners = createCallbackManager<OnLoadingChange>();
+  #isLoading = false;
 
   #fetchBalancesCb: (
     network: ApiNetwork,
@@ -199,6 +200,7 @@ export class BalanceStream {
     this.#isDestroyed = true;
     this.#walletWatcher.destroy();
     this.#fallbackPollingScheduler?.destroy();
+    this.#setLoading(false);
   }
 
   public markWalletActiveAndForcePoll() {
@@ -268,7 +270,7 @@ export class BalanceStream {
   /** Fetches all balances when the socket is not connected or has just connected */
   #poll = async (isInitial?: boolean) => {
     try {
-      this.#loadingListeners.runCallbacks(true);
+      this.#setLoading(true);
 
       if (!this.#walletStatus) {
         const isEnsured = await this.#ensureIsPollingNeeded!();
@@ -331,11 +333,16 @@ export class BalanceStream {
       this.#setAllBalances(newBalances, pollVersion);
       this.#balancesDeferred.resolve();
     } finally {
-      if (!this.#isDestroyed) {
-        this.#loadingListeners.runCallbacks(false);
-      }
+      this.#setLoading(false);
     }
   };
+
+  #setLoading(isLoading: boolean) {
+    if (this.#isLoading === isLoading) return;
+
+    this.#isLoading = isLoading;
+    this.#loadingListeners.runCallbacks(isLoading);
+  }
 
   /**
    * Applies an HTTP poll snapshot as a version-gated merge rather than a blind full replace. A slug

@@ -112,6 +112,43 @@ describe('BalanceStream', () => {
     expect(fetchBalances).not.toHaveBeenCalled();
   });
 
+  it('clears the loading state when destroyed during a poll', async () => {
+    const watcher: WalletWatcher = {
+      isConnected: false,
+      destroy: jest.fn(),
+    };
+    const wsClient = {
+      watchWallets: jest.fn(() => watcher),
+    } as unknown as AbstractWebsocketClient<any, any, any, any, any>;
+    const pendingBalances = new Deferred<ApiBalanceBySlug>();
+    const loadingEvents: boolean[] = [];
+
+    const stream = new BalanceStream({
+      chain: 'ton',
+      wsClient,
+      network: 'mainnet',
+      address: 'UQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJKZ',
+      sendUpdateTokens: jest.fn(),
+      fallbackPollingOptions: POLLING_OPTIONS,
+      fetchBalancesCb: jest.fn(() => pendingBalances.promise),
+    });
+
+    stream.onLoadingChange((isLoading) => loadingEvents.push(isLoading));
+    stream.start();
+    await Promise.resolve();
+
+    expect(loadingEvents).toEqual([true]);
+
+    stream.destroy();
+    expect(loadingEvents).toEqual([true, false]);
+
+    pendingBalances.resolve({ toncoin: 123n });
+    await pendingBalances.promise;
+    await Promise.resolve();
+
+    expect(loadingEvents).toEqual([true, false]);
+  });
+
   it('does not re-check inactive wallets on scheduled polls', async () => {
     jest.useFakeTimers();
     const watcher: WalletWatcher = {

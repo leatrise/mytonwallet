@@ -68,6 +68,9 @@ export class RichActivityStream {
     for (const unsubscribe of this.#onDestroy) {
       unsubscribe();
     }
+
+    this.#isLoading.off('raw');
+    this.#isLoading.off('enrich');
   }
 
   #handleRawActivitiesUpdate: OnActivityUpdate = (confirmedActivities, pendingActivities) => {
