@@ -23,8 +23,7 @@ import { isNetWorthChartAvailable } from '../../util/assets/netWorth';
 import buildClassName from '../../util/buildClassName';
 import { captureEvents, SwipeDirection } from '../../util/captureEvents';
 import { getStakingStateStatus } from '../../util/staking';
-import {
-  IS_ELECTRON, IS_TOUCH_ENV, REM,
+import { IS_TOUCH_ENV, REM,
 } from '../../util/windowEnvironment';
 import { calcSafeAreaTop } from './helpers/calcSafeAreaTop';
 
@@ -48,7 +47,6 @@ import StakingClaimModal from '../staking/StakingClaimModal';
 import StakingInfoModal from '../staking/StakingInfoModal';
 import UnstakeModal from '../staking/UnstakeModal';
 import Transition from '../ui/Transition';
-import UpdateAvailable from '../ui/UpdateAvailable';
 import VestingModal from '../vesting/VestingModal';
 import VestingPasswordModal from '../vesting/VestingPasswordModal';
 import MainSkeleton from './MainSkeleton';
@@ -313,7 +311,6 @@ function Main({
       <RenewDomainModal />
       <LinkingDomainModal />
       <PromotionModal />
-      {!IS_ELECTRON && <UpdateAvailable />}
       {!IS_CORE_WALLET && <AccountSelectorModal />}
     </>
   );

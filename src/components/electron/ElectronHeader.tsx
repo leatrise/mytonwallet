@@ -7,8 +7,6 @@ import { IS_LINUX, IS_WINDOWS } from '../../util/windowEnvironment';
 import useElectronDrag from '../../hooks/useElectronDrag';
 import useLastCallback from '../../hooks/useLastCallback';
 
-import UpdateApp from './UpdateApp';
-
 import styles from './ElectronHeader.module.scss';
 
 type Props = {
@@ -50,7 +48,6 @@ function ElectronHeader({ children, withTitle }: Props) {
         {withTitle && <div className={styles.applicationName}>{APP_NAME}</div>}
 
         <div className={styles.buttons}>
-          <UpdateApp />
           {children}
         </div>
       </div>
