@@ -156,7 +156,7 @@ void describe('business API contracts', () => {
       const target = new URL(requestedUrl);
       assert.equal(target.searchParams.get('token'), 'ton');
       assert.equal(target.searchParams.get('currency'), 'usd');
-      assert.equal(target.searchParams.get('points_count'), '289');
+      assert.equal(target.searchParams.get('points_count'), '200');
 
       await service.getChart('ton:EQTokenAddress', '1D', 'USD');
       assert.equal(new URL(requestedUrl).searchParams.get('token'), 'EQTokenAddress');

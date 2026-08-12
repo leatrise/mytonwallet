@@ -7,14 +7,15 @@ import { selectCurrentAccount, selectCurrentAccountId } from '../../selectors';
 addActionHandler('loadPriceHistory', async (global, actions, payload) => {
   const { slug, period, currency = global.settings.baseCurrency } = payload ?? {};
 
-  const history = await callApi('fetchPriceHistory', slug, period, currency);
-
-  if (!history) {
-    return;
+  let history;
+  try {
+    history = await callApi('fetchPriceHistory', slug, period, currency);
+  } catch (err) {
+    logDebugError('loadPriceHistory', err);
   }
 
   global = getGlobal();
-  global = updateTokenPriceHistory(global, slug, { [period]: history });
+  global = updateTokenPriceHistory(global, slug, { [period]: history ?? [] });
   setGlobal(global);
 });
 

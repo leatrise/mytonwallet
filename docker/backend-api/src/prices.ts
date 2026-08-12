@@ -157,7 +157,7 @@ export class PriceService {
     target.searchParams.set('currency', base.toLowerCase());
     target.searchParams.set('start_date', String(Math.max(0, endDate - periodSeconds)));
     target.searchParams.set('end_date', String(endDate));
-    target.searchParams.set('points_count', '289');
+    target.searchParams.set('points_count', '200');
 
     try {
       const response = await fetch(target, {
