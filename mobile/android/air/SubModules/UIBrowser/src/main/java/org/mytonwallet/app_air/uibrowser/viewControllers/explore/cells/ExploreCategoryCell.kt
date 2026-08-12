@@ -134,10 +134,7 @@ class ExploreCategoryCell(
         val allImages = listOf(img1, img2, img3)
         for (i in allImages.indices) {
             allImages[i].setOnClickListener {
-                allImages.getOrNull(i)
-                category?.sites?.get(i)?.let {
-                    onSiteTap(it)
-                }
+                category?.visibleSites?.getOrNull(i)?.let(onSiteTap)
             }
         }
         otherSitesView.setOnClickListener {
@@ -190,9 +187,7 @@ class ExploreCategoryCell(
         category?.let {
             titleLabel.text = category.name
 
-            val sites = category.sites.filter {
-                ConfigStore.isLimited != true || !it.canBeRestricted
-            }
+            val sites = category.visibleSites
 
             if (sites.isNotEmpty()) img1.set(
                 Content.ofUrl(
@@ -225,6 +220,11 @@ class ExploreCategoryCell(
 
         updateTheme()
     }
+
+    private val MExploreCategory.visibleSites: List<MExploreSite>
+        get() = sites.filter {
+            ConfigStore.isLimited != true || !it.canBeRestricted
+        }
 
     override fun updateTheme() {
         arrayOf(img1Ripple, img2Ripple, img3Ripple).forEach {
