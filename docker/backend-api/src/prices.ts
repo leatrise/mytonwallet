@@ -27,6 +27,11 @@ const PERIOD_SECONDS: Record<string, number> = {
   ALL: 10 * 365 * 24 * 60 * 60,
 };
 
+function normalizeTonApiChartToken(assetId: string) {
+  const token = assetId.replace(/^ton:/i, '');
+  return token.toUpperCase() === 'TON' ? 'ton' : token;
+}
+
 function parsePercent(value: string | undefined) {
   if (!value) return 0;
   const parsed = Number(value.replace('%', '').replace('−', '-'));
@@ -148,7 +153,7 @@ export class PriceService {
 
     const endDate = Math.floor(Date.now() / 1000);
     const target = new URL(this.chartUrl);
-    target.searchParams.set('token', assetId.toUpperCase() === 'TON' ? 'ton' : assetId);
+    target.searchParams.set('token', normalizeTonApiChartToken(assetId));
     target.searchParams.set('currency', base.toLowerCase());
     target.searchParams.set('start_date', String(Math.max(0, endDate - periodSeconds)));
     target.searchParams.set('end_date', String(endDate));

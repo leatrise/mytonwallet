@@ -152,11 +152,17 @@ void describe('business API contracts', () => {
     };
     try {
       const service = new PriceService(cache, '', 'https://prices.example/v2/rates/chart', 'secret');
-      assert.deepEqual(await service.getChart('TON', '1D', 'USD'), [[1, 1.1], [2, 1.2]]);
+      assert.deepEqual(await service.getChart('ton:TON', '1D', 'USD'), [[1, 1.1], [2, 1.2]]);
       const target = new URL(requestedUrl);
       assert.equal(target.searchParams.get('token'), 'ton');
       assert.equal(target.searchParams.get('currency'), 'usd');
       assert.equal(target.searchParams.get('points_count'), '289');
+
+      await service.getChart('ton:EQTokenAddress', '1D', 'USD');
+      assert.equal(new URL(requestedUrl).searchParams.get('token'), 'EQTokenAddress');
+
+      await service.getChart('EQTokenAddress', '1D', 'USD');
+      assert.equal(new URL(requestedUrl).searchParams.get('token'), 'EQTokenAddress');
     } finally {
       globalThis.fetch = originalFetch;
     }
