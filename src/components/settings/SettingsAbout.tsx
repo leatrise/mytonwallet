@@ -9,11 +9,9 @@ import {
   IS_EXTENSION,
   MY_WALLET_PROMO_URL,
 } from '../../config';
-import { getHelpCenterUrl } from '../../global/helpers/getHelpCenterUrl';
 import renderText from '../../global/helpers/renderText';
 import buildClassName from '../../util/buildClassName';
-import { handleUrlClick } from '../../util/openUrl';
-import { getBlogUrl, getTelegramNewsChannelUrl, getTelegramTipsChannelUrl } from '../../util/url';
+import { getTelegramNewsChannelUrl } from '../../util/url';
 
 import { useDeviceScreen } from '../../hooks/useDeviceScreen';
 import useHistoryBack from '../../hooks/useHistoryBack';
@@ -27,9 +25,8 @@ import activityStyles from '../main/sections/Content/Activity.module.scss';
 import styles from './Settings.module.scss';
 
 import logoWebpPath from '../../assets/logo.webp';
-import helpcenterImg from '../../assets/settings/settings_helpcenter.svg';
-import hotImg from '../../assets/settings/settings_hot.svg';
-import videoImg from '../../assets/settings/settings_video.svg';
+
+const WEBSITE_ABOUT_URL = 'https://yohi.io/#/about';
 
 interface OwnProps {
   isActive?: boolean;
@@ -71,7 +68,7 @@ function SettingsAbout({
         <h2 ref={headerRef} className={styles.title}>
           {APP_NAME} {APP_VERSION} {APP_ENV_MARKER}
           {!IS_CORE_WALLET && (
-            <a href={MY_WALLET_PROMO_URL} target="_blank" className={styles.titleLink} rel="noreferrer">
+            <a href={WEBSITE_ABOUT_URL} target="_blank" className={styles.titleLink} rel="noreferrer">
               yohi.io
             </a>
           )}
@@ -83,46 +80,6 @@ function SettingsAbout({
           <p className={styles.text}>
             {renderText(lang('$about_description2'))}
           </p>
-        </div>
-
-        <p className={styles.blockTitle}>{lang('%app_name% Resources', { app_name: APP_NAME })}</p>
-        <div className={styles.settingsBlock}>
-          <a
-            href={getTelegramTipsChannelUrl(lang.code!)}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.item}
-            onClick={handleUrlClick}
-          >
-            <img className={styles.menuIcon} src={videoImg} alt={lang('Watch Video about Features')} />
-            <span className={styles.itemTitle}>{lang('Watch Video about Features')}</span>
-
-            <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
-          </a>
-          <a
-            href={getBlogUrl(lang.code!)}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.item}
-            onClick={handleUrlClick}
-          >
-            <img className={styles.menuIcon} src={hotImg} alt={lang('Enjoy Monthly Updates in Blog')} />
-            <span className={styles.itemTitle}>{lang('Enjoy Monthly Updates in Blog')}</span>
-
-            <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
-          </a>
-          <a
-            href={getHelpCenterUrl(lang.code, 'home')}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.item}
-            onClick={handleUrlClick}
-          >
-            <img className={styles.menuIcon} src={helpcenterImg} alt={lang('Learn New Things in Help Center')} />
-            <span className={styles.itemTitle}>{lang('Learn New Things in Help Center')}</span>
-
-            <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
-          </a>
         </div>
 
         <p className={styles.blockTitle}>{lang('Frequent Questions & Answers')}</p>

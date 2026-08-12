@@ -34,8 +34,6 @@ import org.mytonwallet.app_air.uicomponents.widgets.particles.ParticleView
 import org.mytonwallet.app_air.uicomponents.widgets.pulseView
 import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
 import org.mytonwallet.app_air.uiinappbrowser.InAppBrowserVC
-import org.mytonwallet.app_air.uisettings.viewControllers.settings.cells.SettingsItemCell
-import org.mytonwallet.app_air.uisettings.viewControllers.settings.models.SettingsItem
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.theme.ViewConstants
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
@@ -109,7 +107,7 @@ class AppInfoVC(context: Context) : WViewController(context) {
     private val subtitleLabel = WLabel(context).apply {
         setStyle(14f)
         val websiteUrl = context.getString(BaseR.string.app_website_url)
-        text = websiteUrl.removePrefix("https://")
+        text = websiteUrl.removePrefix("https://").substringBefore("/")
         setPadding(16.dp, 0, 16.dp, 0)
         setOnClickListener {
             openLink(websiteUrl)
@@ -126,84 +124,6 @@ class AppInfoVC(context: Context) : WViewController(context) {
                 LocaleController.getString("\$about_description2")
             ).toProcessedSpannableStringBuilder()
     }
-
-    private val resourcesLabel = WLabel(context).apply {
-        setStyle(14f, WFont.Medium)
-        text = LocaleController.getStringWithKeyValues(
-            "%app_name% Resources",
-            listOf(
-                "%app_name%" to context.getString(BaseR.string.app_locale_name_key)
-            )
-        )
-        setTextColor(WColor.Tint)
-        isTinted = true
-        setPaddingDp(20, 14, 20, 5)
-    }
-
-    private val watchVideosRow =
-        SettingsItemCell(context, baseContentHeight = SettingsItemCell.SIMPLE_ROW_HEIGHT).apply {
-            configure(
-                SettingsItem(
-                    identifier = SettingsItem.Identifier.NONE,
-                    icon = org.mytonwallet.app_air.uisettings.R.drawable.ic_about_video,
-                    title = LocaleController.getString("Watch Video about Features"),
-                    value = null,
-                    hasTintColor = false
-                ),
-                subtitle = null,
-                isFirst = false,
-                isLast = false,
-                isEnabled = true,
-                onTap = {
-                    val username = context.getString(BaseR.string.app_tips_telegram_username_en)
-                    if (username.isNotEmpty()) openLink("https://t.me/$username")
-                }
-            )
-        }
-
-    private val readBlogRow =
-        SettingsItemCell(context, baseContentHeight = SettingsItemCell.SIMPLE_ROW_HEIGHT).apply {
-            configure(
-                SettingsItem(
-                    identifier = SettingsItem.Identifier.NONE,
-                    icon = org.mytonwallet.app_air.uisettings.R.drawable.ic_about_blog,
-                    title = LocaleController.getString("Enjoy Monthly Updates in Blog"),
-                    value = null,
-                    hasTintColor = false
-                ),
-                subtitle = null,
-                isFirst = false,
-                isLast = false,
-                isEnabled = true,
-                onTap = {
-                    openLink(context.getString(BaseR.string.app_blog_url))
-                }
-            )
-        }
-
-    private val helpRow =
-        SettingsItemCell(context, baseContentHeight = SettingsItemCell.SIMPLE_ROW_HEIGHT).apply {
-            configure(
-                SettingsItem(
-                    identifier = SettingsItem.Identifier.NONE,
-                    icon = org.mytonwallet.app_air.uisettings.R.drawable.ic_about_help,
-                    title = LocaleController.getString("Learn New Things in Help Center"),
-                    value = null,
-                    hasTintColor = false
-                ),
-                subtitle = null,
-                isFirst = false,
-                isLast = true,
-                isEnabled = true,
-                onTap = {
-                    val url = context.getString(BaseR.string.app_help_url)
-                    if (url.isNotEmpty()) openLink(url)
-                }
-            )
-        }
-
-    private val showWatchVideosRow: Boolean
-        get() = context.getString(BaseR.string.app_tips_telegram_username_en).isNotEmpty()
 
     private val scrollingContentView: WView by lazy {
         val v = WView(context)
@@ -223,12 +143,6 @@ class AppInfoVC(context: Context) : WViewController(context) {
         v.addView(titleLabel, ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
         v.addView(subtitleLabel, ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
         v.addView(descriptionLabel, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
-        v.addView(resourcesLabel, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
-        if (showWatchVideosRow) {
-            v.addView(watchVideosRow, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
-        }
-        v.addView(readBlogRow, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
-        v.addView(helpRow, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
         v.setConstraints {
             toTop(tonParticlesView, -11f)
             toCenterX(tonParticlesView)
@@ -245,16 +159,8 @@ class AppInfoVC(context: Context) : WViewController(context) {
             topToBottom(subtitleLabel, titleLabel, 4f)
             toCenterX(subtitleLabel)
             topToBottom(descriptionLabel, subtitleLabel, 25f)
-            topToBottom(resourcesLabel, descriptionLabel, 16f)
-            if (showWatchVideosRow) {
-                topToBottom(watchVideosRow, resourcesLabel)
-                topToBottom(readBlogRow, watchVideosRow)
-            } else {
-                topToBottom(readBlogRow, resourcesLabel)
-            }
-            topToBottom(helpRow, readBlogRow)
             toBottomPx(
-                helpRow,
+                descriptionLabel,
                 navigationController?.bottomInset ?: 0
             )
         }
@@ -304,7 +210,7 @@ class AppInfoVC(context: Context) : WViewController(context) {
         )
         scrollingContentView.setConstraints {
             toBottomPx(
-                helpRow,
+                descriptionLabel,
                 max(
                     (navigationController?.bottomInset ?: 0),
                     (navigationController?.imeInsetBottom ?: 0)
@@ -321,11 +227,6 @@ class AppInfoVC(context: Context) : WViewController(context) {
         titleLabel.setTextColor(WColor.PrimaryText.color)
         subtitleLabel.setTextColor(WColor.Tint.color)
         subtitleLabel.addRippleEffect(WColor.TintRipple.color, 10f.dp)
-        resourcesLabel.setBackgroundColor(
-            WColor.Background.color,
-            ViewConstants.BLOCK_RADIUS.dp,
-            0f
-        )
         descriptionLabel.setBackgroundColor(
             WColor.Background.color,
             ViewConstants.BLOCK_RADIUS.dp

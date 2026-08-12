@@ -94,6 +94,25 @@ void describe('business API contracts', () => {
     assert.equal(typeof catalog.sites[0].canBeRestricted, 'boolean');
   });
 
+  void it('localizes the DApp catalog in Japanese and Korean with an English fallback', async () => {
+    const japanese = (await app.inject({
+      method: 'GET', url: '/v2/dapp/catalog?isLandscape=false&langCode=ja',
+    })).json();
+    const korean = (await app.inject({
+      method: 'GET', url: '/v2/dapp/catalog?isLandscape=false&langCode=ko',
+    })).json();
+    const fallback = (await app.inject({
+      method: 'GET', url: '/v2/dapp/catalog?isLandscape=false&langCode=fr',
+    })).json();
+
+    assert.equal(japanese.featuredTitle, 'トレンド');
+    assert.equal(japanese.categories[0].name, 'ゲーム');
+    assert.equal(korean.featuredTitle, '인기 급상승');
+    assert.equal(korean.categories[0].name, '게임');
+    assert.equal(fallback.featuredTitle, 'Trending');
+    assert.equal('localizations' in japanese, false);
+  });
+
   void it('validates DApp catalog parameters', async () => {
     assert.equal((await app.inject({ method: 'GET', url: '/v2/dapp/catalog?isLandscape=maybe&langCode=en' })).statusCode, 400);
     assert.equal((await app.inject({ method: 'GET', url: '/v2/dapp/catalog?isLandscape=false&langCode=中文' })).statusCode, 400);

@@ -1,5 +1,35 @@
 {
   "featuredTitle": "Trending",
+  "localizations": {
+    "ja": {
+      "featuredTitle": "トレンド",
+      "categories": { "1": "ゲーム", "2": "DeFi", "3": "NFT", "4": "ユーティリティ" },
+      "sites": {
+        "https://getgems.io/": { "description": "TON初のNFTマーケットプレイス" },
+        "https://fragment.com/": { "description": "Telegram Premium、匿名番号、ユーザー名を売買できるマーケットプレイス" },
+        "https://app.storm.tg/": { "description": "TON上でレバレッジ取引ができる分散型取引所" },
+        "https://app.evaa.finance/": { "description": "TON上のレンディングプロトコル" },
+        "https://dns.ton.org/": { "description": "あなただけのTONドメイン名を取得" },
+        "https://tonscan.org/": { "description": "高機能なTONブロックチェーンエクスプローラー" },
+        "https://ton.app/": { "description": "人気のTONアプリやサービスを見つける" },
+        "https://t.me/catizenbot": { "description": "TONエコシステムで人気のゲーム" }
+      }
+    },
+    "ko": {
+      "featuredTitle": "인기 급상승",
+      "categories": { "1": "게임", "2": "DeFi", "3": "NFT", "4": "유틸리티" },
+      "sites": {
+        "https://getgems.io/": { "description": "TON 최초의 NFT 마켓플레이스" },
+        "https://fragment.com/": { "description": "Telegram Premium, 익명 번호 및 사용자 이름 마켓플레이스" },
+        "https://app.storm.tg/": { "description": "TON에서 레버리지 거래를 지원하는 탈중앙화 거래소" },
+        "https://app.evaa.finance/": { "description": "TON 기반 대출 프로토콜" },
+        "https://dns.ton.org/": { "description": "나만의 TON 도메인 이름을 안전하게 등록하세요" },
+        "https://tonscan.org/": { "description": "강력한 TON 블록체인 탐색기" },
+        "https://ton.app/": { "description": "인기 TON 앱과 서비스를 찾아보세요" },
+        "https://t.me/catizenbot": { "description": "TON 생태계의 인기 게임" }
+      }
+    }
+  },
   "categories": [
     { "id": 1, "name": "Games" },
     { "id": 2, "name": "DeFi" },

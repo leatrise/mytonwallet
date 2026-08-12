@@ -255,7 +255,7 @@ export const MY_WALLET_BLOG: Partial<Record<LangCode, string>> = {
   ru: 'https://mywallet.io/ru/blog/',
 };
 export const MY_WALLET_TERMS_OF_USE_URL = 'https://mywallet.io/terms-of-use';
-export const MY_WALLET_PRIVACY_POLICY_URL = 'https://mywallet.io/privacy-policy';
+export const MY_WALLET_PRIVACY_POLICY_URL = 'https://yohi.io/#/privacy';
 
 export const MULTISEND_DAPP_URL = process.env.MULTISEND_DAPP_URL || 'https://multisend.mywallet.io/';
 export const PORTFOLIO_DAPP_URL = process.env.PORTFOLIO_DAPP_URL || 'https://portfolio.mywallet.io/';

@@ -39,24 +39,8 @@ class SettingsVM {
         ),
         SettingsSection(
             section = SettingsSection.Section.HELP,
-            title = LocaleController.getString("Help"),
-            children = emptyList(),
-        ),
-        SettingsSection(
-            section = SettingsSection.Section.ABOUT,
             title = LocaleController.getString("About"),
-            children = listOf(
-                SettingsItem(
-                    identifier = SettingsItem.Identifier.ABOUT_MTW,
-                    icon = R.drawable.ic_about,
-                    title = LocaleController.getStringWithKeyValues(
-                        "About %app_name%", listOf(
-                            Pair("%app_name%", ApplicationContextHolder.applicationContext.getString(BaseR.string.app_locale_name_key))
-                        )
-                    ),
-                    hasTintColor = false
-                )
-            )
+            children = emptyList(),
         ),
     )
 
@@ -224,6 +208,18 @@ class SettingsVM {
                     identifier = SettingsItem.Identifier.USE_RESPONSIBILITY,
                     icon = R.drawable.ic_responsibility,
                     title = LocaleController.getString("Use Responsibly"),
+                    hasTintColor = false
+                )
+            )
+            add(
+                SettingsItem(
+                    identifier = SettingsItem.Identifier.ABOUT_MTW,
+                    icon = R.drawable.ic_about,
+                    title = LocaleController.getStringWithKeyValues(
+                        "About %app_name%", listOf(
+                            Pair("%app_name%", ApplicationContextHolder.applicationContext.getString(BaseR.string.app_locale_name_key))
+                        )
+                    ),
                     hasTintColor = false
                 )
             )

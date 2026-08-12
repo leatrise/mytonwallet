@@ -47,6 +47,7 @@ import { captureControlledSwipe } from '../../util/swipeController';
 import useTelegramMiniAppSwipeToClose from '../../util/telegram/hooks/useTelegramMiniAppSwipeToClose';
 import { getTelegramTipsChannelUrl } from '../../util/url';
 import {
+  IS_ANDROID_APP,
   IS_BIOMETRIC_AUTH_SUPPORTED,
   IS_DAPP_SUPPORTED,
   IS_ELECTRON,
@@ -627,7 +628,7 @@ function Settings({
 
           {!IS_CORE_WALLET && (
             <p className={buildClassName(styles.blockTitle, styles.blockTitleSmall)}>
-              {lang('Help')}
+              {lang('About')}
             </p>
           )}
 
@@ -661,6 +662,14 @@ function Settings({
 
                   <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
                 </a>
+                {IS_ANDROID_APP && (
+                  <div className={buildClassName(styles.item, styles.itemMenu)} onClick={handleAboutOpen}>
+                    <img className={styles.menuIcon} src={aboutImg} alt="" />
+                    <span className={styles.itemTitle}>{lang('About %app_name%', { app_name: APP_NAME })}</span>
+
+                    <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
+                  </div>
+                )}
                 <a
                   href={getTelegramTipsChannelUrl(langCode)}
                   target="_blank"
@@ -684,7 +693,6 @@ function Settings({
 
           {!IS_CORE_WALLET && (
             <>
-              <p className={buildClassName(styles.blockTitle, styles.blockTitleSmall)}>{lang('About')}</p>
               <div className={styles.block}>
                 {IS_EXTENSION && (
                   <div className={buildClassName(styles.item, styles.itemMenu)} onClick={handleClickInstallApp}>
@@ -710,12 +718,14 @@ function Settings({
                     <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
                   </div>
                 )}
-                <div className={buildClassName(styles.item, styles.itemMenu)} onClick={handleAboutOpen}>
-                  <img className={styles.menuIcon} src={aboutImg} alt="" />
-                  <span className={styles.itemTitle}>{lang('About %app_name%', { app_name: APP_NAME })}</span>
+                {!IS_ANDROID_APP && (
+                  <div className={buildClassName(styles.item, styles.itemMenu)} onClick={handleAboutOpen}>
+                    <img className={styles.menuIcon} src={aboutImg} alt="" />
+                    <span className={styles.itemTitle}>{lang('About %app_name%', { app_name: APP_NAME })}</span>
 
-                  <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
-                </div>
+                    <i className={buildClassName(styles.iconChevronRight, 'icon-chevron-right')} aria-hidden />
+                  </div>
+                )}
               </div>
             </>
           )}

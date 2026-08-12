@@ -570,7 +570,7 @@ Buy with Card: カードで買う
 Buy with Crypto: 暗号通貨で購入する
 Cannot load widget: ウィジェットを読み込めません
 Error: エラー
-Explore: 探検する
+Explore: 探す
 $lockdown_mode_enabled_title: ロックダウンモードが有効になりました
 $lockdown_mode_walletconnect_unavailable: WalletConnect はロックダウン モードでは利用できません。これを使用するには、[設定] > [プライバシーとセキュリティ] > [ロックダウン モード] > [Web ブラウジングの構成] で %app_name% のロックダウン モードを無効にします。
 No partners yet: 利用可能なプロバイダーがありません
