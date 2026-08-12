@@ -12,6 +12,7 @@ import org.mytonwallet.app_air.walletcore.models.MAccount
 import org.mytonwallet.app_air.walletcore.models.MScreenMode
 import org.mytonwallet.app_air.walletcore.stores.AccountStore
 import org.mytonwallet.app_air.walletcore.stores.BalanceStore
+import org.mytonwallet.app_air.walletcore.stores.EnvironmentStore
 import org.mytonwallet.app_air.walletcore.stores.StakingStore
 import org.mytonwallet.app_air.walletcore.stores.TokenStore
 import org.mytonwallet.uihome.home.status.HomeStatusController
@@ -71,7 +72,8 @@ class HomeVM(
             return TokenStore.swapAssetsLoaded &&
                 TokenStore.loadedAllTokens &&
                 !BalanceStore.getBalances(showingAccountId).isNullOrEmpty() &&
-                (showingAccount?.isMainnet != true ||
+                (EnvironmentStore.isStakingDisabled ||
+                    showingAccount?.isMainnet != true ||
                     StakingStore.getStakingState(showingAccountId ?: "") != null ||
                     WGlobalStorage.getAccountTonAddress(showingAccountId ?: "") == null)
         }

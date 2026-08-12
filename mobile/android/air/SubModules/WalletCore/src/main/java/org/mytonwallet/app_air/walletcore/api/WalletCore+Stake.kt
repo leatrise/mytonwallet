@@ -8,6 +8,7 @@ import org.mytonwallet.app_air.walletcore.moshi.MStakeHistoryItem
 import org.mytonwallet.app_air.walletcore.moshi.MStakingStateResponse
 import org.mytonwallet.app_air.walletcore.moshi.StakingState
 import org.mytonwallet.app_air.walletcore.moshi.api.ApiMethod
+import org.mytonwallet.app_air.walletcore.stores.EnvironmentStore
 import java.math.BigInteger
 
 
@@ -24,6 +25,10 @@ suspend fun WalletCore.getBackendStakingState(accountId: String) = run {
 suspend fun WalletCore.getStakingHistory(
     accountId: String,
 ) = run {
+    if (EnvironmentStore.isStakingDisabled) {
+        return@run emptyList<MStakeHistoryItem>()
+    }
+
     val quotedAccountId = JSONObject.quote(accountId)
 
     bridge!!.callApiAsync<List<MStakeHistoryItem>>(

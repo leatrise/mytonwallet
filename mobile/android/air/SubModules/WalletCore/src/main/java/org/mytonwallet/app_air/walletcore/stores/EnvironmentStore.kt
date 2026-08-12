@@ -31,6 +31,11 @@ object EnvironmentStore : IStore {
             return environmentVariables?.isAndroidDirect == true
         }
 
+    val isStakingDisabled: Boolean
+        get() {
+            return environmentVariables?.isStakingDisabled != false
+        }
+
     val appVersion: String?
         get() {
             return environmentVariables?.appVersion

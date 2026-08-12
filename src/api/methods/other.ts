@@ -4,7 +4,7 @@ import type { LangCode, Theme } from '../../global/types';
 import type { StorageKey } from '../storages/types';
 import type { ApiAnyDisplayError, ApiBaseCurrency, ApiChain } from '../types';
 
-import { APP_ENV, APP_VERSION, IS_ANDROID_DIRECT } from '../../config';
+import { APP_ENV, APP_VERSION, IS_ANDROID_DIRECT, IS_STAKING_DISABLED } from '../../config';
 import { setIsAppFocused } from '../../util/focusAwareDelay';
 import { getLogs, logDebugError } from '../../util/logs';
 import { pause } from '../../util/schedulers';
@@ -184,6 +184,7 @@ export function getEnvironmentVariables() {
     appEnv: APP_ENV,
     appVersion: APP_VERSION,
     isAndroidDirect: IS_ANDROID_DIRECT,
+    isStakingDisabled: IS_STAKING_DISABLED,
   };
 }
 

@@ -6,5 +6,6 @@ import com.squareup.moshi.JsonClass
 data class MEnvironmentVariables(
     val appEnv: String,
     val appVersion: String,
-    val isAndroidDirect: Boolean
+    val isAndroidDirect: Boolean,
+    val isStakingDisabled: Boolean
 )

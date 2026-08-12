@@ -47,6 +47,7 @@ import org.mytonwallet.app_air.walletcore.stores.AccountStore
 import org.mytonwallet.app_air.walletcore.helpers.IActivityLoader
 import org.mytonwallet.app_air.walletcore.moshi.MApiTransaction
 import org.mytonwallet.app_air.walletcore.stores.BalanceStore
+import org.mytonwallet.app_air.walletcore.stores.EnvironmentStore
 import org.mytonwallet.app_air.walletcore.stores.StakingStore
 import org.mytonwallet.app_air.walletcore.stores.TokenStore
 import org.mytonwallet.uihome.home.cells.HomeAssetsVCPool
@@ -334,7 +335,8 @@ class ActivityListView<T>(
                 TokenStore.loadedAllTokens &&
                 !BalanceStore.getBalances(showingAccountId).isNullOrEmpty() &&
                 (
-                    !isMainnetAccount ||
+                    EnvironmentStore.isStakingDisabled ||
+                        !isMainnetAccount ||
                         StakingStore.getStakingState(showingAccountId ?: "") != null ||
                         WGlobalStorage.getAccountTonAddress(showingAccountId ?: "") == null
                     )
