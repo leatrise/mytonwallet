@@ -137,7 +137,7 @@ object TokenStore : IStore {
 
     val loadedAllTokens: Boolean
         get() {
-            return tokens.size > 6
+            return tokens.isNotEmpty()
         }
 
     fun getToken(slug: String?, searchMinterAddress: Boolean = false): MToken? {
