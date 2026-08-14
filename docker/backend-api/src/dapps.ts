@@ -66,8 +66,23 @@ function validateCatalog(catalog: DappCatalogFile) {
   if (catalog.categories.some((category) => !Number.isInteger(category.id) || !category.name)) {
     throw new Error('Invalid DApp category');
   }
-  if (catalog.sites.some((site) => !site.url || !site.name || !site.icon || !site.description
-    || typeof site.canBeRestricted !== 'boolean' || typeof site.isExternal !== 'boolean')) {
+  const categoryIds = new Set(catalog.categories.map(({ id }) => id));
+  if (categoryIds.size !== catalog.categories.length) {
+    throw new Error('Duplicate DApp category');
+  }
+  if (catalog.sites.some((site) => !isHttpUrl(site.url) || !site.name || !isHttpUrl(site.icon) || !site.description
+    || (site.manifestUrl !== undefined && !isHttpUrl(site.manifestUrl))
+    || typeof site.canBeRestricted !== 'boolean' || typeof site.isExternal !== 'boolean'
+    || !site.categoryId || !categoryIds.has(site.categoryId))) {
     throw new Error('Invalid DApp site');
+  }
+}
+
+function isHttpUrl(value: string) {
+  try {
+    const { protocol } = new URL(value);
+    return protocol === 'http:' || protocol === 'https:';
+  } catch {
+    return false;
   }
 }

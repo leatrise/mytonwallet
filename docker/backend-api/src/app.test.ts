@@ -88,10 +88,16 @@ void describe('business API contracts', () => {
     const response = await app.inject({ method: 'GET', url: '/v2/dapp/catalog?isLandscape=false&langCode=en' });
     const catalog = response.json();
     assert.equal(response.statusCode, 200);
-    assert.ok(catalog.categories.length > 0);
-    assert.ok(catalog.sites.length > 0);
-    assert.equal(typeof catalog.sites[0].url, 'string');
-    assert.equal(typeof catalog.sites[0].canBeRestricted, 'boolean');
+    assert.ok(catalog.categories.length >= 6);
+    assert.ok(catalog.sites.length >= 12);
+    assert.ok(catalog.sites.every((site: Record<string, unknown>) => typeof site.url === 'string'));
+    assert.ok(catalog.sites.every((site: Record<string, unknown>) => typeof site.icon === 'string'));
+    assert.ok(catalog.sites.every((site: Record<string, unknown>) => typeof site.description === 'string'));
+    assert.ok(catalog.sites.every((site: Record<string, unknown>) => typeof site.canBeRestricted === 'boolean'));
+    assert.ok(catalog.sites.every((site: Record<string, unknown>) => typeof site.isExternal === 'boolean'));
+    assert.ok(catalog.categories.every((category: { id: number }) => (
+      catalog.sites.filter((site: { categoryId: number }) => site.categoryId === category.id).length >= 3
+    )));
   });
 
   void it('localizes the DApp catalog in Japanese and Korean with an English fallback', async () => {
