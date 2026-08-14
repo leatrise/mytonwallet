@@ -9,8 +9,8 @@
   <string name="wc_url_scheme" translatable="false">wc</string>
   <string name="app_website_url" translatable="false">https://yohi.io</string>
   <string name="app_blog_url" translatable="false">https://mywallet.io/en/blog</string>
-  <string name="app_terms_of_use_url" translatable="false">https://mywallet.io/terms-of-use</string>
-  <string name="app_privacy_policy_url" translatable="false">https://mywallet.io/privacy-policy</string>
+  <string name="app_terms_of_use_url" translatable="false">https://yohi.io/#/tos</string>
+  <string name="app_privacy_policy_url" translatable="false">https://yohi.io/#/privacy</string>
   <string name="app_install_url" translatable="false">https://get.mywallet.io/android-store</string>
   <string name="bot_username" translatable="false">MyTonWalletBot</string>
   <string name="app_cards_url" translatable="false">https://cards.mytonwallet.io</string>

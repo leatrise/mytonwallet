@@ -34,6 +34,8 @@ import org.mytonwallet.app_air.uicomponents.widgets.particles.ParticleView
 import org.mytonwallet.app_air.uicomponents.widgets.pulseView
 import org.mytonwallet.app_air.uicomponents.widgets.setBackgroundColor
 import org.mytonwallet.app_air.uiinappbrowser.InAppBrowserVC
+import org.mytonwallet.app_air.uisettings.viewControllers.settings.cells.SettingsItemCell
+import org.mytonwallet.app_air.uisettings.viewControllers.settings.models.SettingsItem
 import org.mytonwallet.app_air.walletbasecontext.localization.LocaleController
 import org.mytonwallet.app_air.walletbasecontext.theme.ViewConstants
 import org.mytonwallet.app_air.walletbasecontext.theme.WColor
@@ -125,6 +127,34 @@ class AppInfoVC(context: Context) : WViewController(context) {
             ).toProcessedSpannableStringBuilder()
     }
 
+    private val linkRows = if (isGramApp) emptyList() else listOf(
+        "网站" to BaseR.string.app_website_url,
+        "关于我们" to BaseR.string.app_about_url,
+        "X" to BaseR.string.app_x_url,
+        "Telegram" to BaseR.string.app_telegram_url,
+        "YouTube" to BaseR.string.app_youtube_url,
+        "WhatsApp" to BaseR.string.app_whatsapp_url
+    ).mapIndexed { index, (title, urlRes) ->
+        SettingsItemCell(
+            context,
+            textLeadingMargin = 20f,
+            baseContentHeight = SettingsItemCell.SIMPLE_ROW_HEIGHT
+        ).apply {
+            configure(
+                SettingsItem(
+                    identifier = SettingsItem.Identifier.NONE,
+                    title = title,
+                    hasTintColor = false
+                ),
+                subtitle = null,
+                isFirst = index == 0,
+                isLast = index == 5,
+                isEnabled = true,
+                onTap = { openLink(context.getString(urlRes)) }
+            )
+        }
+    }
+
     private val scrollingContentView: WView by lazy {
         val v = WView(context)
         v.layoutDirection = View.LAYOUT_DIRECTION_LTR
@@ -143,6 +173,9 @@ class AppInfoVC(context: Context) : WViewController(context) {
         v.addView(titleLabel, ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
         v.addView(subtitleLabel, ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
         v.addView(descriptionLabel, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
+        linkRows.forEach { row ->
+            v.addView(row, ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT))
+        }
         v.setConstraints {
             toTop(tonParticlesView, -11f)
             toCenterX(tonParticlesView)
@@ -159,8 +192,15 @@ class AppInfoVC(context: Context) : WViewController(context) {
             topToBottom(subtitleLabel, titleLabel, 4f)
             toCenterX(subtitleLabel)
             topToBottom(descriptionLabel, subtitleLabel, 25f)
+            linkRows.forEachIndexed { index, row ->
+                if (index == 0) {
+                    topToBottom(row, descriptionLabel, 16f)
+                } else {
+                    topToBottom(row, linkRows[index - 1])
+                }
+            }
             toBottomPx(
-                descriptionLabel,
+                linkRows.lastOrNull() ?: descriptionLabel,
                 navigationController?.bottomInset ?: 0
             )
         }
@@ -210,7 +250,7 @@ class AppInfoVC(context: Context) : WViewController(context) {
         )
         scrollingContentView.setConstraints {
             toBottomPx(
-                descriptionLabel,
+                linkRows.lastOrNull() ?: descriptionLabel,
                 max(
                     (navigationController?.bottomInset ?: 0),
                     (navigationController?.imeInsetBottom ?: 0)

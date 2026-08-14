@@ -337,7 +337,7 @@ export type ApiSite = {
   url: string;
   name: string;
   icon: string;
-  manifestUrl: string;
+  manifestUrl?: string;
   description: string;
   canBeRestricted: boolean;
   isExternal: boolean;

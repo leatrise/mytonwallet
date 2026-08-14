@@ -1,0 +1,102 @@
+import type { ApiSite, ApiSiteCategory } from '../types';
+
+export type ExploreCatalog = {
+  featuredTitle: string;
+  categories: ApiSiteCategory[];
+  sites: ApiSite[];
+};
+
+/**
+ * Emergency catalog used only when the backend catalog cannot be loaded.
+ * Keep this list small and limited to reviewed applications.
+ */
+export const FALLBACK_EXPLORE_CATALOG: ExploreCatalog = {
+  featuredTitle: 'Trending',
+  categories: [
+    { id: 1, name: 'Games' },
+    { id: 2, name: 'DeFi' },
+    { id: 3, name: 'NFT' },
+    { id: 4, name: 'Utilities' },
+  ],
+  sites: [
+    {
+      url: 'https://getgems.io/',
+      name: 'Getgems',
+      icon: 'https://wallet-api.yohi.io/static/explore-icons/getgems.jpg',
+      description: 'The first NFT marketplace on TON',
+      canBeRestricted: false,
+      isExternal: false,
+      isFeatured: true,
+      isVerified: true,
+      categoryId: 3,
+    },
+    {
+      url: 'https://fragment.com/',
+      name: 'Fragment',
+      icon: 'https://wallet-api.yohi.io/static/explore-icons/fragment.png',
+      manifestUrl: 'https://fragment.com/tonconnect-manifest.json',
+      description: 'Telegram Premium subscriptions, anonymous numbers and usernames',
+      canBeRestricted: false,
+      isExternal: false,
+      isFeatured: true,
+      isVerified: true,
+      categoryId: 3,
+    },
+    {
+      url: 'https://app.storm.tg/',
+      name: 'Storm Trade',
+      icon: 'https://wallet-api.yohi.io/static/explore-icons/storm.jpg',
+      description: 'Leveraged DEX to trade on TON',
+      canBeRestricted: true,
+      isExternal: false,
+      isFeatured: true,
+      categoryId: 2,
+    },
+    {
+      url: 'https://app.evaa.finance/',
+      name: 'EVAA Protocol',
+      icon: 'https://wallet-api.yohi.io/static/explore-icons/evaa.png',
+      description: 'Lending protocol on TON',
+      canBeRestricted: true,
+      isExternal: false,
+      categoryId: 2,
+    },
+    {
+      url: 'https://dns.ton.org/',
+      name: 'TON Domains',
+      icon: 'https://wallet-api.yohi.io/static/explore-icons/ton.jpg',
+      description: 'Secure your unique TON domain name',
+      canBeRestricted: false,
+      isExternal: false,
+      isVerified: true,
+      categoryId: 4,
+    },
+    {
+      url: 'https://tonscan.org/',
+      name: 'Tonscan',
+      icon: 'https://wallet-api.yohi.io/static/explore-icons/ton_scan.png',
+      description: 'The most powerful TON explorer',
+      canBeRestricted: false,
+      isExternal: false,
+      categoryId: 4,
+    },
+    {
+      url: 'https://ton.app/',
+      name: 'TON App',
+      icon: 'https://wallet-api.yohi.io/static/explore-icons/ton_app.png',
+      description: 'Discover top TON apps and services',
+      canBeRestricted: false,
+      isExternal: false,
+      categoryId: 4,
+    },
+    {
+      url: 'https://t.me/catizenbot',
+      name: 'Catizen',
+      icon: 'https://wallet-api.yohi.io/static/explore-icons/catizen.jpg',
+      description: 'A popular game in the TON ecosystem',
+      canBeRestricted: false,
+      isExternal: true,
+      categoryId: 1,
+    },
+  ],
+};

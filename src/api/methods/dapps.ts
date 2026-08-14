@@ -6,8 +6,6 @@ import type {
   ApiAnyDisplayError,
   ApiDappTransfer,
   ApiNetwork,
-  ApiSite,
-  ApiSiteCategory,
   OnApiUpdate,
 } from '../types';
 import { ApiCommonError } from '../types';
@@ -33,6 +31,7 @@ import {
   type StoredDappsByUrl,
   type StoredDappsState,
 } from '../dappProtocols/storage';
+import { type ExploreCatalog, FALLBACK_EXPLORE_CATALOG } from '../data/exploreCatalog';
 import { callHook } from '../hooks';
 import { storage } from '../storages';
 
@@ -193,10 +192,15 @@ export function setSseLastEventId(lastEventId: string) {
   return storage.setItem('sseLastEventId', lastEventId);
 }
 
-export function loadExploreSites(
+export async function loadExploreSites(
   { isLandscape, langCode }: { isLandscape: boolean; langCode: LangCode },
-): Promise<{ categories: ApiSiteCategory[]; sites: ApiSite[] }> {
-  return callBackendGet('/v2/dapp/catalog', { isLandscape, langCode });
+): Promise<ExploreCatalog> {
+  try {
+    return await callBackendGet('/v2/dapp/catalog', { isLandscape, langCode });
+  } catch (err) {
+    logDebugError('Failed to load the explore catalog; using the local fallback', err);
+    return FALLBACK_EXPLORE_CATALOG;
+  }
 }
 
 export async function signDappProof(
