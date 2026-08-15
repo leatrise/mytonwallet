@@ -331,8 +331,7 @@ class ActivityListView<T>(
         get() {
             if (BalanceStore.isAccountNew(showingAccountId))
                 return true
-            return TokenStore.swapAssetsLoaded &&
-                TokenStore.loadedAllTokens &&
+            return TokenStore.loadedAllTokens &&
                 !BalanceStore.getBalances(showingAccountId).isNullOrEmpty() &&
                 (
                     EnvironmentStore.isStakingDisabled ||
