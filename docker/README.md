@@ -4,13 +4,14 @@ Single-host deployment for the non-custodial TON launch profile. The backend nev
 
 ## Deploy
 
-1. In Cloudflare Zero Trust, create a remotely managed tunnel. Add public hostname
-   `wallet-api.yohi.io` with service URL `http://caddy:80`.
+1. In Cloudflare Zero Trust, create a remotely managed tunnel. Add public hostnames
+   `wallet-api.yohi.io` and `wallet.yohi.io`, both with service URL `http://caddy:80`.
 2. Copy `backend.env.example` to `/opt/yohi/secrets/backend.env`, set mode `0600`, and add provider credentials.
 3. Create `/opt/yohi/secrets/cloudflared.env` with mode `0600` containing
    `TUNNEL_TOKEN=<token shown by Cloudflare>`.
 4. Run `docker compose -f docker/compose.yml config`, then `docker compose -f docker/compose.yml up -d --build`.
-5. Verify `https://wallet-api.yohi.io/healthz` and `https://wallet-api.yohi.io/readyz`.
+5. Verify `https://wallet-api.yohi.io/healthz`, `https://wallet-api.yohi.io/readyz`,
+   and `https://wallet.yohi.io/tos`.
 
 The host publishes no application ports and needs no inbound 80/443 firewall rules.
 `cloudflared` connects outbound to Cloudflare, while Caddy accepts HTTP only inside

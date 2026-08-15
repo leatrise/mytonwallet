@@ -6,7 +6,7 @@
     <string name="app_tc_url_scheme" translatable="false">mytonwallet-tc</string>
     <string name="app_website_url" translatable="false">https://yohi.io/#/about</string>
     <string name="app_blog_url" translatable="false">https://mywallet.io/en/blog</string>
-    <string name="app_terms_of_use_url" translatable="false">https://yohi.io/#/tos</string>
+    <string name="app_terms_of_use_url" translatable="false">https://wallet.yohi.io/tos</string>
     <string name="app_privacy_policy_url" translatable="false">https://yohi.io/#/privacy</string>
     <string name="app_about_url" translatable="false">https://yohi.io/#/about</string>
     <string name="app_x_url" translatable="false">https://x.com/Yohicrypto</string>

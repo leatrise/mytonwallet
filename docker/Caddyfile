@@ -26,15 +26,38 @@
 		max_size 64KB
 	}
 
-	handle /bridge/* {
-		reverse_proxy ton-connect-bridge:8081 {
-			flush_interval -1
+	route {
+		@walletTos {
+			host wallet.yohi.io
+			path /tos
 		}
-	}
+		handle @walletTos {
+			reverse_proxy terms-of-use:80
+		}
 
-	handle {
-		reverse_proxy backend-api:3000 {
-			flush_interval -1
+		@walletTosSlash {
+			host wallet.yohi.io
+			path /tos/
+		}
+		handle @walletTosSlash {
+			redir /tos 308
+		}
+
+		@walletHost host wallet.yohi.io
+		handle @walletHost {
+			respond 404
+		}
+
+		handle /bridge/* {
+			reverse_proxy ton-connect-bridge:8081 {
+				flush_interval -1
+			}
+		}
+
+		handle {
+			reverse_proxy backend-api:3000 {
+				flush_interval -1
+			}
 		}
 	}
 

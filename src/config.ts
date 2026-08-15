@@ -254,7 +254,7 @@ export const MY_WALLET_BLOG: Partial<Record<LangCode, string>> = {
   en: 'https://mywallet.io/en/blog/',
   ru: 'https://mywallet.io/ru/blog/',
 };
-export const MY_WALLET_TERMS_OF_USE_URL = 'https://yohi.io/#/tos';
+export const MY_WALLET_TERMS_OF_USE_URL = 'https://wallet.yohi.io/tos';
 export const MY_WALLET_PRIVACY_POLICY_URL = 'https://yohi.io/#/privacy';
 
 export const MULTISEND_DAPP_URL = process.env.MULTISEND_DAPP_URL || 'https://multisend.mywallet.io/';
